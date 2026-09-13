@@ -1,0 +1,354 @@
+﻿/* General theme independed control css. */
+
+.TcHmi_Controls_Entertainment_TabletNavigation_NavigationControl-template {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.TcHmi_Controls_Entertainment_TabletNavigation_NavigationControl-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: normal;
+    top: 0;
+}
+.TcHmi_Controls_Entertainment_TabletNavigation_NavigationControl-grid {
+    --fieldSize: 0;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    opacity: 1;
+    align-content: center;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill,var(--fieldSize));
+    grid-template-rows: var(--fieldSize);
+    grid-gap: 0;
+    visibility: visible;
+    position: absolute;
+}
+.TcHmi_Controls_Entertainment_TabletNavigation_NavigationControl-grid-field {
+    width: var(--fieldSize);
+    height: var(--fieldSize);
+    position: relative;
+}
+.TcHmi_Controls_Entertainment_TabletNavigation_NavigationControl-buttonGarage {
+    display: none;
+}
+.TcHmi_Controls_Entertainment_TabletNavigation_Button-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 60%;
+    height: 60%;
+    border-width: 1px;
+    border-style: solid;
+    z-index: 3;
+    text-indent: -10000px; /*make icon of img invisible*/
+}
+    .TcHmi_Controls_Entertainment_TabletNavigation_Button-icon.Active {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        width: 60%;
+        height: 60%;
+        border-width: 1px;
+        border-style: solid;
+        z-index: 3;
+        text-indent: -10000px; /*make icon of img invisible*/
+    }
+.TcHmi_Controls_Entertainment_TabletNavigation_Button-text {
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    left: 0;
+    height: 15%;
+    top: 82.5%;
+    z-index: 5;
+    font-size: 100%;
+    font-weight: normal;
+    word-wrap: unset;
+    white-space: unset;
+    overflow-wrap: unset;
+    text-align: center;
+    vertical-align: middle;
+}
+    .TcHmi_Controls_Entertainment_TabletNavigation_Button-text.Active {
+        position: absolute;
+        display: inline-block;
+        width: 100%;
+        left: 0;
+        height: 15%;
+        top: 82.5%;
+        z-index: 5;
+        font-size: 100%;
+        font-weight: normal;
+        word-wrap: unset;
+        white-space: unset;
+        overflow-wrap: unset;
+        text-align: center;
+        vertical-align: middle;
+    }
+.TcHmi_Controls_Entertainment_TabletNavigation_NavigationControl-pageIndicator-container {
+    display: none;
+    position: absolute;
+    z-index: 10;
+}
+.TcHmi_Controls_Entertainment_TabletNavigation_NavigationControl-pageIndicator-container.Left {
+    top: 50%;
+    height: auto;
+    width: 22px;
+    transform: translate(0,-50%);
+    display: grid;
+    left: 2.5px;
+}
+.TcHmi_Controls_Entertainment_TabletNavigation_NavigationControl-pageIndicator-container.Top {
+    left: 50%;
+    width: auto;
+    height: 22px;
+    transform: translate(-50%,0);
+    display: grid;
+    top: 2.5px;
+}
+.TcHmi_Controls_Entertainment_TabletNavigation_NavigationControl-pageIndicator-container.Right {
+    top: 50%;
+    height: auto;
+    width: 22px;
+    transform: translate(0,-50%);
+    display: grid;
+    right: 2.5px;
+}
+.TcHmi_Controls_Entertainment_TabletNavigation_NavigationControl-pageIndicator-container.Bottom {
+    left: 50%;
+    width: auto;
+    height: 22px;
+    transform: translate(-50%,0);
+    display: grid;
+    bottom: 2.5px;
+}
+.TcHmi_Controls_Entertainment_TabletNavigation_NavigationControl-pageIndicator-innerContainer {
+    display: inline-flex;
+    width: auto;
+    flex-flow: row;
+    align-items: center;
+    position: relative;
+}
+.TcHmi_Controls_Entertainment_TabletNavigation_NavigationControl-pageIndicator-innerContainer.Vertical {
+    height: auto;
+    flex-flow: column;
+}
+.TcHmi_Controls_Entertainment_TabletNavigation_NavigationControl-pageIndicator-indicator {
+    border-radius: 50%;
+    height: 8px;
+    width: 8px;
+    position: relative;
+    margin: 5px;
+}
+.TcHmi_Controls_Entertainment_TabletNavigation_NavigationControl-pageIndicator-indicator.Active {
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    position: relative;
+    margin: 5px;
+}
+
+.animationLeftOut {
+    animation-name: animationLeftOut;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+.animationTopOut {
+    animation-name: animationTopOut;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+.animationRightOut {
+    animation-name: animationRightOut;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+.animationBottomOut {
+    animation-name: animationBottomOut;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+.animationLeftIn {
+    animation-name: animationLeftIn;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+.animationTopIn {
+    animation-name: animationTopIn;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+.animationRightIn {
+    animation-name: animationRightIn;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+.animationBottomIn {
+    animation-name: animationBottomIn;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+@keyframes animationLeftIn {
+    0% {
+        opacity: 0.4;
+        left: -100%;
+    }
+
+    80% {
+        opacity: 0.8;
+        left: 10%;
+    }
+
+    100% {
+        opacity: 1;
+        left: 0%;
+    }
+}
+
+@keyframes animationTopIn {
+    0% {
+        opacity: 0.4;
+        top: -100%;
+    }
+
+    80% {
+        opacity: 0.8;
+        top: 10%;
+    }
+
+    100% {
+        opacity: 1;
+        top: 0;
+    }
+}
+
+@keyframes animationRightIn {
+    0% {
+        opacity: 0.4;
+        left: 100%;
+    }
+
+    80% {
+        opacity: 0.8;
+        left: -10%;
+    }
+
+    100% {
+        opacity: 1;
+        left: 0;
+    }
+}
+
+@keyframes animationBottomIn {
+    0% {
+        opacity: 0.4;
+        top: 100%;
+    }
+
+    80% {
+        opacity: 0.8;
+        top: -10%;
+    }
+
+    100% {
+        opacity: 1;
+        top: 0;
+    }
+}
+
+@keyframes animationLeftOut {
+    0% {
+        opacity: 1;
+        left: 0;
+    }
+
+    80% {
+        opacity: 0.4;
+        left: -100%;
+    }
+
+    100% {
+        opacity: 0;
+        left: -100%;
+    }
+}
+
+@keyframes animationTopOut {
+    0% {
+        opacity: 1;
+        top: 0;
+    }
+
+    80% {
+        opacity: 0.4;
+        top: -100%;
+    }
+
+    100% {
+        opacity: 0;
+        top: -100%;
+    }
+}
+
+@keyframes animationRightOut {
+    0% {
+        opacity: 1;
+        left: 0;
+    }
+
+    80% {
+        opacity: 0.4;
+        left: 100%;
+    }
+
+    100% {
+        opacity: 0;
+        left: 100%;
+    }
+}
+
+@keyframes animationBottomOut {
+    0% {
+        opacity: 1;
+        top: 0;
+    }
+
+    80% {
+        opacity: 0.4;
+        top: 100%;
+    }
+
+    100% {
+        opacity: 0;
+        top: 100%;
+    }
+}

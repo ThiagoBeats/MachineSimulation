@@ -1,0 +1,9 @@
+﻿/* Theme depended control css. */
+.TcHmi_Controls_Entertainment_ProgressBar {
+	border: 1px solid black;
+	background-color: #5c5c5c;
+}
+
+.TcHmi_Controls_Entertainment_ProgressBar-bar {
+	background: rgb(63, 251, 96);
+}

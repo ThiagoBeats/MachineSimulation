@@ -1,0 +1,55 @@
+﻿.TcHmi_Controls_Entertainment_TabletNavigation_NavigationControl {
+    --buttonColorActive: linear-gradient(0deg, rgba(248, 59, 59, 1), rgba(253, 50, 139, 1));
+    --buttonColor: linear-gradient(0deg, rgba(33, 94, 249, 1), rgba(99, 141, 249, 1));
+    --buttonBorderColor: black;
+    --buttonBorderColorActive: black;
+    --textColor: black;
+    --textColorActive: red;
+    --pageIndicatorColor: rgb(172 2 2);
+    --pageIndicatorColorActive: red;
+    --diagColorInfo: dodgerblue;
+    --diagColorWarning: yellow;
+    --diagColorAlarm: orange;
+    --diagColorCritical: red;
+}
+
+
+.TcHmi_Controls_Entertainment_TabletNavigation_Button-diagCircle.Information {
+    background: var(--diagColorInfo);
+}
+
+.TcHmi_Controls_Entertainment_TabletNavigation_Button-diagCircle.Warning {
+    background: var(--diagColorWarning);
+}
+
+.TcHmi_Controls_Entertainment_TabletNavigation_Button-diagCircle.Alarm {
+    background: var(--diagColorAlarm);
+}
+
+.TcHmi_Controls_Entertainment_TabletNavigation_Button-diagCircle.Critical {
+    background: var(--diagColorCritical);
+}
+.TcHmi_Controls_Entertainment_TabletNavigation_NavigationControl-pageIndicator-indicator {
+    background: var(--pageIndicatorColor);
+}
+
+.TcHmi_Controls_Entertainment_TabletNavigation_NavigationControl-pageIndicator-indicator.Active {
+    background: var(--pageIndicatorColorActive);
+}
+
+.TcHmi_Controls_Entertainment_TabletNavigation_Button-icon {
+    background: var(--buttonColor);
+    border-color: var(--buttonBorderColor);
+}
+
+.TcHmi_Controls_Entertainment_TabletNavigation_Button-icon.Active {
+    background: var(--buttonColorActive);
+    border-color: var(--buttonBorderColorActive);
+}
+
+.TcHmi_Controls_Entertainment_TabletNavigation_Button-text {
+    color: var(--textColor);
+}
+.TcHmi_Controls_Entertainment_TabletNavigation_Button-text.Active {
+    color: var(--textColorActive);
+}

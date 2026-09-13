@@ -1,0 +1,19 @@
+.tchmi-class-AnimaPolvo {
+    animation: AnimaPolvo 0.5s steps(1,end) 0.4s infinite;
+    background-size: 86%;
+}
+
+@keyframes AnimaPolvo {
+    0% {
+        background-image: url('Images/POLVO INYECTA 1.png');
+    }
+    25% {
+        background-image: url('Images/POLVO INYECTA 2.png');
+    }
+    50% {
+        background-image: url('Images/POLVO INYECTA 3.png');
+    }
+    75% {
+        background-image: url('Images/POLVO INYECTA 4.png');
+    }
+}

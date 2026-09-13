@@ -1,0 +1,1266 @@
+<div id="PERIFERICOS_8" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="15" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-creator-viewport-width="1024" data-tchmi-left-unit="%" data-tchmi-top-unit="%" data-tchmi-right-unit="%" data-tchmi-bottom-unit="%" data-tchmi-width-unit="%" data-tchmi-height-unit="%" data-tchmi-right="0" data-tchmi-bottom="0" data-tchmi-creator-viewport-height="600" data-tchmi-zindex="3">
+
+<div id="imagens_4" data-tchmi-type="TcHmi.Controls.System.TcHmiContainer" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-left="0" data-tchmi-left-unit="%" data-tchmi-top-unit="%" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-bottom="0" data-tchmi-bottom-unit="%" data-tchmi-right-unit="%" data-tchmi-creator-visibility="Visible" data-tchmi-zindex="3">
+<div id="TcHmi_Controls_Beckhoff_TcHmiImage_31" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiImage" data-tchmi-height="62.6" data-tchmi-height-unit="%" data-tchmi-left="12.8" data-tchmi-left-unit="%" data-tchmi-src="Images/DUO/Totem/totemSeletor.png" data-tchmi-top="23.0" data-tchmi-top-unit="%" data-tchmi-width="68.7" data-tchmi-width-unit="%">
+</div>
+<div id="TcHmiStateImage_3" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="14" data-tchmi-height-unit="%" data-tchmi-left="17" data-tchmi-left-unit="%" data-tchmi-top="30" data-tchmi-top-unit="%" data-tchmi-width="14" data-tchmi-width-unit="%" data-tchmi-fallback-image="Images/DUO/Totem/VALV_C.png" data-tchmi-state="%s%PLC1.Equipamentos.XV_109E.Estado%/s%">
+
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 2,
+    "stateIcon": "Images/DUO/Totem/VALV_A.png"
+  },
+  {
+    "state": 1,
+    "stateIcon": "Images/DUO/Totem/VALV_B.png"
+  },
+  {
+    "state": 3,
+    "stateIcon": "Images/DUO/Totem/VALV_C.png"
+  },
+  {
+    "state": 6,
+    "stateIcon": "Images/DUO/Totem/VALV_D.png"
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiStateImage_3.onPressed",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.JB_TcHmiDynamicPopup.CreatePopup",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "1"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+            "value": {
+              "path": "UserControls/ControleValvula.usercontrol",
+              "attributes": {
+                "data-tchmi-abrir": "%s%PLC1.HMI.XV_109E_CMD_MAN%/s%",
+                "data-tchmi-status": "%s%PLC1.Equipamentos.XV_109E.Estado%/s%",
+                "data-tchmi-reset": "%s%PLC1.HMI.XV_109E_RST_ALR%/s%"
+              }
+            }
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "Válvula linha 9"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": true
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/Id",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 435.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 290.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="14" data-tchmi-height-unit="%" data-tchmi-left="31" data-tchmi-left-unit="%" data-tchmi-top="30" data-tchmi-top-unit="%" data-tchmi-width="14" data-tchmi-width-unit="%" data-tchmi-fallback-image="Images/DUO/Totem/VALV_C.png" data-tchmi-state="%s%PLC1.Equipamentos.XV_110E.Estado%/s%">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 2,
+    "stateIcon": "Images/DUO/Totem/VALV_A.png"
+  },
+  {
+    "state": 1,
+    "stateIcon": "Images/DUO/Totem/VALV_B.png"
+  },
+  {
+    "state": 3,
+    "stateIcon": "Images/DUO/Totem/VALV_C.png"
+  },
+  {
+    "state": 6,
+    "stateIcon": "Images/DUO/Totem/VALV_D.png"
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiStateImage_4.onPressed",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.JB_TcHmiDynamicPopup.CreatePopup",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "1"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+            "value": {
+              "path": "UserControls/ControleValvula.usercontrol",
+              "attributes": {
+                "data-tchmi-abrir": "%s%PLC1.HMI.XV_110E_CMD_MAN%/s%",
+                "data-tchmi-status": "%s%PLC1.Equipamentos.XV_110E.Estado%/s%",
+                "data-tchmi-reset": "%s%PLC1.HMI.XV_110E_RST_ALR%/s%"
+              }
+            }
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "Válvula linha 10"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": true
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/Id",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 435.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 290.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_5" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="14" data-tchmi-height-unit="%" data-tchmi-left="17.0" data-tchmi-left-unit="%" data-tchmi-top="65" data-tchmi-top-unit="%" data-tchmi-width="14" data-tchmi-width-unit="%" data-tchmi-fallback-image="Images/DUO/Totem/VALV_C.png" data-tchmi-state="%s%PLC1.Equipamentos.XV_101E.Estado%/s%">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 2,
+    "stateIcon": "Images/DUO/Totem/VALV_A.png"
+  },
+  {
+    "state": 1,
+    "stateIcon": "Images/DUO/Totem/VALV_B.png"
+  },
+  {
+    "state": 3,
+    "stateIcon": "Images/DUO/Totem/VALV_C.png"
+  },
+  {
+    "state": 6,
+    "stateIcon": "Images/DUO/Totem/VALV_D.png"
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiStateImage_5.onPressed",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.JB_TcHmiDynamicPopup.CreatePopup",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "1"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+            "value": {
+              "path": "UserControls/ControleValvula.usercontrol",
+              "attributes": {
+                "data-tchmi-abrir": "%s%PLC1.HMI.XV_101E_CMD_MAN%/s%",
+                "data-tchmi-status": "%s%PLC1.Equipamentos.XV_101E.Estado%/s%",
+                "data-tchmi-reset": "%s%PLC1.HMI.XV_101E_RST_ALR%/s%"
+              }
+            }
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "Válvula linha 1"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": true
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/Id",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 435.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 290.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_6" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="14" data-tchmi-height-unit="%" data-tchmi-left="31" data-tchmi-left-unit="%" data-tchmi-top="65" data-tchmi-top-unit="%" data-tchmi-width="14" data-tchmi-width-unit="%" data-tchmi-fallback-image="Images/DUO/Totem/VALV_C.png" data-tchmi-state="%s%PLC1.Equipamentos.XV_102E.Estado%/s%">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 2,
+    "stateIcon": "Images/DUO/Totem/VALV_A.png"
+  },
+  {
+    "state": 1,
+    "stateIcon": "Images/DUO/Totem/VALV_B.png"
+  },
+  {
+    "state": 3,
+    "stateIcon": "Images/DUO/Totem/VALV_C.png"
+  },
+  {
+    "state": 6,
+    "stateIcon": "Images/DUO/Totem/VALV_D.png"
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiStateImage_6.onPressed",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.JB_TcHmiDynamicPopup.CreatePopup",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "1"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+            "value": {
+              "path": "UserControls/ControleValvula.usercontrol",
+              "attributes": {
+                "data-tchmi-abrir": "%s%PLC1.HMI.XV_102E_CMD_MAN%/s%",
+                "data-tchmi-status": "%s%PLC1.Equipamentos.XV_102E.Estado%/s%",
+                "data-tchmi-reset": "%s%PLC1.HMI.XV_102E_RST_ALR%/s%"
+              }
+            }
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "Válvula linha 2"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": true
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/Id",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 435.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 290.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_7" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="14" data-tchmi-height-unit="%" data-tchmi-left="19" data-tchmi-left-unit="%" data-tchmi-top="48" data-tchmi-top-unit="%" data-tchmi-width="14" data-tchmi-width-unit="%" data-tchmi-fallback-image="Images/DUO/Totem/VALV_C.png" data-tchmi-state="%s%PLC1.Equipamentos.XV_105E.Estado%/s%">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 2,
+    "stateIcon": "Images/DUO/Totem/VALV_A.png"
+  },
+  {
+    "state": 1,
+    "stateIcon": "Images/DUO/Totem/VALV_B.png"
+  },
+  {
+    "state": 3,
+    "stateIcon": "Images/DUO/Totem/VALV_C.png"
+  },
+  {
+    "state": 6,
+    "stateIcon": "Images/DUO/Totem/VALV_D.png"
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiStateImage_7.onPressed",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.JB_TcHmiDynamicPopup.CreatePopup",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "1"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+            "value": {
+              "path": "UserControls/ControleValvula.usercontrol",
+              "attributes": {
+                "data-tchmi-abrir": "%s%PLC1.HMI.XV_105E_CMD_MAN%/s%",
+                "data-tchmi-status": "%s%PLC1.Equipamentos.XV_105E.Estado%/s%",
+                "data-tchmi-reset": "%s%PLC1.HMI.XV_105E_RST_ALR%/s%"
+              }
+            }
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "Válvula linha 5"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": true
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/Id",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 435.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 290.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_8" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="14" data-tchmi-height-unit="%" data-tchmi-left="33" data-tchmi-left-unit="%" data-tchmi-top="48" data-tchmi-top-unit="%" data-tchmi-width="14" data-tchmi-width-unit="%" data-tchmi-fallback-image="Images/DUO/Totem/VALV_C.png" data-tchmi-state="%s%PLC1.Equipamentos.XV_106E.Estado%/s%">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 2,
+    "stateIcon": "Images/DUO/Totem/VALV_A.png"
+  },
+  {
+    "state": 1,
+    "stateIcon": "Images/DUO/Totem/VALV_B.png"
+  },
+  {
+    "state": 3,
+    "stateIcon": "Images/DUO/Totem/VALV_C.png"
+  },
+  {
+    "state": 6,
+    "stateIcon": "Images/DUO/Totem/VALV_D.png"
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiStateImage_8.onPressed",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.JB_TcHmiDynamicPopup.CreatePopup",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "1"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+            "value": {
+              "path": "UserControls/ControleValvula.usercontrol",
+              "attributes": {
+                "data-tchmi-abrir": "%s%PLC1.HMI.XV_106E_CMD_MAN%/s%",
+                "data-tchmi-status": "%s%PLC1.Equipamentos.XV_106E.Estado%/s%",
+                "data-tchmi-reset": "%s%PLC1.HMI.XV_106E_RST_ALR%/s%"
+              }
+            }
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "Válvula linha 6"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": true
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/Id",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 435.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 290.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiTextblock_1712" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="4.3" data-tchmi-height-unit="%" data-tchmi-left="26.0" data-tchmi-left-unit="%" data-tchmi-text="LIQ. 9" data-tchmi-top="39.7" data-tchmi-top-unit="%" data-tchmi-width="5" data-tchmi-width-unit="%" data-tchmi-word-wrap="true" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-horizontal-alignment="Center">
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 252, 252, 1)"
+}
+</script>
+</div>
+<div id="TcHmiTextblock_1713" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="4.3" data-tchmi-height-unit="%" data-tchmi-left="40.0" data-tchmi-left-unit="%" data-tchmi-text="LIQ. 10" data-tchmi-top="39.7" data-tchmi-top-unit="%" data-tchmi-width="5" data-tchmi-width-unit="%" data-tchmi-word-wrap="true" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-horizontal-alignment="Center">
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 252, 252, 1)"
+}
+</script>
+</div>
+<div id="TcHmiTextblock_1714" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="4.3" data-tchmi-height-unit="%" data-tchmi-left="42.0" data-tchmi-left-unit="%" data-tchmi-text="LIQ. 6" data-tchmi-top="57.7" data-tchmi-top-unit="%" data-tchmi-width="5" data-tchmi-width-unit="%" data-tchmi-word-wrap="true" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-horizontal-alignment="Center">
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 252, 252, 1)"
+}
+</script>
+</div>
+<div id="TcHmiTextblock_1715" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="4.3" data-tchmi-height-unit="%" data-tchmi-left="28.0" data-tchmi-left-unit="%" data-tchmi-text="LIQ. 5" data-tchmi-top="57.8" data-tchmi-top-unit="%" data-tchmi-width="5" data-tchmi-width-unit="%" data-tchmi-word-wrap="true" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-horizontal-alignment="Center">
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 252, 252, 1)"
+}
+</script>
+</div>
+<div id="TcHmiTextblock_1716" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="4.3" data-tchmi-height-unit="%" data-tchmi-left="26.0" data-tchmi-left-unit="%" data-tchmi-text="LIQ. 1" data-tchmi-top="74.7" data-tchmi-top-unit="%" data-tchmi-width="5" data-tchmi-width-unit="%" data-tchmi-word-wrap="true" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-horizontal-alignment="Center">
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 252, 252, 1)"
+}
+</script>
+</div>
+<div id="TcHmiTextblock_1717" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="4.3" data-tchmi-height-unit="%" data-tchmi-left="40.0" data-tchmi-left-unit="%" data-tchmi-text="LIQ. 2" data-tchmi-top="74.7" data-tchmi-top-unit="%" data-tchmi-width="5" data-tchmi-width-unit="%" data-tchmi-word-wrap="true" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-horizontal-alignment="Center">
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 252, 252, 1)"
+}
+</script>
+</div>
+<div id="TcHmiStateImage_9" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="14" data-tchmi-height-unit="%" data-tchmi-left="48.1" data-tchmi-left-unit="%" data-tchmi-top="30.0" data-tchmi-top-unit="%" data-tchmi-width="14" data-tchmi-width-unit="%" data-tchmi-fallback-image="Images/DUO/Totem/VALV_C.png" data-tchmi-state="%s%PLC1.Equipamentos.XV_111E.Estado%/s%">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 2,
+    "stateIcon": "Images/DUO/Totem/VALV_A.png"
+  },
+  {
+    "state": 1,
+    "stateIcon": "Images/DUO/Totem/VALV_B.png"
+  },
+  {
+    "state": 3,
+    "stateIcon": "Images/DUO/Totem/VALV_C.png"
+  },
+  {
+    "state": 6,
+    "stateIcon": "Images/DUO/Totem/VALV_D.png"
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiStateImage_9.onPressed",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.JB_TcHmiDynamicPopup.CreatePopup",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "1"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+            "value": {
+              "path": "UserControls/ControleValvula.usercontrol",
+              "attributes": {
+                "data-tchmi-abrir": "%s%PLC1.HMI.XV_111E_CMD_MAN%/s%",
+                "data-tchmi-status": "%s%PLC1.Equipamentos.XV_111E.Estado%/s%",
+                "data-tchmi-reset": "%s%PLC1.HMI.XV_111E_RST_ALR%/s%"
+              }
+            }
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "Válvula linha 11"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": true
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/Id",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 435.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 290.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_10" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="14" data-tchmi-height-unit="%" data-tchmi-left="62.1" data-tchmi-left-unit="%" data-tchmi-top="30.0" data-tchmi-top-unit="%" data-tchmi-width="14" data-tchmi-width-unit="%" data-tchmi-fallback-image="Images/DUO/Totem/VALV_C.png" data-tchmi-state="%s%PLC1.Equipamentos.XV_112E.Estado%/s%">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 2,
+    "stateIcon": "Images/DUO/Totem/VALV_A.png"
+  },
+  {
+    "state": 1,
+    "stateIcon": "Images/DUO/Totem/VALV_B.png"
+  },
+  {
+    "state": 3,
+    "stateIcon": "Images/DUO/Totem/VALV_C.png"
+  },
+  {
+    "state": 6,
+    "stateIcon": "Images/DUO/Totem/VALV_D.png"
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiStateImage_10.onPressed",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.JB_TcHmiDynamicPopup.CreatePopup",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "1"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+            "value": {
+              "path": "UserControls/ControleValvula.usercontrol",
+              "attributes": {
+                "data-tchmi-abrir": "%s%PLC1.HMI.XV_112E_CMD_MAN%/s%",
+                "data-tchmi-status": "%s%PLC1.Equipamentos.XV_112E.Estado%/s%",
+                "data-tchmi-reset": "%s%PLC1.HMI.XV_112E_RST_ALR%/s%"
+              }
+            }
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "Válvula linha 12"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": true
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/Id",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 435.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 290.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_11" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="14" data-tchmi-height-unit="%" data-tchmi-left="47.9" data-tchmi-left-unit="%" data-tchmi-top="65" data-tchmi-top-unit="%" data-tchmi-width="14" data-tchmi-width-unit="%" data-tchmi-fallback-image="Images/DUO/Totem/VALV_C.png" data-tchmi-state="%s%PLC1.Equipamentos.XV_103E.Estado%/s%">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 2,
+    "stateIcon": "Images/DUO/Totem/VALV_A.png"
+  },
+  {
+    "state": 1,
+    "stateIcon": "Images/DUO/Totem/VALV_B.png"
+  },
+  {
+    "state": 3,
+    "stateIcon": "Images/DUO/Totem/VALV_C.png"
+  },
+  {
+    "state": 6,
+    "stateIcon": "Images/DUO/Totem/VALV_D.png"
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiStateImage_11.onPressed",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.JB_TcHmiDynamicPopup.CreatePopup",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "1"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+            "value": {
+              "path": "UserControls/ControleValvula.usercontrol",
+              "attributes": {
+                "data-tchmi-abrir": "%s%PLC1.HMI.XV_103E_CMD_MAN%/s%",
+                "data-tchmi-status": "%s%PLC1.Equipamentos.XV_103E.Estado%/s%",
+                "data-tchmi-reset": "%s%PLC1.HMI.XV_103E_RST_ALR%/s%"
+              }
+            }
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "Válvula linha 3"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": true
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/Id",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 435.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 290.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_12" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="14" data-tchmi-height-unit="%" data-tchmi-left="62.1" data-tchmi-left-unit="%" data-tchmi-top="65.0" data-tchmi-top-unit="%" data-tchmi-width="14" data-tchmi-width-unit="%" data-tchmi-fallback-image="Images/DUO/Totem/VALV_C.png" data-tchmi-state="%s%PLC1.Equipamentos.XV_104E.Estado%/s%">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 2,
+    "stateIcon": "Images/DUO/Totem/VALV_A.png"
+  },
+  {
+    "state": 1,
+    "stateIcon": "Images/DUO/Totem/VALV_B.png"
+  },
+  {
+    "state": 3,
+    "stateIcon": "Images/DUO/Totem/VALV_C.png"
+  },
+  {
+    "state": 6,
+    "stateIcon": "Images/DUO/Totem/VALV_D.png"
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiStateImage_12.onPressed",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.JB_TcHmiDynamicPopup.CreatePopup",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "1"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+            "value": {
+              "path": "UserControls/ControleValvula.usercontrol",
+              "attributes": {
+                "data-tchmi-abrir": "%s%PLC1.HMI.XV_104E_CMD_MAN%/s%",
+                "data-tchmi-status": "%s%PLC1.Equipamentos.XV_104E.Estado%/s%",
+                "data-tchmi-reset": "%s%PLC1.HMI.XV_104E_RST_ALR%/s%"
+              }
+            }
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "Válvula linha 4"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": true
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/Id",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 435.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 290.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_13" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="14" data-tchmi-height-unit="%" data-tchmi-left="50.1" data-tchmi-left-unit="%" data-tchmi-top="48.0" data-tchmi-top-unit="%" data-tchmi-width="14" data-tchmi-width-unit="%" data-tchmi-fallback-image="Images/DUO/Totem/VALV_C.png" data-tchmi-state="%s%PLC1.Equipamentos.XV_107E.Estado%/s%">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 2,
+    "stateIcon": "Images/DUO/Totem/VALV_A.png"
+  },
+  {
+    "state": 1,
+    "stateIcon": "Images/DUO/Totem/VALV_B.png"
+  },
+  {
+    "state": 3,
+    "stateIcon": "Images/DUO/Totem/VALV_C.png"
+  },
+  {
+    "state": 6,
+    "stateIcon": "Images/DUO/Totem/VALV_D.png"
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiStateImage_13.onPressed",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.JB_TcHmiDynamicPopup.CreatePopup",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "1"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+            "value": {
+              "path": "UserControls/ControleValvula.usercontrol",
+              "attributes": {
+                "data-tchmi-abrir": "%s%PLC1.HMI.XV_107E_CMD_MAN%/s%",
+                "data-tchmi-status": "%s%PLC1.Equipamentos.XV_107E.Estado%/s%",
+                "data-tchmi-reset": "%s%PLC1.HMI.XV_107E_RST_ALR%/s%"
+              }
+            }
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "Válvula linha 7"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": true
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/Id",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 435.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 290.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_14" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="14" data-tchmi-height-unit="%" data-tchmi-left="64.1" data-tchmi-left-unit="%" data-tchmi-top="48.0" data-tchmi-top-unit="%" data-tchmi-width="14" data-tchmi-width-unit="%" data-tchmi-fallback-image="Images/DUO/Totem/VALV_C.png" data-tchmi-state="%s%PLC1.Equipamentos.XV_108E.Estado%/s%">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 2,
+    "stateIcon": "Images/DUO/Totem/VALV_A.png"
+  },
+  {
+    "state": 1,
+    "stateIcon": "Images/DUO/Totem/VALV_B.png"
+  },
+  {
+    "state": 3,
+    "stateIcon": "Images/DUO/Totem/VALV_C.png"
+  },
+  {
+    "state": 6,
+    "stateIcon": "Images/DUO/Totem/VALV_D.png"
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiStateImage_14.onPressed",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.JB_TcHmiDynamicPopup.CreatePopup",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "1"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+            "value": {
+              "path": "UserControls/ControleValvula.usercontrol",
+              "attributes": {
+                "data-tchmi-abrir": "%s%PLC1.HMI.XV_108E_CMD_MAN%/s%",
+                "data-tchmi-status": "%s%PLC1.Equipamentos.XV_108E.Estado%/s%",
+                "data-tchmi-reset": "%s%PLC1.HMI.XV_108E_RST_ALR%/s%"
+              }
+            }
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "Válvula linha 8"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": true
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/Id",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 435.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 290.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": ""
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiTextblock_1718" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="4.3" data-tchmi-height-unit="%" data-tchmi-left="56.9" data-tchmi-left-unit="%" data-tchmi-text="LIQ. 11" data-tchmi-top="39.7" data-tchmi-top-unit="%" data-tchmi-width="5" data-tchmi-width-unit="%" data-tchmi-word-wrap="true" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-horizontal-alignment="Center">
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 252, 252, 1)"
+}
+</script>
+</div>
+<div id="TcHmiTextblock_1719" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="4.3" data-tchmi-height-unit="%" data-tchmi-left="64.1" data-tchmi-left-unit="%" data-tchmi-text="LIQ. 8" data-tchmi-top="57.6" data-tchmi-top-unit="%" data-tchmi-width="5" data-tchmi-width-unit="%" data-tchmi-word-wrap="true" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-horizontal-alignment="Center">
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 252, 252, 1)"
+}
+</script>
+</div>
+<div id="TcHmiTextblock_1720" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="4.3" data-tchmi-height-unit="%" data-tchmi-left="50.1" data-tchmi-left-unit="%" data-tchmi-text="LIQ. 7" data-tchmi-top="57.7" data-tchmi-top-unit="%" data-tchmi-width="5" data-tchmi-width-unit="%" data-tchmi-word-wrap="true" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-horizontal-alignment="Center">
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 252, 252, 1)"
+}
+</script>
+</div>
+<div id="TcHmiTextblock_1721" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="4.3" data-tchmi-height-unit="%" data-tchmi-left="56.9" data-tchmi-left-unit="%" data-tchmi-text="LIQ. 3" data-tchmi-top="74.7" data-tchmi-top-unit="%" data-tchmi-width="5" data-tchmi-width-unit="%" data-tchmi-word-wrap="true" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-horizontal-alignment="Center">
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 252, 252, 1)"
+}
+</script>
+</div>
+<div id="TcHmiTextblock_1722" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="4.3" data-tchmi-height-unit="%" data-tchmi-left="71.1" data-tchmi-left-unit="%" data-tchmi-text="LIQ. 4" data-tchmi-top="74.7" data-tchmi-top-unit="%" data-tchmi-width="5" data-tchmi-width-unit="%" data-tchmi-word-wrap="true" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-horizontal-alignment="Center">
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 252, 252, 1)"
+}
+</script>
+</div>
+<div id="TcHmiTextblock_1723" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="4.3" data-tchmi-height-unit="%" data-tchmi-left="71.1" data-tchmi-left-unit="%" data-tchmi-text="LIQ. 12" data-tchmi-top="39.7" data-tchmi-top-unit="%" data-tchmi-width="5" data-tchmi-width-unit="%" data-tchmi-word-wrap="true" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-horizontal-alignment="Center">
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 252, 252, 1)"
+}
+</script>
+</div>
+</div>
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "VISITANTE",
+    "permission": "Deny"
+  }
+]
+</script>
+</div>

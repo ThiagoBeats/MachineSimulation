@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+        "TcHmi.Controls.Entertainment.ScaleBar": {
+            "type": "object",
+            "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+            "frameworkControlType": "ScaleBar",
+            "frameworkControlNamespace": "TcHmi.Controls.Entertainment"
+        },
+        "TcHmi.Controls.Entertainment.SizeUnit": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "title": "SizeUnit",
+            "type": "object",
+            "propertiesMeta": [
+                {
+                    "name": "MeasurementValueThickness",
+                    "category": "Common",
+                    "displayName": "MeasurementValueThickness",
+                    "displayPriority": 10,
+                    "description": "",
+                    "defaultValue": 1,
+                    "defaultValueInternal": 1
+                },
+                {
+                    "name": "MeasurementUnitThickness",
+                    "category": "Common",
+                    "displayName": "MeasurementUnitThickness",
+                    "displayPriority": 10,
+                    "description": "",
+                    "defaultValue": "px",
+                    "defaultValueInternal": "px"
+                },
+                {
+                    "name": "MeasurementValueLength",
+                    "category": "Common",
+                    "displayName": "MeasurementValueLength",
+                    "displayPriority": 10,
+                    "description": "",
+                    "defaultValue": 1,
+                    "defaultValueInternal": 1
+                },
+                {
+                    "name": "MeasurementUnitLength",
+                    "category": "Common",
+                    "displayName": "MeasurementUnitLength",
+                    "displayPriority": 10,
+                    "description": "",
+                    "defaultValue": "px",
+                    "defaultValueInternal": "px"
+                }
+            ],
+            "properties": {
+                "MeasurementValueThickness": {
+                    "$ref": "tchmi:framework#/definitions/MeasurementValue"
+                },
+                "MeasurementUnitThickness": {
+                    "$ref": "tchmi:framework#/definitions/MeasurementUnit"
+                },
+                "MeasurementValueLength": {
+                    "$ref": "tchmi:framework#/definitions/MeasurementValue"
+                },
+                "MeasurementUnitLength": {
+                    "$ref": "tchmi:framework#/definitions/MeasurementUnit"
+                }
+            }
+        }
+    }
+}
+
+

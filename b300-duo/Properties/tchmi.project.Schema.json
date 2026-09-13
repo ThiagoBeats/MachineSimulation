@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "AcionamentosLinhas": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\AcionamentosLinhas.usercontrol.json",
+      "id": "tchmi:project#/definitions/AcionamentosLinhas",
+      "type": "object"
+    },
+    "PLC1.ARRAY_1..30_OF-REAL": {
+      "items": {
+        "$ref": "tchmi:general#/definitions/REAL"
+      },
+      "type": "array",
+      "minItems": 30,
+      "maxItems": 30,
+      "title": "Historico30Dias",
+      "description": "Esse array é usado para a interface dos consumos dos IBCs e dos fluxometros",
+      "startOffset": 1
+    },
+    "TratadoraPerifericos": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\TratadoraPerifericos.usercontrol.json",
+      "id": "tchmi:project#/definitions/TratadoraPerifericos",
+      "type": "object"
+    },
+    "Array(0..12) OF BOOL": {
+      "items": {
+        "$ref": "tchmi:general#/definitions/BOOL"
+      },
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "title": "Array_12"
+    },
+    "TratadoraPerifericos_-_Copy": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Tratadora.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/TratadoraPerifericos_-_Copy"
+    },
+    "ConfigLinhas": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\ConfigLinhas.usercontrol.json",
+      "id": "tchmi:project#/definitions/ConfigLinhas",
+      "type": "object"
+    },
+    "InformacoesProcesso": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\InformacoesProcesso.usercontrol.json",
+      "id": "tchmi:project#/definitions/InformacoesProcesso",
+      "type": "object"
+    },
+    "TimeSpan": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\TimeSpan.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/TimeSpan"
+    },
+    "ControleValvula": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\ControleValvula.usercontrol.json",
+      "id": "tchmi:project#/definitions/ControleValvula",
+      "type": "object"
+    },
+    "InformacoesProcesso2": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\InformacoesProcesso2.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/InformacoesProcesso2"
+    },
+    "InfoDUO": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\InfoDUO.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/InfoDUO"
+    },
+    "HistoricoPesagens": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\HistoricoPesagens.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/HistoricoPesagens"
+    },
+    "CorrecaoDosagens": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\CorrecaoDosagens.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/CorrecaoDosagens"
+    },
+    "AlterarValor": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\AlterarValor.usercontrol.json",
+      "id": "tchmi:project#/definitions/AlterarValor",
+      "type": "object"
+    }
+  }
+}

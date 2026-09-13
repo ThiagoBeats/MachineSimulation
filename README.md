@@ -28,7 +28,7 @@ Tudo que o servidor faria acontece em JavaScript, no cliente:
 | :--- | :--- |
 | [nucleo/esquema.js](nucleo/esquema.js) | Schemas de tipo: qual o tipo de um símbolo e qual o valor neutro dele |
 | [nucleo/estado.js](nucleo/estado.js) | Armazém de valores, leitura e escrita por caminho, persistência |
-| [nucleo/logica.js](nucleo/logica.js) | **Lógica do CLP emulada** (ver aviso abaixo) |
+| `maquinas/<id>/logica.js` | **Lógica do CLP emulada**, uma por máquina (ver aviso abaixo) |
 | [nucleo/protocolo.js](nucleo/protocolo.js) | Protocolo do TcHmi Server: licença, definições, símbolos, inscrições |
 | [web/sim.js](web/sim.js) | Liga o núcleo ao navegador e instala as duas substituições |
 | [web/moldura.html](web/moldura.html) | Página que exibe a IHM dentro da foto do tablet |
@@ -38,9 +38,12 @@ e abrir a simulação com `?reset=1` devolve tudo ao cenário inicial.
 
 ---
 
-## ⚠️ Sobre `nucleo/logica.js`
+## ⚠️ Sobre `maquinas/<id>/logica.js`
 
-Esse arquivo é uma **cópia, em JavaScript, de lógica que roda no CLP** — transcrita de:
+Cada máquina tem a sua: o CLP de cada modelo é um software diferente, e nada de uma serve
+para a outra. Esses arquivos são **cópias, em JavaScript, de lógica que roda no CLP**.
+
+Na **LS-B130**, transcrita de:
 
 - `POUs^Recipes^RecipesLogic` e suas ações (`RecipeValidation`, `RecipeNameDuplicate`,
   `TimeCalculation`, `LiquidsList`, `PowdersList`)
@@ -52,6 +55,9 @@ apertar Marcha**, com 3 s de pré-marcha antes de `RunMode` subir, quando os bot
 aparecem. Apertar Marcha sem lote não faz nada, igual à máquina. `GeneralEMG` e
 `AirPressureOK` são TRUE quando está tudo OK; quando `GeneralEMG` cai, o CLP derruba o modo
 automático.
+
+Na **LS-B300 DUO**, transcrita de `POU^Inicio` (Ladder) — marcha, pré-marcha de 3 s e carga
+de lote. O CLP dela é outro software, em espanhol, sem nada em comum com o da B130.
 
 Como há temporizador, o simulador roda um **scan periódico de 200 ms** (`protocolo.scan()`),
 não só quando alguém clica.

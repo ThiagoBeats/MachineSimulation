@@ -164,6 +164,7 @@
   var MAQUINAS = [
     {
       id: 'ls-b130',
+      nome: 'LS-B130',
       caminho: 'ls-b130/',
       foto: 'ls-b130/Images/Machine/B130.png',
       textos: {
@@ -176,6 +177,24 @@
         en: { tipo:'Seed treatment',
               descricao:'Seed treater with 6 liquid lines and 2 powder lines. The interface is the real machine’s.',
               recursos:['Recipes: create, save and delete','Consumption history per line','Manual and automatic mode'] }
+      }
+    }
+    ,
+    {
+      id: 'b300-duo',
+      nome: 'LS-B300 DUO',
+      caminho: 'b300-duo/',
+      foto: 'b300-duo/Images/DUO/b300_DUO.png',
+      textos: {
+        pt: { tipo:'Tratamento de sementes',
+              descricao:'Tratadora com 12 bombas de dosagem e dois homogeneizadores, com descarga alternada.',
+              recursos:['Dois homogeneizadores','12 linhas de dosagem','Marcha com pré-marcha de 3 s'] },
+        es: { tipo:'Tratamiento de semillas',
+              descricao:'Tratadora con 12 bombas de dosificación y dos homogeneizadores, con descarga alternada.',
+              recursos:['Dos homogeneizadores','12 líneas de dosificación','Marcha con pre-marcha de 3 s'] },
+        en: { tipo:'Seed treatment',
+              descricao:'Seed treater with 12 dosing pumps and two homogenizers with alternating discharge.',
+              recursos:['Two homogenizers','12 dosing lines','Start with 3 s pre-run'] }
       }
     }
   ];
@@ -260,7 +279,7 @@
       corpo.appendChild(tipo);
 
       var nome = document.createElement('h3');
-      nome.textContent = m.id.toUpperCase().replace('-', '-');
+      nome.textContent = m.nome || m.id.toUpperCase();
       corpo.appendChild(nome);
 
       var desc = document.createElement('p');

@@ -1,0 +1,1056 @@
+{
+  "$schema": "./../../Packages/Beckhoff.TwinCAT.HMI.Framework.12.762.46/runtimes/native1.12-tchmi/Schema/TchmiConfig.Schema.json",
+  "basePath": "./framework",
+  "scaleMode": "None",
+  "startupView": "Desktop.view",
+  "loginPage": "/PANTALLAS/LoginPage2.html",
+  "tcHmiServer": {
+    "websocketIntervalTime": 500,
+    "websocketTimeout": 20000,
+    "websocketSystemTimeout": 60000,
+    "websocketSubscriptionMode": "Change"
+  },
+  "activeTheme": "Base",
+  "themes": {
+    "Base-Dark": {
+      "resources": [
+        {
+          "name": "Themes/Base-Dark/Base-DarkStyle.css",
+          "description": "",
+          "type": "Stylesheet"
+        },
+        {
+          "name": "Themes/Base-Dark/Base-Dark.theme",
+          "description": "",
+          "type": "ThemedValues"
+        }
+      ],
+      "replacesThemeForControls": [],
+      "replacesThemeForPackageComponents": []
+    },
+    "Base": {
+      "resources": [
+        {
+          "name": "Themes/Base/Base.theme",
+          "description": "",
+          "type": "ThemedValues"
+        },
+        {
+          "name": "Themes/Base/BaseStyle.css",
+          "description": "",
+          "type": "Stylesheet"
+        },
+        {
+          "name": "Themes/Base/AnimaPolvo.css",
+          "description": "",
+          "type": "Stylesheet"
+        },
+        {
+          "name": "Themes/Base/CssBehind1.css",
+          "description": "",
+          "type": "Stylesheet"
+        },
+        {
+          "name": "Themes/Base/AnimaMixerCSS.css",
+          "description": "",
+          "type": "Stylesheet"
+        },
+        {
+          "name": "Themes/Base/AnimaPolvoCalCSS.css",
+          "description": "",
+          "type": "Stylesheet"
+        }
+      ],
+      "replacesThemeForControls": [],
+      "replacesThemeForPackageComponents": []
+    }
+  },
+  "dependencyFiles": [
+    {
+      "name": "Fonts/Fonts.css",
+      "description": "",
+      "type": "Stylesheet"
+    },
+    {
+      "name": "PANTALLAS/BALANZA/NomeReceita.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts JS/Alert2.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts JS/CarregaReceita.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts JS/PopupConfCancel.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts JS/SalvarReceita.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts JS/Calendario.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts JS/DintToDate.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts JS/DataFormatada.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts JS/DintToTime.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts JS/MinToH_Min.js",
+      "description": "",
+      "type": "JavaScript"
+    }
+  ],
+  "userControls": [
+    {
+      "url": "UserControls/AlterarValor.usercontrol"
+    },
+    {
+      "url": "UserControls/ConfigLinhas.usercontrol"
+    },
+    {
+      "url": "UserControls/ControleValvula.usercontrol"
+    },
+    {
+      "url": "UserControls/CorrecaoDosagens.usercontrol"
+    },
+    {
+      "url": "UserControls/HistoricoPesagens.usercontrol"
+    },
+    {
+      "url": "UserControls/InfoDUO.usercontrol"
+    },
+    {
+      "url": "UserControls/InformacoesProcesso.usercontrol"
+    },
+    {
+      "url": "UserControls/InformacoesProcesso2.usercontrol"
+    },
+    {
+      "url": "UserControls/TimeSpan.usercontrol"
+    },
+    {
+      "url": "UserControls/Tratadora.usercontrol"
+    },
+    {
+      "url": "UserControls/TratadoraPerifericos.usercontrol"
+    },
+    {
+      "url": "UserControls/AcionamentosLinhas.usercontrol"
+    }
+  ],
+  "content": [
+    {
+      "url": "PANTALLAS/CONFIG/CONFIG_142_SENSORES.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/CONFIG/CONFIG_141_DOSAGENS.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/CONFIG/CONFIG_iPC-INFO.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/MIXERS/MIXERS_B.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/PERIFERICOS/HomogeneizadorDUO_B.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/PERIFERICOS/HomogeneizadorDUO.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/PERIFERICOS/TotemSeletor.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/PERIFERICOS/ValvulaY.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/PERIFERICOS/Caixa30Ton.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/PERIFERICOS/CaixaRecebimento.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/PERIFERICOS/PERIFERICOS2.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/POLVOS/CALIBRACION_POLVO_6.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/POLVOS/CALIBRACION_POLVO_5.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/POLVOS/POLVO MA_P6.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/POLVOS/POLVO MA_P5.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/POLVOS/POL_CalPesaje_MA_P6.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/POLVOS/POL_CalPesaje_MA_P5.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/RELATORIOS/RELATORIOS.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/ALARMAS/ALARMAS_TODOS.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/ALARMAS/ALARMAS.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/BALANZA/BALANZA.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/BALANZA/BALANZA_CALIBRA.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/CLP_CARDS/CONFIG_142_CLP_CARTAO_EL1809.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/CLP_CARDS/CONFIG_142_CLP_CARDS.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/CONFIG/CONFIG_100_USUARIOS.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/CONFIG/CONFIG_CONFIGURACOES GERAIS.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/CONFIG/CONFIG_DataHora.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/CONFIG/CONFIG_140_FABRICA.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/CONFIG/CONFIG_141_BALANZA.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/CONFIG/CONFIG_141_LIQUIDOS.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/CONFIG/CONFIG_100_MENU.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/CONFIG/CONFIG_141_PERIFERICOS.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/CONFIG/CONFIG_141_POLVOS.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/DADOS_CONSUMO/ACIONAMENTOS.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/DADOS_CONSUMO/DADOS_CONSUMO.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/CALIBRACION_LIQUIDOS.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/CALIBRACION_LIQ_PB.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/CALIBRACION_LIQ_PC.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LAVAGEM/LIQ_LAVADO_P02.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LAVAGEM/LIQ_LAVADO_P03.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LAVAGEM/LIQ_LAVADO_P01.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LIQUIDOS1.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LIQUIDOS_L06.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LIQUIDOS_L01.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LIQUIDOS_L02.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LIQUIDOS_L03.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LIQUIDOS_L04.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LIQUIDOS_L05.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LIQUIDOS_L07.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LIQUIDOS_L08.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LIQUIDOS_L09.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LIQUIDOS_L10.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LIQUIDOS_L11.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LIQUIDOS_L12.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LIQ_CAL_PESAJE_PA.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LIQ_CAL_PESAJE_PB.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LIQ_CAL_PESAJE_PC.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LIQ_LAVADO_PA.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LIQ_LAVADO_PB.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/LIQUIDOS1/LISTADO_LIQ.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/MIXERS/MIXERS_A.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/POLVOS/CALIBRACION_POLVOS.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/POLVOS/CALIBRACION_POLVO_2.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/POLVOS/LISTADO_POL.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/POLVOS/POLVO MA_P1.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/POLVOS/POLVO MA_P2.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/POLVOS/POLVOS.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/POLVOS/POL_CalPesaje_MA_P1.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/POLVOS/POL_CalPesaje_MA_P2.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/PRINCIPAL.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/RECETAS/RECETAS.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/RECETAS/RECETAS1.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PANTALLAS/RECETAS/RECETA_ACTIVAV02.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    }
+  ],
+  "views": [
+    {
+      "url": "Desktop.view",
+      "preload": false,
+      "keepAlive": false,
+      "preloadBindings": false
+    }
+  ],
+  "userFunctions": [
+    {
+      "url": "PANTALLAS/BALANZA/NomeReceita.js"
+    },
+    {
+      "url": "Scripts JS/Alert2.js"
+    },
+    {
+      "url": "Scripts JS/Calendario.js"
+    },
+    {
+      "url": "Scripts JS/CarregaReceita.js"
+    },
+    {
+      "url": "Scripts JS/DataFormatada.js"
+    },
+    {
+      "url": "Scripts JS/DintToDate.js"
+    },
+    {
+      "url": "Scripts JS/DintToTime.js"
+    },
+    {
+      "url": "Scripts JS/MinToH_Min.js"
+    },
+    {
+      "url": "Scripts JS/PopupConfCancel.js"
+    },
+    {
+      "url": "Scripts JS/SalvarReceita.js"
+    }
+  ],
+  "symbols": {
+    "internal": {
+      "HabilitacionL01": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionL02": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionL03": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionL04": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionL05": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionL06": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionL07": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionL08": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionL09": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionL10": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionL11": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionL12": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionL13": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionL14": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionL15": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionL16": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "VeloBombaL01": {
+        "value": 100,
+        "type": "tchmi:general#/definitions/INT",
+        "persist": false,
+        "readonly": false
+      },
+      "HabilitacionP1A": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionP2A": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionP3A": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionP4A": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionP1B": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionP2B": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionP3B": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "HabilitacionP4B": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": true,
+        "readonly": false
+      },
+      "LAVADO_GAUDE_L05": {
+        "value": 0,
+        "type": "tchmi:general#/definitions/INT",
+        "persist": true,
+        "readonly": false
+      },
+      "CORTE_GRUESO": {
+        "type": "tchmi:general#/definitions/INT",
+        "persist": true,
+        "readonly": false
+      },
+      "CORTE_FINO": {
+        "type": "tchmi:general#/definitions/INT",
+        "persist": true,
+        "readonly": false
+      },
+      "ASPERSOR": {
+        "value": 0.0,
+        "type": "tchmi:general#/definitions/REAL",
+        "persist": true,
+        "readonly": false
+      },
+      "CONTENT_LIQUIDOS": {
+        "value": "PANTALLAS/LIQUIDOS1/LIQUIDOS_L04.content",
+        "type": "tchmi:framework#/definitions/ContentPath",
+        "persist": true,
+        "readonly": false
+      },
+      "CONTENT_POLVOS": {
+        "value": "PANTALLAS/POLVOS/POLVO MA_P1.content",
+        "type": "tchmi:framework#/definitions/ContentPath",
+        "persist": true,
+        "readonly": false
+      },
+      "iESTADO_GRAL_L01": {
+        "value": 0,
+        "type": "tchmi:general#/definitions/INT",
+        "persist": true,
+        "readonly": false
+      },
+      "VAR_Acionamentos": {
+        "value": 1,
+        "type": "tchmi:general#/definitions/INT",
+        "persist": false,
+        "readonly": false
+      },
+      "VAR_ResetEMG": {
+        "value": 0,
+        "type": "tchmi:general#/definitions/INT",
+        "persist": false,
+        "readonly": false
+      },
+      "Deslocamento": {
+        "value": 0.0,
+        "type": "tchmi:general#/definitions/REAL",
+        "persist": false,
+        "readonly": false
+      },
+      "Zoom": {
+        "value": 1.0,
+        "type": "tchmi:general#/definitions/REAL",
+        "persist": false,
+        "readonly": false
+      }
+    },
+    "themedResources": {}
+  },
+  "trigger": [],
+  "actionTemplates": [
+    {
+      "displayname": "TeclaNumerico_Visible",
+      "name": "TeclaNumerico_Visible",
+      "category": "Action Templates",
+      "actions": [
+        {
+          "objectType": "WriteToSymbol",
+          "active": true,
+          "symbolExpression": "%ctrl%Keyboard_Numerico::Visibility%/ctrl%",
+          "value": {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/Visibility",
+            "value": "Visible"
+          },
+          "asyncWait": true
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "displayname": "TeclaNumerico_Collapsed",
+      "name": "TeclaNumerico_Collapsed",
+      "category": "Action Templates",
+      "actions": [
+        {
+          "objectType": "WriteToSymbol",
+          "active": true,
+          "symbolExpression": "%ctrl%Keyboard_Numerico::Visibility%/ctrl%",
+          "value": {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/Visibility",
+            "value": "Collapsed"
+          },
+          "asyncWait": true
+        }
+      ],
+      "parameters": []
+    }
+  ],
+  "languages": {
+    "en-US": "Localization/ENGLISH.localization",
+    "es-AR": "Localization/ESPAÑOL.localization",
+    "pt-BR": "Localization/PORTUGUES.localization"
+  },
+  "languageFallback": "",
+  "disableLoadingOptimization": false,
+  "creatorSettings": {
+    "viewport": {
+      "defaultWidth": 800,
+      "defaultHeight": 600
+    }
+  },
+  "binding": {
+    "symbolError": "Ignore"
+  },
+  "packages": [
+    {
+      "name": "Beckhoff.TwinCAT.HMI.BaseTemplate",
+      "basePath": "/Beckhoff.TwinCAT.HMI.BaseTemplate"
+    },
+    {
+      "name": "Beckhoff.TwinCAT.HMI.Controls",
+      "basePath": "/Beckhoff.TwinCAT.HMI.Controls"
+    },
+    {
+      "name": "Beckhoff.TwinCAT.HMI.EcDiagnosticsControl",
+      "basePath": "/Beckhoff.TwinCAT.HMI.EcDiagnosticsControl"
+    },
+    {
+      "name": "Beckhoff.TwinCAT.HMI.Entertainment",
+      "basePath": "/Beckhoff.TwinCAT.HMI.Entertainment"
+    },
+    {
+      "name": "Beckhoff.TwinCAT.HMI.Framework",
+      "basePath": "/framework"
+    },
+    {
+      "name": "Beckhoff.TwinCAT.HMI.Functions",
+      "basePath": "/Beckhoff.TwinCAT.HMI.Functions"
+    },
+    {
+      "name": "JB.TcHmiDynamicPopup",
+      "basePath": "/JB.TcHmiDynamicPopup"
+    }
+  ],
+  "keyboardLayouts": [
+    {
+      "url": "KeyboardLayouts/Numpad (plusminus).keyboard.json"
+    },
+    {
+      "url": "KeyboardLayouts/Spanish - with NumPad.keyboard.json"
+    },
+    {
+      "url": "KeyboardLayouts/US - compact.keyboard.json"
+    }
+  ],
+  "systemKeyboard": {
+    "providerName": "Beckhoff.TcHmiKeyboard",
+    "projectKeyboardMapping": {
+      "pt-BR": {
+        "text": "KeyboardLayouts/US - compact.keyboard.json",
+        "decimal": "KeyboardLayouts/US - compact.keyboard.json",
+        "numeric": "KeyboardLayouts/Numpad (plusminus).keyboard.json"
+      },
+      "es-AR": {
+        "text": "KeyboardLayouts/US - compact.keyboard.json",
+        "decimal": "KeyboardLayouts/US - compact.keyboard.json",
+        "numeric": "KeyboardLayouts/Numpad (plusminus).keyboard.json"
+      },
+      "en-US": {
+        "text": "KeyboardLayouts/US - compact.keyboard.json",
+        "decimal": "KeyboardLayouts/US - compact.keyboard.json",
+        "numeric": "KeyboardLayouts/Numpad (plusminus).keyboard.json"
+      }
+    }
+  },
+  "systemPopups": {
+    "providerName": "Beckhoff.TcHmiPopups"
+  }
+}

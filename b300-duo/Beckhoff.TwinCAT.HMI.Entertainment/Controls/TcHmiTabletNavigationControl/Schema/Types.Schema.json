@@ -1,0 +1,151 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+        "TcHmi.Controls.Entertainment.TabletNavigation.NavigationControl": {
+            "type": "object",
+            "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+            "frameworkControlType": "NavigationControl",
+            "frameworkControlNamespace": "TcHmi.Entertainment.Controls.TabletNavigation"
+        },
+
+        "TcHmi.Controls.Entertainment.TabletNavigation.Interaction": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "title": "Interaction",
+            "type": "string",
+            "enum": [ "None", "Only Vertical", "Only Horizontal", "Both" ]
+        },
+        "TcHmi.Controls.Entertainment.TabletNavigation.Severity": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "title": "Severity",
+            "type": "string",
+            "enum": [ 0, 1, 2, 3, 4 ],
+            "options": [
+                {
+                    "label": "None",
+                    "value": 0
+                },
+                {
+                    "label": "Information",
+                    "value": 1
+                },
+                {
+                    "label": "Warning",
+                    "value": 2
+                },
+                {
+                    "label": "Alarm",
+                    "value": 3
+                },
+                {
+                    "label": "Critical",
+                    "value": 4
+                }
+            ]
+        },
+        "TcHmi.Controls.Entertainment.TabletNavigation.ItemList": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "title": "ItemList",
+            "description": "configurable list of items for generating a button in Navigation Control",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "title": "Button",
+                "description": "One Button in the navigation area",
+                "engineeringColumns": [ "ButtonText" ],
+                "propertiesMeta": [
+                    {
+                        "name": "ButtonText",
+                        "displayName": "Button Text",
+                        "category": "General",
+                        "displayPriority": 10,
+                        "description": "Text below Button",
+                        "defaultvalue": "ButtonText",
+                        "defaultValueInternal": "ButtonText"
+                    },
+                    {
+                        "name": "Icon",
+                        "displayName": "Icon",
+                        "category": "Icon",
+                        "displayPriority": 10,
+                        "description": "Source of an Icon",
+                        "defaultvalue": "",
+                        "defaultValueInternal": ""
+                    },
+                    {
+                        "name": "Icon_Active",
+                        "displayName": "Icon Active",
+                        "category": "Icon",
+                        "displayPriority": 10,
+                        "description": "Source of an Icon",
+                        "defaultvalue": "",
+                        "defaultValueInternal": ""
+                    },
+                    {
+                        "name": "ContentPage",
+                        "displayName": "Contentpage",
+                        "category": "Content",
+                        "displayPriority": 10,
+                        "description": "Contentpage belonging to the Button",
+                        "defaultvalue": "",
+                        "defaultValueInternal": ""
+                    },
+                    {
+                        "name": "DiagState",
+                        "displayName": "Display Diagnosis Circle",
+                        "category": "Diagnosis (optional)",
+                        "displayPriority": 10,
+                        "description": "Displays a Diagnosis Circle in Front of Button. (0=None; 1=Information; 2=Warning; 3=Alarm; 4=Critical)",
+                        "defaultvalue": 0,
+                        "defaultValueInternal": 0
+                    }
+                ],
+                "properties": {
+                    "ButtonText": {
+                        "$ref": "tchmi:general#/definitions/String"
+                    },
+                    "Icon": {
+                        "$ref": "tchmi:framework#/definitions/Path"
+                    },
+                    "Icon_Active": {
+                        "$ref": "tchmi:framework#/definitions/Path"
+                    },
+                    "ContentPage": {
+                        "$ref": "tchmi:framework#/definitions/ContentPath"
+                    },
+                    "DiagState": {
+                        "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Entertainment.TabletNavigation.Severity"
+                    }
+                }
+            }
+        },
+
+        "TcHmi.Controls.Entertainment.TabletNavigation.Position": {
+
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "title": "Interaction",
+            "type": "string",
+            "enum": [ "None", "Top", "Right", "Bottom", "Left" ]
+
+        },
+        "TcHmi.Controls.Entertainment.TabletNavigation.Direction": {
+
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "title": "Interaction",
+            "type": "string",
+            "enum": [ "Up", "Right", "Down", "Left" ]
+
+        },
+        "TcHmi.Controls.Entertainment.TabletNavigation.TargetRegionControlSymbol": {
+            "allOf": [
+                {
+                    "$ref": "tchmi:framework#/definitions/Symbol"
+                },
+                {
+                    "frameworkSymbolSubType": {
+                        "$ref": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiRegion"
+                    }
+                }
+            ]
+        }
+    }
+}

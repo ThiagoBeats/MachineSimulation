@@ -1,0 +1,22 @@
+.tchmi-class-AnimaMixer {
+    animation: AnimaMixer 0.5s steps(1,end) 0.4s infinite;
+    background-size: 98.2%;
+}
+
+@keyframes AnimaMixer {
+    0% {
+        background-image: url('Images/PLATO 1.png');
+    }
+
+    25% {
+        background-image: url('Images/PLATO 2.png');
+    }
+
+    50% {
+        background-image: url('Images/PLATO 3.png');
+    }
+
+    75% {
+        background-image: url('Images/PLATO 4.png');
+    }
+}

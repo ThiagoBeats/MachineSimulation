@@ -1,0 +1,68 @@
+﻿/* General theme independed control css. */
+
+.TcHmi_Controls_Entertainment_ProgressRing {
+	overflow: hidden;
+}
+
+.TcHmi_Controls_Entertainment_ProgressRing-template {
+	width: 100%;
+	height: 100%;
+}
+
+.TcHmi_Controls_Entertainment_ProgressRing-SVG-container {
+	width: 100%;
+	height: 100%;
+	display: block;
+	animation: spin 0s linear infinite;
+}
+
+.TcHmi_Controls_Entertainment_ProgressRing-SVG-circle {
+	position: absolute;
+	fill: none;
+	stroke-width: 1;
+	stroke-linecap: round;
+	transition: stroke-dasharray 0.1s;
+}
+.TcHmi_Controls_Entertainment_ProgressRing-text {
+	position: absolute;
+	display: inline-block;
+	width: 100%;
+	left: 50%;
+	height: 20%;
+	transform: translate(-50%,-50%);
+	top: 50%;
+	z-index: 5;
+	font-size: 100%;
+	font-weight: normal;
+	word-wrap: unset;
+	white-space: unset;
+	overflow-wrap: unset;
+	text-align: center;
+	vertical-align: middle;
+	visibility: collapse;
+}
+
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* If the main use for this control is interaction
+    uncomment the following lines to give user feedback:
+    This overlays the whole control with a white color
+    and change the mouse cursor */
+
+/*
+.TcHmi_Controls_$default_namespace$_ProgressRing.TcHmi_Controls_System_TcHmiControl-operate-disallowed::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 100;
+    cursor: not-allowed;
+}
+*/

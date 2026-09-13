@@ -1,0 +1,6 @@
+﻿/* Theme depended control css. */
+.TcHmi_Controls_Entertainment_ProgressRing-SVG-circle {
+	stroke: rgb(63, 251, 96);
+	fill: none;
+	stroke-width: 1;
+}

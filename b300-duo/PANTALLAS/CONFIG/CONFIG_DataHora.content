@@ -1,0 +1,128 @@
+<div id="ALARMAS_1" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width-unit="%" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-height-mode="Content" data-tchmi-bottom="0" data-tchmi-bottom-unit="%" data-tchmi-top-unit="%" data-tchmi-right-unit="px" data-tchmi-left-unit="%" data-tchmi-creator-viewport-width="1024" data-tchmi-creator-viewport-height="600" data-tchmi-zindex="1" data-tchmi-width="100">
+<div id="TcHmiContainer_52" data-tchmi-type="TcHmi.Controls.System.TcHmiContainer" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-left="0" data-tchmi-left-unit="%" data-tchmi-top="0" data-tchmi-top-unit="%" data-tchmi-width-unit="%" data-tchmi-bottom-unit="%" data-tchmi-right-unit="%" data-tchmi-zindex="1" data-tchmi-right="9.2" data-tchmi-bottom="9.3" data-tchmi-width="100">
+<div id="TcHmiDateTimePicker" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiDateTimePicker" data-tchmi-direct-display="true" data-tchmi-height="65" data-tchmi-height-unit="%" data-tchmi-left="20" data-tchmi-left-unit="%" data-tchmi-show-confirmation-buttons="true" data-tchmi-top-unit="%" data-tchmi-width="60" data-tchmi-width-unit="%" data-tchmi-value="%s%PLC1.MAIN.DataHoraIHM|BindingMode=TwoWay%/s%" data-tchmi-top="30" data-tchmi-ignore-invalid-values="true">
+
+<script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+{
+  "topLeft": 5.0,
+  "topRight": 5.0,
+  "bottomLeft": 5.0,
+  "bottomRight": 5.0,
+  "topLeftUnit": "px",
+  "topRightUnit": "px",
+  "bottomLeftUnit": "px",
+  "bottomRightUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiDateTimePicker.onConfirmed",
+    "actions": [
+      {
+        "objectType": "JavaScript",
+        "active": true,
+        "sourceLines": [
+          "setTimeout(function () {",
+          "                        TcHmi.Symbol.writeEx('%s%PLC1.MAIN.SetLocalTime.START%/s%', 1);",
+          "TcHmi.Functions.HMI_TRATADORA_B300.Alert2('DATA E HORA ALTERADAS');",
+          "                    }, 500);"
+        ],
+        "injectContextObject": false,
+        "asyncWait": true,
+        "waitMode": "Synchronous"
+      }
+    ]
+  },
+  {
+    "event": "TcHmiDateTimePicker.onCancel",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%REGIONPANTALLAS::TargetContent%/ctrl%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:framework#/definitions/ContentPath",
+          "value": "PANTALLAS/PRINCIPAL.content"
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%Container_MANUAL-AUTO::Visibility%/ctrl%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:framework#/definitions/Visibility",
+          "value": "Visible"
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%Container_OPERACION::Visibility%/ctrl%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:framework#/definitions/Visibility",
+          "value": "Visible"
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%ContainerNAVEGACION::Visibility%/ctrl%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:framework#/definitions/Visibility",
+          "value": "Visible"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "INGENIERO",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "operate",
+    "group": "TECNICO LS",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "operate",
+    "group": "VISITANTE",
+    "permission": "Deny"
+  },
+  {
+    "accessright": "operate",
+    "group": "SUPERVISOR",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "operate",
+    "group": "OPERADOR",
+    "permission": "Deny"
+  },
+  {
+    "accessright": "operate",
+    "group": "MANTENIMIENTO",
+    "permission": "Allow"
+  }
+]
+</script>
+</div>
+
+
+</div>
+</div>

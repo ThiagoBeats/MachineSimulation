@@ -1,0 +1,22 @@
+.tchmi-class-AnimaPolvoCAL {
+    animation: AnimaPolvoCAL 0.5s steps(1,end) 0.4s infinite;
+    background-size: 86%;
+}
+
+@keyframes AnimaPolvoCAL {
+    0% {
+        background-image: url('Images/POLVO CALIBRA 1.png');
+    }
+
+    25% {
+        background-image: url('Images/POLVO CALIBRA 2.png');
+    }
+
+    50% {
+        background-image: url('Images/POLVO CALIBRA 3.png');
+    }
+
+    75% {
+        background-image: url('Images/POLVO CALIBRA 4.png');
+    }
+}

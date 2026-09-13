@@ -1,0 +1,48 @@
+{
+  "modules": [
+    {
+      "type": "Package",
+      "nugetId": "Beckhoff.TwinCAT.HMI.Framework"
+    },
+    {
+        "type": "Control",
+        "basePath": "./Controls/ProgressBarControl",
+        "descriptionFile": "Description.json",
+        "toolboxCategory": "Entertainment:200"
+    },
+    {
+        "type": "Control",
+        "basePath": "./Controls/ProgressRingControl",
+        "descriptionFile": "Description.json",
+        "toolboxCategory": "Entertainment:200"
+    },
+    {
+        "type": "Control",
+        "basePath": "./Controls/ScaleBarControl",
+        "descriptionFile": "Description.json",
+        "toolboxCategory": "Entertainment:200"
+    },
+    {
+      "type": "Control",
+      "basePath": "./Controls/TcHmiTabletNavigationButton",
+      "descriptionFile": "Description.json",
+      "toolboxCategory": ""
+    },
+    {
+        "type": "Control",
+        "basePath": "./Controls/TcHmiTabletNavigationControl",
+        "descriptionFile": "Description.json",
+        "toolboxCategory": "Entertainment:201"
+    }
+  ],
+  "provideMetadata": {
+    "toolbox": {
+        "Entertainment": {
+            "201": "Entertainment | Navigation",
+            "200": "Entertainment | General"
+        }
+    }
+  },
+  "$schema": ".hmiframework/Schema/Manifest.Schema.json",
+  "apiVersion": 1
+}

@@ -1,0 +1,63 @@
+﻿/* General theme independed control css. */
+.TcHmi_Controls_Entertainment_TabletNavigation_Button {
+    width: 100%;
+    height: 100%;
+}
+
+.TcHmi_Controls_Entertainment_TabletNavigation_Button-template {
+    width: 100%;
+    height: 100%;
+}
+
+/*only individual attributes, generic attributes in TcHmiTabletNavigationControl.Style.css*/
+.TcHmi_Controls_Entertainment_TabletNavigation_Button-icon {
+    content: url("");
+    visibility: visible;
+}
+
+.TcHmi_Controls_Entertainment_TabletNavigation_Button-diagCircle {
+    position: absolute;
+    z-index: 15;
+    left: 72.5%;
+    top: 15%;
+    height: 12%;
+    width: 12%;
+    border-radius: 50%;
+    visibility: collapse;
+    border-width: 1px;
+    border-style: solid;
+    animation: none;
+    box-shadow: 0 0 0 rgba(252, 231, 191, 0.6);
+}
+
+
+@keyframes Blink {
+    0% {
+        box-shadow: 0 0 0 0 rgba(252, 231, 191, 0.6);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(252,231,191, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(252,231,191, 0);
+    }
+}
+/* If the main use for this control is interaction
+    uncomment the following lines to give user feedback:
+    This overlays the whole control with a white color
+    and change the mouse cursor */
+/*
+.TcHmi_Controls_NavigationControl_Button.TcHmi_Controls_System_TcHmiControl-operate-disallowed::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 100;
+    cursor: not-allowed;
+}
+*/

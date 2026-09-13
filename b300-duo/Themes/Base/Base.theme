@@ -1,0 +1,43 @@
+{
+  "controlTypeValues": {
+    "TcHmi.Controls.Beckhoff.TcHmiKeyboard": {
+      "attributes": {
+        "LabelFontSize": 20.0,
+        "LabelColor": {
+          "color": "rgba(52, 52, 52, 1)"
+        },
+        "KeyBackgroundColor": {
+          "color": "rgba(215, 214, 214, 0.5882352)"
+        },
+        "LabelStrokeColor": {
+          "color": "rgba(0, 0, 0, 1)"
+        }
+      },
+      "themedResources": {}
+    }
+  },
+  "controlClassValues": {
+    "AnimaMixer": {
+      "attributes": {
+        "BackgroundImageHeight": 100.0
+      },
+      "themedResources": {}
+    },
+    "AnimaPolvo": {
+      "attributes": {
+        "BackgroundImageHeight": 100.0,
+        "BackgroundImageHeightUnit": "%",
+        "BackgroundImageHorizontalAlignment": "Center",
+        "BackgroundImageVerticalAlignment": "Center"
+      },
+      "themedResources": {}
+    },
+    "AnimaPolvoCAL": {
+      "attributes": {
+        "BackgroundImageHeight": 100.0
+      },
+      "themedResources": {}
+    }
+  },
+  "$schema": "./../../../Packages/Beckhoff.TwinCAT.HMI.Framework.12.760.59/runtimes/native1.12-tchmi/Schema/ThemeDescription.Schema.json"
+}

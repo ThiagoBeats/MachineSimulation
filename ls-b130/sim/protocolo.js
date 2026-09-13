@@ -150,10 +150,11 @@
       difundir();
     }
 
-    // Deixa o cenario coerente antes do primeiro cliente.
+    // Deixa o cenario coerente antes do primeiro cliente. A logica de cada
+    // maquina pode expor um arrancar() proprio; ciclo() e o unico obrigatorio.
     function arrancar() {
-      logica.listasDeProdutos();
-      logica.ciclo();
+      if (typeof logica.arrancar === 'function') logica.arrancar();
+      logica.ciclo(Date.now());
       estado.coletarMudancas();
     }
 

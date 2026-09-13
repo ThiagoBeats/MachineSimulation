@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>__NOME__ — Simulação</title>
-<link rel="icon" href="Images/Favicon.ico">
+__FAVICON__
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&display=swap">
@@ -74,7 +74,10 @@
   /* A IHM renderiza SEMPRE em 1280x800 (o projeto usa scaleMode "None", ou
      seja, nao se escala sozinha). Quem escala e esta moldura, com transform
      uniforme - por isso a proporcao nunca distorce. */
-  .quadro{position:relative;overflow:hidden}
+  /* Fundo preto: quando a IHM nao tem a mesma proporcao da tela do aparelho
+     (a B300 e 4:3 num tablet 16:10), sobra faixa - e ela precisa parecer
+     tela apagada, nao o papel de parede da foto. */
+  .quadro{position:relative;overflow:hidden;background:#000}
   .quadro iframe{
     position:absolute;left:0;top:0;border:0;display:block;
     transform-origin:top left;

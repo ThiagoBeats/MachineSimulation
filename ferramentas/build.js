@@ -11,6 +11,7 @@ const fs = require('fs');
 const path = require('path');
 
 const RAIZ = path.resolve(__dirname, '..');
+const NL = String.fromCharCode(10);
 const id = process.argv[2];
 if (!id) {
   console.error('uso: node ferramentas/build.js <id-da-maquina>');
@@ -164,9 +165,28 @@ fs.writeFileSync(path.join(pastaSim, 'dados.js'),
   'window.TCHMI_SIM_DADOS = ' + JSON.stringify({ DEFINITIONS: definicoes, SYMBOLS: projeto.SYMBOLS }) + ';\n',
   'utf8');
 
-for (const f of ['esquema.js', 'estado.js', 'logica.js', 'protocolo.js']) {
+for (const f of ['esquema.js', 'estado.js', 'protocolo.js']) {
   fs.copyFileSync(path.join(RAIZ, 'nucleo', f), path.join(pastaSim, f));
 }
+
+// A logica emulada e SEMPRE de uma maquina so - o CLP de cada modelo e um
+// software diferente. Sem logica propria, a maquina roda so com os valores
+// de valores.js e os neutros do schema.
+const logicaMaquina = path.join(pastaMaquina, 'logica.js');
+if (fs.existsSync(logicaMaquina)) {
+  fs.copyFileSync(logicaMaquina, path.join(pastaSim, 'logica.js'));
+  console.log('  logica ...... emulada (maquinas/' + id + '/logica.js)');
+} else {
+  const stub = [
+    '// Esta maquina ainda nao tem logica de CLP emulada.',
+    '(function (raiz) {',
+    '  raiz.SimLogica = { configurar: function () {}, ciclo: function () {} };',
+    '})(typeof self !== "undefined" ? self : this);'
+  ].join(NL) + NL;
+  fs.writeFileSync(path.join(pastaSim, 'logica.js'), stub, 'utf8');
+  console.log('  logica ...... nenhuma (so valores)');
+}
+
 fs.copyFileSync(path.join(RAIZ, 'web', 'sim.js'), path.join(pastaSim, 'sim.js'));
 fs.copyFileSync(path.join(pastaMaquina, 'valores.js'), path.join(pastaSim, 'valores.js'));
 
@@ -189,7 +209,10 @@ if (cfg.tablet) {
   const moldura = fs.readFileSync(path.join(RAIZ, 'web', 'moldura.html'), 'utf8')
     .split('__CONFIG__').join(JSON.stringify({ id: id, nome: nome, tablet: cfg.tablet }))
     .split('__FOTO__').join(cfg.tablet.foto)
-    .split('__NOME__').join(nome);
+    .split('__NOME__').join(nome)
+    .split('__FAVICON__').join(
+      fs.existsSync(path.join(DESTINO, 'Images', 'Favicon.ico'))
+        ? '<link rel="icon" href="Images/Favicon.ico">' : '');
   fs.writeFileSync(path.join(DESTINO, 'index.html'), moldura, 'utf8');
   console.log('  moldura ..... ' + cfg.tablet.modelo + ' (tela em ' +
               cfg.tablet.tela.largura + '% x ' + cfg.tablet.tela.altura + '% da foto)');
