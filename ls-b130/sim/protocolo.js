@@ -143,6 +143,13 @@
       return sessao;
     }
 
+    // Um scan do CLP: roda a logica e empurra o que mudou para os inscritos.
+    // Precisa ser periodico porque ha temporizador (a pre-marcha de 3 s).
+    function scan() {
+      logica.ciclo(Date.now());
+      difundir();
+    }
+
     // Deixa o cenario coerente antes do primeiro cliente.
     function arrancar() {
       logica.listasDeProdutos();
@@ -151,7 +158,7 @@
     }
 
     return {
-      estadoDoServidor, novaSessao, arrancar, difundir, valorDe,
+      estadoDoServidor, novaSessao, arrancar, difundir, scan, valorDe,
       simbolosDesconhecidos: () => Object.fromEntries(desconhecidos)
     };
   }

@@ -58,6 +58,13 @@
   const protocolo = window.SimProtocolo.criar({ esquema: esquema, estado: estado, logica: logica });
   protocolo.arrancar();
 
+  // O CLP varre continuamente. Sem isso, temporizadores como a pre-marcha de
+  // 3 s da marcha nunca avancariam, porque o simulador so reagia a cliques.
+  const INTERVALO_SCAN = 200;
+  setInterval(function () {
+    try { protocolo.scan(); } catch (e) { console.error('[sim] erro no scan:', e); }
+  }, INTERVALO_SCAN);
+
   // Util para depurar pelo console do navegador.
   window.SIM = {
     ler: estado.ler,

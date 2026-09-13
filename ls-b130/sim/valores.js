@@ -169,8 +169,17 @@ for (let dose = 0; dose < 20; dose++) {
   'PLC1.MainGVL.RunMode': false,
   'PLC1.MainGVL.AutoMode': false,
   'PLC1.MainGVL.SimulationMode': true,
+
+  // Permissivos de seguranca. Os dois sao TRUE quando esta tudo OK: no CLP,
+  // quando GeneralEMG cai, o modo automatico e derrubado e a marcha nao sobe.
   'PLC1.MainGVL.AirPressureOK': true,
-  'PLC1.MainGVL.GeneralEMG': false,
+  'PLC1.MainGVL.GeneralEMG': true,
+
+  // A maquina comeca parada e SEM lote, como de manha. A sequencia de
+  // treinamento e: carregar o lote na ordem de producao, passar para
+  // automatico e apertar Marcha (3 s de pre-marcha ate RunMode subir).
+  'PLC1.Batches.BatchLoaded': false,
+  'PLC1.BatchManager.IsSaved': true,
 
   // Tabelas de produtos e seus comboboxes
   'PLC1.Liquids.LiquidsTable': montarTabela(LIQUIDOS, 64),

@@ -8,32 +8,53 @@
   "tablet": {
     "modelo": "Zebra ET40 10\"",
     "foto": "tablet.jpg",
-    "fotoLargura": 1920,
-    "fotoAltura": 1280,
-    "resolucao": { "largura": 1280, "altura": 800 },
-    "_comentario": "Retangulo da tela dentro da foto, medido pixel a pixel e expresso em % da imagem. A proporcao da tela (1,596) bate com a da IHM (1,600), entao o encaixe nao distorce.",
-    "tela": { "esquerda": 16.354, "topo": 18.906, "largura": 67.917, "altura": 63.828 },
+    "fotoLargura": 1597,
+    "fotoAltura": 1083,
+    "resolucao": {
+      "largura": 1280,
+      "altura": 800
+    },
+    "_comentario": "Foto recortada ate o corpo do aparelho (a original tinha muita margem branca). Retangulo da tela medido pixel a pixel, em % da imagem recortada. A proporcao da tela (1,596) bate com a da IHM (1,600), entao o encaixe nao distorce.",
+    "tela": {
+      "esquerda": 9.393,
+      "topo": 10.157,
+      "largura": 81.653,
+      "altura": 75.439
+    },
     "larguraMinima": 1200,
-    "alturaMinima": 640
+    "alturaMinima": 640,
+    "ocupacaoAltura": 0.9
   },
   "textos": {
     "pt": {
       "nome": "LS-B130",
       "tipo": "Tratamento de sementes",
       "descricao": "Tratadora de sementes com 6 linhas de líquido e 2 de pó. Simula receitas, consumo, balança e periféricos.",
-      "recursos": ["Receitas: criar, salvar e excluir", "Histórico de consumo", "Modo manual e automático"]
+      "recursos": [
+        "Receitas: criar, salvar e excluir",
+        "Histórico de consumo",
+        "Modo manual e automático"
+      ]
     },
     "es": {
       "nome": "LS-B130",
       "tipo": "Tratamiento de semillas",
       "descricao": "Tratadora de semillas con 6 líneas de líquido y 2 de polvo. Simula recetas, consumo, balanza y periféricos.",
-      "recursos": ["Recetas: crear, guardar y eliminar", "Historial de consumo", "Modo manual y automático"]
+      "recursos": [
+        "Recetas: crear, guardar y eliminar",
+        "Historial de consumo",
+        "Modo manual y automático"
+      ]
     },
     "en": {
       "nome": "LS-B130",
       "tipo": "Seed treatment",
       "descricao": "Seed treater with 6 liquid lines and 2 powder lines. Simulates recipes, consumption, scale and peripherals.",
-      "recursos": ["Recipes: create, save and delete", "Consumption history", "Manual and automatic mode"]
+      "recursos": [
+        "Recipes: create, save and delete",
+        "Consumption history",
+        "Manual and automatic mode"
+      ]
     }
   }
 }

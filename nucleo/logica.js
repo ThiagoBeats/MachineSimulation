@@ -1,9 +1,10 @@
 // ---------------------------------------------------------------------------
 // LOGICA DO CLP EMULADA EM JAVASCRIPT - PURA, roda em Node e no navegador.
 //
-// ATENCAO: este arquivo e uma COPIA da logica que roda no CLP, transcrita do
-// POU  POUs^Recipes^RecipesLogic  e de suas acoes RecipeValidation,
-// RecipeNameDuplicate, TimeCalculation, LiquidsList e PowdersList.
+// ATENCAO: este arquivo e uma COPIA da logica que roda no CLP, transcrita de:
+//   POUs^Recipes^RecipesLogic  (e as acoes RecipeValidation, RecipeNameDuplicate,
+//                               TimeCalculation, LiquidsList, PowdersList)
+//   POUs^Start                 (marcha, pre-marcha e comandos de lote - Ladder)
 //
 // Se alguem alterar o ST no projeto do CLP, ESTE ARQUIVO FICA DESATUALIZADO em
 // silencio. Ele existe para que a simulacao se comporte como a maquina em
@@ -214,6 +215,67 @@
     }
   }
 
+  // =========================================================================
+  // PROGRAM Start  (Ladder) - marcha da maquina
+  // =========================================================================
+  // Sequencia real: passar para automatico, carregar um lote e apertar Marcha.
+  // A pre-marcha segura por 3 s e so entao a maquina entra em marcha, que e
+  // quando os botoes de comando aparecem na tela.
+  //
+  // Polaridade importante: GeneralEMG e AirPressureOK sao TRUE quando esta
+  // tudo OK - quando GeneralEMG cai, o CLP derruba o modo automatico.
+  const G = P + 'MainGVL.';
+  const B = P + 'BatchManager.';
+  const LOTE = P + 'Batches.BatchLoaded';
+  const PRE_RUN = P + 'Start.PreRun';        // variavel local do POU, nao mapeada
+
+  var tonInicio = null;                      // TON_PreRun: instante em que ligou
+  var loteAntes = false;                     // deteccao de borda de BatchLoaded
+
+  const PRE_MARCHA_MS = 3000;                // t#3s no Ladder
+
+  function startCiclo(agora) {
+    // Rung "Reset do modo automatico"
+    if (!ler(G + 'GeneralEMG')) escrever(G + 'AutoMode', false);
+
+    // Rung "Comando para carregar lote": seta BatchLoaded e limpa o comando
+    if (ler(B + 'LoadBatch')) {
+      escrever(LOTE, true);
+      escrever(B + 'LoadBatch', false);
+    }
+
+    // Rung "Comando para finalizar lote"
+    if (ler(B + 'UnloadBatch')) {
+      escrever(LOTE, false);
+      escrever(B + 'UnloadBatch', false);
+    }
+
+    // Rung "Reseta os dados de consumo": borda de subida de BatchLoaded
+    const lote = !!ler(LOTE);
+    if (lote && !loteAntes) escrever(P + 'Consumption.ResetConsumption', true);
+    loteAntes = lote;
+
+    // Rung "Posta em pre marcha" - com selo (a propria PreRun se mantem)
+    const partida = !!ler(G + 'StartTreatment') && !!ler(G + 'AirPressureOK') && !ler(G + 'RunMode');
+    const permissivos = !!ler(G + 'AutoMode') && !ler(G + 'StopProcess') &&
+                        !!ler(G + 'GeneralEMG') && lote;
+    const preRun = (partida || !!ler(PRE_RUN)) && permissivos;
+    escrever(PRE_RUN, preRun);
+
+    // Rung "Tempo de pre marcha" (TON) + "Inicio da marcha"
+    if (!preRun) {
+      tonInicio = null;
+    } else if (tonInicio === null) {
+      tonInicio = agora;
+    }
+    const emMarcha = preRun && tonInicio !== null && (agora - tonInicio) >= PRE_MARCHA_MS;
+    escrever(G + 'RunMode', emMarcha);
+
+    // Rung "Reset dos comandos": os bits de comando sao de um ciclo so
+    if (ler(G + 'StartTreatment')) escrever(G + 'StartTreatment', false);
+    if (ler(G + 'StopProcess')) escrever(G + 'StopProcess', false);
+  }
+
   // --- corpo do PROGRAM RecipesLogic ---------------------------------------
   function umCiclo() {
     if ((Number(ler(L + 'RecipeIndex')) || 0) === 0) escrever(L + 'RecipeIndex', OFF_LIB);
@@ -282,7 +344,8 @@
 
   // Alguns comandos setam outros (ExcludeRecipe liga Refresh). No CLP isso
   // resolve no ciclo seguinte; aqui rodamos ate estabilizar.
-  function ciclo() {
+  function ciclo(agora) {
+    startCiclo(typeof agora === 'number' ? agora : Date.now());
     for (let i = 0; i < 6; i++) {
       umCiclo();
       if (!pendente()) break;

@@ -40,9 +40,20 @@ e abrir a simulação com `?reset=1` devolve tudo ao cenário inicial.
 
 ## ⚠️ Sobre `nucleo/logica.js`
 
-Esse arquivo é uma **cópia, em JavaScript, de lógica que roda no CLP** — transcrita do POU
-`POUs^Recipes^RecipesLogic` e de suas ações (`RecipeValidation`, `RecipeNameDuplicate`,
-`TimeCalculation`, `LiquidsList`, `PowdersList`).
+Esse arquivo é uma **cópia, em JavaScript, de lógica que roda no CLP** — transcrita de:
+
+- `POUs^Recipes^RecipesLogic` e suas ações (`RecipeValidation`, `RecipeNameDuplicate`,
+  `TimeCalculation`, `LiquidsList`, `PowdersList`)
+- `POUs^Start` (Ladder) — marcha, pré-marcha e comandos de lote
+
+A marcha segue a sequência real da máquina: **passar para automático → carregar um lote →
+apertar Marcha**, com 3 s de pré-marcha antes de `RunMode` subir, quando os botões de comando
+aparecem. Apertar Marcha sem lote não faz nada, igual à máquina. `GeneralEMG` e
+`AirPressureOK` são TRUE quando está tudo OK; quando `GeneralEMG` cai, o CLP derruba o modo
+automático.
+
+Como há temporizador, o simulador roda um **scan periódico de 200 ms** (`protocolo.scan()`),
+não só quando alguém clica.
 
 **Se alguém alterar o ST no projeto do CLP, esse arquivo fica desatualizado em silêncio.**
 Ele existe para que o treinamento se comporte como a máquina; nunca é fonte da verdade.
