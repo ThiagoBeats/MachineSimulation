@@ -10,9 +10,17 @@
     "foto": "tablet.jpg",
     "fotoLargura": 1597,
     "fotoAltura": 1083,
-    "_comentario": "Mesmo tablet da LS-B130, mas esta IHM e 1024x768 (4:3) enquanto a tela do aparelho e 16:10. Sobra faixa preta dos dois lados, exatamente como aconteceria no equipamento real.",
-    "resolucao": { "largura": 1024, "altura": 768 },
-    "tela": { "esquerda": 9.393, "topo": 10.157, "largura": 81.653, "altura": 75.439 },
+    "_comentario": "O projeto foi desenhado em 1024x768, mas as telas usam posicionamento percentual: renderizando em 1280x800 (a proporcao da tela do tablet) o layout se ajusta e preenche o vao inteiro, sem esticar nem cortar.",
+    "resolucao": {
+      "largura": 1280,
+      "altura": 800
+    },
+    "tela": {
+      "esquerda": 9.393,
+      "topo": 10.157,
+      "largura": 81.653,
+      "altura": 75.439
+    },
     "larguraMinima": 1200,
     "alturaMinima": 640,
     "ocupacaoAltura": 0.9
@@ -22,19 +30,31 @@
       "nome": "LS-B300 DUO",
       "tipo": "Tratamento de sementes",
       "descricao": "Tratadora com 12 bombas de dosagem, 3 totens de calibração e dois homogeneizadores, com descarga alternada.",
-      "recursos": ["Dois homogeneizadores", "12 linhas de dosagem", "Balança de sementes"]
+      "recursos": [
+        "Dois homogeneizadores",
+        "12 linhas de dosagem",
+        "Balança de sementes"
+      ]
     },
     "es": {
       "nome": "LS-B300 DUO",
       "tipo": "Tratamiento de semillas",
       "descricao": "Tratadora con 12 bombas de dosificación, 3 tótems de calibración y dos homogeneizadores, con descarga alternada.",
-      "recursos": ["Dos homogeneizadores", "12 líneas de dosificación", "Balanza de semillas"]
+      "recursos": [
+        "Dos homogeneizadores",
+        "12 líneas de dosificación",
+        "Balanza de semillas"
+      ]
     },
     "en": {
       "nome": "LS-B300 DUO",
       "tipo": "Seed treatment",
       "descricao": "Seed treater with 12 dosing pumps, 3 calibration totems and two homogenizers with alternating discharge.",
-      "recursos": ["Two homogenizers", "12 dosing lines", "Seed scale"]
+      "recursos": [
+        "Two homogenizers",
+        "12 dosing lines",
+        "Seed scale"
+      ]
     }
   }
 }

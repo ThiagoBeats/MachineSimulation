@@ -140,7 +140,7 @@
 (function(){
   'use strict';
 
-  var CFG = {"id":"b300-duo","nome":"LS-B300 DUO","tablet":{"modelo":"Zebra ET40 10\"","foto":"tablet.jpg","fotoLargura":1597,"fotoAltura":1083,"_comentario":"Mesmo tablet da LS-B130, mas esta IHM e 1024x768 (4:3) enquanto a tela do aparelho e 16:10. Sobra faixa preta dos dois lados, exatamente como aconteceria no equipamento real.","resolucao":{"largura":1024,"altura":768},"tela":{"esquerda":9.393,"topo":10.157,"largura":81.653,"altura":75.439},"larguraMinima":1200,"alturaMinima":640,"ocupacaoAltura":0.9}};
+  var CFG = {"id":"b300-duo","nome":"LS-B300 DUO","tablet":{"modelo":"Zebra ET40 10\"","foto":"tablet.jpg","fotoLargura":1597,"fotoAltura":1083,"_comentario":"O projeto foi desenhado em 1024x768, mas as telas usam posicionamento percentual: renderizando em 1280x800 (a proporcao da tela do tablet) o layout se ajusta e preenche o vao inteiro, sem esticar nem cortar.","resolucao":{"largura":1280,"altura":800},"tela":{"esquerda":9.393,"topo":10.157,"largura":81.653,"altura":75.439},"larguraMinima":1200,"alturaMinima":640,"ocupacaoAltura":0.9}};
 
   var TEXTOS = {
     pt:{ portal:'Portal', tablet:'Tablet', cheia:'Tela cheia', reiniciar:'Reiniciar',
