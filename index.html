@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Simuladores de Treinamento — LS do Brasil</title>
-<link rel="icon" href="ls-b130/Images/Favicon.ico">
+<link rel="icon" href="assets/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
@@ -33,11 +33,17 @@
     display:flex;align-items:flex-start;justify-content:space-between;
     gap:20px;flex-wrap:wrap;padding-bottom:26px;border-bottom:1px solid var(--linha);
   }
-  .marca{display:flex;flex-direction:column;gap:2px}
-  .marca .empresa{
-    font-family:"Barlow Condensed",sans-serif;font-weight:700;
-    font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acento);
+  .marca{display:flex;align-items:center;gap:18px}
+  /* O logo e azul-marinho e verde escuro: numa base quase preta ficaria
+     ilegivel. A placa clara resolve o contraste e le como escolha, nao como
+     descuido. */
+  .marca .placa{
+    background:#FFF;border-radius:8px;padding:10px 14px;
+    display:flex;align-items:center;flex:none;
+    box-shadow:0 1px 2px rgba(0,0,0,.4);
   }
+  .marca .placa img{display:block;height:46px;width:auto;max-width:100%}
+  .marca .textos{display:flex;flex-direction:column;gap:2px;min-width:0}
   .marca h1{
     font-family:"Barlow Condensed",sans-serif;font-weight:700;
     font-size:clamp(1.7rem,1.2rem+2vw,2.5rem);margin:0;line-height:1.05;
@@ -113,6 +119,12 @@
   }
   footer.rodape a{color:#6B7D7A}
 
+  @media (max-width:560px){
+    .marca{gap:12px}
+    .marca .placa{padding:8px 10px}
+    .marca .placa img{height:34px}
+  }
+
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -121,8 +133,10 @@
 
   <header class="topo">
     <div class="marca">
-      <span class="empresa">LS do Brasil</span>
-      <h1 data-i18n="titulo">Simuladores de Treinamento</h1>
+      <span class="placa"><img src="assets/ls-logo.png" alt="LS do Brasil" width="600" height="320"></span>
+      <div class="textos">
+        <h1 data-i18n="titulo">Simuladores de Treinamento</h1>
+      </div>
     </div>
     <div class="idiomas" role="group" aria-label="Idioma / Idioma / Language">
       <button type="button" id="lang-pt" data-lang="pt" aria-pressed="true">PT</button>

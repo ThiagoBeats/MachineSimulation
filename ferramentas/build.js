@@ -209,10 +209,7 @@ if (cfg.tablet) {
   const moldura = fs.readFileSync(path.join(RAIZ, 'web', 'moldura.html'), 'utf8')
     .split('__CONFIG__').join(JSON.stringify({ id: id, nome: nome, tablet: cfg.tablet }))
     .split('__FOTO__').join(cfg.tablet.foto)
-    .split('__NOME__').join(nome)
-    .split('__FAVICON__').join(
-      fs.existsSync(path.join(DESTINO, 'Images', 'Favicon.ico'))
-        ? '<link rel="icon" href="Images/Favicon.ico">' : '');
+    .split('__NOME__').join(nome);
   fs.writeFileSync(path.join(DESTINO, 'index.html'), moldura, 'utf8');
   console.log('  moldura ..... ' + cfg.tablet.modelo + ' (tela em ' +
               cfg.tablet.tela.largura + '% x ' + cfg.tablet.tela.altura + '% da foto)');
