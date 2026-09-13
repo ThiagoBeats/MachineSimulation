@@ -31,6 +31,7 @@ Tudo que o servidor faria acontece em JavaScript, no cliente:
 | [nucleo/logica.js](nucleo/logica.js) | **Lógica do CLP emulada** (ver aviso abaixo) |
 | [nucleo/protocolo.js](nucleo/protocolo.js) | Protocolo do TcHmi Server: licença, definições, símbolos, inscrições |
 | [web/sim.js](web/sim.js) | Liga o núcleo ao navegador e instala as duas substituições |
+| [web/moldura.html](web/moldura.html) | Página que exibe a IHM dentro da foto do tablet |
 
 O estado de cada pessoa fica no `localStorage` do navegador dela. Ninguém interfere em ninguém,
 e abrir a simulação com `?reset=1` devolve tudo ao cenário inicial.
@@ -48,6 +49,28 @@ Ele existe para que o treinamento se comporte como a máquina; nunca é fonte da
 Ao mexer na lógica de receitas do CLP, revise aqui também.
 
 ---
+
+## Moldura do tablet
+
+Cada máquina abre em `<id>/index.html`, que mostra a IHM **dentro da foto do tablet real**
+(na LS-B130, um Zebra ET40 10"). A IHM em si fica em `<id>/hmi.html`, no mesmo nível de pasta
+para que os caminhos relativos dela continuem valendo, e é carregada num `<iframe>`.
+
+O projeto TwinCAT usa `scaleMode: "None"`, ou seja, a IHM **não se escala sozinha**: numa
+janela maior ela reflui e mostra um layout que não existe na máquina. Por isso o iframe é
+fixado em **1280×800** (a resolução real do tablet) e quem escala é a moldura, com um
+`transform: scale()` uniforme. A proporção nunca distorce, e o aluno vê exatamente a tela
+da máquina nos dois modos:
+
+- **Tablet** — a IHM no vão da tela da foto. O retângulo da tela foi medido pixel a pixel e
+  está em `maquinas/<id>/maquina.json`, em porcentagem da imagem.
+- **Tela cheia** — a mesma IHM escalada para preencher a janela, sem o tablet em volta.
+
+Abaixo de `larguraMinima` × `alturaMinima` (1200×640 na LS-B130) a moldura deixaria a IHM
+minúscula, então ela some automaticamente e só resta o modo tela cheia.
+
+> A IHM é uma tela industrial de 1280×800. Num celular ela cabe, mas fica pequena demais para
+> operar de verdade — o uso previsto é em computador ou tablet.
 
 ## Gerar o site de uma máquina
 
@@ -82,6 +105,8 @@ arquivos, sem nenhuma lógica de servidor. Se funcionar aqui, funciona publicado
 ## Adicionar uma máquina nova
 
 1. Crie `maquinas/<id>/maquina.json` e `maquinas/<id>/valores.js`.
+   Para a moldura, acrescente a seção `tablet` com a foto e o retângulo da tela em %
+   (sem ela, a IHM vira a página principal, sem moldura).
 2. Rode `node ferramentas/build.js <id>`.
 3. Acrescente uma entrada no array `MAQUINAS` em [index.html](index.html).
 

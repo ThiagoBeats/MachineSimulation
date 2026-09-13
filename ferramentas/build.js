@@ -117,7 +117,7 @@ function copiarArvore(origem, destino, contador) {
 
 // Injeta os scripts do simulador ANTES dos scripts do framework. Se vierem
 // depois, o framework ja tera tentado falar com o servidor e falhado.
-function gerarIndex(html) {
+function gerarHmi(html) {
   const scripts = [
     'sim/dados.js', 'sim/valores.js',
     'sim/esquema.js', 'sim/estado.js', 'sim/logica.js', 'sim/protocolo.js',
@@ -170,9 +170,33 @@ for (const f of ['esquema.js', 'estado.js', 'logica.js', 'protocolo.js']) {
 fs.copyFileSync(path.join(RAIZ, 'web', 'sim.js'), path.join(pastaSim, 'sim.js'));
 fs.copyFileSync(path.join(pastaMaquina, 'valores.js'), path.join(pastaSim, 'valores.js'));
 
+// A IHM vai para hmi.html - no MESMO nivel de pasta, para que todos os
+// caminhos relativos dela (framework/, Telas/, Images/) continuem valendo.
 const html = fs.readFileSync(path.join(BIN, 'Default.html'), 'utf8');
-fs.writeFileSync(path.join(DESTINO, 'index.html'), gerarIndex(html), 'utf8');
+fs.writeFileSync(path.join(DESTINO, 'hmi.html'), gerarHmi(html), 'utf8');
 fs.rmSync(path.join(DESTINO, 'Default.html'), { force: true });
+
+// index.html passa a ser a moldura do tablet, que carrega hmi.html num iframe.
+if (cfg.tablet) {
+  const foto = path.join(pastaMaquina, cfg.tablet.foto);
+  if (!fs.existsSync(foto)) {
+    console.error('ERRO: nao encontrei a foto do tablet em ' + foto);
+    process.exit(1);
+  }
+  fs.copyFileSync(foto, path.join(DESTINO, cfg.tablet.foto));
+
+  const nome = (cfg.textos && cfg.textos.pt && cfg.textos.pt.nome) || cfg.modelo || id;
+  const moldura = fs.readFileSync(path.join(RAIZ, 'web', 'moldura.html'), 'utf8')
+    .split('__CONFIG__').join(JSON.stringify({ id: id, nome: nome, tablet: cfg.tablet }))
+    .split('__FOTO__').join(cfg.tablet.foto)
+    .split('__NOME__').join(nome);
+  fs.writeFileSync(path.join(DESTINO, 'index.html'), moldura, 'utf8');
+  console.log('  moldura ..... ' + cfg.tablet.modelo + ' (tela em ' +
+              cfg.tablet.tela.largura + '% x ' + cfg.tablet.tela.altura + '% da foto)');
+} else {
+  // Sem foto de tablet, a IHM continua sendo a pagina principal.
+  fs.copyFileSync(path.join(DESTINO, 'hmi.html'), path.join(DESTINO, 'index.html'));
+}
 
 const tamanhoDados = fs.statSync(path.join(pastaSim, 'dados.js')).size;
 console.log('  dados.js .... ' + (tamanhoDados / 1048576).toFixed(1) + ' MB (' +

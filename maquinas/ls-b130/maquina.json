@@ -5,6 +5,17 @@
   "binPath": "C:/Users/Asus/Desktop/Meus Projetos/01_Máquinas de Tratamento/LS-B130/Clientes/02_Codepa/01_CLP/B120/B120_HMI/bin",
   "serverConfigPath": "C:/Users/Asus/Desktop/Meus Projetos/01_Máquinas de Tratamento/LS-B130/Clientes/02_Codepa/01_CLP/B120/B120_HMI/Server/TcHmiSrv/TcHmiSrv.Config.default.json",
   "tf2000Path": "C:/TwinCAT/Functions/TF2000-HMI-Server",
+  "tablet": {
+    "modelo": "Zebra ET40 10\"",
+    "foto": "tablet.jpg",
+    "fotoLargura": 1920,
+    "fotoAltura": 1280,
+    "resolucao": { "largura": 1280, "altura": 800 },
+    "_comentario": "Retangulo da tela dentro da foto, medido pixel a pixel e expresso em % da imagem. A proporcao da tela (1,596) bate com a da IHM (1,600), entao o encaixe nao distorce.",
+    "tela": { "esquerda": 16.354, "topo": 18.906, "largura": 67.917, "altura": 63.828 },
+    "larguraMinima": 1200,
+    "alturaMinima": 640
+  },
   "textos": {
     "pt": {
       "nome": "LS-B130",

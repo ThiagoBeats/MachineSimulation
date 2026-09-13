@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LS-B130 — Simulação</title>
+<title>__NOME__ — Simulação</title>
 <link rel="icon" href="Images/Favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,7 +83,7 @@
   /* modo tablet: a foto manda no tamanho (calculado em JS - ver escalar()) */
   body[data-modo="tablet"] .tablet{
     position:relative;
-    background:url("tablet.jpg") center/contain no-repeat;
+    background:url("__FOTO__") center/contain no-repeat;
   }
   body[data-modo="tablet"] .quadro{
     position:absolute;
@@ -115,7 +115,7 @@
 
   <div class="barra">
     <a class="voltar" href="../" id="voltar">&#8592; <span data-t="portal">Portal</span></a>
-    <span class="nome">LS-B130</span>
+    <span class="nome">__NOME__</span>
     <span class="espaco"></span>
     <span class="aviso-estreito" data-t="estreito">Tela pequena: exibindo sem o tablet</span>
     <div class="modos" role="group" id="modos">
@@ -128,7 +128,7 @@
   <div class="palco">
     <div class="tablet" id="tablet">
       <div class="quadro" id="quadro">
-        <iframe id="hmi" src="hmi.html" title="LS-B130"></iframe>
+        <iframe id="hmi" src="hmi.html" title="__NOME__"></iframe>
       </div>
     </div>
   </div>
@@ -137,7 +137,7 @@
 (function(){
   'use strict';
 
-  var CFG = {"id":"ls-b130","nome":"LS-B130","tablet":{"modelo":"Zebra ET40 10\"","foto":"tablet.jpg","fotoLargura":1920,"fotoAltura":1280,"resolucao":{"largura":1280,"altura":800},"_comentario":"Retangulo da tela dentro da foto, medido pixel a pixel e expresso em % da imagem. A proporcao da tela (1,596) bate com a da IHM (1,600), entao o encaixe nao distorce.","tela":{"esquerda":16.354,"topo":18.906,"largura":67.917,"altura":63.828},"larguraMinima":1200,"alturaMinima":640}};
+  var CFG = __CONFIG__;
 
   var TEXTOS = {
     pt:{ portal:'Portal', tablet:'Tablet', cheia:'Tela cheia', reiniciar:'Reiniciar',
