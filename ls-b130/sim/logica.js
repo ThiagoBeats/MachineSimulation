@@ -5,6 +5,7 @@
 //   POUs^Recipes^RecipesLogic  (e as acoes RecipeValidation, RecipeNameDuplicate,
 //                               TimeCalculation, LiquidsList, PowdersList)
 //   POUs^Start                 (marcha, pre-marcha e comandos de lote - Ladder)
+//   POUs^System^Alarms         (regiao "Alarme do header")
 //
 // Se alguem alterar o ST no projeto do CLP, ESTE ARQUIVO FICA DESATUALIZADO em
 // silencio. Ele existe para que a simulacao se comporte como a maquina em
@@ -276,6 +277,87 @@
     if (ler(G + 'StopProcess')) escrever(G + 'StopProcess', false);
   }
 
+  // =========================================================================
+  // PROGRAM Alarms - regiao "Alarme do header"
+  // =========================================================================
+  // A IHM mostra Alarms.HeaderText no elemento EventText do Desktop.view, e usa
+  // Alarms.HeaderTextValue so para a cor: 0 deixa o fundo cinza (informativo),
+  // qualquer outro valor pinta de vermelho. A cadeia abaixo e o IF/ELSIF do CLP
+  // na mesma ordem - quem manda sao as variaveis, nao uma lista de frases.
+  //
+  // Para ver um alarme na tela, basta derrubar a condicao correspondente em
+  // valores.js. Exemplos:
+  //   'PLC1.MainGVL.AirPressureOK': false            -> "Sem pressao pneumatica"
+  //   'PLC1.Homogenizer.CTH.Status': { Error: true } -> "Homogeneizador em falha"
+  //   'PLC1.Powder_01.DoserAvailable': false         -> "Dosador de po 1 nao disponivel"
+  const A = P + 'Alarms.';
+  const HOMO = P + 'Homogenizer.';
+
+  // O homogeneizador tem uma maquina de estados (E0..E5) que NAO emulamos.
+  // Usamos os dois estados de repouso dela, que sao os textos reais do CLP.
+  function statusHomogeneizador() {
+    return ler(G + 'RunMode') ? 'Ativo e disponível' : 'Parado';
+  }
+
+  function alarmesCiclo() {
+    const simulacao = !!ler(G + 'SimulationMode');
+    const marcha = !!ler(G + 'RunMode');
+    const auto = !!ler(G + 'AutoMode');
+    const MR = R + 'MachineRecipe';
+
+    // Region "Atraso de injecao": depende dos circuitos de liquido, que nao
+    // sao emulados. Fora de marcha o CLP zera.
+    let atraso = Number(ler(A + 'LineWithInjectionLateness')) || 0;
+    if (!marcha) atraso = 0;
+
+    // Region "Liquido com baixo nivel": o proprio CLP inibe em simulacao.
+    const baixoNivel = simulacao ? 0 : (Number(ler(A + 'LowLevelProduct')) || 0);
+
+    const falha = (equip) => !!ler(HOMO + equip + '.Status.Error');
+    const passoPo = (n) => Number(ler(cfgPow(MR, OFF_POW + n - 1, 'Step'))) || 0;
+
+    let texto, valor;
+    if (!ler(G + 'GeneralEMG')) {
+      texto = 'Em emergência. Clique para resetar'; valor = 1;
+    } else if (!ler(G + 'AirPressureOK')) {
+      texto = 'Sem pressão pneumática'; valor = 2;
+    } else if (falha('TotemValve') && auto && !marcha) {
+      texto = 'Falha no pistão de calibração/injeção.'; valor = 15;
+    } else if (atraso > 0) {
+      texto = 'Atraso de injeção! Tire a máquina de marcha. Linha ' + atraso; valor = 13;
+    } else if (marcha && falha('TotemValve') && !simulacao) {
+      texto = 'Falha na válvula de direção de dosagem'; valor = 14;
+    } else if (marcha && passoPo(1) > 0 && !ler(P + 'Powder_01.DoserAvailable')) {
+      texto = 'Dosador de pó 1 não disponível'; valor = 3;
+    } else if (marcha && passoPo(2) > 0 && !ler(P + 'Powder_02.DoserAvailable')) {
+      texto = 'Dosador de pó 2 não disponível'; valor = 4;
+    } else if (marcha && !!ler(P + 'Peripherals.RemotePause') && !simulacao) {
+      texto = 'Sistema pausado pelo ensaque'; valor = 5;
+    } else if (marcha && !!ler(P + 'MainBalance.PauseProcess')) {
+      texto = 'Sistema pausado'; valor = 6;
+    } else if (marcha && falha('CTH')) {
+      texto = 'Homogeneizador em falha'; valor = 8;
+    } else if (marcha && falha('ASH')) {
+      texto = 'Aspersor em falha'; valor = 9;
+    } else if (marcha && falha('DischargeDoor')) {
+      texto = 'Porta de descarga em falha'; valor = 10;
+    } else if (baixoNivel !== 0) {
+      texto = 'Baixo nível de produto na linha ' + baixoNivel; valor = 12;
+    } else if (marcha && !ler(HOMO + 'PeripheralsEnabled')) {
+      texto = 'Ensaque desabilitado'; valor = 11;
+    } else if (marcha && (!!ler(P + 'CFCG.AtThinCut') || !!ler(P + 'CFCG.TotallyOpened'))) {
+      texto = 'Carregando balança: ' + Math.trunc(Number(ler(P + 'MainBalance.SeedWeight')) || 0);
+      valor = 11;
+    } else {
+      texto = 'Status: ' + statusHomogeneizador(); valor = 0;
+    }
+
+    if (simulacao) texto = 'Simulação habilitada | ' + texto;
+
+    escrever(A + 'HeaderText', texto);
+    escrever(A + 'HeaderTextValue', valor);
+  }
+
   // --- corpo do PROGRAM RecipesLogic ---------------------------------------
   function umCiclo() {
     if ((Number(ler(L + 'RecipeIndex')) || 0) === 0) escrever(L + 'RecipeIndex', OFF_LIB);
@@ -346,6 +428,7 @@
   // resolve no ciclo seguinte; aqui rodamos ate estabilizar.
   function ciclo(agora) {
     startCiclo(typeof agora === 'number' ? agora : Date.now());
+    alarmesCiclo();
     for (let i = 0; i < 6; i++) {
       umCiclo();
       if (!pendente()) break;

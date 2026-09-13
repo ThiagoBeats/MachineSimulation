@@ -45,6 +45,7 @@ Esse arquivo é uma **cópia, em JavaScript, de lógica que roda no CLP** — tr
 - `POUs^Recipes^RecipesLogic` e suas ações (`RecipeValidation`, `RecipeNameDuplicate`,
   `TimeCalculation`, `LiquidsList`, `PowdersList`)
 - `POUs^Start` (Ladder) — marcha, pré-marcha e comandos de lote
+- `POUs^System^Alarms`, região "Alarme do header" — a mensagem do topo da tela
 
 A marcha segue a sequência real da máquina: **passar para automático → carregar um lote →
 apertar Marcha**, com 3 s de pré-marcha antes de `RunMode` subir, quando os botões de comando
@@ -54,6 +55,11 @@ automático.
 
 Como há temporizador, o simulador roda um **scan periódico de 200 ms** (`protocolo.scan()`),
 não só quando alguém clica.
+
+A faixa no topo da tela (`EventText`) mostra `Alarms.HeaderText`, e `Alarms.HeaderTextValue`
+define a cor: **0 deixa cinza** (informativo), qualquer outro valor **pinta de vermelho**. A
+cadeia de 16 mensagens é a mesma do CLP, na mesma ordem, dirigida pelas mesmas variáveis —
+para ver um alarme, derrube a condição em `valores.js` (há exemplos comentados lá).
 
 **Se alguém alterar o ST no projeto do CLP, esse arquivo fica desatualizado em silêncio.**
 Ele existe para que o treinamento se comporte como a máquina; nunca é fonte da verdade.

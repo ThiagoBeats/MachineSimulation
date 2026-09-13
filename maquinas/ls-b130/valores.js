@@ -181,6 +181,17 @@ for (let dose = 0; dose < 20; dose++) {
   'PLC1.Batches.BatchLoaded': false,
   'PLC1.BatchManager.IsSaved': true,
 
+  // Equipamentos disponiveis. Sem isso, o valor neutro (false) seria lido como
+  // falha e o cabecalho da tela acusaria alarme assim que entrasse em marcha.
+  // Derrube qualquer um destes para ver o alarme correspondente:
+  //   AirPressureOK: false            -> "Sem pressao pneumatica"
+  //   DoserAvailable: false           -> "Dosador de po N nao disponivel"
+  //   PeripheralsEnabled: false       -> "Ensaque desabilitado"
+  //   Homogenizer.CTH.Status.Error    -> "Homogeneizador em falha"
+  'PLC1.Powder_01.DoserAvailable': true,
+  'PLC1.Powder_02.DoserAvailable': true,
+  'PLC1.Homogenizer.PeripheralsEnabled': true,
+
   // Tabelas de produtos e seus comboboxes
   'PLC1.Liquids.LiquidsTable': montarTabela(LIQUIDOS, 64),
   'PLC1.Powders.PowdersTable': montarTabela(POS, 64),
