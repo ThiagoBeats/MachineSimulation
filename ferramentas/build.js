@@ -221,6 +221,83 @@ if (cfg.tablet) {
   fs.copyFileSync(path.join(DESTINO, 'hmi.html'), path.join(DESTINO, 'index.html'));
 }
 
+
+// ---------------------------------------------------------------------------
+// Diferencas de maiusculas nos nomes de arquivo.
+//
+// O Windows e o TcHmi Server nao distinguem maiusculas, entao uma tela pode
+// pedir "Images/Machine/B150.png" enquanto o arquivo se chama "b150.png" e
+// tudo funciona na maquina. No GitHub Pages, que e Linux, isso vira 404 e a
+// imagem simplesmente nao aparece.
+//
+// Aqui procuramos as referencias a arquivos nas telas e, quando a unica
+// diferenca e a caixa das letras, gravamos uma copia com o nome pedido.
+// ---------------------------------------------------------------------------
+const EXT_TEXTO = /\.(html|view|content|usercontrol|js|json|css)$/i;
+const EXT_ARQUIVO = 'png|jpg|jpeg|gif|svg|webp|ico|mp3|wav|mp4|pdf|woff2?|ttf|css|js';
+
+function indexarArquivos(dir, base, mapa) {
+  for (const it of fs.readdirSync(dir, { withFileTypes: true })) {
+    const completo = path.join(dir, it.name);
+    const rel = (base ? base + '/' : '') + it.name;
+    if (it.isDirectory()) indexarArquivos(completo, rel, mapa);
+    else mapa.set(rel.toLowerCase(), rel);
+  }
+  return mapa;
+}
+
+function corrigirMaiusculas() {
+  const reais = indexarArquivos(DESTINO, '', new Map());
+  const exatos = new Set(reais.values());
+  const referencias = new Set();
+  const re = new RegExp('[A-Za-z0-9_][A-Za-z0-9_./-]*\.(' + EXT_ARQUIVO + ')', 'gi');
+
+  for (const rel of exatos) {
+    if (!EXT_TEXTO.test(rel)) continue;
+    let texto;
+    try { texto = fs.readFileSync(path.join(DESTINO, rel), 'utf8'); } catch (e) { continue; }
+    let m;
+    while ((m = re.exec(texto))) referencias.add(m[0].replace(/^\.?\//, ''));
+  }
+
+  // Indice das referencias por nome em minusculas, para achar o par do arquivo.
+  const refPorMinuscula = new Map();
+  for (const ref of referencias) {
+    const k = ref.toLowerCase();
+    if (!refPorMinuscula.has(k)) refPorMinuscula.set(k, new Set());
+    refPorMinuscula.get(k).add(ref);
+  }
+
+  const renomeados = [];
+  const conflitos = [];
+  for (const rel of exatos) {
+    const pedidas = refPorMinuscula.get(rel.toLowerCase());
+    if (!pedidas || pedidas.has(rel)) continue;      // ninguem pede, ou ja casa
+    if (pedidas.size > 1) { conflitos.push(rel + ' pedido como ' + [...pedidas].join(' e ')); continue; }
+    const alvo = [...pedidas][0];
+
+    // O NTFS nao distingue maiusculas: copiar por cima nao cria arquivo novo e
+    // renomear direto e ignorado. Por isso o desvio por um nome temporario.
+    const de = path.join(DESTINO, rel);
+    const temp = path.join(DESTINO, path.dirname(rel), '__tmp__' + path.basename(rel));
+    const para = path.join(DESTINO, alvo);
+    fs.mkdirSync(path.dirname(para), { recursive: true });
+    fs.renameSync(de, temp);
+    fs.renameSync(temp, para);
+    renomeados.push(rel + '  ->  ' + alvo);
+  }
+
+  if (renomeados.length) {
+    console.log('  maiusculas .. ' + renomeados.length + ' arquivo(s) renomeado(s) para casar com as telas:');
+    for (const r of renomeados.slice(0, 6)) console.log('                ' + r);
+  }
+  for (const c of conflitos) {
+    console.error('  AVISO: ' + c + ' - um host sensivel a maiusculas nao atende os dois.');
+  }
+}
+
+corrigirMaiusculas();
+
 const tamanhoDados = fs.statSync(path.join(pastaSim, 'dados.js')).size;
 console.log('  dados.js .... ' + (tamanhoDados / 1048576).toFixed(1) + ' MB (' +
             Object.keys(projeto.SYMBOLS).length + ' simbolos)');
