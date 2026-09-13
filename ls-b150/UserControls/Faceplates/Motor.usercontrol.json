@@ -1,0 +1,41 @@
+{
+  "parameters": [
+    {
+      "name": "data-tchmi-ibccontrol",
+      "displayName": "IBCControl",
+      "allowSymbolExpressionsInObject": false,
+      "visible": true,
+      "type": "tchmi:project#/definitions/PLC1.DUT_MotorControl",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "IBCControl",
+      "propertySetterName": "setIBCControl",
+      "propertyGetterName": "getIBCControl",
+      "refTo": ""
+    },
+    {
+      "name": "data-tchmi-ibcstatus",
+      "displayName": "IBCStatus",
+      "allowSymbolExpressionsInObject": false,
+      "visible": true,
+      "type": "tchmi:project#/definitions/PLC1.DUT_MotorStatus",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "IBCStatus",
+      "propertySetterName": "setIBCStatus",
+      "propertyGetterName": "getIBCStatus",
+      "refTo": ""
+    }
+  ],
+  "virtualRights": [],
+  "$schema": "./../../../Packages/Beckhoff.TwinCAT.HMI.Framework.12.762.54/runtimes/native1.12-tchmi/Schema/UserControlConfig.Schema.json",
+  "description": ""
+}

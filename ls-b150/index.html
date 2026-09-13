@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LS-B150 — Simulação</title>
+<link rel="icon" href="Images/Favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --fundo:#0B1113;
+    --barra:#131D20;
+    --linha:#233437;
+    --texto:#E6F0ED;
+    --texto-fraco:#94A8A4;
+    --acento:#00E0B8;
+    --altura-barra:44px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;background:var(--fundo);color:var(--texto);overflow:hidden;
+    font-family:"Barlow",system-ui,-apple-system,Segoe UI,sans-serif;
+  }
+
+  /* --- barra de controle: sempre visivel, nunca cobre a IHM --------------- */
+  .barra{
+    height:var(--altura-barra);display:flex;align-items:center;gap:14px;
+    padding:0 14px;background:var(--barra);border-bottom:1px solid var(--linha);
+  }
+  .barra a.voltar{
+    color:var(--texto-fraco);text-decoration:none;font-size:.88rem;
+    display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+  }
+  .barra a.voltar:hover{color:var(--texto)}
+  .barra .nome{
+    font-weight:600;font-size:.92rem;letter-spacing:.02em;
+    padding-left:14px;border-left:1px solid var(--linha);white-space:nowrap;
+  }
+  .barra .espaco{flex:1}
+
+  .modos{display:flex;gap:2px;background:#0E1719;border:1px solid var(--linha);border-radius:5px;padding:3px}
+  .modos button{
+    font-family:inherit;font-size:.8rem;font-weight:600;color:var(--texto-fraco);
+    background:none;border:none;border-radius:3px;padding:5px 12px;cursor:pointer;white-space:nowrap;
+  }
+  .modos button:hover{color:var(--texto)}
+  .modos button[aria-pressed="true"]{background:var(--acento);color:#06211C}
+  .modos button:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+  /* .modos{display:flex} venceria o [hidden] do navegador - precisa ser explicito. */
+  .modos[hidden]{display:none}
+
+  button.reiniciar{
+    font-family:inherit;font-size:.82rem;color:var(--texto-fraco);
+    background:none;border:1px solid var(--linha);border-radius:5px;
+    padding:6px 12px;cursor:pointer;white-space:nowrap;
+  }
+  button.reiniciar:hover{color:var(--texto);border-color:var(--texto-fraco)}
+  button.reiniciar:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+
+  /* --- palco -------------------------------------------------------------- */
+  .palco{
+    height:calc(100% - var(--altura-barra));
+    display:flex;align-items:center;justify-content:center;
+    padding:10px;overflow:hidden;
+  }
+  /* A foto do tablet e um product shot com fundo branco e sombra suave. Num
+     palco escuro ela vira uma caixa branca recortada, entao o palco fica
+     branco no modo tablet - e no modo cheia volta a ser escuro. */
+  body[data-modo="tablet"] .palco{background:#FFF}
+
+  /* A IHM renderiza SEMPRE em 1280x800 (o projeto usa scaleMode "None", ou
+     seja, nao se escala sozinha). Quem escala e esta moldura, com transform
+     uniforme - por isso a proporcao nunca distorce. */
+  /* Fundo preto: quando a IHM nao tem a mesma proporcao da tela do aparelho
+     (a B300 e 4:3 num tablet 16:10), sobra faixa - e ela precisa parecer
+     tela apagada, nao o papel de parede da foto. */
+  .quadro{position:relative;overflow:hidden;background:#000}
+  .quadro iframe{
+    position:absolute;left:0;top:0;border:0;display:block;
+    transform-origin:top left;
+  }
+
+  /* modo tablet: a foto manda no tamanho (calculado em JS - ver escalar()) */
+  body[data-modo="tablet"] .tablet{
+    position:relative;
+    background:url("tablet.jpg") center/contain no-repeat;
+  }
+  body[data-modo="tablet"] .quadro{
+    position:absolute;
+    left:var(--tela-esq);top:var(--tela-topo);
+    width:var(--tela-larg);height:var(--tela-alt);
+  }
+
+  /* modo cheia: o quadro ocupa o palco inteiro, ainda proporcional */
+  body[data-modo="cheia"] .tablet{
+    position:relative;width:100%;height:100%;background:none;
+  }
+  body[data-modo="cheia"] .quadro{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  }
+
+  .aviso-estreito{
+    display:none;color:var(--texto-fraco);font-size:.82rem;white-space:nowrap;
+  }
+  body[data-estreito="1"] .aviso-estreito{display:inline}
+  /* Em telas bem estreitas o aviso nao cabe na barra sem quebrar o layout. */
+  @media (max-width:760px){
+    body[data-estreito="1"] .aviso-estreito{display:none}
+  }
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body data-modo="tablet">
+
+  <div class="barra">
+    <a class="voltar" href="../" id="voltar">&#8592; <span data-t="portal">Portal</span></a>
+    <span class="nome">LS-B150</span>
+    <span class="espaco"></span>
+    <span class="aviso-estreito" data-t="estreito">Tela pequena: exibindo sem o tablet</span>
+    <div class="modos" role="group" id="modos">
+      <button type="button" id="modo-tablet" data-modo="tablet" aria-pressed="true" data-t="tablet">Tablet</button>
+      <button type="button" id="modo-cheia" data-modo="cheia" aria-pressed="false" data-t="cheia">Tela cheia</button>
+    </div>
+    <button type="button" class="reiniciar" id="reiniciar" data-t="reiniciar">Reiniciar</button>
+  </div>
+
+  <div class="palco">
+    <div class="tablet" id="tablet">
+      <div class="quadro" id="quadro">
+        <iframe id="hmi" src="hmi.html" title="LS-B150"></iframe>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  'use strict';
+
+  var CFG = {"id":"ls-b150","nome":"LS-B150","tablet":{"modelo":"Zebra ET40 10\"","foto":"tablet.jpg","fotoLargura":1597,"fotoAltura":1083,"_comentario":"Projeto desenhado em 1280x800, a mesma proporcao da tela do aparelho - encaixa sem sobra.","resolucao":{"largura":1280,"altura":800},"tela":{"esquerda":9.393,"topo":10.157,"largura":81.653,"altura":75.439},"larguraMinima":1200,"alturaMinima":640,"ocupacaoAltura":0.9}};
+
+  var TEXTOS = {
+    pt:{ portal:'Portal', tablet:'Tablet', cheia:'Tela cheia', reiniciar:'Reiniciar',
+         estreito:'Tela pequena: exibindo sem o tablet',
+         confirmar:'Reiniciar a simulação? Tudo o que você alterou será perdido.' },
+    es:{ portal:'Portal', tablet:'Tablet', cheia:'Pantalla completa', reiniciar:'Reiniciar',
+         estreito:'Pantalla pequeña: mostrando sin la tableta',
+         confirmar:'¿Reiniciar la simulación? Se perderá todo lo que usted cambió.' },
+    en:{ portal:'Portal', tablet:'Tablet', cheia:'Full screen', reiniciar:'Reset',
+         estreito:'Small screen: showing without the tablet',
+         confirmar:'Reset the simulation? Everything you changed will be lost.' }
+  };
+
+  var CHAVE_MODO = 'simulacao:' + CFG.id + ':modo';
+  var CHAVE_IDIOMA = 'simulacao:idioma';
+
+  var corpo = document.body;
+  var tablet = document.getElementById('tablet');
+  var quadro = document.getElementById('quadro');
+  var hmi = document.getElementById('hmi');
+
+  function guardado(chave, padrao){
+    try { return localStorage.getItem(chave) || padrao; } catch(e){ return padrao; }
+  }
+
+  var idioma = guardado(CHAVE_IDIOMA, 'pt');
+  if (!TEXTOS[idioma]) idioma = 'pt';
+  var t = TEXTOS[idioma];
+  document.documentElement.lang = idioma === 'pt' ? 'pt-BR' : idioma;
+  document.querySelectorAll('[data-t]').forEach(function(el){
+    var k = el.getAttribute('data-t');
+    if (t[k]) el.textContent = t[k];
+  });
+
+  // A moldura so faz sentido com espaco: abaixo disso o tablet deixaria a IHM
+  // minuscula, entao caimos para tela cheia e escondemos a opcao.
+  function cabeMoldura(){
+    return window.innerWidth >= CFG.tablet.larguraMinima &&
+           window.innerHeight >= CFG.tablet.alturaMinima;
+  }
+
+  var modoEscolhido = guardado(CHAVE_MODO, 'tablet');
+  if (modoEscolhido !== 'cheia') modoEscolhido = 'tablet';
+
+  // O portal tem um link "reiniciar" que chega aqui como ?reset=1. Quem guarda
+  // o estado e a IHM, dentro do iframe, entao repassamos o pedido para ela.
+  if (/[?&]reset=1/.test(window.location.search)) {
+    try { localStorage.removeItem('simulacao:' + CFG.id + ':estado'); } catch(e){}
+    hmi.setAttribute('src', 'hmi.html?reset=1');
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+  }
+
+  function aplicar(){
+    var estreito = !cabeMoldura();
+    var modo = (estreito || modoEscolhido === 'cheia') ? 'cheia' : 'tablet';
+
+    corpo.setAttribute('data-modo', modo);
+    corpo.setAttribute('data-estreito', estreito ? '1' : '0');
+    document.getElementById('modos').hidden = estreito;
+
+    document.querySelectorAll('#modos button').forEach(function(b){
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-modo') === modo));
+    });
+
+    if (modo === 'tablet') {
+      quadro.style.setProperty('--tela-esq', CFG.tablet.tela.esquerda + '%');
+      quadro.style.setProperty('--tela-topo', CFG.tablet.tela.topo + '%');
+      quadro.style.setProperty('--tela-larg', CFG.tablet.tela.largura + '%');
+      quadro.style.setProperty('--tela-alt', CFG.tablet.tela.altura + '%');
+      quadro.style.width = ''; quadro.style.height = '';
+    }
+
+    escalar();
+  }
+
+  // Escala uniforme: um unico fator para largura e altura. E o que garante a
+  // proporcao 1280x800 em qualquer tamanho de janela.
+  function escalar(){
+    var lg = CFG.tablet.resolucao.largura;
+    var al = CFG.tablet.resolucao.altura;
+    hmi.style.width = lg + 'px';
+    hmi.style.height = al + 'px';
+
+    var modo = corpo.getAttribute('data-modo');
+    var palco = document.querySelector('.palco').getBoundingClientRect();
+    var caixa;
+
+    if (modo === 'tablet') {
+      // A foto ocupa o maior retangulo que cabe no palco mantendo a proporcao
+      // dela; o vao da tela e uma porcentagem fixa desse retangulo.
+      var prop = CFG.tablet.fotoLargura / CFG.tablet.fotoAltura;
+      var largura = Math.min(palco.width, palco.height * prop);
+      tablet.style.width = Math.floor(largura) + 'px';
+      tablet.style.height = Math.floor(largura / prop) + 'px';
+      caixa = quadro.getBoundingClientRect();
+    } else {
+      tablet.style.width = ''; tablet.style.height = '';
+      var k0 = Math.min(palco.width / lg, palco.height / al);
+      quadro.style.width = Math.round(lg * k0) + 'px';
+      quadro.style.height = Math.round(al * k0) + 'px';
+      caixa = { width: lg * k0, height: al * k0 };
+    }
+
+    if (!caixa.width || !caixa.height) return;
+    var k = Math.min(caixa.width / lg, caixa.height / al);
+    hmi.style.transform = 'scale(' + k + ')';
+  }
+
+  document.querySelectorAll('#modos button').forEach(function(b){
+    b.addEventListener('click', function(){
+      modoEscolhido = b.getAttribute('data-modo');
+      try { localStorage.setItem(CHAVE_MODO, modoEscolhido); } catch(e){}
+      aplicar();
+    });
+  });
+
+  document.getElementById('reiniciar').addEventListener('click', function(){
+    if (!window.confirm(t.confirmar)) return;
+    try { localStorage.removeItem('simulacao:' + CFG.id + ':estado'); } catch(e){}
+    hmi.src = 'hmi.html?reset=1&t=' + Date.now();
+  });
+
+  window.addEventListener('resize', aplicar);
+  aplicar();
+  // O iframe pode terminar de montar depois; reescala por garantia.
+  hmi.addEventListener('load', escalar);
+})();
+</script>
+</body>
+</html>

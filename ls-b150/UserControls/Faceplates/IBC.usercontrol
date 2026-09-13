@@ -1,0 +1,151 @@
+<div id="IBC" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControl" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-height="100" data-tchmi-width-unit="%" data-tchmi-height-unit="%" data-tchmi-creator-viewport-width="423" data-tchmi-creator-viewport-height="492">
+
+<div id="imIBC" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-zindex="0" data-tchmi-fallback-image="Images/Equipments/IBC/IBC.png" data-tchmi-state="%pp%IBCStatus::Value%/pp%" data-tchmi-height="90" data-tchmi-height-unit="%" data-tchmi-width="100" data-tchmi-width-unit="%">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": "%f%1%/f%",
+    "stateIcon": "Images/Equipments/IBC/IBC_ErrorState.png"
+  },
+  {
+    "state": "%f%2%/f%",
+    "stateIcon": "Images/Equipments/IBC/IBC_ErrorState.png"
+  },
+  {
+    "state": "%f%3%/f%",
+    "stateIcon": "Images/Equipments/IBC/IBC.png"
+  },
+  {
+    "state": "%f%4%/f%",
+    "stateIcon": "Images/Equipments/IBC/IBC_RunState.png"
+  },
+  {
+    "state": "%f%5%/f%",
+    "stateIcon": "Images/Equipments/IBC/IBC.png"
+  },
+  {
+    "state": "%f%6%/f%",
+    "stateIcon": "Images/Equipments/IBC/IBC_RunState.png"
+  },
+  {
+    "state": "%f%7%/f%",
+    "stateIcon": "Images/Equipments/IBC/IBC.png"
+  },
+  {
+    "state": "%f%8%/f%",
+    "stateIcon": "Images/Equipments/IBC/IBC_RunState.png"
+  },
+  {
+    "state": "%f%9%/f%",
+    "stateIcon": "Images/Equipments/IBC/IBC_RunState.png"
+  },
+  {
+    "state": "%f%10%/f%",
+    "stateIcon": "Images/Equipments/IBC/IBC.png"
+  }
+]
+</script>
+
+
+
+
+</div>
+<div id="imIBCStatus" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-left="30" data-tchmi-left-unit="%" data-tchmi-top="30" data-tchmi-top-unit="%" data-tchmi-right="30" data-tchmi-right-unit="%" data-tchmi-bottom="30" data-tchmi-bottom-unit="%" data-tchmi-state="%pp%IBCStatus::Value%/pp%" data-tchmi-zindex="1" data-tchmi-fallback-image="Images/AnimatedIcons/Emergence.svg">
+
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": "%f%1%/f%",
+    "stateIcon": "Images/AnimatedIcons/Emergence.svg"
+  },
+  {
+    "state": "%f%2%/f%",
+    "stateIcon": "Images/AnimatedIcons/Emergence.svg"
+  },
+  {
+    "state": "%f%3%/f%",
+    "stateIcon": "Images/AnimatedIcons/Maintenance.svg"
+  },
+  {
+    "state": "%f%4%/f%",
+    "stateIcon": ""
+  },
+  {
+    "state": "%f%5%/f%",
+    "stateIcon": ""
+  },
+  {
+    "state": "%f%6%/f%",
+    "stateIcon": ""
+  },
+  {
+    "state": "%f%7%/f%",
+    "stateIcon": ""
+  },
+  {
+    "state": "%f%8%/f%",
+    "stateIcon": ""
+  },
+  {
+    "state": "%f%9%/f%",
+    "stateIcon": ""
+  },
+  {
+    "state": "%f%10%/f%",
+    "stateIcon": ""
+  }
+]
+</script>
+</div>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "IBC.onPressed",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.B120_HMI.PopUpDyn",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "1"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+            "value": {
+              "path": "UserControls/Equipments/ATV320.usercontrol",
+              "attributes": {
+                "data-tchmi-control": "%pp%IBCControl%/pp%",
+                "data-tchmi-status": "%pp%IBCStatus%/pp%"
+              }
+            }
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 60.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 60.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ClassNameList",
+            "value": [
+              "fadein"
+            ]
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>

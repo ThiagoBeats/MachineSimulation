@@ -1,0 +1,129 @@
+<div id="Valve3V" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControl" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-height="100" data-tchmi-width-unit="%" data-tchmi-height-unit="%" data-tchmi-creator-viewport-width="500" data-tchmi-creator-viewport-height="500">
+<div id="imV3Way" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-fallback-image="Images/Equipments/Valves/V3W_H1.svg" data-tchmi-zindex="3" data-tchmi-state="%pp%Status::Value%/pp%">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 1,
+    "stateIcon": "Images/Equipments/Valves/V3W_Fail.svg"
+  },
+  {
+    "state": 2,
+    "stateIcon": "Images/Equipments/Valves/V3W_Fail.svg"
+  },
+  {
+    "state": 3,
+    "stateIcon": "Images/Equipments/Valves/V3W_Maintenance.svg"
+  },
+  {
+    "state": 4,
+    "stateIcon": "Images/Equipments/Valves/V3W_H1.svg"
+  },
+  {
+    "state": 5,
+    "stateIcon": "Images/Equipments/Valves/V3W_H2.svg"
+  },
+  {
+    "state": 6,
+    "stateIcon": "Images/Equipments/Valves/V3W_H2_OPENING.svg"
+  },
+  {
+    "state": 7,
+    "stateIcon": "Images/Equipments/Valves/V3W_H2.svg"
+  },
+  {
+    "state": 8,
+    "stateIcon": "Images/Equipments/Valves/V3W_H2_OPENING.svg"
+  },
+  {
+    "state": "%f%9%/f%",
+    "stateIcon": "Images/Equipments/Valves/V3W_H1.svg"
+  },
+  {
+    "state": "%f%10%/f%",
+    "stateIcon": "Images/Equipments/Valves/V3W_H2.svg"
+  },
+  {
+    "state": "%f%11%/f%",
+    "stateIcon": "Images/Equipments/Valves/V3W_H2_OPENING.svg"
+  },
+  {
+    "state": "%f%12%/f%",
+    "stateIcon": "Images/Equipments/Valves/V3W_Fail.svg"
+  },
+  {
+    "state": "%f%13%/f%",
+    "stateIcon": "Images/Equipments/Valves/V3W_H1.svg"
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "imV3Way.onPressed",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.B120_HMI.PopUpDyn",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "1"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+            "value": {
+              "path": "UserControls/Equipments/Valve.usercontrol",
+              "attributes": {
+                "data-tchmi-control": "%pp%Control%/pp%",
+                "data-tchmi-status": "%pp%Status%/pp%",
+                "data-tchmi-threewayvalve": true
+              }
+            }
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 60.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 60.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ClassNameList",
+            "value": [
+              "fadein"
+            ]
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-transform" type="application/json">
+[
+  {
+    "transformType": "Rotate",
+    "angle": -90.0
+  }
+]
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+[
+  "noDrag"
+]
+</script>
+</div>
+</div>

@@ -1,0 +1,843 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "MotorStarter_-_Copy": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Equipments\\Valve.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/MotorStarter_-_Copy"
+    },
+    "MotorStarter_-_Copy_0": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Equipments\\ATV320.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/MotorStarter_-_Copy_0"
+    },
+    "PLC1.DUT_MotorControl": {
+      "properties": {
+        "Ack": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "comment": "Reseta erros",
+              "propertyOrder": 6
+            }
+          ]
+        },
+        "Bypass": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "comment": "Bypass",
+              "propertyOrder": 5
+            }
+          ]
+        },
+        "Maintenance": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "comment": "Coloca em manutenção",
+              "propertyOrder": 4
+            }
+          ]
+        },
+        "ManualOff": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "comment": "Desliga manualmente",
+              "propertyOrder": 2
+            }
+          ]
+        },
+        "ManualOn": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "comment": "Acionamento manualmente",
+              "propertyOrder": 1
+            }
+          ]
+        },
+        "ManualSpeed": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/REAL"
+            },
+            {
+              "comment": "Velocidade manual",
+              "propertyOrder": 8
+            }
+          ]
+        },
+        "ResetCounters": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "comment": "Reseta contadores",
+              "propertyOrder": 7
+            }
+          ]
+        },
+        "Reverse": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "comment": "Modo reverso",
+              "propertyOrder": 3
+            }
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "MotorStarter": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\MotorStarter.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/MotorStarter"
+    },
+    "PLC1.DUT_MotorStatus": {
+      "properties": {
+        "ActualSpeed": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/REAL"
+            },
+            {
+              "comment": "Velocidade atual do motor",
+              "propertyOrder": 9
+            }
+          ]
+        },
+        "AutoMode": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "comment": "Motor em modo automático",
+              "propertyOrder": 8
+            }
+          ]
+        },
+        "Error": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "comment": "Motor em erro",
+              "propertyOrder": 7
+            }
+          ]
+        },
+        "ErrorCounter": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/DINT"
+            },
+            {
+              "comment": "Contador de erros",
+              "propertyOrder": 5
+            }
+          ]
+        },
+        "Horimeter": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/DINT"
+            },
+            {
+              "comment": "Horimetro",
+              "propertyOrder": 4
+            }
+          ]
+        },
+        "Ready": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "comment": "Motor pronto para rodar",
+              "propertyOrder": 2
+            }
+          ]
+        },
+        "Running": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "comment": "Rodando",
+              "propertyOrder": 3
+            }
+          ]
+        },
+        "SwitchCounter": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/DINT"
+            },
+            {
+              "comment": "Contador de acionamentos do motor",
+              "propertyOrder": 6
+            }
+          ]
+        },
+        "Value": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/INT"
+            },
+            {
+              "comment": "Valor do status do motor",
+              "propertyOrder": 1
+            }
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "PLC1.DUT_ValveControl": {
+      "properties": {
+        "Ack": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "propertyOrder": 4
+            }
+          ]
+        },
+        "Bypass": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "propertyOrder": 5
+            }
+          ]
+        },
+        "Close": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "propertyOrder": 2
+            }
+          ]
+        },
+        "Maintenance": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "propertyOrder": 3
+            }
+          ]
+        },
+        "Open": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "propertyOrder": 1
+            }
+          ]
+        },
+        "ResetCounters": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "propertyOrder": 6
+            }
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "PLC1.DUT_ValveStatus": {
+      "properties": {
+        "Closed": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "propertyOrder": 4
+            }
+          ]
+        },
+        "Closing": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "propertyOrder": 6
+            }
+          ]
+        },
+        "Error": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "propertyOrder": 7
+            }
+          ]
+        },
+        "ErrorCounter": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/DINT"
+            },
+            {
+              "propertyOrder": 9
+            }
+          ]
+        },
+        "Opened": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "propertyOrder": 3
+            }
+          ]
+        },
+        "Opening": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "propertyOrder": 5
+            }
+          ]
+        },
+        "Ready": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            {
+              "propertyOrder": 2
+            }
+          ]
+        },
+        "SwitchCounter": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/DINT"
+            },
+            {
+              "propertyOrder": 8
+            }
+          ]
+        },
+        "Value": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/INT"
+            },
+            {
+              "propertyOrder": 1
+            }
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "PLC1.BalancesConfiguration": {
+      "properties": {
+        "Powder_01": {
+          "allOf": [
+            {
+              "comment": "Balança dos pós"
+            },
+            {
+              "$ref": "tchmi:project#/definitions/PLC1.DUT_BalanceConfig"
+            }
+          ]
+        },
+        "Powder_02": {
+          "$ref": "tchmi:project#/definitions/PLC1.DUT_BalanceConfig"
+        },
+        "Powder_03": {
+          "$ref": "tchmi:project#/definitions/PLC1.DUT_BalanceConfig"
+        },
+        "Powder_04": {
+          "$ref": "tchmi:project#/definitions/PLC1.DUT_BalanceConfig"
+        },
+        "Powder_05": {
+          "$ref": "tchmi:project#/definitions/PLC1.DUT_BalanceConfig"
+        },
+        "SeedTreater": {
+          "allOf": [
+            {
+              "comment": "Balança da tratadora"
+            },
+            {
+              "$ref": "tchmi:project#/definitions/PLC1.DUT_BalanceConfig"
+            }
+          ]
+        },
+        "Totem_01": {
+          "allOf": [
+            {
+              "comment": "Balanças dos totens de calibração"
+            },
+            {
+              "$ref": "tchmi:project#/definitions/PLC1.DUT_BalanceConfig"
+            }
+          ]
+        },
+        "Totem_02": {
+          "$ref": "tchmi:project#/definitions/PLC1.DUT_BalanceConfig"
+        },
+        "Totem_03": {
+          "$ref": "tchmi:project#/definitions/PLC1.DUT_BalanceConfig"
+        },
+        "Totem_04": {
+          "$ref": "tchmi:project#/definitions/PLC1.DUT_BalanceConfig"
+        },
+        "Totem_05": {
+          "$ref": "tchmi:project#/definitions/PLC1.DUT_BalanceConfig"
+        },
+        "Totem_06": {
+          "$ref": "tchmi:project#/definitions/PLC1.DUT_BalanceConfig"
+        }
+      },
+      "type": "object",
+      "allowMapping": false
+    },
+    "PLC1.DUT_BalanceConfig": {
+      "properties": {
+        "InMax": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/REAL"
+            },
+            {
+              "comment": "Valor da célula de carga com o peso padrão em cima da balança",
+              "propertyOrder": 1
+            }
+          ]
+        },
+        "InMin": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/REAL"
+            },
+            {
+              "comment": "Valor da célula de carga com a balança vazia",
+              "propertyOrder": 2
+            }
+          ]
+        },
+        "OutMax": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/REAL"
+            },
+            {
+              "comment": "Peso padrão colocado para calibração em kg",
+              "propertyOrder": 3
+            }
+          ]
+        },
+        "OutMin": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/REAL"
+            },
+            {
+              "comment": "Peso da balança vazia (geralmente é 0)",
+              "propertyOrder": 4
+            }
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "CalibrationStep1": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\BalanceCalibration\\CalibrationStep1.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/CalibrationStep1"
+    },
+    "BalanceCalibration": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\BalanceCalibration\\BalanceCalibration.usercontrol.json",
+      "id": "tchmi:project#/definitions/BalanceCalibration",
+      "type": "object"
+    },
+    "PLC1.DUT_BalanceConfig2": {
+      "properties": {
+        "InMax": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/REAL"
+            },
+            {
+              "comment": "Valor da célula de carga com o peso padrão em cima da balança",
+              "propertyOrder": 1
+            }
+          ]
+        },
+        "InMin": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/REAL"
+            },
+            {
+              "comment": "Valor da célula de carga com a balança vazia",
+              "propertyOrder": 2
+            }
+          ]
+        },
+        "OutMax": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/REAL"
+            },
+            {
+              "comment": "Peso padrão colocado para calibração em kg",
+              "propertyOrder": 3
+            }
+          ]
+        },
+        "OutMin": {
+          "allOf": [
+            {
+              "$ref": "tchmi:general#/definitions/REAL"
+            },
+            {
+              "comment": "Peso da balança vazia (geralmente é 0)",
+              "propertyOrder": 4
+            }
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "PeristalticPump": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Faceplates\\PeristalticPump.usercontrol.json",
+      "id": "tchmi:project#/definitions/PeristalticPump",
+      "type": "object"
+    },
+    "Valve2V": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Faceplates\\Valve2V.usercontrol.json",
+      "id": "tchmi:project#/definitions/Valve2V",
+      "type": "object"
+    },
+    "Valve3V": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Faceplates\\Valve3V.usercontrol.json",
+      "id": "tchmi:project#/definitions/Valve3V",
+      "type": "object"
+    },
+    "Calculadora": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Utilities\\Calculadora.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/Calculadora"
+    },
+    "RecipeRow": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Others\\LiquidRow.usercontrol.json",
+      "id": "tchmi:project#/definitions/RecipeRow",
+      "type": "object"
+    },
+    "UserControl1": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Others\\LiquidLine.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/UserControl1"
+    },
+    "LiquidRow": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Others\\LiquidRow.usercontrol.json",
+      "id": "tchmi:project#/definitions/LiquidRow",
+      "type": "object"
+    },
+    "LiquidRow_-_Copy": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Others\\PowderRow.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/LiquidRow_-_Copy"
+    },
+    "LiquidRow_-_Copy_0": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Others\\PowderRow.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/LiquidRow_-_Copy_0"
+    },
+    "UserControl1_0": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Others\\Consumption.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/UserControl1_0"
+    },
+    "UserControl1_1": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Others\\UserControl1.usercontrol.json",
+      "id": "tchmi:project#/definitions/UserControl1_1",
+      "type": "object"
+    },
+    "UserControl1_2": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Others\\UserControl1.usercontrol.json",
+      "id": "tchmi:project#/definitions/UserControl1_2",
+      "type": "object"
+    },
+    "Consumption": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Others\\Consumption.usercontrol.json",
+      "id": "tchmi:project#/definitions/Consumption",
+      "type": "object"
+    },
+    "LiquidLine": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Others\\LiquidLine.usercontrol.json",
+      "id": "tchmi:project#/definitions/LiquidLine",
+      "type": "object"
+    },
+    "LiquidCalibration": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Calibration\\LiquidCalibration.usercontrol.json",
+      "id": "tchmi:project#/definitions/LiquidCalibration",
+      "type": "object"
+    },
+    "LiquidCalibration_-_Copy": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Calibration\\PowderCalibration.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/LiquidCalibration_-_Copy"
+    },
+    "PowderCalibration": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Calibration\\PowderCalibration.usercontrol.json",
+      "id": "tchmi:project#/definitions/PowderCalibration",
+      "type": "object"
+    },
+    "ReceiverBox": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Peripherals\\ReceiverBox.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/ReceiverBox"
+    },
+    "Elevator": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Peripherals\\Elevator.usercontrol.json",
+      "id": "tchmi:project#/definitions/Elevator",
+      "type": "object"
+    },
+    "B130": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Peripherals\\B130.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/B130"
+    },
+    "BigBag": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Peripherals\\BigBag.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/BigBag"
+    },
+    "ATV320": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Equipments\\ATV320.usercontrol.json",
+      "id": "tchmi:project#/definitions/ATV320",
+      "type": "object"
+    },
+    "IBC": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Faceplates\\IBC.usercontrol.json",
+      "id": "tchmi:project#/definitions/IBC",
+      "type": "object"
+    },
+    "PowderLine": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Others\\PowderLine.usercontrol.json",
+      "id": "tchmi:project#/definitions/PowderLine",
+      "type": "object"
+    },
+    "IBC_-_Copy": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Faceplates\\Motor.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/IBC_-_Copy"
+    },
+    "WeightRegistration": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Others\\WeightRegistration.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/WeightRegistration"
+    },
+    "ATV320_-_Copy": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Equipments\\CFCG.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/ATV320_-_Copy"
+    },
+    "CFCG": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Equipments\\CFCG.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/CFCG"
+    },
+    "LatenessOnBalanceInfeed": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Others\\LatenessOnBalanceInfeed.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/LatenessOnBalanceInfeed"
+    },
+    "UserManual": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Others\\UserManual.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/UserManual"
+    },
+    "Logic": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Others\\Logic.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/Logic"
+    },
+    "BitShow": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Faceplates\\Logic\\BitShow.usercontrol.json",
+      "id": "tchmi:project#/definitions/BitShow",
+      "type": "object"
+    },
+    "LastProductions": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Others\\LastProductions.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/LastProductions"
+    },
+    "PowderDoser": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Equipments\\PowderDoser.usercontrol.json",
+      "id": "tchmi:project#/definitions/PowderDoser",
+      "type": "object"
+    },
+    "BalanceCalibration_-_Copy": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UserControls\\Calibration\\MainBalanceCalibration.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/BalanceCalibration_-_Copy"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+<div id="WeightRegistration" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControl" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-height="100" data-tchmi-width-unit="%" data-tchmi-height-unit="%" data-tchmi-creator-viewport-width="600" data-tchmi-creator-viewport-height="400">
+
+<div id="TcHmiBarChart" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiBarChart" data-tchmi-height="400" data-tchmi-height-unit="px" data-tchmi-left="1" data-tchmi-left-unit="px" data-tchmi-top="10" data-tchmi-top-unit="px" data-tchmi-width="600" data-tchmi-width-unit="px" data-tchmi-x-axis-name="x Axis" data-tchmi-y-axis-name="Peso" data-tchmi-y-axis-unit="kg" data-tchmi-y-main-tick-min-value="%f%%s%PLC1.MainBalance.WeightRegister.LowerValue%/s% - 5%/f%" data-tchmi-y-sub-tick-steps="1" data-tchmi-y-main-tick-max-value="%f%%s%PLC1.MainBalance.WeightRegister.HigherValue%/s% + 5%/f%" data-tchmi-bar-graph-data="%s%PLC1.MainBalance.WeightRegister.Register%/s%" data-tchmi-y-main-tick-steps="11" data-tchmi-show-y-axis-name="false" data-tchmi-show-x-axis="true" data-tchmi-x-show-labels="true" data-tchmi-show-grid="true" data-tchmi-grid-show-horizontal-lines="true" data-tchmi-grid-line-width="1" data-tchmi-grid-line-style="Dotted" data-tchmi-subgrid-show-horizontal-lines="false" data-tchmi-x-main-tick-steps="21">
+<script data-tchmi-target-attribute="data-tchmi-bar-graph-data" type="application/json">
+[
+  [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90,
+    100
+  ],
+  [
+    100,
+    90,
+    80,
+    70,
+    60,
+    50,
+    40,
+    30,
+    20,
+    10,
+    0
+  ]
+]
+</script>
+<script data-tchmi-target-attribute="data-tchmi-bar-graph-descriptions" type="application/json">
+[
+  {
+    "barColor": "%tr%Control::TcHmi.Controls.Beckhoff.TcHmiBarChart::DefaultGraphColor%/tr%",
+    "legendName": "data0"
+  },
+  {
+    "barColor": "%tr%Control::TcHmi.Controls.Beckhoff.TcHmiBarChart::DefaultGraphColor%/tr%",
+    "legendName": "data1"
+  }
+]
+</script>
+
+</div>
+</div>

@@ -1,0 +1,16 @@
+{
+    "$schema": "../TcHmiFramework/Schema/Manifest.Schema.json",
+    "apiVersion": 1,
+    "modules": [
+        {
+            "type": "Package",
+            "nugetId": "Beckhoff.TwinCAT.HMI.Framework"
+        },
+        {
+            "type": "Control",
+            "basePath": "./TcHmiPdfViewer",
+            "descriptionFile": "Description.json",
+            "toolboxCategory": "Beckhoff.TwinCAT.HMI.Controls:230"
+        }
+    ]
+}

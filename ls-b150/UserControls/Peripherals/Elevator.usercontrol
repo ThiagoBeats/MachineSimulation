@@ -1,0 +1,238 @@
+<div id="Elevator" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControl" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-height="90" data-tchmi-width-unit="%" data-tchmi-height-unit="%" data-tchmi-creator-viewport-width="585" data-tchmi-creator-viewport-height="800">
+<div id="TcHmiStateImage_3" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-fallback-image="Images/Machine/B130_Elevator.png" data-tchmi-state="%pp%MotorStatus::Value|BindingMode=TwoWay%/pp%" data-tchmi-bottom="9.1" data-tchmi-bottom-unit="%">
+
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": "%f%0%/f%",
+    "stateIcon": "Images/Machine/B130_Elevator.png"
+  },
+  {
+    "state": "%f%1%/f%",
+    "stateIcon": "Images/Machine/B130_Elevator_RED.png"
+  },
+  {
+    "state": "%f%2%/f%",
+    "stateIcon": "Images/Machine/B130_Elevator_RED.png"
+  },
+  {
+    "state": "%f%3%/f%",
+    "stateIcon": "Images/Machine/B130_Elevator_MANUT.png"
+  },
+  {
+    "state": "%f%4%/f%",
+    "stateIcon": "Images/Machine/B130_Elevator_GREEN.png"
+  },
+  {
+    "state": "%f%5%/f%",
+    "stateIcon": "Images/Machine/B130_Elevator.png"
+  },
+  {
+    "state": "%f%6%/f%",
+    "stateIcon": "Images/Machine/B130_Elevator_GREEN.png"
+  },
+  {
+    "state": "%f%7%/f%",
+    "stateIcon": "Images/Machine/B130_Elevator.png"
+  },
+  {
+    "state": "%f%8%/f%",
+    "stateIcon": "Images/Machine/B130_Elevator_GREEN.png"
+  },
+  {
+    "state": "%f%9%/f%",
+    "stateIcon": "Images/Machine/B130_Elevator_GREEN.png"
+  },
+  {
+    "state": "%f%10%/f%",
+    "stateIcon": "Images/Machine/B130_Elevator.png"
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiStateImage_3.onPressed",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": false,
+        "fn": "TcHmi.Functions.B120_HMI.PopUpDyn",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "1"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+            "value": {
+              "path": "UserControls/Equipments/ATV320.usercontrol",
+              "attributes": {
+                "data-tchmi-pump": true,
+                "data-tchmi-elevator": false
+              }
+            }
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 60.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 60.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ClassNameList",
+            "value": null
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "Function",
+        "active": false,
+        "fn": "TcHmi.Functions.B120_HMI.PopUpDyn",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "1"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+            "value": {
+              "path": "UserControls/Equipments/ATV320.usercontrol",
+              "attributes": {
+                "data-tchmi-control": "%pp%Control%/pp%",
+                "data-tchmi-status": "%pp%Status%/pp%",
+                "data-tchmi-pump": true
+              }
+            }
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 60.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 60.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ClassNameList",
+            "value": [
+              "fadein"
+            ]
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiContainer_20" data-tchmi-type="TcHmi.Controls.System.TcHmiContainer" data-tchmi-left="60.7" data-tchmi-left-unit="%" data-tchmi-top-unit="%" data-tchmi-right="7" data-tchmi-right-unit="%" data-tchmi-height="10" data-tchmi-height-unit="%" data-tchmi-bottom="80" data-tchmi-bottom-unit="%">
+
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+[
+  "clSelectedHighlight"
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 2,
+  "right": 2,
+  "top": 2,
+  "bottom": 2,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+{
+  "topLeft": 5.0,
+  "topRight": 5.0,
+  "bottomLeft": 5.0,
+  "bottomRight": 5.0,
+  "topLeftUnit": "px",
+  "topRightUnit": "px",
+  "bottomLeftUnit": "px",
+  "bottomRightUnit": "px"
+}
+</script>
+
+
+<div data-tchmi-grid-row-index="1" data-tchmi-grid-column-index="0" id="tbTotemScale_15" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="%" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="120" data-tchmi-text-font-size-unit="%" data-tchmi-left="0" data-tchmi-left-unit="%" data-tchmi-right="0" data-tchmi-right-unit="%" data-tchmi-bottom="0" data-tchmi-bottom-unit="%" data-tchmi-text="%f%%pp%MotorStatus::ActualSpeed%/pp% + ' RPM'%/f%" data-tchmi-creator-visibility="Visible">
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+[
+  "clBGContainer",
+  "clSelectedHighlight"
+]
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-text" type="application/json">
+{} 
+</script>
+</div>
+<div id="tbSprinkler_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="%" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="120" data-tchmi-text-font-size-unit="%" data-tchmi-left="0" data-tchmi-left-unit="%" data-tchmi-right="0" data-tchmi-right-unit="%" data-tchmi-text="ELEVADOR" data-tchmi-top="0" data-tchmi-top-unit="%" data-tchmi-creator-visibility="Visible">
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+[
+  "clBtGreen"
+]
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+</div>

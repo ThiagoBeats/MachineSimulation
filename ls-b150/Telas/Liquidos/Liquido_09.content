@@ -1,0 +1,6 @@
+<div id="Liquido_9" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-height-mode="Value" data-tchmi-creator-viewport-width="1920" data-tchmi-creator-viewport-height="800" data-tchmi-zindex="3">
+<div id="ucLiquid1_8" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-target-user-control="UserControls/Others/LiquidLine.usercontrol" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-linenumber="1"  data-tchmi-pumpstatus="%s%PLC1.LiquidCircuit_01.Pump.Status%/s%" data-tchmi-valvecontrol1="%s%PLC1.LiquidCircuit_01.Valve1.Control%/s%" data-tchmi-valvestatus1="%s%PLC1.LiquidCircuit_01.Valve1.Status%/s%"  data-tchmi-pumpcontrol="%s%PLC1.LiquidCircuit_01.Pump.Control%/s%" data-tchmi-flowmeter="%s%PLC1.Flowmeters.FIT_101.OUT%/s%">
+
+
+</div>
+</div>

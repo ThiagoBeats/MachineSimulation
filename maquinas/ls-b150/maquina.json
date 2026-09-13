@@ -1,0 +1,41 @@
+{
+  "id": "ls-b150",
+  "modelo": "LS-B150",
+  "fabricante": "LS do Brasil",
+  "_origem": "A pasta e os arquivos do projeto ainda se chamam B120 (linhagem do projeto base), mas a maquina e a LS-B150.",
+  "binPath": "C:/Users/Asus/Desktop/Meus Projetos/01_Máquinas de Tratamento/LS-B130/Clientes/02_Codepa/01_CLP/B120/B120_HMI/B150/B120/B120_HMI/bin",
+  "serverConfigPath": "C:/Users/Asus/Desktop/Meus Projetos/01_Máquinas de Tratamento/LS-B130/Clientes/02_Codepa/01_CLP/B120/B120_HMI/B150/B120/B120_HMI/Server/TcHmiSrv/TcHmiSrv.Config.default.json",
+  "tf2000Path": "C:/TwinCAT/Functions/TF2000-HMI-Server",
+  "tablet": {
+    "modelo": "Zebra ET40 10\"",
+    "foto": "tablet.jpg",
+    "fotoLargura": 1597,
+    "fotoAltura": 1083,
+    "_comentario": "Projeto desenhado em 1280x800, a mesma proporcao da tela do aparelho - encaixa sem sobra.",
+    "resolucao": { "largura": 1280, "altura": 800 },
+    "tela": { "esquerda": 9.393, "topo": 10.157, "largura": 81.653, "altura": 75.439 },
+    "larguraMinima": 1200,
+    "alturaMinima": 640,
+    "ocupacaoAltura": 0.9
+  },
+  "textos": {
+    "pt": {
+      "nome": "LS-B150",
+      "tipo": "Tratamento de sementes",
+      "descricao": "Tratadora de sementes da linha B150. Mesma família de software da B130: receitas, consumo, balança e periféricos.",
+      "recursos": ["Receitas: criar, salvar e excluir", "Histórico de consumo", "Marcha com pré-marcha de 3 s"]
+    },
+    "es": {
+      "nome": "LS-B150",
+      "tipo": "Tratamiento de semillas",
+      "descricao": "Tratadora de semillas de la línea B150. Misma familia de software que la B130: recetas, consumo, balanza y periféricos.",
+      "recursos": ["Recetas: crear, guardar y eliminar", "Historial de consumo", "Marcha con pre-marcha de 3 s"]
+    },
+    "en": {
+      "nome": "LS-B150",
+      "tipo": "Seed treatment",
+      "descricao": "B150 line seed treater. Same software family as the B130: recipes, consumption, scale and peripherals.",
+      "recursos": ["Recipes: create, save and delete", "Consumption history", "Start with 3 s pre-run"]
+    }
+  }
+}

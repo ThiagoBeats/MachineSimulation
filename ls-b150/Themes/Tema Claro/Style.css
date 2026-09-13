@@ -1,0 +1,248 @@
+/**
+        About font inclusion in TcHmi
+
+    As a default we include Roboto Condensed (in Fonts folder) as a webfont which will render latin, greek, vietnamese, cyrillic glyphs.
+
+    If Roboto does not render the glyphs we use some preinstalled fallback
+    'Microsoft YaHei' (Windows), 'Hiragino Sans GB' (macOS/iOS), 'Noto Sans CJK SC/TC' (Android), 'WenQuanYi Micro Hei' (Linux) renders chinese
+    'Meiryo' (Windows), 'Hiragino Kaku Gothic Pro' (macOS/iOS), 'Noto Sans CJK JP' (Android) renders japanese
+
+    For other fonts you can add the woff files into the TcHmi project and 
+    add a @font-face section yourself.
+    The noto family from Google tries to cover all of the world, is free to use and fits nicely with Roboto
+    see https://www.google.com/get/noto/ and https://fonts.google.com/earlyaccess 
+
+    The font usage is defined in the main CSS file of the active theme (for example Themes/Base/Style.css).
+*/
+
+html { 
+    font-family:RobotoCondensed,
+        'Microsoft YaHei', '微软雅黑', 
+        'Hiragino Sans GB', '冬青黑体',
+        'STXihei', '华文细黑', 
+        'WenQuanYi Micro Hei',
+        'Meiryo', 'メイリオ', 
+        'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ ProN',
+        'Noto Sans CJK SC', 'Noto Sans CJK TC', 'Noto Sans CJK JP', 'Noto Sans CJK KR',
+
+        sans-serif
+        ;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.tchmi-class-transitionl {
+    stroke-dasharray: 300%;
+    stroke-dashoffset: 300%;
+    animation: dash 1s linear forwards;
+}
+
+.tchmi-class-transitionlrev {
+    stroke-dasharray: 300%;
+    stroke-dashoffset: 0%;
+    animation: revdash 1s linear forwards;
+}
+
+.tchmi-class-softAnimation {
+    transition: all 700ms ease;
+}
+
+.tchmi-class-fadein {
+    animation: fade-in 300ms ease;
+}
+
+.tchmi-class-fadeout {
+    animation: fade-out 300ms;
+}
+
+.tchmi-class-spin {
+    animation: spin 2000ms alternate infinite;
+}
+
+.tchmi-class-shake:hover {
+    animation: shake 250ms ease;
+}
+
+.tchmi-class-slideX {
+    animation: slideX-in 500ms ease-out both;
+}
+
+.tchmi-class-slideXrev {
+    animation: slideX-in-rev 500ms ease-out both;
+}
+
+.tchmi-class-slideXout {
+    animation: slideX-out 500ms ease-out both;
+}
+
+.tchmi-class-slideXrevout {
+    animation: slideX-out-rev 500ms ease-out both;
+}
+
+.tchmi-class-slideY {
+    animation: slideY-in 1000ms ease-out both;
+}
+
+.tchmi-class-slideYrev {
+    animation: slideY-in-rev 1000ms ease-out both;
+}
+
+.tchmi-class-slideYout {
+    animation: slideY-out 1000ms ease-out both;
+}
+
+.tchmi-class-slideYrevout {
+    animation: slideY-out-rev 1000ms ease-out both;
+}
+
+@keyframes slideX-in {
+
+    from {
+        transform: translateX(125%);
+        opacity: 0.25;
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes slideX-in-rev {
+    from {
+        transform: translateX(-125%);
+        opacity: 0.25;
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes slideX-out {
+    from {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(125%);
+        opacity: 0.25;
+    }
+}
+
+@keyframes slideX-out-rev {
+    from {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-125%);
+        opacity: 0.25;
+    }
+}
+
+@keyframes slideY-in {
+    from {
+        transform: translateY(125%);
+        opacity: 0.25;
+    }
+    to{
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes slideY-in-rev {
+    from {
+        transform: translateY(-125%);
+        opacity: 0.25;
+    }
+
+    to {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes slideY-out {
+    from {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(125%);
+        opacity: 0.25;
+    }
+}
+
+@keyframes slideY-out-rev {
+    from {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-125%);
+        opacity: 0.25;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0%);
+    }
+    33% {
+        transform: translateX(1%);
+    }
+    66% {
+        transform: translateX(-1%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0%;
+    }
+}
+
+@keyframes revdash {
+    to {
+        stroke-dashoffset: 300%;
+    }
+}

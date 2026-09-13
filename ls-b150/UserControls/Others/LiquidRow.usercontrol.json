@@ -1,0 +1,60 @@
+{
+  "parameters": [
+    {
+      "name": "data-tchmi-line",
+      "displayName": "Line",
+      "allowSymbolExpressionsInObject": false,
+      "visible": true,
+      "type": "tchmi:general#/definitions/INT",
+      "category": "",
+      "description": "Line Number",
+      "defaultValue": 1,
+      "defaultValueInternal": 1,
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "Line",
+      "propertySetterName": "setLine",
+      "propertyGetterName": "getLine",
+      "refTo": ""
+    },
+    {
+      "name": "data-tchmi-linesymbol",
+      "displayName": "LineSymbol",
+      "allowSymbolExpressionsInObject": false,
+      "visible": true,
+      "type": "tchmi:server#/definitions/PLC1.DUT_InjectionVariables",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "LineSymbol",
+      "propertySetterName": "setLineSymbol",
+      "propertyGetterName": "getLineSymbol",
+      "refTo": ""
+    },
+    {
+      "name": "data-tchmi-aux",
+      "displayName": "Aux",
+      "allowSymbolExpressionsInObject": false,
+      "visible": false,
+      "type": "tchmi:general#/definitions/REAL",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": false,
+      "heritable": true,
+      "propertyName": "Aux",
+      "propertySetterName": "setAux",
+      "propertyGetterName": "getAux",
+      "refTo": ""
+    }
+  ],
+  "virtualRights": [],
+  "$schema": "./../../Packages/Beckhoff.TwinCAT.HMI.Framework.12.762.54/runtimes/native1.12-tchmi/Schema/UserControlConfig.Schema.json",
+  "description": ""
+}

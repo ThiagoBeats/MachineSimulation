@@ -1,0 +1,54 @@
+<svg width="60" height="60" viewBox="0 -50 60 160" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* Mapping the vertical background position (y) to transform: translateY() relative to the center (y=30):
+    
+    -100% (Off-screen top) -> translateY(-60px) 
+    50% (Center)          -> translateY(0px)
+    200% (Off-screen bottom)-> translateY(60px)
+    */
+
+    .dot {
+        r: 7.5;
+        fill: #ffffffff;
+        animation-duration: 2s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+    
+    #dot1 { animation-name: l17-dot1; }
+    #dot2 { animation-name: l17-dot2; }
+    #dot3 { animation-name: l17-dot3; }
+
+    @keyframes l17-dot1 {
+      0%    { transform: translateY(-160px); } /* -100% */
+      16.67% { transform: translateY(0px); } /* 50% */
+      33.33% { transform: translateY(0px); } /* 50% */
+      45%, 55% { transform: translateY(0px); } /* 50% */
+      66.67% { transform: translateY(160px); } /* 200% */
+      83.33% { transform: translateY(160px); } /* 200% */
+      100%  { transform: translateY(160px); } /* 200% */
+    }
+    
+    @keyframes l17-dot2 {
+      0%, 16.67% { transform: translateY(-160px); } /* -100% */
+      33.33% { transform: translateY(0px); } /* 50% */
+      45%, 55% { transform: translateY(0px); } /* 50% */
+      66.67% { transform: translateY(0px); } /* 50% */
+      83.33% { transform: translateY(160px); } /* 200% */
+      100%  { transform: translateY(160px); } /* 200% */
+    }
+    
+    @keyframes l17-dot3 {
+      0%, 33.33% { transform: translateY(-160px); } /* -100% */
+      45%, 55% { transform: translateY(0px); } /* 50% */
+      66.67%, 83.33% { transform: translateY(0px); } /* 50% */
+      100%  { transform: translateY(160px); } /* 200% */
+    }
+  </style>
+  
+  <g>
+    <circle cx="7.5" cy="30" id="dot1" class="dot"/>
+    <circle cx="30" cy="30" id="dot2" class="dot"/>
+    <circle cx="52.5" cy="30" id="dot3" class="dot"/>
+  </g>
+</svg>

@@ -1,0 +1,58 @@
+{
+  "parameters": [
+    {
+      "name": "data-tchmi-rawvalue",
+      "displayName": "RawValue",
+      "allowSymbolExpressionsInObject": false,
+      "visible": true,
+      "type": "tchmi:general#/definitions/REAL",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "RawValue",
+      "propertySetterName": "setRawValue",
+      "propertyGetterName": "getRawValue",
+      "refTo": ""
+    },
+    {
+      "name": "data-tchmi-convertedvalue",
+      "displayName": "ConvertedValue",
+      "allowSymbolExpressionsInObject": false,
+      "visible": true,
+      "type": "tchmi:general#/definitions/REAL",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "ConvertedValue",
+      "propertySetterName": "setConvertedValue",
+      "propertyGetterName": "getConvertedValue",
+      "refTo": ""
+    },
+    {
+      "name": "data-tchmi-configparameters",
+      "displayName": "ConfigParameters",
+      "allowSymbolExpressionsInObject": false,
+      "visible": true,
+      "type": "tchmi:project#/definitions/PLC1.DUT_BalanceConfig",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "ConfigParameters",
+      "propertySetterName": "setConfigParameters",
+      "propertyGetterName": "getConfigParameters",
+      "refTo": ""
+    }
+  ],
+  "virtualRights": [],
+  "$schema": "./../../../Packages/Beckhoff.TwinCAT.HMI.Framework.12.762.46/runtimes/native1.12-tchmi/Schema/UserControlConfig.Schema.json",
+  "description": ""
+}

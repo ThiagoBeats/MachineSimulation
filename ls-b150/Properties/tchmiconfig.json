@@ -1,0 +1,1177 @@
+{
+  "$schema": "./../../Packages/Beckhoff.TwinCAT.HMI.Framework.12.762.54/runtimes/native1.12-tchmi/Schema/TchmiConfig.Schema.json",
+  "basePath": "./framework",
+  "scaleMode": "None",
+  "startupView": "Desktop.view",
+  "loginPage": "Default",
+  "tcHmiServer": {
+    "websocketIntervalTime": 500,
+    "websocketTimeout": 20000,
+    "websocketSystemTimeout": 60000,
+    "websocketSubscriptionMode": "Change"
+  },
+  "activeTheme": "Tema Escuro",
+  "themes": {
+    "Base-Dark": {
+      "resources": [
+        {
+          "name": "Themes/Base-Dark/Base-DarkStyle.css",
+          "description": "",
+          "type": "Stylesheet"
+        },
+        {
+          "name": "Themes/Base-Dark/Base-Dark.theme",
+          "description": "",
+          "type": "ThemedValues"
+        }
+      ],
+      "replacesThemeForControls": [],
+      "replacesThemeForPackageComponents": []
+    },
+    "Base": {
+      "resources": [
+        {
+          "name": "Themes/Base/Base.theme",
+          "description": "",
+          "type": "ThemedValues"
+        },
+        {
+          "name": "Themes/Base/BaseStyle.css",
+          "description": "",
+          "type": "Stylesheet"
+        }
+      ],
+      "replacesThemeForControls": [],
+      "replacesThemeForPackageComponents": []
+    },
+    "Tema Claro": {
+      "resources": [
+        {
+          "name": "Themes/Tema Claro/Style.css",
+          "description": "",
+          "type": "Stylesheet"
+        },
+        {
+          "name": "Themes/Tema Claro/Tema Claro.theme",
+          "description": "",
+          "type": "ThemedValues"
+        }
+      ],
+      "replacesThemeForControls": [],
+      "replacesThemeForPackageComponents": []
+    },
+    "Tema Escuro": {
+      "resources": [
+        {
+          "name": "Themes/Tema Escuro/Style.css",
+          "description": "",
+          "type": "Stylesheet"
+        },
+        {
+          "name": "Themes/Tema Escuro/Tema Escuro.theme",
+          "description": "",
+          "type": "ThemedValues"
+        }
+      ],
+      "replacesThemeForControls": [],
+      "replacesThemeForPackageComponents": []
+    }
+  },
+  "dependencyFiles": [
+    {
+      "name": "Fonts/Fonts.css",
+      "description": "",
+      "type": "Stylesheet"
+    },
+    {
+      "name": "Scripts/SoundEffect.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts/PopUp/PopUpAlert.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts/PopUp/PopUpConf.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts/PopUp/PopUpDyn.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts/PopUp/PopUpRecipeSave.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts/PopUp/PopUpLiquidsList.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts/PopUp/PopUpPowderList.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts/PopUp/PopUpSaveRecipe.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts/AlarmSound.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts/AlertSound.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Scripts/MinToHours.js",
+      "description": "",
+      "type": "JavaScript"
+    }
+  ],
+  "userControls": [
+    {
+      "url": "UserControls/Calibration/MainBalanceCalibration.usercontrol"
+    },
+    {
+      "url": "UserControls/Calibration/BalanceCalibration.usercontrol"
+    },
+    {
+      "url": "UserControls/Calibration/PowderCalibration.usercontrol"
+    },
+    {
+      "url": "UserControls/Calibration/LiquidCalibration.usercontrol"
+    },
+    {
+      "url": "UserControls/Equipments/CFCG.usercontrol"
+    },
+    {
+      "url": "UserControls/Equipments/ATV320.usercontrol"
+    },
+    {
+      "url": "UserControls/Equipments/PowderDoser.usercontrol"
+    },
+    {
+      "url": "UserControls/Equipments/Valve.usercontrol"
+    },
+    {
+      "url": "UserControls/Faceplates/Logic/BitShow.usercontrol"
+    },
+    {
+      "url": "UserControls/Faceplates/Motor.usercontrol"
+    },
+    {
+      "url": "UserControls/Faceplates/IBC.usercontrol"
+    },
+    {
+      "url": "UserControls/Faceplates/PeristalticPump.usercontrol"
+    },
+    {
+      "url": "UserControls/Faceplates/Valve2V.usercontrol"
+    },
+    {
+      "url": "UserControls/Faceplates/Valve3V.usercontrol"
+    },
+    {
+      "url": "UserControls/Others/LastProductions.usercontrol"
+    },
+    {
+      "url": "UserControls/Others/LatenessOnBalanceInfeed.usercontrol"
+    },
+    {
+      "url": "UserControls/Others/Logic.usercontrol"
+    },
+    {
+      "url": "UserControls/Others/PowderLine.usercontrol"
+    },
+    {
+      "url": "UserControls/Others/LiquidLine.usercontrol"
+    },
+    {
+      "url": "UserControls/Others/PowderRow.usercontrol"
+    },
+    {
+      "url": "UserControls/Others/LiquidRow.usercontrol"
+    },
+    {
+      "url": "UserControls/Others/Consumption.usercontrol"
+    },
+    {
+      "url": "UserControls/Others/UserManual.usercontrol"
+    },
+    {
+      "url": "UserControls/Others/WeightRegistration.usercontrol"
+    },
+    {
+      "url": "UserControls/Peripherals/B130.usercontrol"
+    },
+    {
+      "url": "UserControls/Peripherals/BigBag.usercontrol"
+    },
+    {
+      "url": "UserControls/Peripherals/Elevator.usercontrol"
+    },
+    {
+      "url": "UserControls/Peripherals/ReceiverBox.usercontrol"
+    },
+    {
+      "url": "UserControls/Utilities/Calculadora.usercontrol"
+    }
+  ],
+  "content": [
+    {
+      "url": "Telas/Liquidos/Liquido_13.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_14.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_15.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_16.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_17.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_18.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_19.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_20.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_21.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_22.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_24.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_25.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_23.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_12.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_11.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_10.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_09.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_08.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_07.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_06.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_05.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_04.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_03.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_02.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/LiquidsList.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Others/BatchInfo.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Others/StopProcess.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Others/OS.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/PoSecante/PowderList.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/PoSecante/Po_06.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/PoSecante/Po_10.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/PoSecante/Po_09.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/PoSecante/Po_08.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/PoSecante/Po_07.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/PoSecante/Po_05.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/PoSecante/Po_04.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/PoSecante/Po_03.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/PoSecante/Po_02.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Receitas.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Alarmes.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Balanca.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Configuracoes.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Liquidos/Liquido_01.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Mixer.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/Perifericos.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/PoSecante/Po_01.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Telas/TelaPrincipal.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    }
+  ],
+  "views": [
+    {
+      "url": "Desktop.view",
+      "preload": false,
+      "keepAlive": false,
+      "preloadBindings": false
+    }
+  ],
+  "userFunctions": [
+    {
+      "url": "Scripts/AlarmSound.js"
+    },
+    {
+      "url": "Scripts/AlertSound.js"
+    },
+    {
+      "url": "Scripts/MinToHours.js"
+    },
+    {
+      "url": "Scripts/PopUp/PopUpAlert.js"
+    },
+    {
+      "url": "Scripts/PopUp/PopUpConf.js"
+    },
+    {
+      "url": "Scripts/PopUp/PopUpDyn.js"
+    },
+    {
+      "url": "Scripts/PopUp/PopUpLiquidsList.js"
+    },
+    {
+      "url": "Scripts/PopUp/PopUpPowderList.js"
+    },
+    {
+      "url": "Scripts/PopUp/PopUpRecipeSave.js"
+    },
+    {
+      "url": "Scripts/PopUp/PopUpSaveRecipe.js"
+    },
+    {
+      "url": "Scripts/SoundEffect.js"
+    }
+  ],
+  "symbols": {
+    "internal": {
+      "ZoomGraph": {
+        "value": 5.0,
+        "type": "tchmi:general#/definitions/REAL",
+        "persist": false,
+        "readonly": false
+      },
+      "ShiftGraph": {
+        "value": 0.0,
+        "type": "tchmi:general#/definitions/REAL",
+        "persist": false,
+        "readonly": false
+      }
+    },
+    "themedResources": {}
+  },
+  "trigger": [
+    {
+      "event": "%s%PLC1.MainBalance.InfeedLateness%/s%",
+      "actions": [
+        {
+          "objectType": "Condition",
+          "active": true,
+          "parts": [
+            {
+              "if": [
+                {
+                  "compare1": {
+                    "objectType": "Symbol",
+                    "valueType": "tchmi:general#/definitions/String",
+                    "symbolExpression": "%s%PLC1.MainBalance.InfeedLateness%/s%"
+                  },
+                  "compare2": {
+                    "objectType": "StaticValue",
+                    "valueType": "tchmi:general#/definitions/BOOL",
+                    "value": true
+                  },
+                  "compareOperator": "==",
+                  "logic": null
+                }
+              ],
+              "then": [
+                {
+                  "objectType": "Function",
+                  "active": true,
+                  "fn": "TcHmi.Functions.B120_HMI.PopUpDyn",
+                  "fnParams": [
+                    {
+                      "objectType": "StaticValue",
+                      "valueType": "tchmi:general#/definitions/String",
+                      "value": "1"
+                    },
+                    {
+                      "objectType": "StaticValue",
+                      "valueType": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+                      "value": {
+                        "path": "UserControls/Others/LatenessOnBalanceInfeed.usercontrol"
+                      }
+                    },
+                    {
+                      "objectType": "StaticValue",
+                      "valueType": "tchmi:general#/definitions/Number",
+                      "value": 40.0
+                    },
+                    {
+                      "objectType": "StaticValue",
+                      "valueType": "tchmi:general#/definitions/Number",
+                      "value": 50.0
+                    },
+                    {
+                      "objectType": "StaticValue",
+                      "valueType": "tchmi:framework#/definitions/ClassNameList",
+                      "value": [
+                        "fadein"
+                      ]
+                    }
+                  ],
+                  "asyncWait": true
+                }
+              ]
+            },
+            {
+              "else": []
+            }
+          ],
+          "asyncWait": true
+        }
+      ]
+    },
+    {
+      "event": "%s%PLC1.Alarms.HeaderTextValue%/s%",
+      "actions": [
+        {
+          "objectType": "Condition",
+          "active": true,
+          "parts": [
+            {
+              "if": [
+                {
+                  "compare1": {
+                    "objectType": "Symbol",
+                    "valueType": "tchmi:general#/definitions/INT",
+                    "symbolExpression": "%s%PLC1.Alarms.HeaderTextValue%/s%"
+                  },
+                  "compare2": {
+                    "objectType": "StaticValue",
+                    "valueType": "tchmi:general#/definitions/INT",
+                    "value": 1
+                  },
+                  "compareOperator": "==",
+                  "logic": null
+                },
+                {
+                  "compare1": {
+                    "objectType": "Symbol",
+                    "valueType": "tchmi:general#/definitions/String",
+                    "symbolExpression": "%s%PLC1.Alarms.HeaderTextValue%/s%"
+                  },
+                  "compare2": {
+                    "objectType": "StaticValue",
+                    "valueType": "tchmi:general#/definitions/INT",
+                    "value": 2
+                  },
+                  "compareOperator": "==",
+                  "logic": "OR"
+                }
+              ],
+              "then": [
+                {
+                  "objectType": "Function",
+                  "active": true,
+                  "fn": "TcHmi.Functions.B120_HMI.AlarmSound",
+                  "fnParams": [
+                    {
+                      "objectType": "StaticValue",
+                      "valueType": "tchmi:general#/definitions/Number",
+                      "value": null
+                    }
+                  ],
+                  "asyncWait": true
+                }
+              ]
+            },
+            {
+              "elseif": [
+                {
+                  "compare1": {
+                    "objectType": "Symbol",
+                    "valueType": "tchmi:general#/definitions/String",
+                    "symbolExpression": "%s%PLC1.Alarms.HeaderTextValue%/s%"
+                  },
+                  "compare2": {
+                    "objectType": "StaticValue",
+                    "valueType": "tchmi:general#/definitions/INT",
+                    "value": 3
+                  },
+                  "compareOperator": ">=",
+                  "logic": null
+                }
+              ],
+              "then": [
+                {
+                  "objectType": "Function",
+                  "active": true,
+                  "fn": "TcHmi.Functions.B120_HMI.AlertSound",
+                  "fnParams": [
+                    {
+                      "objectType": "StaticValue",
+                      "valueType": "tchmi:general#/definitions/Number",
+                      "value": null
+                    }
+                  ],
+                  "asyncWait": true
+                }
+              ]
+            },
+            {
+              "else": []
+            }
+          ],
+          "asyncWait": true
+        }
+      ]
+    }
+  ],
+  "actionTemplates": [
+    {
+      "displayname": "ValveStatus",
+      "name": "ValveStatus",
+      "description": "Esse template retorna o status da válvula",
+      "category": "Action Templates",
+      "actions": [
+        {
+          "objectType": "SwitchCase",
+          "active": true,
+          "compare": {
+            "objectType": "Symbol",
+            "valueType": "tchmi:general#/definitions/INT",
+            "symbolExpression": "%tp%StatusValue%/tp%"
+          },
+          "cases": [
+            {
+              "caseValue": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": 1
+              },
+              "actions": [
+                {
+                  "objectType": "WriteToSymbol",
+                  "active": true,
+                  "symbolExpression": "%tp%StatusOUT%/tp%",
+                  "value": {
+                    "objectType": "Symbol",
+                    "valueType": "tchmi:general#/definitions/String",
+                    "symbolExpression": "%l%Emergence%/l%"
+                  },
+                  "asyncWait": true
+                }
+              ]
+            },
+            {
+              "caseValue": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": 2
+              },
+              "actions": [
+                {
+                  "objectType": "WriteToSymbol",
+                  "active": true,
+                  "symbolExpression": "%tp%StatusOUT%/tp%",
+                  "value": {
+                    "objectType": "StaticValue",
+                    "valueType": "tchmi:general#/definitions/String",
+                    "value": "INTERLOCK"
+                  },
+                  "asyncWait": true
+                }
+              ]
+            },
+            {
+              "caseValue": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": 3
+              },
+              "actions": [
+                {
+                  "objectType": "WriteToSymbol",
+                  "active": true,
+                  "symbolExpression": "%tp%StatusOUT%/tp%",
+                  "value": {
+                    "objectType": "Symbol",
+                    "valueType": "tchmi:general#/definitions/String",
+                    "symbolExpression": "%l%Maintenance%/l%"
+                  },
+                  "asyncWait": true
+                }
+              ]
+            },
+            {
+              "caseValue": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": 4
+              },
+              "actions": [
+                {
+                  "objectType": "WriteToSymbol",
+                  "active": true,
+                  "symbolExpression": "%tp%StatusOUT%/tp%",
+                  "value": {
+                    "objectType": "Symbol",
+                    "valueType": "tchmi:general#/definitions/String",
+                    "symbolExpression": "%l%ManuallyClosed%/l%"
+                  },
+                  "asyncWait": true
+                }
+              ]
+            },
+            {
+              "caseValue": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": 5
+              },
+              "actions": [
+                {
+                  "objectType": "WriteToSymbol",
+                  "active": true,
+                  "symbolExpression": "%tp%StatusOUT%/tp%",
+                  "value": {
+                    "objectType": "Symbol",
+                    "valueType": "tchmi:general#/definitions/String",
+                    "symbolExpression": "%l%ManuallyOpened%/l%"
+                  },
+                  "asyncWait": true
+                }
+              ]
+            },
+            {
+              "caseValue": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": 6
+              },
+              "actions": [
+                {
+                  "objectType": "WriteToSymbol",
+                  "active": true,
+                  "symbolExpression": "%tp%StatusOUT%/tp%",
+                  "value": {
+                    "objectType": "Symbol",
+                    "valueType": "tchmi:general#/definitions/String",
+                    "symbolExpression": "%l%ManuallyOpening%/l%"
+                  },
+                  "asyncWait": true
+                }
+              ]
+            },
+            {
+              "caseValue": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": 7
+              },
+              "actions": [
+                {
+                  "objectType": "WriteToSymbol",
+                  "active": true,
+                  "symbolExpression": "%tp%StatusOUT%/tp%",
+                  "value": {
+                    "objectType": "Symbol",
+                    "valueType": "tchmi:general#/definitions/String",
+                    "symbolExpression": "%l%OpenedWithBypass%/l%"
+                  },
+                  "asyncWait": true
+                }
+              ]
+            },
+            {
+              "caseValue": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": 8
+              },
+              "actions": [
+                {
+                  "objectType": "WriteToSymbol",
+                  "active": true,
+                  "symbolExpression": "%tp%StatusOUT%/tp%",
+                  "value": {
+                    "objectType": "Symbol",
+                    "valueType": "tchmi:general#/definitions/String",
+                    "symbolExpression": "%l%OpeningWithBypass%/l%"
+                  },
+                  "asyncWait": true
+                }
+              ]
+            },
+            {
+              "caseValue": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": 9
+              },
+              "actions": [
+                {
+                  "objectType": "WriteToSymbol",
+                  "active": true,
+                  "symbolExpression": "%tp%StatusOUT%/tp%",
+                  "value": {
+                    "objectType": "Symbol",
+                    "valueType": "tchmi:general#/definitions/String",
+                    "symbolExpression": "%l%BypassEnabled%/l%"
+                  },
+                  "asyncWait": true
+                }
+              ]
+            },
+            {
+              "caseValue": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": 10
+              },
+              "actions": [
+                {
+                  "objectType": "WriteToSymbol",
+                  "active": true,
+                  "symbolExpression": "%tp%StatusOUT%/tp%",
+                  "value": {
+                    "objectType": "Symbol",
+                    "valueType": "tchmi:general#/definitions/String",
+                    "symbolExpression": "%l%Opened%/l%"
+                  },
+                  "asyncWait": true
+                }
+              ]
+            },
+            {
+              "caseValue": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": 11
+              },
+              "actions": [
+                {
+                  "objectType": "WriteToSymbol",
+                  "active": true,
+                  "symbolExpression": "%tp%StatusOUT%/tp%",
+                  "value": {
+                    "objectType": "Symbol",
+                    "valueType": "tchmi:general#/definitions/String",
+                    "symbolExpression": "%l%Opening%/l%"
+                  },
+                  "asyncWait": true
+                }
+              ]
+            },
+            {
+              "caseValue": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": 12
+              },
+              "actions": [
+                {
+                  "objectType": "WriteToSymbol",
+                  "active": true,
+                  "symbolExpression": "%tp%StatusOUT%/tp%",
+                  "value": {
+                    "objectType": "Symbol",
+                    "valueType": "tchmi:general#/definitions/String",
+                    "symbolExpression": "%l%Error%/l%"
+                  },
+                  "asyncWait": true
+                }
+              ]
+            },
+            {
+              "caseValue": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": 13
+              },
+              "actions": [
+                {
+                  "objectType": "WriteToSymbol",
+                  "active": true,
+                  "symbolExpression": "%tp%StatusOUT%/tp%",
+                  "value": {
+                    "objectType": "Symbol",
+                    "valueType": "tchmi:general#/definitions/String",
+                    "symbolExpression": "%l%Closed%/l%"
+                  },
+                  "asyncWait": true
+                }
+              ]
+            }
+          ],
+          "asyncWait": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "StatusValue",
+          "type": "tchmi:general#/definitions/INT",
+          "description": "Status da válvula"
+        },
+        {
+          "name": "StatusOUT",
+          "type": "tchmi:general#/definitions/String",
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "languages": {
+    "de": "Localization/de.localization",
+    "en": "Localization/en.localization",
+    "es-AR": "Localization/es.localization",
+    "pt-BR": "Localization/pt.localization"
+  },
+  "languageFallback": "pt-BR",
+  "disableLoadingOptimization": false,
+  "creatorSettings": {
+    "viewport": {
+      "defaultWidth": 800,
+      "defaultHeight": 600
+    }
+  },
+  "binding": {
+    "symbolError": "Ignore"
+  },
+  "packages": [
+    {
+      "name": "Beckhoff.TwinCAT.HMI.BaseTemplate",
+      "basePath": "/Beckhoff.TwinCAT.HMI.BaseTemplate"
+    },
+    {
+      "name": "Beckhoff.TwinCAT.HMI.Controls",
+      "basePath": "/Beckhoff.TwinCAT.HMI.Controls"
+    },
+    {
+      "name": "Beckhoff.TwinCAT.HMI.EcDiagnosticsControl",
+      "basePath": "/Beckhoff.TwinCAT.HMI.EcDiagnosticsControl"
+    },
+    {
+      "name": "Beckhoff.TwinCAT.HMI.Framework",
+      "basePath": "/framework"
+    },
+    {
+      "name": "Beckhoff.TwinCAT.HMI.Functions",
+      "basePath": "/Beckhoff.TwinCAT.HMI.Functions"
+    },
+    {
+      "name": "Beckhoff.TwinCAT.HMI.PDFViewer",
+      "basePath": "/Beckhoff.TwinCAT.HMI.PDFViewer"
+    },
+    {
+      "name": "JB.TcHmiDynamicPopup",
+      "basePath": "/JB.TcHmiDynamicPopup"
+    }
+  ],
+  "keyboardLayouts": [
+    {
+      "url": "KeyboardLayouts/German - compact.keyboard.json"
+    },
+    {
+      "url": "KeyboardLayouts/Numpad (plusminus).keyboard.json"
+    },
+    {
+      "url": "KeyboardLayouts/Portuguese (Brazilian ABNT2) - basic.keyboard.json"
+    },
+    {
+      "url": "KeyboardLayouts/Spanish - basic.keyboard.json"
+    },
+    {
+      "url": "KeyboardLayouts/US - compact.keyboard.json"
+    }
+  ],
+  "systemKeyboard": {
+    "providerName": "Beckhoff.TcHmiKeyboard",
+    "projectKeyboardMapping": {
+      "de": {
+        "text": "KeyboardLayouts/German - compact.keyboard.json",
+        "decimal": "KeyboardLayouts/Numpad (plusminus).keyboard.json",
+        "numeric": ""
+      },
+      "en": {
+        "text": "KeyboardLayouts/US - compact.keyboard.json",
+        "decimal": "KeyboardLayouts/Numpad (plusminus).keyboard.json",
+        "numeric": ""
+      },
+      "pt-BR": {
+        "text": "KeyboardLayouts/Portuguese (Brazilian ABNT2) - basic.keyboard.json",
+        "decimal": "KeyboardLayouts/Numpad (plusminus).keyboard.json",
+        "numeric": ""
+      },
+      "es-AR": {
+        "text": "KeyboardLayouts/Spanish - basic.keyboard.json",
+        "decimal": "KeyboardLayouts/Numpad (plusminus).keyboard.json",
+        "numeric": ""
+      }
+    }
+  },
+  "systemPopups": {
+    "providerName": "Beckhoff.TcHmiPopups"
+  }
+}

@@ -1,0 +1,249 @@
+{
+    "$schema": "../../TcHmiFramework/Schema/ControlDescription.Schema.json",
+    "apiVersion": 1,
+    "name": "TcHmiPdfViewer",
+    "namespace": "TcHmi.Controls.Beckhoff",
+    "displayName": "PDF Viewer",
+    "version": {
+        "full": "1.12.762.56",
+        "major": 1,
+        "minor": 12,
+        "build": 762,
+        "revision": 56
+    },
+    "visible": true,
+    "themeable": "Standard",
+    "base": "TcHmi.Controls.System.TcHmiControl",
+    "description": "A control to display a PDF file",
+    "properties": {
+        "containerControl": false,
+        "geometry": {
+            "width": 640,
+            "height": 480
+        }
+    },
+    "icons": [
+        {
+            "name": "Icons/16x16.png",
+            "width": 16,
+            "height": 16
+        }
+    ],
+    "template": "Template.html",
+    "dependencyFiles": [
+        {
+            "name": "Style.css",
+            "type": "Stylesheet",
+            "description": ""
+        },
+        {
+            "name": "TcHmiPdfViewer.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "themes": {
+        "Base": {
+            "resources": [
+                {
+                    "name": "Themes/Base/Defaults.theme",
+                    "type": "ThemedValues",
+                    "description": ""
+                }
+            ]
+        },
+        "Base-Dark": {
+            "resources": [
+                {
+                    "name": "Themes/Base-Dark/Defaults.theme",
+                    "type": "ThemedValues",
+                    "description": ""
+                }
+            ]
+        }
+    },
+    "attributes": [
+        {
+            "name": "data-tchmi-file",
+            "propertyName": "File",
+            "propertySetterName": "setFile",
+            "propertyGetterName": "getFile",
+            "displayName": "File",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 30,
+            "type": "tchmi:framework#/definitions/Path",
+            "category": "Common",
+            "description": "The path to the pdf file to be displayed.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-page",
+            "propertyName": "Page",
+            "propertySetterName": "setPage",
+            "propertyGetterName": "getPage",
+            "displayName": "Page",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 30,
+            "type": "tchmi:general#/definitions/Integer",
+            "category": "Common",
+            "description": "The page of the pdf file to scroll to.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": 1
+        },
+        {
+            "name": "data-tchmi-page-count",
+            "propertyName": "PageCount",
+            "propertyGetterName": "getPageCount",
+            "displayName": "Page Count",
+            "visible": true,
+            "displayPriority": 30,
+            "type": "tchmi:general#/definitions/Integer",
+            "category": "Common",
+            "description": "The number of pages of the current PDF.",
+            "readOnly": true,
+            "bindable": false,
+            "defaultBindingMode": "OneWay",
+            "heritable": true
+        },
+        {
+            "name": "data-tchmi-named-destination",
+            "propertyName": "NamedDestination",
+            "propertySetterName": "setNamedDestination",
+            "propertyGetterName": "getNamedDestination",
+            "displayName": "Named Destination",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 31,
+            "type": "tchmi:general#/definitions/String",
+            "category": "Common",
+            "description": "The named destination of the pdf file to scroll to.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-zoom",
+            "propertyName": "Zoom",
+            "propertySetterName": "setZoom",
+            "propertyGetterName": "getZoom",
+            "displayName": "Zoom",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 32,
+            "type": "tchmi:general#/definitions/String",
+            "category": "Common",
+            "description": "Zoom level. Accepted formats: [zoom], [left offset], [top offset], page-width, page-height, page-fit, auto\nExample: zoom=200",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-page-mode",
+            "propertyName": "PageMode",
+            "propertySetterName": "setPageMode",
+            "propertyGetterName": "getPageMode",
+            "displayName": "Page Mode",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 32,
+            "type": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiPdfViewer.PageMode",
+            "category": "Common",
+            "description": "Page mode (sidebar state). Accepted values: none, thumbs, bookmarks, attachments\nExample: pagemode=none",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "none"
+        },
+        {
+            "name": "data-tchmi-allow-fullscreen",
+            "propertyName": "AllowFullscreen",
+            "propertySetterName": "setAllowFullscreen",
+            "propertyGetterName": "getAllowFullscreen",
+            "displayName": "Allow Fullscreen",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 51,
+            "type": "tchmi:general#/definitions/Boolean",
+            "category": "Common",
+            "description": "If set to false, fullscreen will be not available.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": true
+        },
+        {
+            "name": "data-tchmi-disallow-file-operations",
+            "propertyName": "DisallowFileOperations",
+            "propertySetterName": "setDisallowFileOperations",
+            "propertyGetterName": "getDisallowFileOperations",
+            "displayName": "Disallow File Operations",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 51,
+            "type": "tchmi:general#/definitions/Boolean",
+            "category": "Common",
+            "description": "If set to false, 'open','save' and 'print' will be not available. This is useful for kiosk scenarios.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": false
+        },
+        {
+            "name": "data-tchmi-cursor-tool",
+            "propertyName": "CursorTool",
+            "propertySetterName": "setCursorTool",
+            "propertyGetterName": "getCursorTool",
+            "displayName": "Cursor Tool",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 51,
+            "type": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiPdfViewer.CursorTool",
+            "category": "Common",
+            "description": "Defines the initial interaction mode: select or hand",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "Select"
+        }
+    ],
+    "functions": [],
+    "events": [],
+    "dataTypes": [
+        {
+            "schema": "Schema/Types.Schema.json"
+        }
+    ],
+    "themedResources": [
+        {
+            "name": "DarkMode",
+            "displayName": "Dark Mode",
+            "description": "Defines if the pdf viewer is shown in dark instead of light mode.",
+            "type": "tchmi:general#/definitions/Boolean"
+        }
+    ]
+}

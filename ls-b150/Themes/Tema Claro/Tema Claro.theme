@@ -1,0 +1,87 @@
+{
+  "controlTypeValues": {
+    "TcHmi.Controls.Beckhoff.TcHmiEventGrid": {
+      "attributes": {
+        "BackgroundColor": {
+          "color": "None"
+        }
+      },
+      "themedResources": {}
+    }
+  },
+  "controlClassValues": {
+    "Background": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "border": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "fadein": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "fadeout": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "MainButton": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "shake": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "slideX": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "slideXout": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "slideXrev": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "slideXrevout": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "slideY": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "slideYout": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "slideYrev": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "slideYrevout": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "softAnimation": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "spin": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "transitionl": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "transitionlrev": {
+      "attributes": {},
+      "themedResources": {}
+    }
+  },
+  "$schema": "./../../../Packages/Beckhoff.TwinCAT.HMI.Framework.12.762.46/runtimes/native1.12-tchmi/Schema/ThemeDescription.Schema.json"
+}
