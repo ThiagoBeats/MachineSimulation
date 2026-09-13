@@ -27,7 +27,16 @@
       });
     });
 
-  return Object.assign(oleoOK, {
+  // Intertravamento das bombas das 12 linhas de liquido. A tela de cada linha
+  // tem um gatilho "se Interlock == false, alerta BOMBA BLOQUEADA" - ou seja,
+  // TRUE = bomba liberada. Sem isto, entrar em qualquer linha abre o popup
+  // "BOMBA BLOQUEADA! VERIFIQUE O POSICIONAMENTO DAS VALVULAS".
+  const bombasLiberadas = {};
+  for (let n = 1; n <= 12; n++) {
+    bombasLiberadas['PLC1.Circuito_L' + n + '.fbBomba_L' + n + '.Interlock'] = true;
+  }
+
+  return Object.assign(oleoOK, bombasLiberadas, {
     // --- Seguranca e permissivos de marcha --------------------------------
     // "Fica em TRUE quando a emergencia esta ok"
     'PLC1.Seguridad.PB_Emergencia': true,
