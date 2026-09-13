@@ -1,0 +1,57 @@
+<div id="UserManual" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControl" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="90" data-tchmi-height="100" data-tchmi-width-unit="%" data-tchmi-height-unit="%" data-tchmi-creator-viewport-width="1280" data-tchmi-creator-viewport-height="800" data-tchmi-width-mode="Value" data-tchmi-height-mode="Value">
+<div id="TcHmiObjectBrowser" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiObjectBrowser" data-tchmi-height="320" data-tchmi-height-unit="px" data-tchmi-left="101" data-tchmi-left-unit="px" data-tchmi-top="58" data-tchmi-top-unit="px" data-tchmi-width="600" data-tchmi-width-unit="px" data-tchmi-data="%s%PLC1.Liquids.rCircuitOffset|BindingMode=TwoWay|BindingEvent=onAttached%/s%" data-tchmi-data-schema="%s%PLC1.Liquids.rCircuitOffset%/s%" data-tchmi-first-level-name="OFFSET" data-tchmi-row-numbers-start-number="0">
+<script data-tchmi-target-attribute="data-tchmi-columns" type="application/json">
+[
+  {
+    "columnData": "Name",
+    "editable": true,
+    "headerHorizontalAlignment": "Center",
+    "headerVerticalAlignment": "Center",
+    "horizontalAlignment": "Left",
+    "ignoreEscapeSequences": false,
+    "minWidth": 160,
+    "minWidthUnit": "px",
+    "resize": true,
+    "sortable": true,
+    "verticalAlignment": "Center",
+    "width": 320,
+    "widthUnit": "px"
+  },
+  {
+    "columnData": "Value",
+    "editable": true,
+    "headerHorizontalAlignment": "Center",
+    "headerVerticalAlignment": "Center",
+    "horizontalAlignment": "Center",
+    "ignoreEscapeSequences": false,
+    "minWidth": 160,
+    "minWidthUnit": "px",
+    "resize": true,
+    "sortable": true,
+    "verticalAlignment": "Center",
+    "width": 240,
+    "widthUnit": "px"
+  }
+]
+</script>
+<script data-tchmi-target-attribute="data-tchmi-cell-content-padding" type="application/json">
+{
+  "left": 3,
+  "leftUnit": "px",
+  "right": 3,
+  "rightUnit": "px",
+  "top": 0,
+  "topUnit": "px",
+  "bottom": 0,
+  "bottomUnit": "px"
+}
+</script>
+<script data-tchmi-target-attribute="data-tchmi-selected-row-value" type="application/json">
+
+</script>
+<script data-tchmi-target-attribute="data-tchmi-selected-cell-value" type="application/json">
+
+</script>
+
+</div>
+</div>

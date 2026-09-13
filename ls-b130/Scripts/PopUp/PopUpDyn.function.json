@@ -1,0 +1,93 @@
+{
+  "function": {
+    "name": "PopUpDyn",
+    "namespace": "TcHmi.Functions.B120_HMI",
+    "displayName": "PopUpDyn",
+    "description": "Create dynamics PopUps from .content or .usercontrol",
+    "waitMode": "Synchronous",
+    "category": "PopUp",
+    "returnValue": {
+      "type": "tchmi:general#/definitions/Null"
+    },
+    "visible": true,
+    "injectContextObject": false,
+    "arguments": [
+      {
+        "name": "id",
+        "displayName": "id",
+        "type": "tchmi:general#/definitions/String",
+        "description": "PopUp Identifier",
+        "defaultValue": null,
+        "required": true,
+        "bindable": true,
+        "restParameter": false,
+        "asReference": false,
+        "allowControlAttributeBindingOptions": false
+      },
+      {
+        "name": "targetFile",
+        "displayName": "targetFile",
+        "type": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+        "description": "Item to be show (.content | .usercontrol)",
+        "defaultValue": "",
+        "required": true,
+        "bindable": true,
+        "restParameter": false,
+        "asReference": false,
+        "allowControlAttributeBindingOptions": false
+      },
+      {
+        "name": "height",
+        "displayName": "height",
+        "type": "tchmi:general#/definitions/Number",
+        "description": "PopUp height in %",
+        "defaultValue": "",
+        "required": true,
+        "bindable": true,
+        "restParameter": false,
+        "asReference": false,
+        "allowControlAttributeBindingOptions": false
+      },
+      {
+        "name": "width",
+        "displayName": "width",
+        "type": "tchmi:general#/definitions/Number",
+        "description": "PopUp width in %",
+        "defaultValue": "",
+        "required": true,
+        "bindable": true,
+        "restParameter": false,
+        "asReference": false,
+        "allowControlAttributeBindingOptions": false
+      },
+      {
+        "name": "classes",
+        "displayName": "classes",
+        "type": "tchmi:framework#/definitions/ClassNameList",
+        "description": ".css classes to be added",
+        "defaultValue": "",
+        "required": false,
+        "bindable": true,
+        "restParameter": false,
+        "asReference": false,
+        "allowControlAttributeBindingOptions": false
+      }
+    ]
+  },
+  "$schema": "./../../Packages/Beckhoff.TwinCAT.HMI.Framework.12.762.54/runtimes/native1.12-tchmi/Schema/FunctionDescription.Schema.json",
+  "apiVersion": 1,
+  "version": {
+    "full": "0.0.0.0",
+    "major": 0,
+    "minor": 0,
+    "revision": 0,
+    "build": 0
+  },
+  "dependencyFiles": [
+    {
+      "name": "DynPopup.js",
+      "type": "JavaScript",
+      "description": ""
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "parameters": [
+    {
+      "name": "data-tchmi-linenumber",
+      "displayName": "LineNumber",
+      "allowSymbolExpressionsInObject": false,
+      "visible": true,
+      "type": "tchmi:general#/definitions/INT",
+      "category": "",
+      "description": "",
+      "defaultValue": 1,
+      "defaultValueInternal": 1,
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "LineNumber",
+      "propertySetterName": "setLineNumber",
+      "propertyGetterName": "getLineNumber",
+      "refTo": ""
+    },
+    {
+      "name": "data-tchmi-powder",
+      "displayName": "Powder",
+      "allowSymbolExpressionsInObject": false,
+      "visible": true,
+      "type": "tchmi:general#/definitions/BOOL",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "Powder",
+      "propertySetterName": "setPowder",
+      "propertyGetterName": "getPowder",
+      "refTo": ""
+    },
+    {
+      "name": "data-tchmi-aux",
+      "displayName": "Aux",
+      "allowSymbolExpressionsInObject": false,
+      "visible": false,
+      "type": "tchmi:general#/definitions/REAL",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": false,
+      "heritable": true,
+      "propertyName": "Aux",
+      "propertySetterName": "setAux",
+      "propertyGetterName": "getAux",
+      "refTo": ""
+    }
+  ],
+  "virtualRights": [],
+  "$schema": "./../../../Packages/Beckhoff.TwinCAT.HMI.Framework.12.762.54/runtimes/native1.12-tchmi/Schema/UserControlConfig.Schema.json",
+  "description": ""
+}

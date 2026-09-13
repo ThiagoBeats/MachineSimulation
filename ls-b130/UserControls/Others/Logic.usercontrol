@@ -1,0 +1,274 @@
+<div id="Logic" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControl" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="700" data-tchmi-height="585" data-tchmi-width-unit="px" data-tchmi-height-unit="px" data-tchmi-creator-viewport-width="500" data-tchmi-creator-viewport-height="500" data-tchmi-zindex="1">
+<div id="TcHmiContainer_22" data-tchmi-type="TcHmi.Controls.System.TcHmiContainer" data-tchmi-height="382" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="229" data-tchmi-width-unit="px" data-tchmi-zindex="0">
+<div id="BitShow_7" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="118" data-tchmi-height-unit="px" data-tchmi-left="170" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="211" data-tchmi-top-unit="px" data-tchmi-width="53" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainGVL.SimulationMode%/s%" data-tchmi-name="MainGVL.SimulationMode" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_6" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="118" data-tchmi-height-unit="px" data-tchmi-left="116" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="211" data-tchmi-top-unit="px" data-tchmi-width="53" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.EmptyTopBox%/s%" data-tchmi-name="EmptyTopBox" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_5" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="59" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="270" data-tchmi-top-unit="px" data-tchmi-width="111" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.EmptyBalance%/s%" data-tchmi-name="EmptyBalance" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_4" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="59" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="211" data-tchmi-top-unit="px" data-tchmi-width="111" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.TopBoxLowLevel.OUT%/s%" data-tchmi-name="TopBoxLowLevel.OUT" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_3" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="47" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="164" data-tchmi-top-unit="px" data-tchmi-width="219" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.DischargeValve.Status.Closed%/s%" data-tchmi-name="DischargeValve.Status.Closed" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_2" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="47" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="117" data-tchmi-top-unit="px" data-tchmi-width="219" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainGVL.GeneralEMG%/s%" data-tchmi-name="MainGVL.GeneralEMG" data-tchmi-zindex="1">
+</div>
+
+<div id="TcHmiTextblock_28" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="60" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-text="Habilita carga da balança" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="20" data-tchmi-right="5" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="1">
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(210, 210, 210, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 1,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "None",
+  "right": "None",
+  "top": "None",
+  "bottom": "Solid"
+}
+</script>
+</div>
+<div id="BitShow_1" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="47" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="70" data-tchmi-top-unit="px" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainGVL.AutoMode%/s%" data-tchmi-name="MainGVL.AutoMode" data-tchmi-zindex="1" data-tchmi-right="5">
+</div>
+<div id="BitShow_9" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="47" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="329" data-tchmi-top-unit="px" data-tchmi-width="219" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.EnableInfeed%/s%" data-tchmi-name="EnableInfeed" data-tchmi-zindex="1">
+</div>
+</div>
+<div id="TcHmiContainer_23" data-tchmi-type="TcHmi.Controls.System.TcHmiContainer" data-tchmi-height="549" data-tchmi-height-unit="px" data-tchmi-left="236" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="229" data-tchmi-width-unit="px" data-tchmi-zindex="0">
+
+<div id="TcHmiTextblock_29" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="60" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-text="Inicia carga na balança" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="20" data-tchmi-right="5" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="1">
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(210, 210, 210, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 1,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "None",
+  "right": "None",
+  "top": "None",
+  "bottom": "Solid"
+}
+</script>
+</div>
+<div id="BitShow_17" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="47" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="495" data-tchmi-top-unit="px" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.StartInfeed%/s%" data-tchmi-name="StartInfeed" data-tchmi-zindex="1" data-tchmi-right="5">
+</div>
+<div id="BitShow_18" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="168" data-tchmi-height-unit="px" data-tchmi-left="164" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="68" data-tchmi-top-unit="px" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.StartInfeed%/s%" data-tchmi-name="StartInfeed" data-tchmi-zindex="1" data-tchmi-right="5">
+</div>
+<div id="BitShow_19" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="68" data-tchmi-top-unit="px" data-tchmi-width="159" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.EnableInfeed%/s%" data-tchmi-name="EnableInfeed" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_20" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="118" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="118" data-tchmi-top-unit="px" data-tchmi-width="53" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.CiclicMode%/s%" data-tchmi-name="CiclicMode" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_21" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="118" data-tchmi-height-unit="px" data-tchmi-left="58" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="118" data-tchmi-top-unit="px" data-tchmi-width="53" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.BatchMode%/s%" data-tchmi-name="BatchMode" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_22" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="118" data-tchmi-height-unit="px" data-tchmi-left="111" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="118" data-tchmi-top-unit="px" data-tchmi-width="53" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.EmptyTopBox%/s%" data-tchmi-name="EmptyTopBox" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_23" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="118" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="236" data-tchmi-top-unit="px" data-tchmi-width="70" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.EmptyBalance%/s%" data-tchmi-name="EmptyBalance" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_24" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="118" data-tchmi-height-unit="px" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="236" data-tchmi-top-unit="px" data-tchmi-width="70" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.EmptyTopBox%/s%" data-tchmi-name="EmptyTopBox" data-tchmi-zindex="1" data-tchmi-right="5">
+</div>
+<div id="BitShow_25" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="118" data-tchmi-height-unit="px" data-tchmi-left="75" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="236" data-tchmi-top-unit="px" data-tchmi-width="79" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.ForceDischarge%/s%" data-tchmi-name="ForceDischarge" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_26" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="47" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="354" data-tchmi-top-unit="px" data-tchmi-width="219" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.DischargeValve.Status.Closed%/s%" data-tchmi-name="DischargeValve.Status.Closed" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_27" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="47" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="401" data-tchmi-top-unit="px" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainGVL.RunMode%/s%" data-tchmi-name="MainGVL.RunMode" data-tchmi-zindex="1" data-tchmi-right="5">
+</div>
+<div id="BitShow_28" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="47" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="448" data-tchmi-top-unit="px" data-tchmi-width-unit="px" data-tchmi-variable="%f%!%s%PLC1.MainBalance.StopInfeed%/s%%/f%" data-tchmi-name="StopInfeed" data-tchmi-zindex="1" data-tchmi-right="5">
+</div>
+<div id="TcHmiContainer_24" data-tchmi-type="TcHmi.Controls.System.TcHmiContainer" data-tchmi-height="573" data-tchmi-height-unit="px" data-tchmi-left="234" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="229" data-tchmi-width-unit="px" data-tchmi-zindex="0">
+<div id="TcHmiTextblock_31" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="60" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-text="Habilita descarga da balança" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="20" data-tchmi-right="5" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="1">
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(210, 210, 210, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 1,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "None",
+  "right": "None",
+  "top": "None",
+  "bottom": "Solid"
+}
+</script>
+</div>
+<div id="BitShow_31" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="40" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="66" data-tchmi-top-unit="px" data-tchmi-width="219" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainGVL.AirPressureOK%/s%" data-tchmi-name="AirPressureOK" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_32" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="42" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="106" data-tchmi-top-unit="px" data-tchmi-width="219" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainGVL.RunMode%/s%" data-tchmi-name="RunMode" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_33" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="42" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="148" data-tchmi-top-unit="px" data-tchmi-width="80" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.CiclicMode%/s%" data-tchmi-name="CiclicMode" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_34" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="42" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="190" data-tchmi-top-unit="px" data-tchmi-width="160" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.InfeedOK%/s%" data-tchmi-name="InfeedOK" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_35" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="42" data-tchmi-height-unit="px" data-tchmi-left="85" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="148" data-tchmi-top-unit="px" data-tchmi-width="80" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.BatchMode%/s%" data-tchmi-name="BatchMode" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_36" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="84" data-tchmi-height-unit="px" data-tchmi-left="166" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="148" data-tchmi-top-unit="px" data-tchmi-width="58" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.ForceDischarge%/s%" data-tchmi-name="ForceDischarge" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_37" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="42" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="232" data-tchmi-top-unit="px" data-tchmi-width="219" data-tchmi-width-unit="px" data-tchmi-variable="%f%!%s%PLC1.Peripherals.RemotePause%/s%%/f%" data-tchmi-name="RemotePause" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_38" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="42" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="274" data-tchmi-top-unit="px" data-tchmi-width="219" data-tchmi-width-unit="px" data-tchmi-variable="%f%!%s%PLC1.MainBalance.PauseProcess%/s%%/f%" data-tchmi-name="PauseProcess" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_39" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="42" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="316" data-tchmi-top-unit="px" data-tchmi-width="219" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.Powder_01.DoserAvailable%/s%" data-tchmi-name="Powder1Available" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_40" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="42" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="358" data-tchmi-top-unit="px" data-tchmi-width="219" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.Powder_02.DoserAvailable%/s%" data-tchmi-name="Powder2Available" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_41" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="42" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="400" data-tchmi-top-unit="px" data-tchmi-width="219" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.CFCG.TotallyClosed%/s%" data-tchmi-name="CFCGTotallyClosed" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_42" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="42" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="442" data-tchmi-top-unit="px" data-tchmi-width="219" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.Homogenizer.PeripheralsEnabled%/s%" data-tchmi-name="PeripheralsEnabled" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_43" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="42" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="484" data-tchmi-top-unit="px" data-tchmi-width="219" data-tchmi-width-unit="px" data-tchmi-variable="%f%%s%PLC1.Homogenizer.Homogenizer.ActiveStep%/s% == 10%/f%" data-tchmi-name="%f%'HomogenizerDisponible: ' + %s%PLC1.Homogenizer.Homogenizer.ActiveStep%/s%%/f%" data-tchmi-zindex="1">
+</div>
+<div id="BitShow_44" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="42" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Faceplates/Logic/BitShow.usercontrol" data-tchmi-top="526" data-tchmi-top-unit="px" data-tchmi-width="219" data-tchmi-width-unit="px" data-tchmi-variable="%s%PLC1.MainBalance.ReadyToDischarge%/s%" data-tchmi-name="ReadyToDischarge" data-tchmi-zindex="1">
+</div>
+</div>
+</div>
+<div id="TcHmiTextblock_30" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-text="%s%PLC1.MainBalance.LoadStatus%/s%" data-tchmi-top="397" data-tchmi-top-unit="px" data-tchmi-width="218" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-horizontal-alignment="Center">
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(210, 210, 210, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 1,
+  "right": 1,
+  "top": 0,
+  "bottom": 1,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "None",
+  "bottom": "Solid"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+{
+  "topLeft": 15.0,
+  "topRight": 15.0,
+  "bottomLeft": 15.0,
+  "bottomRight": 15.0,
+  "topLeftUnit": "px",
+  "topRightUnit": "px",
+  "bottomLeftUnit": "px",
+  "bottomRightUnit": "px"
+}
+</script>
+</div>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+{
+  "topLeft": 20.0,
+  "topRight": 20.0,
+  "bottomLeft": 20.0,
+  "bottomRight": 20.0,
+  "topLeftUnit": "px",
+  "topRightUnit": "px",
+  "bottomLeftUnit": "px",
+  "bottomRightUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "angle": 0.0,
+  "stopPoints": [
+    {
+      "color": "rgba(86, 123, 178, 1)",
+      "stop": "0%"
+    },
+    {
+      "color": "rgba(186, 197, 251, 1)",
+      "stop": "100%"
+    }
+  ]
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "rgba(71, 71, 71, 1)"
+}
+</script>
+</div>

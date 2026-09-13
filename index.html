@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simuladores de Treinamento — LS do Brasil</title>
+<link rel="icon" href="ls-b130/Images/Favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --fundo:#0B1113;
+    --superficie:#131D20;
+    --superficie-alta:#182528;
+    --linha:#233437;
+    --texto:#E6F0ED;
+    --texto-fraco:#94A8A4;
+    --acento:#00E0B8;
+    --acento-escuro:#00B394;
+    --sombra:0 1px 2px rgba(0,0,0,.5), 0 12px 32px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{color-scheme:dark}
+  body{
+    margin:0;background:var(--fundo);color:var(--texto);
+    font-family:"Barlow",system-ui,-apple-system,Segoe UI,sans-serif;
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .env{max-width:66rem;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+
+  header.topo{
+    display:flex;align-items:flex-start;justify-content:space-between;
+    gap:20px;flex-wrap:wrap;padding-bottom:26px;border-bottom:1px solid var(--linha);
+  }
+  .marca{display:flex;flex-direction:column;gap:2px}
+  .marca .empresa{
+    font-family:"Barlow Condensed",sans-serif;font-weight:700;
+    font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acento);
+  }
+  .marca h1{
+    font-family:"Barlow Condensed",sans-serif;font-weight:700;
+    font-size:clamp(1.7rem,1.2rem+2vw,2.5rem);margin:0;line-height:1.05;
+    letter-spacing:-.01em;text-wrap:balance;
+  }
+
+  .idiomas{display:flex;gap:2px;background:var(--superficie);border:1px solid var(--linha);border-radius:5px;padding:3px}
+  .idiomas button{
+    font-family:inherit;font-size:.78rem;font-weight:600;letter-spacing:.06em;
+    color:var(--texto-fraco);background:none;border:none;border-radius:3px;
+    padding:5px 11px;cursor:pointer;text-transform:uppercase;
+  }
+  .idiomas button:hover{color:var(--texto)}
+  .idiomas button[aria-pressed="true"]{background:var(--acento);color:#06211C}
+  .idiomas button:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+
+  .intro{margin:26px 0 0;max-width:62ch;color:var(--texto-fraco);font-size:1.04rem}
+
+  .secao-titulo{
+    font-family:"Barlow Condensed",sans-serif;font-weight:600;
+    font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--texto-fraco);margin:44px 0 16px;
+  }
+
+  .grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));gap:18px;align-items:start}
+
+  .cartao{
+    background:var(--superficie);border:1px solid var(--linha);border-radius:8px;
+    overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--sombra);
+  }
+  .cartao .foto{
+    aspect-ratio:16/10;max-width:100%;background:#0E1719 center/cover no-repeat;
+    border-bottom:1px solid var(--linha);display:block;
+  }
+  .cartao .corpo{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .cartao .tipo{
+    font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--acento);
+  }
+  .cartao h3{
+    font-family:"Barlow Condensed",sans-serif;font-size:1.75rem;font-weight:700;
+    margin:0;line-height:1;letter-spacing:.01em;
+  }
+  .cartao p{margin:0;color:var(--texto-fraco);font-size:.94rem}
+  .cartao ul{margin:2px 0 0;padding-left:1.1em;color:var(--texto-fraco);font-size:.9rem}
+  .cartao ul li{margin:2px 0}
+  .acoes{display:flex;align-items:center;gap:14px;margin-top:auto;padding-top:6px}
+  .botao{
+    display:inline-block;background:var(--acento);color:#06211C;
+    font-weight:600;font-size:.95rem;text-decoration:none;
+    padding:9px 20px;border-radius:5px;
+  }
+  .botao:hover{background:#2CF0CC}
+  .botao:focus-visible{outline:2px solid #fff;outline-offset:2px}
+  .link-secundario{
+    color:var(--texto-fraco);font-size:.86rem;text-decoration:none;border-bottom:1px dotted var(--linha);
+  }
+  .link-secundario:hover{color:var(--texto)}
+
+  .cartao.breve{border-style:dashed;background:transparent;box-shadow:none}
+  .cartao.breve .corpo{justify-content:center;align-items:center;text-align:center;min-height:12rem;gap:6px}
+  .cartao.breve h3{color:var(--texto-fraco);font-size:1.2rem}
+
+  .aviso{
+    margin-top:44px;padding:16px 18px;border-left:3px solid var(--acento-escuro);
+    background:var(--superficie-alta);border-radius:0 6px 6px 0;
+    color:var(--texto-fraco);font-size:.92rem;
+  }
+  .aviso strong{color:var(--texto);font-weight:600}
+
+  footer.rodape{
+    margin-top:36px;padding-top:18px;border-top:1px solid var(--linha);
+    color:#6B7D7A;font-size:.84rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  }
+  footer.rodape a{color:#6B7D7A}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="env">
+
+  <header class="topo">
+    <div class="marca">
+      <span class="empresa">LS do Brasil</span>
+      <h1 data-i18n="titulo">Simuladores de Treinamento</h1>
+    </div>
+    <div class="idiomas" role="group" aria-label="Idioma / Idioma / Language">
+      <button type="button" id="lang-pt" data-lang="pt" aria-pressed="true">PT</button>
+      <button type="button" id="lang-es" data-lang="es" aria-pressed="false">ES</button>
+      <button type="button" id="lang-en" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <p class="intro" data-i18n="intro">
+    Simulações das interfaces de operação das nossas máquinas, para treinamento.
+    Tudo roda no seu navegador: nenhuma máquina real é acessada e nenhum comando chega a um CLP.
+  </p>
+
+  <h2 class="secao-titulo" data-i18n="disponiveis">Máquinas disponíveis</h2>
+  <div class="grade" id="grade"></div>
+
+  <div class="aviso">
+    <strong data-i18n="avisoTitulo">Ambiente de treinamento.</strong>
+    <span data-i18n="avisoTexto">
+      Os valores exibidos são fictícios e servem apenas para demonstrar a operação da interface.
+      Cada pessoa tem a sua própria simulação, guardada no navegador — o que você alterar não afeta ninguém.
+    </span>
+  </div>
+
+  <footer class="rodape">
+    <span data-i18n="rodape">LS do Brasil — Máquinas de tratamento de sementes</span>
+    <a href="https://github.com/ThiagoBeats/MachineSimulation">github.com/ThiagoBeats/MachineSimulation</a>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  // Para adicionar uma maquina nova: gere o site com
+  //   node ferramentas/build.js <id>
+  // e acrescente uma entrada aqui.
+  var MAQUINAS = [
+    {
+      id: 'ls-b130',
+      caminho: 'ls-b130/',
+      foto: 'ls-b130/Images/Machine/B130.png',
+      textos: {
+        pt: { tipo:'Tratamento de sementes',
+              descricao:'Tratadora com 6 linhas de líquido e 2 de pó. A interface é a mesma da máquina real.',
+              recursos:['Receitas: criar, salvar e excluir','Histórico de consumo por linha','Modo manual e automático'] },
+        es: { tipo:'Tratamiento de semillas',
+              descricao:'Tratadora con 6 líneas de líquido y 2 de polvo. La interfaz es la misma de la máquina real.',
+              recursos:['Recetas: crear, guardar y eliminar','Historial de consumo por línea','Modo manual y automático'] },
+        en: { tipo:'Seed treatment',
+              descricao:'Seed treater with 6 liquid lines and 2 powder lines. The interface is the real machine’s.',
+              recursos:['Recipes: create, save and delete','Consumption history per line','Manual and automatic mode'] }
+      }
+    }
+  ];
+
+  var TEXTOS = {
+    pt: {
+      titulo:'Simuladores de Treinamento',
+      intro:'Simulações das interfaces de operação das nossas máquinas, para treinamento. Tudo roda no seu navegador: nenhuma máquina real é acessada e nenhum comando chega a um CLP.',
+      disponiveis:'Máquinas disponíveis',
+      abrir:'Abrir simulação',
+      reiniciar:'Reiniciar do zero',
+      breve:'Mais máquinas em breve',
+      breveTexto:'Novos modelos serão adicionados aqui.',
+      avisoTitulo:'Ambiente de treinamento.',
+      avisoTexto:'Os valores exibidos são fictícios e servem apenas para demonstrar a operação da interface. Cada pessoa tem a sua própria simulação, guardada no navegador — o que você alterar não afeta ninguém.',
+      rodape:'LS do Brasil — Máquinas de tratamento de sementes',
+      html:'pt-BR'
+    },
+    es: {
+      titulo:'Simuladores de Capacitación',
+      intro:'Simulaciones de las interfaces de operación de nuestras máquinas, para capacitación. Todo funciona en su navegador: no se accede a ninguna máquina real ni se envía ningún comando a un PLC.',
+      disponiveis:'Máquinas disponibles',
+      abrir:'Abrir simulación',
+      reiniciar:'Reiniciar desde cero',
+      breve:'Más máquinas próximamente',
+      breveTexto:'Nuevos modelos se agregarán aquí.',
+      avisoTitulo:'Entorno de capacitación.',
+      avisoTexto:'Los valores mostrados son ficticios y sirven solo para demostrar la operación de la interfaz. Cada persona tiene su propia simulación, guardada en el navegador — lo que usted cambie no afecta a nadie.',
+      rodape:'LS do Brasil — Máquinas de tratamiento de semillas',
+      html:'es'
+    },
+    en: {
+      titulo:'Training Simulators',
+      intro:'Simulations of our machines’ operator interfaces, for training. Everything runs in your browser: no real machine is reached and no command ever gets to a PLC.',
+      disponiveis:'Available machines',
+      abrir:'Open simulation',
+      reiniciar:'Reset to start',
+      breve:'More machines coming',
+      breveTexto:'New models will be added here.',
+      avisoTitulo:'Training environment.',
+      avisoTexto:'The values shown are fictitious and exist only to demonstrate how the interface is operated. Each person gets their own simulation, kept in the browser — what you change affects nobody else.',
+      rodape:'LS do Brasil — Seed treatment machines',
+      html:'en'
+    }
+  };
+
+  var CHAVE_IDIOMA = 'simulacao:idioma';
+
+  function idiomaInicial(){
+    try {
+      var salvo = localStorage.getItem(CHAVE_IDIOMA);
+      if (salvo && TEXTOS[salvo]) return salvo;
+    } catch(e){}
+    var nav = (navigator.language || 'pt').slice(0,2).toLowerCase();
+    return TEXTOS[nav] ? nav : 'pt';
+  }
+
+  function montarCartoes(lang){
+    var t = TEXTOS[lang];
+    var grade = document.getElementById('grade');
+    grade.textContent = '';
+
+    MAQUINAS.forEach(function(m){
+      var tx = m.textos[lang] || m.textos.pt;
+
+      var cartao = document.createElement('article');
+      cartao.className = 'cartao';
+
+      var foto = document.createElement('span');
+      foto.className = 'foto';
+      foto.style.backgroundImage = 'url("' + m.foto + '")';
+      foto.setAttribute('role','img');
+      foto.setAttribute('aria-label', m.id.toUpperCase());
+      cartao.appendChild(foto);
+
+      var corpo = document.createElement('div');
+      corpo.className = 'corpo';
+
+      var tipo = document.createElement('span');
+      tipo.className = 'tipo';
+      tipo.textContent = tx.tipo;
+      corpo.appendChild(tipo);
+
+      var nome = document.createElement('h3');
+      nome.textContent = m.id.toUpperCase().replace('-', '-');
+      corpo.appendChild(nome);
+
+      var desc = document.createElement('p');
+      desc.textContent = tx.descricao;
+      corpo.appendChild(desc);
+
+      var lista = document.createElement('ul');
+      tx.recursos.forEach(function(r){
+        var li = document.createElement('li');
+        li.textContent = r;
+        lista.appendChild(li);
+      });
+      corpo.appendChild(lista);
+
+      var acoes = document.createElement('div');
+      acoes.className = 'acoes';
+
+      var abrir = document.createElement('a');
+      abrir.className = 'botao';
+      abrir.href = m.caminho;
+      abrir.textContent = t.abrir;
+      acoes.appendChild(abrir);
+
+      var reiniciar = document.createElement('a');
+      reiniciar.className = 'link-secundario';
+      reiniciar.href = m.caminho + '?reset=1';
+      reiniciar.textContent = t.reiniciar;
+      acoes.appendChild(reiniciar);
+
+      corpo.appendChild(acoes);
+      cartao.appendChild(corpo);
+      grade.appendChild(cartao);
+    });
+
+    var breve = document.createElement('article');
+    breve.className = 'cartao breve';
+    var corpoBreve = document.createElement('div');
+    corpoBreve.className = 'corpo';
+    var h = document.createElement('h3');
+    h.textContent = t.breve;
+    var p = document.createElement('p');
+    p.textContent = t.breveTexto;
+    corpoBreve.appendChild(h);
+    corpoBreve.appendChild(p);
+    breve.appendChild(corpoBreve);
+    grade.appendChild(breve);
+  }
+
+  function aplicar(lang){
+    var t = TEXTOS[lang];
+    document.documentElement.lang = t.html;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var chave = el.getAttribute('data-i18n');
+      if (t[chave]) el.textContent = t[chave];
+    });
+    document.querySelectorAll('.idiomas button').forEach(function(b){
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
+    });
+    montarCartoes(lang);
+    try { localStorage.setItem(CHAVE_IDIOMA, lang); } catch(e){}
+  }
+
+  document.querySelectorAll('.idiomas button').forEach(function(b){
+    b.addEventListener('click', function(){ aplicar(b.getAttribute('data-lang')); });
+  });
+
+  aplicar(idiomaInicial());
+})();
+</script>
+</body>
+</html>

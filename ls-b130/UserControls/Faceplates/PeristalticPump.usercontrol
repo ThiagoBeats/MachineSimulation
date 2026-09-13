@@ -1,0 +1,108 @@
+<div id="PeristalticPump" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControl" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-height="100" data-tchmi-width-unit="%" data-tchmi-height-unit="%" data-tchmi-creator-viewport-width="500" data-tchmi-creator-viewport-height="500" data-tchmi-width-mode="Value" data-tchmi-height-mode="Value">
+<div id="imPeristalticPump" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiImage" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-src="Images/Equipments/Pump/PeristalticPump.png" data-tchmi-opacity="1" data-tchmi-height-mode="Value" data-tchmi-width-mode="Value" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-height="86.4" data-tchmi-height-unit="%">
+
+
+</div>
+<div id="imPumpState" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-left="30" data-tchmi-left-unit="%" data-tchmi-top="10.2" data-tchmi-top-unit="%" data-tchmi-state="%pp%Status::Value%/pp%" data-tchmi-fallback-image="Images/AnimatedIcons/Maintenance.svg" data-tchmi-right="10" data-tchmi-right-unit="%" data-tchmi-bottom="17.4" data-tchmi-bottom-unit="%">
+
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 1.0,
+    "stateIcon": "Images/AnimatedIcons/Emergence.svg"
+  },
+  {
+    "state": 2.0,
+    "stateIcon": "Images/AnimatedIcons/Emergence.svg"
+  },
+  {
+    "state": 3.0,
+    "stateIcon": "Images/AnimatedIcons/Maintenance.svg"
+  },
+  {
+    "state": 4.0,
+    "stateIcon": "Images/AnimatedIcons/CW.svg"
+  },
+  {
+    "state": 5.0,
+    "stateIcon": ""
+  },
+  {
+    "state": 6.0,
+    "stateIcon": "Images/AnimatedIcons/CCW.svg"
+  },
+  {
+    "state": 7.0,
+    "stateIcon": ""
+  },
+  {
+    "state": 8.0,
+    "stateIcon": "Images/AnimatedIcons/CCW.svg"
+  },
+  {
+    "state": 9.0,
+    "stateIcon": "Images/AnimatedIcons/CCW.svg"
+  },
+  {
+    "state": 10.0,
+    "stateIcon": ""
+  }
+]
+</script>
+
+
+</div>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "PeristalticPump.onPressed",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.B120_HMI.PopUpDyn",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "1"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile",
+            "value": {
+              "path": "UserControls/Equipments/ATV320.usercontrol",
+              "attributes": {
+                "data-tchmi-control": "%pp%Control%/pp%",
+                "data-tchmi-status": "%pp%Status%/pp%",
+                "data-tchmi-pump": true,
+                "data-tchmi-elevator": "%f%False%/f%"
+              }
+            }
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 60.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": 60.0
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ClassNameList",
+            "value": [
+              "fadein"
+            ]
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>

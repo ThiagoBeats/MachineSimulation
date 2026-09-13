@@ -1,0 +1,28 @@
+{
+  "id": "ls-b130",
+  "modelo": "LS-B130",
+  "fabricante": "LS do Brasil",
+  "binPath": "C:/Users/Asus/Desktop/Meus Projetos/01_Máquinas de Tratamento/LS-B130/Clientes/02_Codepa/01_CLP/B120/B120_HMI/bin",
+  "serverConfigPath": "C:/Users/Asus/Desktop/Meus Projetos/01_Máquinas de Tratamento/LS-B130/Clientes/02_Codepa/01_CLP/B120/B120_HMI/Server/TcHmiSrv/TcHmiSrv.Config.default.json",
+  "tf2000Path": "C:/TwinCAT/Functions/TF2000-HMI-Server",
+  "textos": {
+    "pt": {
+      "nome": "LS-B130",
+      "tipo": "Tratamento de sementes",
+      "descricao": "Tratadora de sementes com 6 linhas de líquido e 2 de pó. Simula receitas, consumo, balança e periféricos.",
+      "recursos": ["Receitas: criar, salvar e excluir", "Histórico de consumo", "Modo manual e automático"]
+    },
+    "es": {
+      "nome": "LS-B130",
+      "tipo": "Tratamiento de semillas",
+      "descricao": "Tratadora de semillas con 6 líneas de líquido y 2 de polvo. Simula recetas, consumo, balanza y periféricos.",
+      "recursos": ["Recetas: crear, guardar y eliminar", "Historial de consumo", "Modo manual y automático"]
+    },
+    "en": {
+      "nome": "LS-B130",
+      "tipo": "Seed treatment",
+      "descricao": "Seed treater with 6 liquid lines and 2 powder lines. Simulates recipes, consumption, scale and peripherals.",
+      "recursos": ["Recipes: create, save and delete", "Consumption history", "Manual and automatic mode"]
+    }
+  }
+}

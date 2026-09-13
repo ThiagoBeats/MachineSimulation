@@ -1,0 +1,143 @@
+<div id="Calculadora" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControl" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="361" data-tchmi-height="431" data-tchmi-width-unit="px" data-tchmi-height-unit="px" data-tchmi-creator-viewport-width="500" data-tchmi-creator-viewport-height="500">
+
+    <div id="TcHmiHtmlHost" data-tchmi-type="TcHmi.Controls.System.TcHmiHtmlHost" data-tchmi-height="430" data-tchmi-height-unit="px" data-tchmi-left="-1" data-tchmi-left-unit="px" data-tchmi-top="-1" data-tchmi-top-unit="px" data-tchmi-width="360" data-tchmi-width-unit="px">
+        <!DOCTYPE html>
+        <html lang="pt-BR">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Calculadora Web</title>
+            <style>
+                body {
+                    margin: 0;
+                    font-family: 'Segoe UI', sans-serif;
+                    background: #f4f4f4;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh;
+                }
+
+                .calculator {
+                    background: #1e1e1e;
+                    padding: 20px;
+                    border-radius: 15px;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                    width: 320px;
+                }
+
+                .display {
+                    background: #000;
+                    color: #0f0;
+                    font-size: 2em;
+                    padding: 10px;
+                    border-radius: 10px;
+                    text-align: right;
+                    overflow-x: auto;
+                }
+
+                .buttons {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 10px;
+                    margin-top: 15px;
+                }
+
+                .btn {
+                    padding: 20px;
+                    font-size: 1.2em;
+                    border: none;
+                    border-radius: 10px;
+                    background: #333;
+                    color: #fff;
+                    cursor: pointer;
+                    transition: background 0.2s;
+                }
+
+                    .btn:hover {
+                        background: #444;
+                    }
+
+                    .btn.operator {
+                        background: #fe9241;
+                    }
+
+                        .btn.operator:hover {
+                            background: #e57c1f;
+                        }
+
+                    .btn.equal {
+                        background: #4caf50;
+                    }
+
+                        .btn.equal:hover {
+                            background: #43a047;
+                        }
+
+                    .btn.clear {
+                        background: #f44336;
+                    }
+
+                        .btn.clear:hover {
+                            background: #d32f2f;
+                        }
+            </style>
+        </head>
+        <body>
+            <div class="calculator">
+                <div id="display" class="display">0</div>
+                <div class="buttons">
+                    <button class="btn clear" onclick="clearDisplay()">C</button>
+                    <button class="btn" onclick="appendValue('(')">(</button>
+                    <button class="btn" onclick="appendValue(')')">)</button>
+                    <button class="btn operator" onclick="appendValue('/')">÷</button>
+
+                    <button class="btn" onclick="appendValue('7')">7</button>
+                    <button class="btn" onclick="appendValue('8')">8</button>
+                    <button class="btn" onclick="appendValue('9')">9</button>
+                    <button class="btn operator" onclick="appendValue('*')">×</button>
+
+                    <button class="btn" onclick="appendValue('4')">4</button>
+                    <button class="btn" onclick="appendValue('5')">5</button>
+                    <button class="btn" onclick="appendValue('6')">6</button>
+                    <button class="btn operator" onclick="appendValue('-')">−</button>
+
+                    <button class="btn" onclick="appendValue('1')">1</button>
+                    <button class="btn" onclick="appendValue('2')">2</button>
+                    <button class="btn" onclick="appendValue('3')">3</button>
+                    <button class="btn operator" onclick="appendValue('+')">+</button>
+
+                    <button class="btn" onclick="appendValue('0')">0</button>
+                    <button class="btn" onclick="appendValue('.')">.</button>
+                    <button class="btn equal" onclick="calculate()">=</button>
+                </div>
+            </div>
+
+            <script>
+    const display = document.getElementById('display');
+
+    function appendValue(value) {
+      if (display.textContent === '0') {
+        display.textContent = value;
+      } else {
+        display.textContent += value;
+      }
+    }
+
+    function clearDisplay() {
+      display.textContent = '0';
+    }
+
+    function calculate() {
+      try {
+        display.textContent = eval(display.textContent);
+      } catch (e) {
+        display.textContent = 'Erro';
+      }
+    }
+            </script>
+        </body>
+    </html>
+
+    </div>
+</div>

@@ -1,0 +1,158 @@
+{
+  "controlTypeValues": {
+    "TcHmi.Controls.Beckhoff.TcHmiKeyboard": {
+      "attributes": {
+        "LabelFontSize": 20.0,
+        "LabelColor": {
+          "color": "rgba(61, 61, 61, 1)"
+        },
+        "KeyBackgroundColor": {
+          "color": "rgba(202, 202, 202, 1)"
+        },
+        "LabelStrokeColor": {
+          "color": "rgba(0, 0, 0, 1)"
+        }
+      },
+      "themedResources": {}
+    }
+  },
+  "controlClassValues": {
+    "Background": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "border": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "center": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "clBGContainer": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "clBGContainerSec": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "clBGPopUpContent": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "clBGTextContainer": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "clBorderHighlight": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "clBtBlue": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "clBtBlue0deg": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "clBtGreen": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "clBtRed": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "clBtYellow": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "clSelectedHighlight": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "clUnselectedHighlight": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "fadein": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "fadeout": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "MainButton": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "mixerSpin": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "shake": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "slideX": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "slideXout": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "slideXrev": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "slideXrevout": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "slideY": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "slideYout": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "slideYrev": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "slideYrevout": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "softAnimation": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "spin": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "sprinklerSpin": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "textColor": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "transitionl": {
+      "attributes": {},
+      "themedResources": {}
+    },
+    "transitionlrev": {
+      "attributes": {},
+      "themedResources": {}
+    }
+  },
+  "$schema": "./../../../Packages/Beckhoff.TwinCAT.HMI.Framework.12.762.46/runtimes/native1.12-tchmi/Schema/ThemeDescription.Schema.json"
+}

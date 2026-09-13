@@ -1,0 +1,45 @@
+{
+  "function": {
+    "name": "PopUpAlert",
+    "namespace": "TcHmi.Functions.HMI_TRATADORA_B300",
+    "displayName": "PopUpAlert",
+    "description": "Alert PopUp to display message",
+    "waitMode": "Synchronous",
+    "category": "PopUp",
+    "returnValue": {
+      "type": "tchmi:general#/definitions/Null"
+    },
+    "visible": true,
+    "injectContextObject": false,
+    "arguments": [
+      {
+        "name": "ShowText",
+        "displayName": "ShowText",
+        "type": "tchmi:general#/definitions/String",
+        "description": "Text to be show",
+        "defaultValue": null,
+        "required": true,
+        "bindable": true,
+        "restParameter": false,
+        "asReference": false,
+        "allowControlAttributeBindingOptions": false
+      }
+    ]
+  },
+  "$schema": "./../../Packages/Beckhoff.TwinCAT.HMI.Framework.12.760.59/runtimes/native1.12-tchmi/Schema/FunctionDescription.Schema.json",
+  "apiVersion": 1,
+  "version": {
+    "full": "0.0.0.0",
+    "major": 0,
+    "minor": 0,
+    "revision": 0,
+    "build": 0
+  },
+  "dependencyFiles": [
+    {
+      "name": "Alert2.js",
+      "type": "JavaScript",
+      "description": ""
+    }
+  ]
+}

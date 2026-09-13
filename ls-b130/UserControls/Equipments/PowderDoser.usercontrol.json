@@ -1,0 +1,59 @@
+{
+  "parameters": [
+    {
+      "name": "data-tchmi-motorstatus",
+      "displayName": "MotorStatus",
+      "allowSymbolExpressionsInObject": false,
+      "visible": true,
+      "type": "tchmi:general#/definitions/INT",
+      "category": "",
+      "description": "",
+      "defaultValue": 1,
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "MotorStatus",
+      "propertySetterName": "setMotorStatus",
+      "propertyGetterName": "getMotorStatus",
+      "refTo": ""
+    },
+    {
+      "name": "data-tchmi-atdosage",
+      "displayName": "AtDosage",
+      "allowSymbolExpressionsInObject": false,
+      "visible": true,
+      "type": "tchmi:general#/definitions/BOOL",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "AtDosage",
+      "propertySetterName": "setAtDosage",
+      "propertyGetterName": "getAtDosage",
+      "refTo": ""
+    },
+    {
+      "name": "data-tchmi-atcalibration",
+      "displayName": "AtCalibration",
+      "allowSymbolExpressionsInObject": false,
+      "visible": true,
+      "type": "tchmi:general#/definitions/BOOL",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "AtCalibration",
+      "propertySetterName": "setAtCalibration",
+      "propertyGetterName": "getAtCalibration",
+      "refTo": ""
+    }
+  ],
+  "virtualRights": [],
+  "$schema": "./../../../Packages/Beckhoff.TwinCAT.HMI.Framework.12.762.54/runtimes/native1.12-tchmi/Schema/UserControlConfig.Schema.json",
+  "description": ""
+}
