@@ -183,6 +183,101 @@ aparece quando o evento dispara, e os valores são os reais.
 As coordenadas das áreas em `telas.json` estão em **porcentagem** da tela, para não
 dependerem da escala em que a página desenha.
 
+## Máquinas Rockwell: telas vetoriais + CLP emulado
+
+A **LS-B18 Corteva** é a primeira máquina Rockwell da plataforma: CLP Studio 5000
+e IHM FactoryTalk View ME. Nenhum software Rockwell foi usado, e não pode ser —
+o curso roda no navegador de quem faz o treinamento.
+
+As telas **não são capturas**. São redesenhadas em SVG a partir da definição
+vetorial do próprio projeto, e ficam vivas: cada campo, cor e visibilidade vem
+de uma tag, e as tags vêm do programa do CLP, que **roda de verdade**.
+
+```
+maquinas/ls-b18-corteva/
+  maquina.json     tipoSimulacao: "vetorial"
+  telas/*.json     as 14 telas: elementos desenháveis e ligações com o CLP
+  imagens/*        as imagens do projeto, convertidas
+  programa.json    o programa do CLP: 71 rotinas, 1735 blocos, na ordem de varredura
+  planta.js        a parte física - a ÚNICA parte inventada
+  valores.js       valores iniciais que o .ACD ainda não entrega
+```
+
+```bash
+node ferramentas/rockwell/extrair-mer.js <arquivo.mer> ls-b18-corteva   # as telas
+node ferramentas/rockwell/extrair-acd.js <arquivo.ACD> ls-b18-corteva   # o CLP
+node ferramentas/build-vetorial.js ls-b18-corteva
+```
+
+### Como os arquivos foram abertos
+
+O `.mer` é um documento composto OLE2 cujos fluxos usam um **LZ77 próprio da
+Rockwell**, sem documentação pública. O formato saiu comparando
+`Datos Lote.strn`, que por sorte existe comprimido e cru dentro do mesmo
+arquivo: com o par em mãos a decodificação fecha **byte a byte**. O 5º byte de
+cada bloco diz se o conteúdo está comprimido ou guardado cru, o que dispensa
+qualquer heurística de assinatura.
+
+O `.ACD` é mais simples do que parece: tem uma tabela de regiões **no fim** do
+arquivo, e cada região é **gzip comum**. O que não é simples é a ordem: o texto
+dos rungs está embaralhado na gravação, e a ordem de varredura vem de uma lista
+ligada em `RegnLink.Idx`. Sem ela, latch/unlatch e JMP dão resultado errado.
+
+Duas descobertas fizeram a diferença:
+
+- **O byte em `+0x302` do registro de uma tag diz se ela é parâmetro de AOI.**
+  Sem isso, casar a chamada `EV_MonoEstable(valvula, PE, ZH, ZL, 2000, Y, STT, CNT)`
+  com os parâmetros certos é chute. Com isso, a contagem bate exatamente nos
+  **17 AOIs**, de 1 a 48 parâmetros cada.
+- **Regiões vazias contam.** Descartá-las desloca o índice de todos os blocos
+  seguintes da rotina.
+
+### O que roda, e o que é invenção
+
+`ladder.js` não é transcrição: é um **interpretador**. O programa continua sendo
+o do CLP; o que foi escrito uma vez só é o significado de cada instrução — 45
+tipos, das comuns (XIC, OTE, MOV, TON) às de bloco funcional (SEL, SETD, MVMT,
+OSRI) e ao PID. Zero instruções ignoradas.
+
+`planta.js` **é a parte inventada**, e está marcada como tal. Um CLP sozinho não
+faz nada: ele lê sensores, e aqui não há nenhum. As realimentações se montam
+sozinhas a partir das chamadas de AOI que o extrator gravou — **29 válvulas, 13
+motores e 9 inversores**, sem lista escrita à mão. O resto (semente, vazão) é
+aproximação assumida.
+
+A balança **não** é modelada: o próprio CLP tem a rotina
+`MainProgram.SimulacionPeso`, que a fabricante usa para comissionar sem
+semente. Deixar a dela trabalhar sai mais fiel.
+
+### O que já se comporta como a máquina
+
+Carregar lote → Marcha: sai o aviso acústico, corre a pré-marcha de 3 s,
+`Run_Serv` sobe e os botões de comando aparecem na tela — eles estavam
+escondidos porque as expressões de visibilidade exigem a máquina rodando.
+Com Início, a balança enche, o CLP corta o grosso em 180 kg, passa ao fino e
+fecha a batelada dentro da faixa de aceite.
+
+E quando falta alguma coisa, a máquina se recusa — como deve. Na primeira
+tentativa ela não partia porque as chaves de liberação estavam em zero, e
+depois não carregava lote porque `kg_a_Procesar` era zero, o que faz
+`Total_Procesado >= kg_a_Procesar` valer de saída e acionar `Fin_Lote`.
+
+### Limites desta máquina
+
+- **Das 49 telas do projeto, 11 têm forma vetorial.** As outras 38 existem só no
+  binário nativo `.gfx`. A maioria é cópia quase igual de outra, mas 7 são
+  desenhos únicos: Receituário, Lista de Líquidos, Parâmetros, Receita em
+  Processo, Histórico de Pesagens, Líquido L1–L6 e Líquido Circuito.
+- **Os valores iniciais das tags não são lidos do `.ACD`.** Presets de
+  temporizador, constantes de calibração e receitas moram num canto do arquivo
+  que ainda não deciframos. 36 dos 100 temporizadores recebem preset do próprio
+  programa; o resto está estimado em `valores.js`, declarado linha a linha.
+- O PID é um PI discreto com os mesmos ganhos e limites, não o PID do Logix.
+- `MainProgram.CalculoDensidade` e `MainProgram.IO_Mapping` são código morto:
+  nenhum JSR aponta para elas.
+
+---
+
 ## Limites conhecidos
 
 - O gerenciador de usuários do cabeçalho fica inerte (é um recurso do servidor real).

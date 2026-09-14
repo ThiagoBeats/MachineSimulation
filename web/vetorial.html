@@ -67,9 +67,11 @@
 <p class="aviso" id="aviso"></p>
 
 <script src="vetorial.js"></script>
+<script src="ladder.js"></script>
 <script src="telas.js"></script>
+<script src="programa.js"></script>
 <script src="valores.js"></script>
-<script src="logica.js"></script>
+<script src="planta.js"></script>
 <script>
 (function(){
   'use strict';
@@ -122,12 +124,19 @@
   }
 
   // --- varredura -----------------------------------------------------------
-  // A IHM real le o CLP a cada 250 ms. Aqui a logica emulada roda primeiro e o
-  // desenho vem depois, na mesma ordem: calcula, depois mostra.
+  // A ordem e a mesma da maquina: primeiro o campo responde ao que o CLP
+  // mandou na varredura anterior, depois o CLP varre, depois a tela mostra o
+  // resultado. A IHM real le o CLP a cada 250 ms; aqui o passo e de 200 ms.
+  var clpLigado = false;
   function varrer(){
-    if (window.LOGICA && window.LOGICA.scan) {
-      try { window.LOGICA.scan(V.ler, V.escrever); }
-      catch(e){ avisar('a logica emulada parou: ' + e.message); }
+    if (clpLigado) {
+      try {
+        if (window.PLANTA) window.PLANTA.passo(V.ler, V.escrever, V.periodo);
+        window.Ladder.varrer();
+      } catch(e){
+        clpLigado = false;
+        avisar('o CLP emulado parou: ' + e.message);
+      }
     }
     if (montada) V.atualizar(montada.animados);
     agendarSalvar();
@@ -207,6 +216,15 @@
   window.addEventListener('resize', function(){
     if (document.body.dataset.modo === 'painel' && !cabePainel()) definirModo('cheia');
   });
+
+  if (window.PROGRAMA && window.Ladder) {
+    window.Ladder.configurar({
+      programa: window.PROGRAMA,
+      ler: V.ler, escrever: V.escrever, periodo: V.periodo
+    });
+    if (window.PLANTA) window.PLANTA.preparar(window.PROGRAMA);
+    clpLigado = true;
+  }
 
   prepararPainel();
   definirModo(temPainel && cabePainel() ? 'painel' : 'cheia');

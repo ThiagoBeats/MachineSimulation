@@ -3,13 +3,15 @@
 // ---------------------------------------------------------------------------
 // Maquinas cuja IHM foi desenhada em FactoryTalk View ME. As telas sao
 // redesenhadas em SVG a partir da propria definicao vetorial do projeto, e
-// ficam vivas: o que aparece nelas vem de tags, e as tags vem da logica do CLP
-// emulada em logica.js.
+// ficam vivas: o que aparece nelas vem de tags, e as tags vem do programa do
+// CLP, que roda de verdade em ladder.js a partir de programa.json.
 //
 //   node ferramentas/build-vetorial.js ls-b18-corteva
 //
-// Le  : maquinas/<id>/{maquina.json, telas/*.json, imagens/*, valores.js, logica.js}
-// Gera: <id>/{index.html, vetorial.js, telas.js, valores.js, logica.js, imagens/*}
+// Le  : maquinas/<id>/{maquina.json, telas/*.json, imagens/*, valores.js,
+//                      planta.js, programa.json}
+// Gera: <id>/{index.html, vetorial.js, ladder.js, telas.js, programa.js,
+//             valores.js, planta.js, imagens/*}
 //
 // As expressoes saem do extrator como TEXTO de codigo JavaScript. E aqui que
 // elas viram funcao de verdade, dentro de telas.js - assim o navegador nunca
@@ -106,11 +108,26 @@ for (const arq of imagensUsadas) {
   fs.copyFileSync(path.join(pastaFonte, 'imagens', arq), path.join(pastaSaida, 'imagens', arq));
 }
 fs.copyFileSync(path.join(RAIZ, 'web', 'vetorial.js'), path.join(pastaSaida, 'vetorial.js'));
+fs.copyFileSync(path.join(RAIZ, 'web', 'ladder.js'), path.join(pastaSaida, 'ladder.js'));
 
-for (const arq of ['valores.js', 'logica.js']) {
+for (const arq of ['valores.js', 'planta.js']) {
   const origem = path.join(pastaFonte, arq);
   fs.writeFileSync(path.join(pastaSaida, arq),
     fs.existsSync(origem) ? fs.readFileSync(origem) : '// ainda nao ha\n');
+}
+
+// O programa do CLP vira um .js em vez de .json para a pagina abrir direto do
+// disco, sem servidor: <script src> funciona em file://, fetch nao.
+let rungs = 0;
+const arqPrograma = path.join(pastaFonte, 'programa.json');
+if (fs.existsSync(arqPrograma)) {
+  const programa = lerJson(arqPrograma);
+  for (const lista of Object.values(programa.rotinas)) rungs += lista.filter(Boolean).length;
+  fs.writeFileSync(path.join(pastaSaida, 'programa.js'),
+    '// Gerado por ferramentas/rockwell/extrair-acd.js a partir do .ACD - nao edite a mao.\n'
+    + 'window.PROGRAMA = ' + JSON.stringify(programa) + ';\n', 'utf8');
+} else {
+  fs.writeFileSync(path.join(pastaSaida, 'programa.js'), 'window.PROGRAMA = null;\n', 'utf8');
 }
 
 const foto = path.join(pastaFonte, 'maquina.jpg');
@@ -151,16 +168,9 @@ const cfg = {
   inicial: maquina.inicial,
   telas: telas,
   telasDeFora: origem.telasSoEmGfx || [],
-  rungs: 0
+  rungs: rungs
 };
 if (temMoldura) cfg.painel = maquina.painel;
-
-// quantos rungs a logica declara ter emulado
-const logica = path.join(pastaFonte, 'logica.js');
-if (fs.existsSync(logica)) {
-  const m = /rungsEmulados\s*[:=]\s*(\d+)/.exec(fs.readFileSync(logica, 'utf8'));
-  if (m) cfg.rungs = Number(m[1]);
-}
 
 fs.writeFileSync(path.join(pastaSaida, 'telas.js'),
   '// Gerado por ferramentas/build-vetorial.js - nao edite a mao.\n'
