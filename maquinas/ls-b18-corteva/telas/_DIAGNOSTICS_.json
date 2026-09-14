@@ -1,0 +1,42 @@
+{
+ "largura": 1280,
+ "altura": 266,
+ "fundo": "silver",
+ "elementos": [
+  {
+   "t": "grupo",
+   "id": "TopGroup",
+   "filhos": [
+    {
+     "t": "botao",
+     "id": "CloseDisplayButton",
+     "modo": "fechar",
+     "x": 1024,
+     "y": 134,
+     "w": 128,
+     "h": 119,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "navy",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "Close\n\n[F5]",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": true,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "nome": "[DIAGNOSTICS]"
+}

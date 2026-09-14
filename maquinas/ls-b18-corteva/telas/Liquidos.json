@@ -1,0 +1,3064 @@
+{
+ "largura": 1280,
+ "altura": 800,
+ "fundo": "white",
+ "elementos": [
+  {
+   "t": "grupo",
+   "id": "TopGroup",
+   "filhos": [
+    {
+     "t": "forma",
+     "id": "Polygon23",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "black",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "forma",
+     "id": "Polygon10",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "black",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "forma",
+     "id": "Polygon8",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "black",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "forma",
+     "id": "Polygon1",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "black",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "forma",
+     "id": "Line7",
+     "d": "M578 247L487 248",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "forma",
+     "id": "Line42",
+     "d": "M547 613L456 614",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "forma",
+     "id": "Line8",
+     "d": "M729 349L699 349",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "forma",
+     "id": "Polygon13",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "#C6C6C6",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "texto",
+     "id": "Text1",
+     "x": 9,
+     "y": 136,
+     "w": 145,
+     "h": 18,
+     "texto": "Tempo de recirculação",
+     "fonte": 13.332999999999998,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "imagem",
+     "id": "Image5",
+     "x": 577,
+     "y": 239,
+     "w": 120,
+     "h": 121,
+     "arq": "Tank 1_ff000080_ffffffff_T.png"
+    },
+    {
+     "t": "forma",
+     "id": "Polygon12",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "#C6C6C6",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "texto",
+     "id": "Text9",
+     "x": 513,
+     "y": 13,
+     "w": 161,
+     "h": 42,
+     "texto": "LIQUIDOS",
+     "fonte": 34.6658,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "imagem",
+     "id": "Image3",
+     "x": 1133,
+     "y": 14,
+     "w": 143,
+     "h": 63,
+     "arq": "ls - 753 x 294 px_ff000080_ffffffff_T.jpg"
+    },
+    {
+     "t": "grupo",
+     "id": "Group4",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon14",
+       "d": "M347.5 164.5L370.5 180.5L347.5 199.5Z",
+       "preenche": "#C6C6C6",
+       "traco": "#AAAAAA",
+       "espessura": 1,
+       "animaCor": {
+        "expr": "v(\"MainProgram.ZL_VA1_L\")",
+        "itens": [
+         {
+          "valor": 0,
+          "frente": "black",
+          "fundo": "#E0E0E0",
+          "piscaFrente": null,
+          "piscaFundo": null
+         },
+         {
+          "valor": 1,
+          "frente": "black",
+          "fundo": "lime",
+          "piscaFrente": null,
+          "piscaFundo": null
+         }
+        ],
+        "modo": 0
+       }
+      },
+      {
+       "t": "forma",
+       "id": "Polygon15",
+       "d": "M394.5 197.5L371.5 181.5L394.5 162.5Z",
+       "preenche": "#C6C6C6",
+       "traco": "#AAAAAA",
+       "espessura": 1,
+       "animaCor": {
+        "expr": "v(\"MainProgram.ZH_VA1_L\")",
+        "itens": [
+         {
+          "valor": 0,
+          "frente": "black",
+          "fundo": "#E0E0E0",
+          "piscaFrente": null,
+          "piscaFundo": null
+         },
+         {
+          "valor": 1,
+          "frente": "black",
+          "fundo": "lime",
+          "piscaFrente": null,
+          "piscaFundo": null
+         }
+        ],
+        "modo": 0
+       }
+      },
+      {
+       "t": "forma",
+       "id": "Polygon16",
+       "d": "M370.5 181.5L352.5 199.5L390.5 199.5Z",
+       "preenche": "black",
+       "traco": "#AAAAAA",
+       "espessura": 1,
+       "animaCor": {
+        "expr": "v(\"MainProgram.STT_DL.5\")",
+        "itens": [
+         {
+          "valor": 0,
+          "frente": "black",
+          "fundo": "black",
+          "piscaFrente": null,
+          "piscaFundo": null
+         },
+         {
+          "valor": 1,
+          "frente": "black",
+          "fundo": "#E22028",
+          "piscaFrente": null,
+          "piscaFundo": "black"
+         }
+        ],
+        "modo": 0
+       }
+      }
+     ]
+    },
+    {
+     "t": "grupo",
+     "id": "Group5",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon17",
+       "d": "M438.5 231.5L461.5 247.5L438.5 266.5Z",
+       "preenche": "#C6C6C6",
+       "traco": "#AAAAAA",
+       "espessura": 1,
+       "animaCor": {
+        "expr": "v(\"MainProgram.ZH_VA_L1\")",
+        "itens": [
+         {
+          "valor": 0,
+          "frente": "black",
+          "fundo": "#E0E0E0",
+          "piscaFrente": null,
+          "piscaFundo": null
+         },
+         {
+          "valor": 1,
+          "frente": "black",
+          "fundo": "lime",
+          "piscaFrente": null,
+          "piscaFundo": null
+         }
+        ],
+        "modo": 0
+       }
+      },
+      {
+       "t": "forma",
+       "id": "Polygon18",
+       "d": "M485.5 264.5L462.5 248.5L485.5 229.5Z",
+       "preenche": "#C6C6C6",
+       "traco": "#AAAAAA",
+       "espessura": 1,
+       "animaCor": {
+        "expr": "v(\"MainProgram.ZL_VA_L1\")",
+        "itens": [
+         {
+          "valor": 0,
+          "frente": "black",
+          "fundo": "#E0E0E0",
+          "piscaFrente": null,
+          "piscaFundo": null
+         },
+         {
+          "valor": 1,
+          "frente": "black",
+          "fundo": "lime",
+          "piscaFrente": null,
+          "piscaFundo": null
+         }
+        ],
+        "modo": 0
+       }
+      },
+      {
+       "t": "forma",
+       "id": "Polygon19",
+       "d": "M461.5 248.5L443.5 266.5L481.5 266.5Z",
+       "preenche": "black",
+       "traco": "#AAAAAA",
+       "espessura": 1,
+       "animaCor": {
+        "expr": "v(\"MainProgram.STT_L1.5\")",
+        "itens": [
+         {
+          "valor": 0,
+          "frente": "black",
+          "fundo": "black",
+          "piscaFrente": null,
+          "piscaFundo": null
+         },
+         {
+          "valor": 1,
+          "frente": "black",
+          "fundo": "#F83D3D",
+          "piscaFrente": null,
+          "piscaFundo": "black"
+         }
+        ],
+        "modo": 0
+       }
+      }
+     ]
+    },
+    {
+     "t": "forma",
+     "id": "Polygon20",
+     "d": "M607.5 241.5L667.5 241.5L662.5 256.5L671.5 262.5L666.5 273.5L672.5 283.5L669.5 298.5L675.5 316.5L671.5 328.5L659.5 336.5L634.5 339.5L616.5 335.5L602.5 318.5L601.5 307.5L607.5 303.5L602.5 283.5L608.5 268.5L599.5 262.5Z",
+     "preenche": "white",
+     "traco": "black",
+     "espessura": 1
+    },
+    {
+     "t": "imagem",
+     "id": "Image4",
+     "x": 612,
+     "y": 198,
+     "w": 51,
+     "h": 109,
+     "arq": "Turbine agitator 3_ff000080_ffffffff_T.png"
+    },
+    {
+     "t": "forma",
+     "id": "Line2",
+     "d": "M372 200L372 245",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "forma",
+     "id": "Line3",
+     "d": "M437 249L372 249",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "forma",
+     "id": "Line4",
+     "d": "M461 268L460 388",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "forma",
+     "id": "Line5",
+     "d": "M345 186L290 186",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "forma",
+     "id": "Line6",
+     "d": "M291 188L291 614",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "grupo",
+     "id": "Group1",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon3",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "#E8E8E8",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Polygon2",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "#E8E8E8",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Ellipse1",
+       "d": "M-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z",
+       "preenche": "#E8E8E8",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Ellipse2",
+       "d": "M-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z",
+       "preenche": "white",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "RoundedRectangle2",
+       "d": "MNaN undefinedHNaNA53.8461538461538 53.8461538461538 0 0 1 NaN NaNVNaNA53.8461538461538 53.8461538461538 0 0 1 NaN NaNHNaNA53.8461538461538 53.8461538461538 0 0 1 NaN NaNVNaNA53.8461538461538 53.8461538461538 0 0 1 NaN undefinedZ",
+       "preenche": "gray",
+       "traco": "black",
+       "espessura": 1,
+       "animaCor": {
+        "expr": "v(\"MainProgram.InputBDL1.Active\")",
+        "itens": [
+         {
+          "valor": 0,
+          "frente": "black",
+          "fundo": "gray",
+          "piscaFrente": null,
+          "piscaFundo": null
+         },
+         {
+          "valor": 1,
+          "frente": "black",
+          "fundo": "lime",
+          "piscaFrente": null,
+          "piscaFundo": null
+         }
+        ],
+        "modo": 0
+       }
+      },
+      {
+       "t": "forma",
+       "id": "Polygon4",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "black",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Polygon5",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "black",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Ellipse3",
+       "d": "M-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z",
+       "preenche": "black",
+       "traco": "black",
+       "espessura": 1
+      }
+     ]
+    },
+    {
+     "t": "forma",
+     "id": "Line9",
+     "d": "M730 389L461 390",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "forma",
+     "id": "Line10",
+     "d": "M1046 181L395 182",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "texto",
+     "id": "Text3",
+     "x": 6,
+     "y": 425,
+     "w": 131,
+     "h": 18,
+     "texto": "con balanza probeta",
+     "fonte": 13.332999999999998,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "grupo",
+     "id": "Group12",
+     "filhos": [
+      {
+       "t": "imagem",
+       "id": "Image1",
+       "x": 940,
+       "y": 659,
+       "w": 170,
+       "h": 132,
+       "arq": "tambor01Close_ff000080_ffffffff_T.png"
+      },
+      {
+       "t": "imagem",
+       "id": "Image6",
+       "x": 940,
+       "y": 659,
+       "w": 186,
+       "h": 129,
+       "arq": "tambor01Open_ff000080_ffffffff_T.png"
+      }
+     ]
+    },
+    {
+     "t": "texto",
+     "id": "Text4",
+     "x": 853,
+     "y": 213,
+     "w": 50,
+     "h": 18,
+     "texto": "BOMBA",
+     "fonte": 13.332999999999998,
+     "cor": "white",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "numero",
+     "id": "NumericDisplay2",
+     "x": 831,
+     "y": 241,
+     "w": 74,
+     "h": 23,
+     "texto": "",
+     "fonte": 13.332999999999998,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": "#AAD38F",
+     "borda": "white",
+     "bordaEsp": 1,
+     "casas": 0,
+     "digitos": 5,
+     "completa": "none",
+     "valor": "v(\"MainProgram.InputBDL1.OutputFreq\")/100/50*1430/25.75"
+    },
+    {
+     "t": "texto",
+     "id": "Text5",
+     "x": 917,
+     "y": 244,
+     "w": 31,
+     "h": 18,
+     "texto": "RPM",
+     "fonte": 13.332999999999998,
+     "cor": "white",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "texto",
+     "id": "Text12",
+     "x": 595,
+     "y": 88,
+     "w": 73,
+     "h": 18,
+     "texto": "AGITADOR",
+     "fonte": 13.332999999999998,
+     "cor": "white",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "numero",
+     "id": "NumericDisplay5",
+     "x": 607,
+     "y": 359,
+     "w": 73,
+     "h": 23,
+     "texto": "",
+     "fonte": 13.332999999999998,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": "white",
+     "borda": "black",
+     "bordaEsp": 2,
+     "casas": 1,
+     "digitos": 4,
+     "completa": "none",
+     "valor": "v(\"MainProgram.Peso_Tk_L1\")"
+    },
+    {
+     "t": "forma",
+     "id": "Line25",
+     "d": "M1047 183L1047 665",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "numero",
+     "id": "NumericDisplay6",
+     "x": 732,
+     "y": 403,
+     "w": 73,
+     "h": 23,
+     "texto": "",
+     "fonte": 13.332999999999998,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": "white",
+     "borda": "black",
+     "bordaEsp": 2,
+     "casas": 1,
+     "digitos": 4,
+     "completa": "none",
+     "valor": "v(\"MainProgram.PV_L1\")"
+    },
+    {
+     "t": "forma",
+     "id": "Line26",
+     "d": "M1015 549L1015 683",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "forma",
+     "id": "Polygon6",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "gray",
+     "traco": "black",
+     "espessura": 1
+    },
+    {
+     "t": "grupo",
+     "id": "Group2",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Line27_BackLine",
+       "d": "M1041 704L1032 734",
+       "preenche": null,
+       "traco": "#C6C6C6",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Line27",
+       "d": "M1041 704L1032 734",
+       "preenche": null,
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Line28_BackLine",
+       "d": "M1043 705L1039 729",
+       "preenche": null,
+       "traco": "#C6C6C6",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Line28",
+       "d": "M1043 705L1039 729",
+       "preenche": null,
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Line29_BackLine",
+       "d": "M1044 698L1053 730",
+       "preenche": null,
+       "traco": "#C6C6C6",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Line29",
+       "d": "M1044 698L1053 730",
+       "preenche": null,
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Line30_BackLine",
+       "d": "M1046 698L1067 738",
+       "preenche": null,
+       "traco": "#C6C6C6",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Line30",
+       "d": "M1046 698L1067 738",
+       "preenche": null,
+       "traco": "black",
+       "espessura": 1
+      }
+     ]
+    },
+    {
+     "t": "forma",
+     "id": "Line35",
+     "d": "M698 715L668 715",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "imagem",
+     "id": "Image9",
+     "x": 546,
+     "y": 605,
+     "w": 120,
+     "h": 121,
+     "arq": "Tank 1_ff000080_ffffffff_T.png"
+    },
+    {
+     "t": "grupo",
+     "id": "Group15",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon37",
+       "d": "M348.5 531.5L371.5 547.5L348.5 566.5Z",
+       "preenche": "#C6C6C6",
+       "traco": "#AAAAAA",
+       "espessura": 1,
+       "animaCor": {
+        "expr": "v(\"MainProgram.ZL_VA1_L\")",
+        "itens": [
+         {
+          "valor": 0,
+          "frente": "black",
+          "fundo": "#E0E0E0",
+          "piscaFrente": null,
+          "piscaFundo": null
+         },
+         {
+          "valor": 1,
+          "frente": "black",
+          "fundo": "lime",
+          "piscaFrente": null,
+          "piscaFundo": null
+         }
+        ],
+        "modo": 0
+       }
+      },
+      {
+       "t": "forma",
+       "id": "Polygon38",
+       "d": "M395.5 564.5L372.5 548.5L395.5 529.5Z",
+       "preenche": "#C6C6C6",
+       "traco": "#AAAAAA",
+       "espessura": 1,
+       "animaCor": {
+        "expr": "v(\"MainProgram.ZH_VA1_L\")",
+        "itens": [
+         {
+          "valor": 0,
+          "frente": "black",
+          "fundo": "#E0E0E0",
+          "piscaFrente": null,
+          "piscaFundo": null
+         },
+         {
+          "valor": 1,
+          "frente": "black",
+          "fundo": "lime",
+          "piscaFrente": null,
+          "piscaFundo": null
+         }
+        ],
+        "modo": 0
+       }
+      },
+      {
+       "t": "forma",
+       "id": "Polygon39",
+       "d": "M371.5 548.5L353.5 566.5L391.5 566.5Z",
+       "preenche": "black",
+       "traco": "#AAAAAA",
+       "espessura": 1
+      }
+     ]
+    },
+    {
+     "t": "grupo",
+     "id": "Group16",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon40",
+       "d": "M407.5 597.5L430.5 613.5L407.5 632.5Z",
+       "preenche": "#C6C6C6",
+       "traco": "#AAAAAA",
+       "espessura": 1,
+       "animaCor": {
+        "expr": "v(\"MainProgram.ZH_VA_L2\")",
+        "itens": [
+         {
+          "valor": 0,
+          "frente": "black",
+          "fundo": "#E0E0E0",
+          "piscaFrente": null,
+          "piscaFundo": null
+         },
+         {
+          "valor": 1,
+          "frente": "black",
+          "fundo": "lime",
+          "piscaFrente": null,
+          "piscaFundo": null
+         }
+        ],
+        "modo": 0
+       }
+      },
+      {
+       "t": "forma",
+       "id": "Polygon41",
+       "d": "M454.5 630.5L431.5 614.5L454.5 595.5Z",
+       "preenche": "#C6C6C6",
+       "traco": "#AAAAAA",
+       "espessura": 1,
+       "animaCor": {
+        "expr": "v(\"MainProgram.ZL_VA_L2\")",
+        "itens": [
+         {
+          "valor": 0,
+          "frente": "black",
+          "fundo": "#E0E0E0",
+          "piscaFrente": null,
+          "piscaFundo": null
+         },
+         {
+          "valor": 1,
+          "frente": "black",
+          "fundo": "lime",
+          "piscaFrente": null,
+          "piscaFundo": null
+         }
+        ],
+        "modo": 0
+       }
+      },
+      {
+       "t": "forma",
+       "id": "Polygon42",
+       "d": "M430.5 614.5L412.5 632.5L450.5 632.5Z",
+       "preenche": "black",
+       "traco": "#AAAAAA",
+       "espessura": 1,
+       "animaCor": {
+        "expr": "v(\"MainProgram.STT_L2.5\")",
+        "itens": [
+         {
+          "valor": 0,
+          "frente": "black",
+          "fundo": "black",
+          "piscaFrente": null,
+          "piscaFundo": null
+         },
+         {
+          "valor": 1,
+          "frente": "black",
+          "fundo": "#E22028",
+          "piscaFrente": null,
+          "piscaFundo": "black"
+         }
+        ],
+        "modo": 0
+       }
+      }
+     ]
+    },
+    {
+     "t": "forma",
+     "id": "Polygon43",
+     "d": "M576.5 607.5L636.5 607.5L631.5 622.5L640.5 628.5L635.5 639.5L641.5 649.5L638.5 664.5L644.5 682.5L640.5 694.5L628.5 702.5L603.5 705.5L585.5 701.5L571.5 684.5L570.5 673.5L576.5 669.5L571.5 649.5L577.5 634.5L568.5 628.5Z",
+     "preenche": "white",
+     "traco": "black",
+     "espessura": 1
+    },
+    {
+     "t": "imagem",
+     "id": "Image10",
+     "x": 581,
+     "y": 564,
+     "w": 51,
+     "h": 109,
+     "arq": "Turbine agitator 3_ff000080_ffffffff_T.png"
+    },
+    {
+     "t": "grupo",
+     "id": "Group17",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon44",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "#F8CA5D",
+       "traco": "#AAAAAA",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Polygon45",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "gray",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Polygon46",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "#C6C6C6",
+       "traco": "black",
+       "espessura": 1
+      }
+     ]
+    },
+    {
+     "t": "forma",
+     "id": "Line37",
+     "d": "M373 568L373 614",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "forma",
+     "id": "Line38",
+     "d": "M406 615L376 614",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "forma",
+     "id": "Line39",
+     "d": "M430 634L429 754",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "forma",
+     "id": "Line40",
+     "d": "M345 551L305 550",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "forma",
+     "id": "Line41",
+     "d": "M304 554L304 613",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "numero",
+     "id": "NumericDisplay7",
+     "x": 259,
+     "y": 732,
+     "w": 73,
+     "h": 23,
+     "texto": "",
+     "fonte": 13.332999999999998,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": "white",
+     "borda": "black",
+     "bordaEsp": 2,
+     "casas": 2,
+     "digitos": 5,
+     "completa": "none",
+     "valor": "v(\"MainProgram.AuxHs_R\")"
+    },
+    {
+     "t": "grupo",
+     "id": "Group18",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon47",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "#E8E8E8",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Polygon48",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "#E8E8E8",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Ellipse7",
+       "d": "M-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z",
+       "preenche": "#E8E8E8",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Ellipse8",
+       "d": "M-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z",
+       "preenche": "white",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "RoundedRectangle4",
+       "d": "MNaN undefinedHNaNA53.8461538461538 53.8461538461538 0 0 1 NaN NaNVNaNA53.8461538461538 53.8461538461538 0 0 1 NaN NaNHNaNA53.8461538461538 53.8461538461538 0 0 1 NaN NaNVNaNA53.8461538461538 53.8461538461538 0 0 1 NaN undefinedZ",
+       "preenche": "gray",
+       "traco": "black",
+       "espessura": 1,
+       "animaCor": {
+        "expr": "v(\"MainProgram.InputBDL2.Active\")",
+        "itens": [
+         {
+          "valor": 0,
+          "frente": "black",
+          "fundo": "#919191",
+          "piscaFrente": null,
+          "piscaFundo": null
+         },
+         {
+          "valor": 1,
+          "frente": "black",
+          "fundo": "lime",
+          "piscaFrente": null,
+          "piscaFundo": null
+         }
+        ],
+        "modo": 0
+       }
+      },
+      {
+       "t": "forma",
+       "id": "Polygon49",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "black",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Polygon50",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "black",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Ellipse9",
+       "d": "M-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z",
+       "preenche": "black",
+       "traco": "black",
+       "espessura": 1
+      }
+     ]
+    },
+    {
+     "t": "forma",
+     "id": "Line43",
+     "d": "M699 755L430 756",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "forma",
+     "id": "Line44",
+     "d": "M1012 546L396 547",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 6
+    },
+    {
+     "t": "texto",
+     "id": "Text13",
+     "x": 822,
+     "y": 579,
+     "w": 50,
+     "h": 18,
+     "texto": "BOMBA",
+     "fonte": 13.332999999999998,
+     "cor": "white",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "numero",
+     "id": "NumericDisplay8",
+     "x": 800,
+     "y": 607,
+     "w": 73,
+     "h": 23,
+     "texto": "",
+     "fonte": 13.332999999999998,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": "#AAD38F",
+     "borda": "white",
+     "bordaEsp": 1,
+     "casas": 0,
+     "digitos": 5,
+     "completa": "none",
+     "valor": "v(\"MainProgram.InputBDL2.OutputFreq\")/100/50*1430/30.55"
+    },
+    {
+     "t": "texto",
+     "id": "Text14",
+     "x": 886,
+     "y": 610,
+     "w": 31,
+     "h": 18,
+     "texto": "RPM",
+     "fonte": 13.332999999999998,
+     "cor": "white",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "texto",
+     "id": "Text16",
+     "x": 564,
+     "y": 454,
+     "w": 73,
+     "h": 18,
+     "texto": "AGITADOR",
+     "fonte": 13.332999999999998,
+     "cor": "white",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "numero",
+     "id": "NumericDisplay9",
+     "x": 576,
+     "y": 725,
+     "w": 73,
+     "h": 23,
+     "texto": "",
+     "fonte": 13.332999999999998,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": "white",
+     "borda": "black",
+     "bordaEsp": 2,
+     "casas": 1,
+     "digitos": 4,
+     "completa": "none",
+     "valor": "v(\"MainProgram.Peso_Tk_L2\")"
+    },
+    {
+     "t": "numero",
+     "id": "NumericDisplay10",
+     "x": 701,
+     "y": 769,
+     "w": 73,
+     "h": 23,
+     "texto": "",
+     "fonte": 13.332999999999998,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": "white",
+     "borda": "black",
+     "bordaEsp": 2,
+     "casas": 1,
+     "digitos": 4,
+     "completa": "none",
+     "valor": "v(\"MainProgram.PV_L2\")"
+    },
+    {
+     "t": "grupo",
+     "id": "Group19",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Line45_BackLine",
+       "d": "M1008 703L999 733",
+       "preenche": null,
+       "traco": "#C6C6C6",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Line45",
+       "d": "M1008 703L999 733",
+       "preenche": null,
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Line46_BackLine",
+       "d": "M1010 704L1006 728",
+       "preenche": null,
+       "traco": "#C6C6C6",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Line46",
+       "d": "M1010 704L1006 728",
+       "preenche": null,
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Line47_BackLine",
+       "d": "M1011 697L1020 729",
+       "preenche": null,
+       "traco": "#C6C6C6",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Line47",
+       "d": "M1011 697L1020 729",
+       "preenche": null,
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Line48_BackLine",
+       "d": "M1013 697L1034 737",
+       "preenche": null,
+       "traco": "#C6C6C6",
+       "espessura": 1
+      },
+      {
+       "t": "forma",
+       "id": "Line48",
+       "d": "M1013 697L1034 737",
+       "preenche": null,
+       "traco": "black",
+       "espessura": 1
+      }
+     ]
+    },
+    {
+     "t": "forma",
+     "id": "Polygon53",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "gray",
+     "traco": "black",
+     "espessura": 1
+    },
+    {
+     "t": "botao",
+     "id": "GotoDisplayButton1",
+     "modo": "ir",
+     "x": 1137,
+     "y": 444,
+     "w": 133,
+     "h": 62,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#37A9E0",
+       "claro": "#8FCEED",
+       "escuro": "#1E8FC5",
+       "legenda": {
+        "texto": "HOME",
+        "fonte": 18.6662,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "destino": "MAIN"
+    },
+    {
+     "t": "botao",
+     "id": "GotoDisplayButton4",
+     "modo": "ir",
+     "x": 1139,
+     "y": 597,
+     "w": 133,
+     "h": 62,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#37A9E0",
+       "claro": "#8FCEED",
+       "escuro": "#1E8FC5",
+       "legenda": {
+        "texto": "BALANÇA",
+        "fonte": 18.6662,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "destino": "Balanza"
+    },
+    {
+     "t": "botao",
+     "id": "GotoDisplayButton2",
+     "modo": "ir",
+     "x": 4,
+     "y": 453,
+     "w": 133,
+     "h": 62,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#37A9E0",
+       "claro": "#8FCEED",
+       "escuro": "#1E8FC5",
+       "legenda": {
+        "texto": "CALIBRAR BALANÇA DA PROVETA",
+        "fonte": 13.332999999999998,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "destino": "Calibra Balanza Probeta"
+    },
+    {
+     "t": "botao",
+     "id": "GotoDisplayButton3",
+     "modo": "ir",
+     "x": 5,
+     "y": 537,
+     "w": 133,
+     "h": 62,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#37A9E0",
+       "claro": "#8FCEED",
+       "escuro": "#1E8FC5",
+       "legenda": {
+        "texto": "CALIBRAR BALANÇA TANQUE 1",
+        "fonte": 13.332999999999998,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "destino": "Calibra Balanza Tk L1"
+    },
+    {
+     "t": "botao",
+     "id": "GotoDisplayButton5",
+     "modo": "ir",
+     "x": 6,
+     "y": 615,
+     "w": 133,
+     "h": 62,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#37A9E0",
+       "claro": "#8FCEED",
+       "escuro": "#1E8FC5",
+       "legenda": {
+        "texto": "CALIBRAR BALANÇA TANQUE 2",
+        "fonte": 13.332999999999998,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "destino": "Calibra Balanza Tk L2"
+    },
+    {
+     "t": "grupo",
+     "id": "Group7",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon35",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "black",
+       "traco": "#AAAAAA",
+       "espessura": 1
+      },
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton1",
+       "modo": "momentaneo",
+       "x": 576,
+       "y": 119,
+       "w": 54,
+       "h": 54,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#333333",
+         "escuro": "#000000",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_A_TP1.1",
+       "indicador": "v(\"MainProgram.CNT_A_TP1.1\")"
+      },
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton2",
+       "modo": "momentaneo",
+       "x": 639,
+       "y": 118,
+       "w": 54,
+       "h": 54,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#333333",
+         "escuro": "#000000",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_A_TP1.2",
+       "indicador": "v(\"MainProgram.CNT_A_TP1.2\")"
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.LockOut_AgL1\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "grupo",
+     "id": "Group9",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon52",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "black",
+       "traco": "#AAAAAA",
+       "espessura": 1
+      },
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton3",
+       "modo": "momentaneo",
+       "x": 544,
+       "y": 484,
+       "w": 54,
+       "h": 54,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#333333",
+         "escuro": "#000000",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_A_TP2.1",
+       "indicador": "v(\"MainProgram.CNT_A_TP2.1\")"
+      },
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton4",
+       "modo": "momentaneo",
+       "x": 607,
+       "y": 483,
+       "w": 54,
+       "h": 54,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#333333",
+         "escuro": "#000000",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_A_TP2.2",
+       "indicador": "v(\"MainProgram.CNT_A_TP2.2\")"
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.LockOut_AgL2\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "grupo",
+     "id": "Group11",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon7",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "black",
+       "traco": "#AAAAAA",
+       "espessura": 1
+      },
+      {
+       "t": "texto",
+       "id": "Text6",
+       "x": 915,
+       "y": 288,
+       "w": 13,
+       "h": 18,
+       "texto": "%",
+       "fonte": 13.332999999999998,
+       "cor": "white",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter",
+       "fundo": null
+      },
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton5",
+       "modo": "momentaneo",
+       "x": 826,
+       "y": 334,
+       "w": 54,
+       "h": 54,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#333333",
+         "escuro": "#000000",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_BDL1.1",
+       "indicador": "v(\"MainProgram.CNT_BDL1.1\")"
+      },
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton6",
+       "modo": "momentaneo",
+       "x": 889,
+       "y": 333,
+       "w": 54,
+       "h": 54,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#333333",
+         "escuro": "#000000",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_BDL1.2",
+       "indicador": "v(\"MainProgram.CNT_BDL1.2\")"
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.Manual\") && v(\"MainProgram.LockOut_BDL1\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "grupo",
+     "id": "Group10",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon51",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "black",
+       "traco": "#AAAAAA",
+       "espessura": 1
+      },
+      {
+       "t": "texto",
+       "id": "Text15",
+       "x": 884,
+       "y": 654,
+       "w": 13,
+       "h": 18,
+       "texto": "%",
+       "fonte": 13.332999999999998,
+       "cor": "white",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter",
+       "fundo": null
+      },
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton7",
+       "modo": "momentaneo",
+       "x": 795,
+       "y": 699,
+       "w": 54,
+       "h": 54,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#333333",
+         "escuro": "#000000",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_BDL2.1",
+       "indicador": "v(\"MainProgram.CNT_BDL2.1\")"
+      },
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton8",
+       "modo": "momentaneo",
+       "x": 858,
+       "y": 698,
+       "w": 54,
+       "h": 54,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#333333",
+         "escuro": "#000000",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_BDL2.2",
+       "indicador": "v(\"MainProgram.CNT_BDL2.2\")"
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.Manual\") && v(\"MainProgram.LockOut_BDL2\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "botao",
+     "id": "GotoDisplayButton6",
+     "modo": "ir",
+     "x": 1139,
+     "y": 518,
+     "w": 133,
+     "h": 62,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#37A9E0",
+       "claro": "#8FCEED",
+       "escuro": "#1E8FC5",
+       "legenda": {
+        "texto": "LISTA",
+        "fonte": 18.6662,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "destino": "Lista Liquidos"
+    },
+    {
+     "t": "imagem",
+     "id": "Image7",
+     "x": 612,
+     "y": 198,
+     "w": 51,
+     "h": 109,
+     "arq": "Turbine agitator 3 _verde__ff000080_ffffffff_T.png",
+     "visivel": {
+      "expr": "v(\"MainProgram.CM_AgL1\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "imagem",
+     "id": "Image8",
+     "x": 612,
+     "y": 198,
+     "w": 51,
+     "h": 109,
+     "arq": "Turbine agitator 3 _rojo__ff000080_ffffffff_T.png",
+     "visivel": {
+      "expr": "v(\"MainProgram.STT_A_TP1.1\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "imagem",
+     "id": "Image12",
+     "x": 581,
+     "y": 564,
+     "w": 51,
+     "h": 109,
+     "arq": "Turbine agitator 3 _verde__ff000080_ffffffff_T.png",
+     "visivel": {
+      "expr": "v(\"MainProgram.CM_AgL2\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "forma",
+     "id": "Line1",
+     "d": "M599 240L671 240",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 3
+    },
+    {
+     "t": "imagem",
+     "id": "Image11",
+     "x": 581,
+     "y": 564,
+     "w": 51,
+     "h": 109,
+     "arq": "Turbine agitator 3 _rojo__ff000080_ffffffff_T.png",
+     "visivel": {
+      "expr": "v(\"MainProgram.STT_A_TP2.1\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "forma",
+     "id": "Line36",
+     "d": "M568 606L640 606",
+     "preenche": null,
+     "traco": "#AAAAAA",
+     "espessura": 3
+    },
+    {
+     "t": "forma",
+     "id": "Line11",
+     "d": "M371 192L371 545",
+     "preenche": null,
+     "traco": "black",
+     "espessura": 1
+    },
+    {
+     "t": "grupo",
+     "id": "Group20",
+     "filhos": [
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton9",
+       "modo": "momentaneo",
+       "x": 310,
+       "y": 111,
+       "w": 69,
+       "h": 39,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_DL.1",
+       "indicador": "v(\"MainProgram.CNT_DL.1\")",
+       "visivel": {
+        "expr": "v(\"MainProgram.ZL_VA1_L\")",
+        "quando": "invisible"
+       }
+      },
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton10",
+       "modo": "momentaneo",
+       "x": 363,
+       "y": 116,
+       "w": 76,
+       "h": 29,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_DL.2",
+       "indicador": "v(\"MainProgram.CNT_DL.2\")",
+       "visivel": {
+        "expr": "v(\"MainProgram.ZH_VA1_L\")",
+        "quando": "invisible"
+       }
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.Manual\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "botao",
+     "id": "MomentaryPushButton11",
+     "modo": "momentaneo",
+     "x": 335,
+     "y": 153,
+     "w": 75,
+     "h": 60,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "Error",
+       "valor": null,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "Error",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#D4D0C8",
+       "claro": "#ED7A7F",
+       "escuro": "#B7171E",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "1",
+       "valor": 1,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "escreve": "MainProgram.CNT_DL.6",
+     "visivel": {
+      "expr": "v(\"MainProgram.STT_DL.5\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "botao",
+     "id": "MomentaryPushButton13",
+     "modo": "momentaneo",
+     "x": 607,
+     "y": 191,
+     "w": 61,
+     "h": 64,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "Error",
+       "valor": null,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "Error",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#D4D0C8",
+       "claro": "#ED7A7F",
+       "escuro": "#B7171E",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "1",
+       "valor": 1,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "escreve": "MainProgram.CNT_A_TP1.6",
+     "visivel": {
+      "expr": "v(\"MainProgram.STT_A_TP1.4\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "texto",
+     "id": "Text8",
+     "x": 532,
+     "y": 284,
+     "w": 39,
+     "h": 39,
+     "texto": "L1",
+     "fonte": 29.3326,
+     "cor": "black",
+     "negrito": true,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "grupo",
+     "id": "Group6",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon11",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "yellow",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "texto",
+       "id": "Text7",
+       "x": 590,
+       "y": 121,
+       "w": 88,
+       "h": 25,
+       "texto": "LOCKOUT",
+       "fonte": 18.6662,
+       "cor": "black",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter",
+       "fundo": null
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.LockOut_AgL1\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "grupo",
+     "id": "Group8",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon9",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "yellow",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "texto",
+       "id": "Text10",
+       "x": 560,
+       "y": 487,
+       "w": 88,
+       "h": 25,
+       "texto": "LOCKOUT",
+       "fonte": 18.6662,
+       "cor": "black",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter",
+       "fundo": null
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.LockOut_AgL2\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "forma",
+     "id": "Polygon21",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "#C08000",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "forma",
+     "id": "Polygon22",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "#C08000",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "botao",
+     "id": "MomentaryPushButton12",
+     "modo": "momentaneo",
+     "x": 573,
+     "y": 559,
+     "w": 61,
+     "h": 64,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "Error",
+       "valor": null,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "Error",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#D4D0C8",
+       "claro": "#ED7A7F",
+       "escuro": "#B7171E",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "1",
+       "valor": 1,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "escreve": "MainProgram.CNT_A_TP2.6",
+     "visivel": {
+      "expr": "v(\"MainProgram.STT_A_TP2.4\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "texto",
+     "id": "Text11",
+     "x": 505,
+     "y": 655,
+     "w": 39,
+     "h": 39,
+     "texto": "L2",
+     "fonte": 29.3326,
+     "cor": "black",
+     "negrito": true,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "grupo",
+     "id": "Group13",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon24",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "yellow",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "texto",
+       "id": "Text17",
+       "x": 841,
+       "y": 284,
+       "w": 88,
+       "h": 25,
+       "texto": "LOCKOUT",
+       "fonte": 18.6662,
+       "cor": "black",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter",
+       "fundo": null
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.LockOut_BDL1\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "grupo",
+     "id": "Group14",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon25",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "yellow",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "texto",
+       "id": "Text18",
+       "x": 810,
+       "y": 650,
+       "w": 88,
+       "h": 25,
+       "texto": "LOCKOUT",
+       "fonte": 18.6662,
+       "cor": "black",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter",
+       "fundo": null
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.LockOut_BDL2\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "botao",
+     "id": "MomentaryPushButton14",
+     "modo": "momentaneo",
+     "x": 425,
+     "y": 224,
+     "w": 75,
+     "h": 60,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "Error",
+       "valor": null,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "Error",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#D4D0C8",
+       "claro": "#ED7A7F",
+       "escuro": "#B7171E",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "1",
+       "valor": 1,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "escreve": "MainProgram.CNT_L1.6",
+     "visivel": {
+      "expr": "v(\"MainProgram.STT_L1.5\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "grupo",
+     "id": "Group21",
+     "filhos": [
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton15",
+       "modo": "momentaneo",
+       "x": 398,
+       "y": 192,
+       "w": 69,
+       "h": 39,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_L1.1",
+       "indicador": "v(\"MainProgram.CNT_L1.1\")",
+       "visivel": {
+        "expr": "v(\"MainProgram.ZH_VA_L1\")",
+        "quando": "invisible"
+       }
+      },
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton16",
+       "modo": "momentaneo",
+       "x": 451,
+       "y": 197,
+       "w": 76,
+       "h": 29,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_L1.2",
+       "indicador": "v(\"MainProgram.CNT_L1.2\")",
+       "visivel": {
+        "expr": "v(\"MainProgram.ZL_VA_L1\")",
+        "quando": "invisible"
+       }
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.Manual\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "botao",
+     "id": "MomentaryPushButton17",
+     "modo": "momentaneo",
+     "x": 394,
+     "y": 589,
+     "w": 75,
+     "h": 60,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "Error",
+       "valor": null,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "Error",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#D4D0C8",
+       "claro": "#ED7A7F",
+       "escuro": "#B7171E",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "1",
+       "valor": 1,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "escreve": "MainProgram.CNT_L2.6",
+     "visivel": {
+      "expr": "v(\"MainProgram.STT_L2.5\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "grupo",
+     "id": "Group22",
+     "filhos": [
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton18",
+       "modo": "momentaneo",
+       "x": 368,
+       "y": 564,
+       "w": 69,
+       "h": 39,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_L2.1",
+       "indicador": "v(\"MainProgram.CNT_L2.1\")",
+       "visivel": {
+        "expr": "v(\"MainProgram.ZH_VA_L2\")",
+        "quando": "invisible"
+       }
+      },
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton19",
+       "modo": "momentaneo",
+       "x": 421,
+       "y": 569,
+       "w": 76,
+       "h": 29,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_L2.2",
+       "indicador": "v(\"MainProgram.CNT_L2.2\")",
+       "visivel": {
+        "expr": "v(\"MainProgram.ZL_VA_L2\")",
+        "quando": "invisible"
+       }
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.Manual\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "texto",
+     "id": "Text20",
+     "x": 35,
+     "y": 272,
+     "w": 118,
+     "h": 18,
+     "texto": "Amostras tomadas",
+     "fonte": 13.332999999999998,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "texto",
+     "id": "Text19",
+     "x": 33,
+     "y": 227,
+     "w": 75,
+     "h": 18,
+     "texto": "Quant. (Kg)",
+     "fonte": 13.332999999999998,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    }
+   ]
+  }
+ ],
+ "nome": "Liquidos"
+}

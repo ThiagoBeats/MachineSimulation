@@ -1,0 +1,1787 @@
+{
+ "largura": 1280,
+ "altura": 800,
+ "fundo": "white",
+ "elementos": [
+  {
+   "t": "grupo",
+   "id": "TopGroup",
+   "filhos": [
+    {
+     "t": "forma",
+     "id": "Polygon18",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "#C6C6C6",
+     "traco": "black",
+     "espessura": 2
+    },
+    {
+     "t": "forma",
+     "id": "Polygon15",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "black",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "forma",
+     "id": "Polygon13",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "black",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "forma",
+     "id": "Polygon12",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "black",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "forma",
+     "id": "Polygon6",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "#E9E9BF",
+     "traco": null,
+     "espessura": 1
+    },
+    {
+     "t": "forma",
+     "id": "Polygon5",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "#C6C6C6",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "forma",
+     "id": "Polygon4",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "#C6C6C6",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "texto",
+     "id": "Text1",
+     "x": 286,
+     "y": 522,
+     "w": 121,
+     "h": 18,
+     "texto": "CENTRIFUGADOR",
+     "fonte": 13.332999999999998,
+     "cor": "white",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "numero",
+     "id": "NumericDisplay1",
+     "x": 334,
+     "y": 552,
+     "w": 73,
+     "h": 23,
+     "texto": "",
+     "fonte": 13.332999999999998,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": "#AAD38F",
+     "borda": "white",
+     "bordaEsp": 1,
+     "casas": 0,
+     "digitos": 5,
+     "completa": "none",
+     "valor": "v(\"MainProgram.InputCTF.OutputFreq\")*60*2/400"
+    },
+    {
+     "t": "texto",
+     "id": "Text2",
+     "x": 287,
+     "y": 555,
+     "w": 31,
+     "h": 18,
+     "texto": "RPM",
+     "fonte": 13.332999999999998,
+     "cor": "white",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "texto",
+     "id": "Text4",
+     "x": 949,
+     "y": 522,
+     "w": 77,
+     "h": 18,
+     "texto": "ASPERSOR",
+     "fonte": 13.332999999999998,
+     "cor": "white",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "numero",
+     "id": "NumericDisplay2",
+     "x": 938,
+     "y": 551,
+     "w": 73,
+     "h": 23,
+     "texto": "",
+     "fonte": 13.332999999999998,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": "#AAD38F",
+     "borda": "white",
+     "bordaEsp": 1,
+     "casas": 0,
+     "digitos": 5,
+     "completa": "none",
+     "valor": "v(\"MainProgram.InputAsp.OutputFreq\")/100*1410/50"
+    },
+    {
+     "t": "texto",
+     "id": "Text5",
+     "x": 1024,
+     "y": 554,
+     "w": 31,
+     "h": 18,
+     "texto": "RPM",
+     "fonte": 13.332999999999998,
+     "cor": "white",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "texto",
+     "id": "Text7",
+     "x": 303,
+     "y": 165,
+     "w": 89,
+     "h": 18,
+     "texto": "VENTILADOR",
+     "fonte": 13.332999999999998,
+     "cor": "white",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "imagem",
+     "id": "Image2",
+     "x": 446,
+     "y": 436,
+     "w": 71,
+     "h": 50,
+     "arq": "Simple blower_ff000080_ffffffff_T.png"
+    },
+    {
+     "t": "imagem",
+     "id": "Image3",
+     "x": 514,
+     "y": 297,
+     "w": 280,
+     "h": 204,
+     "arq": "tambor01Close_ff000080_ffffffff_T.png"
+    },
+    {
+     "t": "imagem",
+     "id": "Image4",
+     "x": 1133,
+     "y": 14,
+     "w": 143,
+     "h": 63,
+     "arq": "ls - 753 x 294 px_ff000080_ffffffff_T.jpg"
+    },
+    {
+     "t": "texto",
+     "id": "Text9",
+     "x": 516,
+     "y": 19,
+     "w": 313,
+     "h": 42,
+     "texto": "HOMOGENEIZADOR",
+     "fonte": 34.6658,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "forma",
+     "id": "Ellipse1",
+     "d": "M-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z",
+     "preenche": "#C6C6C6",
+     "traco": "#AAAAAA",
+     "espessura": 1,
+     "animaCor": {
+      "expr": "v(\"MainProgram.CM_Vent\")",
+      "itens": [
+       {
+        "valor": 0,
+        "frente": "black",
+        "fundo": "#A0A0A4",
+        "piscaFrente": null,
+        "piscaFundo": null
+       },
+       {
+        "valor": 1,
+        "frente": "black",
+        "fundo": "lime",
+        "piscaFrente": null,
+        "piscaFundo": null
+       }
+      ],
+      "modo": 0
+     }
+    },
+    {
+     "t": "imagem",
+     "id": "Image7",
+     "x": 514,
+     "y": 297,
+     "w": 312,
+     "h": 204,
+     "arq": "tambor01Open_ff000080_ffffffff_T.png",
+     "visivel": {
+      "expr": "v(\"MainProgram.ZH_VA_H\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "grupo",
+     "id": "Group6",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon1",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "black",
+       "traco": "#AAAAAA",
+       "espessura": 1
+      },
+      {
+       "t": "texto",
+       "id": "Text3",
+       "x": 377,
+       "y": 610,
+       "w": 13,
+       "h": 18,
+       "texto": "%",
+       "fonte": 13.332999999999998,
+       "cor": "white",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter",
+       "fundo": null
+      },
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton3",
+       "modo": "momentaneo",
+       "x": 288,
+       "y": 655,
+       "w": 54,
+       "h": 54,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#333333",
+         "escuro": "#000000",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_CTF.1",
+       "indicador": "v(\"MainProgram.CNT_CTF.1\")"
+      },
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton4",
+       "modo": "momentaneo",
+       "x": 351,
+       "y": 654,
+       "w": 54,
+       "h": 54,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#333333",
+         "escuro": "#000000",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_CTF.2",
+       "indicador": "v(\"MainProgram.CNT_CTF.2\")"
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.LockOut_CTF\") && v(\"MainProgram.aManual\") &&v(\"MainProgram.STT_Vent.0\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "grupo",
+     "id": "Group1",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon2",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "black",
+       "traco": "#AAAAAA",
+       "espessura": 1
+      },
+      {
+       "t": "texto",
+       "id": "Text6",
+       "x": 1023,
+       "y": 611,
+       "w": 13,
+       "h": 18,
+       "texto": "%",
+       "fonte": 13.332999999999998,
+       "cor": "white",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter",
+       "fundo": null
+      },
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton5",
+       "modo": "momentaneo",
+       "x": 935,
+       "y": 656,
+       "w": 54,
+       "h": 54,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#333333",
+         "escuro": "#000000",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_ASP.1",
+       "indicador": "v(\"MainProgram.CNT_ASP.1\")"
+      },
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton6",
+       "modo": "momentaneo",
+       "x": 998,
+       "y": 655,
+       "w": 54,
+       "h": 54,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#333333",
+         "escuro": "#000000",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_ASP.2",
+       "indicador": "v(\"MainProgram.CNT_ASP.2\")"
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.aManual\") && v(\"MainProgram.LockOut_Asp\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "imagem",
+     "id": "Image8",
+     "x": 643,
+     "y": 530,
+     "w": 32,
+     "h": 44,
+     "arq": "Motor 16 _gris__ff000080_ffffffff_T.png"
+    },
+    {
+     "t": "imagem",
+     "id": "Image9",
+     "x": 590,
+     "y": 527,
+     "w": 47,
+     "h": 62,
+     "arq": "Motor 16 _gris__ff000080_ffffffff_T.png"
+    },
+    {
+     "t": "botao",
+     "id": "MomentaryPushButton8",
+     "modo": "momentaneo",
+     "x": 521,
+     "y": 361,
+     "w": 44,
+     "h": 34,
+     "forma": "reto",
+     "esp": 2,
+     "estados": [
+      {
+       "id": "Error",
+       "valor": null,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "Error",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "1",
+       "valor": 1,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "escreve": "MainProgram.CNT_Vent.6"
+    },
+    {
+     "t": "forma",
+     "id": "Ellipse4",
+     "d": "M-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z",
+     "preenche": "#F83D3D",
+     "traco": "gray",
+     "espessura": 1,
+     "visivel": {
+      "expr": "v(\"MainProgram.STT_Vent.1\")",
+      "quando": "visible"
+     },
+     "animaCor": {
+      "expr": "v(\"MainProgram.STT_Vent.1\")",
+      "itens": [
+       {
+        "valor": 0,
+        "frente": "black",
+        "fundo": "red",
+        "piscaFrente": null,
+        "piscaFundo": null
+       },
+       {
+        "valor": 1,
+        "frente": "black",
+        "fundo": "#F83D3D",
+        "piscaFrente": null,
+        "piscaFundo": "black"
+       }
+      ],
+      "modo": 0
+     }
+    },
+    {
+     "t": "forma",
+     "id": "Polygon9",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "black",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "botao",
+     "id": "MomentaryPushButton12",
+     "modo": "momentaneo",
+     "x": 772,
+     "y": 419,
+     "w": 75,
+     "h": 60,
+     "forma": "reto",
+     "esp": 2,
+     "estados": [
+      {
+       "id": "Error",
+       "valor": null,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "Error",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#D4D0C8",
+       "claro": "#ED7A7F",
+       "escuro": "#B7171E",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "1",
+       "valor": 1,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "escreve": "MainProgram.CNT_CDB.6",
+     "visivel": {
+      "expr": "v(\"MainProgram.STT_CDB.5\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "grupo",
+     "id": "Group3",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon11",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "yellow",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "texto",
+       "id": "Text13",
+       "x": 948,
+       "y": 602,
+       "w": 88,
+       "h": 25,
+       "texto": "LOCKOUT",
+       "fonte": 18.6662,
+       "cor": "black",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter",
+       "fundo": null
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.LockOut_Asp\")",
+      "quando": "invisible"
+     }
+    },
+    {
+     "t": "grupo",
+     "id": "Group5",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon3",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "black",
+       "traco": "#AAAAAA",
+       "espessura": 1
+      },
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton1",
+       "modo": "momentaneo",
+       "x": 289,
+       "y": 201,
+       "w": 54,
+       "h": 54,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#333333",
+         "escuro": "#000000",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_Vent.1",
+       "indicador": "v(\"MainProgram.CNT_Vent.1\")"
+      },
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton2",
+       "modo": "momentaneo",
+       "x": 352,
+       "y": 200,
+       "w": 54,
+       "h": 54,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "#D4D0C8",
+         "claro": "#333333",
+         "escuro": "#000000",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "#D4D0C8",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_Vent.2",
+       "indicador": "v(\"MainProgram.CNT_Vent.2\")"
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.LockOut_Vent\") && v(\"MainProgram.aManual\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "grupo",
+     "id": "Group4",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon14",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "yellow",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "texto",
+       "id": "Text14",
+       "x": 303,
+       "y": 200,
+       "w": 88,
+       "h": 25,
+       "texto": "LOCKOUT",
+       "fonte": 18.6662,
+       "cor": "black",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter",
+       "fundo": null
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.LockOut_Vent\")",
+      "quando": "invisible"
+     }
+    },
+    {
+     "t": "botao",
+     "id": "MomentaryPushButton13",
+     "modo": "momentaneo",
+     "x": 441,
+     "y": 434,
+     "w": 59,
+     "h": 55,
+     "forma": "reto",
+     "esp": 2,
+     "estados": [
+      {
+       "id": "Error",
+       "valor": null,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "Error",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#D4D0C8",
+       "claro": "#ED7A7F",
+       "escuro": "#B7171E",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "1",
+       "valor": 1,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "escreve": "MainProgram.CNT_Vent.6",
+     "visivel": {
+      "expr": "v(\"MainProgram.STT_Vent.4\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "grupo",
+     "id": "Group8",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon17",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "#0B84FD",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "texto",
+       "id": "Text16",
+       "x": 299,
+       "y": 612,
+       "w": 89,
+       "h": 36,
+       "texto": "ACIONAR\nVENTILADOR",
+       "fonte": 13.332999999999998,
+       "cor": "white",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter",
+       "fundo": null
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.aManual\") &&  ! v(\"MainProgram.STT_Vent.0\") && v(\"MainProgram.LockOut_CTF\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "imagem",
+     "id": "Image5",
+     "x": 590,
+     "y": 527,
+     "w": 47,
+     "h": 62,
+     "arq": "Motor 16 _verde__ff000080_ffffffff_T.png",
+     "visivel": {
+      "expr": "v(\"Prato:I.Active\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "imagem",
+     "id": "Image1",
+     "x": 643,
+     "y": 530,
+     "w": 32,
+     "h": 44,
+     "arq": "Motor 16 _verde__ff000080_ffffffff_T.png",
+     "visivel": {
+      "expr": "v(\"Aspersor:I.Active\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "imagem",
+     "id": "Image10",
+     "x": 643,
+     "y": 533,
+     "w": 32,
+     "h": 44,
+     "arq": "Motor 16 _rojo__ff000080_ffffffff_T.png",
+     "visivel": {
+      "expr": "v(\"MainProgram.STT_Asp.1\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "botao",
+     "id": "MomentaryPushButton7",
+     "modo": "momentaneo",
+     "x": 644,
+     "y": 542,
+     "w": 46,
+     "h": 40,
+     "forma": "reto",
+     "esp": 2,
+     "estados": [
+      {
+       "id": "Error",
+       "valor": null,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "Error",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#D4D0C8",
+       "claro": "#ED7A7F",
+       "escuro": "#B7171E",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "1",
+       "valor": 1,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "escreve": "MainProgram.CNT_ASP.6",
+     "visivel": {
+      "expr": "v(\"MainProgram.STT_Asp.5\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "imagem",
+     "id": "Image11",
+     "x": 590,
+     "y": 527,
+     "w": 47,
+     "h": 62,
+     "arq": "Motor 16 _rojo__ff000080_ffffffff_T.png",
+     "visivel": {
+      "expr": "v(\"MainProgram.STT_CTF.1\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "botao",
+     "id": "MomentaryPushButton9",
+     "modo": "momentaneo",
+     "x": 590,
+     "y": 542,
+     "w": 54,
+     "h": 49,
+     "forma": "reto",
+     "esp": 2,
+     "estados": [
+      {
+       "id": "Error",
+       "valor": null,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "Error",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#D4D0C8",
+       "claro": "#ED7A7F",
+       "escuro": "#B7171E",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "1",
+       "valor": 1,
+       "fundo": "#D4D0C8",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "escreve": "MainProgram.CNT_CTF.6",
+     "visivel": {
+      "expr": "v(\"MainProgram.STT_CTF.5\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "forma",
+     "id": "Polygon8",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "black",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "forma",
+     "id": "Polygon10",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "#919191",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "forma",
+     "id": "RoundedRectangle2",
+     "d": "MNaN undefinedHNaNA50 50 0 0 1 NaN NaNVNaNA50 50 0 0 1 NaN NaNHNaNA50 50 0 0 1 NaN NaNVNaNA50 50 0 0 1 NaN undefinedZ",
+     "preenche": "#C6C6C6",
+     "traco": "black",
+     "espessura": 1
+    },
+    {
+     "t": "grupo",
+     "id": "Group7",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon16",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "yellow",
+       "traco": "black",
+       "espessura": 1
+      },
+      {
+       "t": "texto",
+       "id": "Text15",
+       "x": 303,
+       "y": 600,
+       "w": 88,
+       "h": 25,
+       "texto": "LOCKOUT",
+       "fonte": 18.6662,
+       "cor": "black",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter",
+       "fundo": null
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.LockOut_CTF\")",
+      "quando": "invisible"
+     }
+    },
+    {
+     "t": "botao",
+     "id": "MaintainedPushButton1",
+     "modo": "mantido",
+     "x": 939,
+     "y": 148,
+     "w": 107,
+     "h": 49,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "Error",
+       "valor": null,
+       "fundo": "navy",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "Error",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "navy",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "TOMAR\nAMOSTRA",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "1",
+       "valor": 1,
+       "fundo": "navy",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "TOMAR\nAMOSTRA",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "escreve": "MainProgram.CmdM_VA_TM1",
+     "indicador": "v(\"MainProgram.CmdM_VA_TM1\")",
+     "visivel": {
+      "expr": "v(\"MainProgram.aManual\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "grupo",
+     "id": "Group2",
+     "filhos": [
+      {
+       "t": "texto",
+       "id": "Text17",
+       "x": 906,
+       "y": 218,
+       "w": 84,
+       "h": 18,
+       "texto": "Quant. Batel.",
+       "fonte": 13.332999999999998,
+       "cor": "black",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter",
+       "fundo": null
+      }
+     ]
+    },
+    {
+     "t": "grupo",
+     "id": "Group10",
+     "filhos": [
+      {
+       "t": "texto",
+       "id": "Text20",
+       "x": 914,
+       "y": 248,
+       "w": 79,
+       "h": 36,
+       "texto": "Tempo de \namostragem",
+       "fonte": 13.332999999999998,
+       "cor": "black",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter",
+       "fundo": null
+      },
+      {
+       "t": "numero",
+       "id": "NumericDisplay3",
+       "x": 998,
+       "y": 251,
+       "w": 80,
+       "h": 30,
+       "texto": "",
+       "fonte": 13.332999999999998,
+       "cor": "black",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter",
+       "fundo": "white",
+       "borda": "gray",
+       "bordaEsp": 2,
+       "casas": 0,
+       "digitos": 5,
+       "completa": "none",
+       "valor": "v(\"MainProgram.T_medicion_TM1.ACC\")"
+      }
+     ]
+    },
+    {
+     "t": "botao",
+     "id": "GotoDisplayButton1",
+     "modo": "ir",
+     "x": 1142,
+     "y": 725,
+     "w": 133,
+     "h": 62,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#37A9E0",
+       "claro": "#8FCEED",
+       "escuro": "#1E8FC5",
+       "legenda": {
+        "texto": "",
+        "fonte": 18.6662,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "icone": {
+      "arq": "Home01_ff000080_ffffffff_T.png",
+      "esticado": true
+     },
+     "destino": "MAIN"
+    },
+    {
+     "t": "texto",
+     "id": "Text12",
+     "x": 1083,
+     "y": 257,
+     "w": 19,
+     "h": 18,
+     "texto": "ms",
+     "fonte": 13.332999999999998,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "forma",
+     "id": "Polygon19",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "#C6C6C6",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "texto",
+     "id": "Text18",
+     "x": 938,
+     "y": 302,
+     "w": 109,
+     "h": 28,
+     "texto": "EM PAUSA",
+     "fonte": 21.3328,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": "yellow",
+     "visivel": {
+      "expr": "v(\"MainProgram.Pausa_TM1\")",
+      "quando": "visible"
+     },
+     "animaCor": {
+      "expr": "v(\"MainProgram.Pausa_TM1\")",
+      "itens": [
+       {
+        "valor": 0,
+        "frente": "black",
+        "fundo": "red",
+        "piscaFrente": null,
+        "piscaFundo": null
+       },
+       {
+        "valor": 1,
+        "frente": "black",
+        "fundo": "yellow",
+        "piscaFrente": null,
+        "piscaFundo": "black"
+       }
+      ],
+      "modo": 0
+     }
+    },
+    {
+     "t": "grupo",
+     "id": "Group31",
+     "filhos": [
+      {
+       "t": "forma",
+       "id": "Polygon7",
+       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "preenche": "silver",
+       "traco": "#E8E8E8",
+       "espessura": 1
+      },
+      {
+       "t": "texto",
+       "id": "Text10",
+       "x": 61,
+       "y": 268,
+       "w": 49,
+       "h": 18,
+       "texto": "AUTO",
+       "fonte": 13.332999999999998,
+       "cor": "black",
+       "negrito": true,
+       "italico": false,
+       "alinha": "middleCenter",
+       "fundo": null
+      },
+      {
+       "t": "texto",
+       "id": "Text8",
+       "x": 6,
+       "y": 309,
+       "w": 39,
+       "h": 18,
+       "texto": "MAN",
+       "fonte": 13.332999999999998,
+       "cor": "black",
+       "negrito": true,
+       "italico": false,
+       "alinha": "middleCenter",
+       "fundo": null
+      },
+      {
+       "t": "grupo",
+       "id": "Group13",
+       "filhos": [
+        {
+         "t": "botao",
+         "id": "MultistatePushButton1",
+         "modo": "multiestado",
+         "x": 41,
+         "y": 282,
+         "w": 90,
+         "h": 75,
+         "forma": "reto",
+         "esp": 2,
+         "estados": [
+          {
+           "id": "Error",
+           "valor": null,
+           "fundo": "#D4D0C8",
+           "claro": "#0000E6",
+           "escuro": "#00004D",
+           "legenda": {
+            "texto": "Error",
+            "fonte": 13.332999999999998,
+            "cor": "white",
+            "negrito": false,
+            "italico": false,
+            "alinha": "middleCenter"
+           }
+          },
+          {
+           "id": "0",
+           "valor": 0,
+           "fundo": "#D4D0C8",
+           "claro": "#0000E6",
+           "escuro": "#00004D",
+           "legenda": {
+            "texto": "",
+            "fonte": 13.332999999999998,
+            "cor": "white",
+            "negrito": false,
+            "italico": false,
+            "alinha": "middleCenter"
+           }
+          },
+          {
+           "id": "1",
+           "valor": 1,
+           "fundo": "#D4D0C8",
+           "claro": "#0000E6",
+           "escuro": "#00004D",
+           "legenda": {
+            "texto": "",
+            "fonte": 13.332999999999998,
+            "cor": "white",
+            "negrito": false,
+            "italico": false,
+            "alinha": "middleCenter"
+           }
+          }
+         ],
+         "escreve": "MainProgram.aManual",
+         "indicador": "v(\"MainProgram.aManual\")"
+        },
+        {
+         "t": "imagem",
+         "id": "Image12",
+         "x": 52,
+         "y": 285,
+         "w": 68,
+         "h": 68,
+         "arq": "Selector switch 2 _left__ff000080_ff808080.png",
+         "visivel": {
+          "expr": "v(\"Manual\")",
+          "quando": "visible"
+         }
+        },
+        {
+         "t": "imagem",
+         "id": "Image6",
+         "x": 53,
+         "y": 285,
+         "w": 67,
+         "h": 68,
+         "arq": "Selector switch 2 _up__ff000080_ff808080.png",
+         "visivel": {
+          "expr": "v(\"MainProgram.aManual\")",
+          "quando": "invisible"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "grupo",
+     "id": "Group11",
+     "filhos": [
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton14",
+       "modo": "momentaneo",
+       "x": 796,
+       "y": 517,
+       "w": 60,
+       "h": 30,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "navy",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "white",
+         "claro": "#FFFFFF",
+         "escuro": "#E5E5E5",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "white",
+         "claro": "#FFFFFF",
+         "escuro": "#E5E5E5",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_CDB.1",
+       "indicador": "v(\"MainProgram.CNT_CDB.1\")",
+       "visivel": {
+        "expr": "v(\"MainProgram.ZL_VA_H\")",
+        "quando": "visible"
+       }
+      },
+      {
+       "t": "botao",
+       "id": "MomentaryPushButton15",
+       "modo": "momentaneo",
+       "x": 752,
+       "y": 517,
+       "w": 60,
+       "h": 30,
+       "forma": "reto",
+       "esp": 2,
+       "estados": [
+        {
+         "id": "Error",
+         "valor": null,
+         "fundo": "navy",
+         "claro": "#0000E6",
+         "escuro": "#00004D",
+         "legenda": {
+          "texto": "Error",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "0",
+         "valor": 0,
+         "fundo": "white",
+         "claro": "#FFFFFF",
+         "escuro": "#E5E5E5",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        },
+        {
+         "id": "1",
+         "valor": 1,
+         "fundo": "white",
+         "claro": "#FFFFFF",
+         "escuro": "#E5E5E5",
+         "legenda": {
+          "texto": "",
+          "fonte": 13.332999999999998,
+          "cor": "white",
+          "negrito": false,
+          "italico": false,
+          "alinha": "middleCenter"
+         }
+        }
+       ],
+       "escreve": "MainProgram.CNT_CDB.2",
+       "indicador": "v(\"MainProgram.CNT_CDB.2\")",
+       "visivel": {
+        "expr": "v(\"MainProgram.ZH_VA_H\")",
+        "quando": "visible"
+       }
+      }
+     ],
+     "visivel": {
+      "expr": "v(\"MainProgram.aManual\")",
+      "quando": "visible"
+     }
+    }
+   ]
+  }
+ ],
+ "nome": "Homogenizador"
+}

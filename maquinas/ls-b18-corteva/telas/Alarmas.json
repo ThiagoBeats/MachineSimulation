@@ -1,0 +1,410 @@
+{
+ "largura": 1280,
+ "altura": 800,
+ "fundo": "white",
+ "elementos": [
+  {
+   "t": "grupo",
+   "id": "TopGroup",
+   "filhos": [
+    {
+     "t": "forma",
+     "id": "Polygon2",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "#C6C6C6",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "forma",
+     "id": "Polygon3",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "#C6C6C6",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "texto",
+     "id": "Text9",
+     "x": 514,
+     "y": 17,
+     "w": 150,
+     "h": 42,
+     "texto": "ALARMAS",
+     "fonte": 34.6658,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "imagem",
+     "id": "Image2",
+     "x": 1133,
+     "y": 14,
+     "w": 143,
+     "h": 63,
+     "arq": "ls - 753 x 294 px_ff000080_ffffffff_T.jpg"
+    },
+    {
+     "t": "botao",
+     "id": "GotoDisplayButton4",
+     "modo": "ir",
+     "x": 1139,
+     "y": 597,
+     "w": 133,
+     "h": 62,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#37A9E0",
+       "claro": "#8FCEED",
+       "escuro": "#1E8FC5",
+       "legenda": {
+        "texto": "BALANÇA",
+        "fonte": 18.6662,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "destino": "Balanza"
+    },
+    {
+     "t": "botao",
+     "id": "MomentaryPushButton1",
+     "modo": "momentaneo",
+     "x": 112,
+     "y": 715,
+     "w": 120,
+     "h": 48,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "Error",
+       "valor": null,
+       "fundo": "navy",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "Error",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#10EB10",
+       "claro": "#6CF46C",
+       "escuro": "#0CBB0C",
+       "legenda": {
+        "texto": "Silenciar\nSOM",
+        "fonte": 13.332999999999998,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "1",
+       "valor": 1,
+       "fundo": "green",
+       "claro": "#00E600",
+       "escuro": "#004D00",
+       "legenda": {
+        "texto": "Silenciar\nSOM",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "escreve": "MainProgram.Reset_acustica",
+     "indicador": "v(\"MainProgram.Reset_acustica\")"
+    },
+    {
+     "t": "botao",
+     "id": "MomentaryPushButton2",
+     "modo": "momentaneo",
+     "x": 841,
+     "y": 715,
+     "w": 120,
+     "h": 48,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "Error",
+       "valor": null,
+       "fundo": "navy",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "Error",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "yellow",
+       "claro": "#FFFF65",
+       "escuro": "#CCCC00",
+       "legenda": {
+        "texto": "Rearme\nALARMES",
+        "fonte": 13.332999999999998,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "1",
+       "valor": 1,
+       "fundo": "#E3D95B",
+       "claro": "#F1EDB2",
+       "escuro": "#DBCE2F",
+       "legenda": {
+        "texto": "Rearme\nALARMES",
+        "fonte": 13.332999999999998,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "escreve": "MainProgram.ResetGral",
+     "indicador": "v(\"MainProgram.ResetGral\")"
+    },
+    {
+     "t": "botao",
+     "id": "GotoDisplayButton1",
+     "modo": "ir",
+     "x": 1142,
+     "y": 725,
+     "w": 133,
+     "h": 62,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#37A9E0",
+       "claro": "#8FCEED",
+       "escuro": "#1E8FC5",
+       "legenda": {
+        "texto": "",
+        "fonte": 18.6662,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "icone": {
+      "arq": "Home01_ff000080_ffffffff_T.png",
+      "esticado": true
+     },
+     "destino": "MAIN"
+    },
+    {
+     "t": "botao",
+     "id": "GotoDisplayButton7",
+     "modo": "ir",
+     "x": 1138,
+     "y": 443,
+     "w": 133,
+     "h": 62,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#37A9E0",
+       "claro": "#8FCEED",
+       "escuro": "#1E8FC5",
+       "legenda": {
+        "texto": "LIQUIDO 6",
+        "fonte": 18.6662,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "destino": "Liquido L6"
+    },
+    {
+     "t": "botao",
+     "id": "GotoDisplayButton9",
+     "modo": "ir",
+     "x": 1138,
+     "y": 371,
+     "w": 133,
+     "h": 62,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#37A9E0",
+       "claro": "#8FCEED",
+       "escuro": "#1E8FC5",
+       "legenda": {
+        "texto": "LIQUIDO 5",
+        "fonte": 18.6662,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "destino": "Liquido L5"
+    },
+    {
+     "t": "botao",
+     "id": "GotoDisplayButton10",
+     "modo": "ir",
+     "x": 1138,
+     "y": 299,
+     "w": 133,
+     "h": 62,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#37A9E0",
+       "claro": "#8FCEED",
+       "escuro": "#1E8FC5",
+       "legenda": {
+        "texto": "LIQUIDO 4",
+        "fonte": 18.6662,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "destino": "Liquido L4"
+    },
+    {
+     "t": "botao",
+     "id": "GotoDisplayButton11",
+     "modo": "ir",
+     "x": 1138,
+     "y": 227,
+     "w": 133,
+     "h": 62,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#37A9E0",
+       "claro": "#8FCEED",
+       "escuro": "#1E8FC5",
+       "legenda": {
+        "texto": "LIQUIDO 3",
+        "fonte": 18.6662,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "destino": "Liquido L3"
+    },
+    {
+     "t": "botao",
+     "id": "GotoDisplayButton8",
+     "modo": "ir",
+     "x": 1138,
+     "y": 155,
+     "w": 133,
+     "h": 62,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#37A9E0",
+       "claro": "#8FCEED",
+       "escuro": "#1E8FC5",
+       "legenda": {
+        "texto": "LIQUIDO 2",
+        "fonte": 18.6662,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "destino": "Liquido L2"
+    },
+    {
+     "t": "botao",
+     "id": "GotoDisplayButton12",
+     "modo": "ir",
+     "x": 1138,
+     "y": 83,
+     "w": 133,
+     "h": 62,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#37A9E0",
+       "claro": "#8FCEED",
+       "escuro": "#1E8FC5",
+       "legenda": {
+        "texto": "LIQUIDO 1",
+        "fonte": 18.6662,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "destino": "Liquido L1"
+    }
+   ]
+  }
+ ],
+ "nome": "Alarmas"
+}

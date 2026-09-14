@@ -1,0 +1,225 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LS-B18 Corteva</title>
+<style>
+  :root{
+    --fundo:#1E1E24; --barra:#26262E; --linha:#3A3A45; --texto:#E8E8EE;
+    --fraco:#9A9AA8; --realce:#37A9E0; --altura-barra:52px;
+    --disp-h:calc(100vh - var(--altura-barra) - 24px);
+    --tela-prop:1.6; --foto-prop:1.33; --ocupacao:0.92;
+    --tela-x:0%; --tela-y:0%; --tela-w:100%; --tela-h:100%;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fundo);color:var(--texto);
+       font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+
+  .barra{height:var(--altura-barra);display:flex;align-items:center;gap:14px;
+         padding:0 16px;background:var(--barra);border-bottom:1px solid var(--linha);
+         flex-wrap:wrap}
+  .marca{font-weight:600;letter-spacing:.2px;white-space:nowrap}
+  .marca span{color:var(--fraco);font-weight:400;margin-left:8px;font-size:12px}
+  .barra .espaco{flex:1}
+  select,button{font:inherit;color:var(--texto);background:#32323C;
+                border:1px solid var(--linha);border-radius:6px;padding:6px 10px;cursor:pointer}
+  select{max-width:46vw}
+  button:hover,select:hover{border-color:var(--realce)}
+  button[aria-pressed="true"]{background:var(--realce);border-color:var(--realce);color:#0B2230;font-weight:600}
+  button:disabled{opacity:.4;cursor:default}
+  .modos{display:flex;gap:6px}
+
+  .palco{display:flex;align-items:center;justify-content:center;
+         padding:12px 16px;min-height:calc(100vh - var(--altura-barra))}
+  body[data-modo="painel"] .palco{background:#FFF}
+
+  body[data-modo="cheia"] .painel{display:contents}
+  body[data-modo="cheia"] .quadro{
+    position:relative;aspect-ratio:var(--tela-prop);
+    width:min(100%, calc(var(--disp-h) * var(--tela-prop)));
+    box-shadow:0 0 0 1px var(--linha);background:#FFF}
+
+  body[data-modo="painel"] .painel{
+    position:relative;aspect-ratio:var(--foto-prop);
+    width:min(100%, calc(var(--disp-h) * var(--ocupacao) * var(--foto-prop)));
+    background-position:center;background-size:contain;background-repeat:no-repeat}
+  body[data-modo="painel"] .quadro{
+    position:absolute;left:var(--tela-x);top:var(--tela-y);
+    width:var(--tela-w);height:var(--tela-h);background:#FFF}
+
+  .quadro svg{display:block;width:100%;height:100%}
+  .aviso{padding:10px 16px;color:var(--fraco);font-size:13px;border-top:1px solid var(--linha)}
+  [hidden]{display:none !important}
+</style>
+
+<div class="barra">
+  <div class="marca">LS-B18 Corteva<span id="resumo"></span></div>
+  <button id="voltar" title="Volta para a tela anterior">Voltar</button>
+  <select id="indice" aria-label="Tela"></select>
+  <div class="espaco"></div>
+  <div class="modos" id="grupo-modos">
+    <button id="modo-painel" aria-pressed="false">Painel</button>
+    <button id="modo-cheia" aria-pressed="true">Tela cheia</button>
+  </div>
+  <button id="reiniciar" title="Devolve a maquina ao estado inicial">Reiniciar</button>
+</div>
+
+<div class="palco">
+  <div class="painel" id="painel"><div class="quadro" id="quadro"></div></div>
+</div>
+<p class="aviso" id="aviso"></p>
+
+<script src="vetorial.js"></script>
+<script src="telas.js"></script>
+<script src="valores.js"></script>
+<script src="logica.js"></script>
+<script>
+(function(){
+  'use strict';
+  var CFG = window.TELAS_CFG;
+  var V = window.Vetorial;
+
+  var quadro   = document.getElementById('quadro');
+  var painel   = document.getElementById('painel');
+  var indice   = document.getElementById('indice');
+  var btVoltar = document.getElementById('voltar');
+  var resumo   = document.getElementById('resumo');
+  var aviso    = document.getElementById('aviso');
+  var grupoModos = document.getElementById('grupo-modos');
+
+  var CHAVE = 'sim:' + CFG.id;
+  var temPainel = !!(CFG.painel && CFG.painel.foto);
+  var pilha = [];
+  var atual = null;
+  var montada = null;
+
+  // --- estado inicial ------------------------------------------------------
+  function cenarioInicial(){
+    var v = {};
+    for (var k in (window.VALORES || {})) v[k] = window.VALORES[k];
+    return v;
+  }
+
+  function carregar(){
+    var base = cenarioInicial();
+    // O portal oferece "reiniciar" como link, com ?reset=1.
+    if (/[?&]reset=1\b/.test(location.search)) {
+      try { localStorage.removeItem(CHAVE); } catch(e){}
+      V.definirValores(base);
+      return;
+    }
+    try {
+      var guardado = JSON.parse(localStorage.getItem(CHAVE) || 'null');
+      if (guardado) for (var k in guardado) base[k] = guardado[k];
+    } catch(e){ /* sem persistencia, segue com o cenario inicial */ }
+    V.definirValores(base);
+  }
+
+  var salvamento = null;
+  function agendarSalvar(){
+    if (salvamento) return;
+    salvamento = setTimeout(function(){
+      salvamento = null;
+      try { localStorage.setItem(CHAVE, JSON.stringify(V.valores())); } catch(e){}
+    }, 600);
+  }
+
+  // --- varredura -----------------------------------------------------------
+  // A IHM real le o CLP a cada 250 ms. Aqui a logica emulada roda primeiro e o
+  // desenho vem depois, na mesma ordem: calcula, depois mostra.
+  function varrer(){
+    if (window.LOGICA && window.LOGICA.scan) {
+      try { window.LOGICA.scan(V.ler, V.escrever); }
+      catch(e){ avisar('a logica emulada parou: ' + e.message); }
+    }
+    if (montada) V.atualizar(montada.animados);
+    agendarSalvar();
+  }
+
+  var ctx = {
+    pasta: '',
+    ir: function(destino){ if (CFG.telas[destino]) { pilha.push(atual); abrir(destino); } },
+    voltar: function(){ if (pilha.length) abrir(pilha.pop(), true); },
+    varrer: varrer
+  };
+
+  // --- telas ----------------------------------------------------------------
+  function abrir(nome, semEmpilhar){
+    if (!CFG.telas[nome]) return;
+    atual = nome;
+    montada = V.montarTela(CFG.telas[nome], ctx);
+    quadro.replaceChildren(montada.svg);
+    var t = CFG.telas[nome];
+    document.documentElement.style.setProperty('--tela-prop', (t.largura / t.altura).toFixed(4));
+    indice.value = nome;
+    btVoltar.disabled = !pilha.length;
+    V.atualizar(montada.animados);
+  }
+
+  function avisar(texto){ aviso.textContent = texto; aviso.hidden = !texto; }
+
+  // --- moldura do painel -----------------------------------------------------
+  function prepararPainel(){
+    if (!temPainel) { grupoModos.hidden = true; return; }
+    var p = CFG.painel, r = document.documentElement.style;
+    r.setProperty('--foto-prop', (p.fotoLargura / p.fotoAltura).toFixed(4));
+    r.setProperty('--ocupacao', String(p.ocupacaoAltura || 0.92));
+    r.setProperty('--tela-x', p.tela.esquerda + '%');
+    r.setProperty('--tela-y', p.tela.topo + '%');
+    r.setProperty('--tela-w', p.tela.largura + '%');
+    r.setProperty('--tela-h', p.tela.altura + '%');
+    painel.style.backgroundImage = 'url("' + p.foto + '")';
+  }
+
+  function cabePainel(){
+    if (!temPainel) return false;
+    return window.innerWidth  >= (CFG.painel.larguraMinima || 0)
+        && window.innerHeight >= (CFG.painel.alturaMinima  || 0);
+  }
+
+  function definirModo(modo){
+    if (modo === 'painel' && !cabePainel()) modo = 'cheia';
+    document.body.dataset.modo = modo;
+    document.getElementById('modo-painel').setAttribute('aria-pressed', String(modo === 'painel'));
+    document.getElementById('modo-cheia').setAttribute('aria-pressed', String(modo === 'cheia'));
+  }
+
+  // --- montagem --------------------------------------------------------------
+  var nomes = Object.keys(CFG.telas).filter(function(n){ return n.charAt(0) !== '['; });
+  nomes.sort(function(a,b){
+    if (a === CFG.inicial) return -1;
+    if (b === CFG.inicial) return 1;
+    return a.localeCompare(b, 'pt');
+  });
+  nomes.forEach(function(n){
+    var o = document.createElement('option');
+    o.value = n; o.textContent = n;
+    indice.appendChild(o);
+  });
+
+  indice.addEventListener('change', function(){ pilha.push(atual); abrir(indice.value); });
+  btVoltar.addEventListener('click', ctx.voltar);
+  document.getElementById('modo-painel').addEventListener('click', function(){ definirModo('painel'); });
+  document.getElementById('modo-cheia').addEventListener('click', function(){ definirModo('cheia'); });
+  document.getElementById('reiniciar').addEventListener('click', function(){
+    try { localStorage.removeItem(CHAVE); } catch(e){}
+    V.definirValores(cenarioInicial());
+    pilha = [];
+    abrir(CFG.inicial);
+  });
+  window.addEventListener('resize', function(){
+    if (document.body.dataset.modo === 'painel' && !cabePainel()) definirModo('cheia');
+  });
+
+  prepararPainel();
+  definirModo(temPainel && cabePainel() ? 'painel' : 'cheia');
+  carregar();
+  abrir(CFG.inicial);
+
+  resumo.textContent = nomes.length + ' telas'
+    + (CFG.rungs ? ' - ' + CFG.rungs + ' rungs do CLP emulados' : '');
+  if (CFG.telasDeFora && CFG.telasDeFora.length) {
+    avisar('Estas telas da maquina ainda nao entraram: ' + CFG.telasDeFora.join(', ') + '.');
+  }
+
+  setInterval(varrer, V.periodo);
+  setInterval(function(){ V.trocarPisca(); if (montada) V.atualizar(montada.animados); }, 500);
+})();
+</script>

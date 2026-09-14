@@ -1,0 +1,41 @@
+{
+  "id": "ls-b18-corteva",
+  "modelo": "LS-B18 Corteva",
+  "fabricante": "LS do Brasil",
+  "tipoSimulacao": "vetorial",
+  "inicial": "MAIN",
+
+  "_origem": {
+    "clp": "Rockwell Studio 5000 V35 (LSB18-6Liquidos.ACD), controlador B18_CORTEVA",
+    "ihm": "FactoryTalk View ME (Corteva_LSB18_v2.mer), 1280x800, em portugues",
+    "comoFoiLido": "Nenhum software Rockwell foi usado - nao ha nenhum instalado. O .mer e um documento composto OLE2 cujos fluxos usam um LZ77 proprio da Rockwell, decifrado comparando 'Datos Lote.strn', que existe comprimido e cru dentro do mesmo arquivo; a decodificacao bate byte a byte. O .ACD guarda uma tabela de regioes no fim do arquivo, e cada regiao e gzip comum.",
+    "telas": "As telas vem do XAML vetorial do cliente web embutido no .mer, entao sao desenhadas de novo em SVG e ficam vivas - nao sao capturas de tela.",
+    "oQueFaltou": "Das 49 telas do projeto, 11 tem forma vetorial. As demais so existem no binario nativo .gfx e estao listadas em _origem.json."
+  },
+
+  "painel": {
+    "_comentario": "A IHM e de 1280x800, a mesma resolucao do tablet da LS-B130. Enquanto nao houver foto do painel desta maquina, a simulacao abre em tela cheia.",
+    "resolucao": { "largura": 1280, "altura": 800 }
+  },
+
+  "textos": {
+    "pt": {
+      "nome": "LS-B18 Corteva",
+      "tipo": "Tratamento de sementes",
+      "descricao": "Tratadora de 6 linhas de líquido com CLP Rockwell. As telas são redesenhadas a partir da definição vetorial do próprio projeto e ficam vivas: os valores vêm da lógica do CLP emulada no navegador.",
+      "recursos": ["Telas vetoriais do projeto original", "Lógica do CLP emulada", "6 linhas de líquido, balança e homogeneizador"]
+    },
+    "es": {
+      "nome": "LS-B18 Corteva",
+      "tipo": "Tratamiento de semillas",
+      "descricao": "Tratadora de 6 líneas de líquido con PLC Rockwell. Las pantallas se redibujan a partir de la definición vectorial del propio proyecto y quedan vivas: los valores vienen de la lógica del PLC emulada en el navegador.",
+      "recursos": ["Pantallas vectoriales del proyecto original", "Lógica del PLC emulada", "6 líneas de líquido, balanza y homogeneizador"]
+    },
+    "en": {
+      "nome": "LS-B18 Corteva",
+      "tipo": "Seed treatment",
+      "descricao": "Six liquid line seed treater with a Rockwell PLC. The screens are redrawn from the project's own vector definition and stay live: values come from the PLC logic emulated in the browser.",
+      "recursos": ["Vector screens from the original project", "Emulated PLC logic", "Six liquid lines, scale and homogeniser"]
+    }
+  }
+}

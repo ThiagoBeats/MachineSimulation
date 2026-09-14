@@ -1,0 +1,322 @@
+{
+ "largura": 1280,
+ "altura": 800,
+ "fundo": "white",
+ "elementos": [
+  {
+   "t": "grupo",
+   "id": "TopGroup",
+   "filhos": [
+    {
+     "t": "forma",
+     "id": "Polygon4",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "#C6C6C6",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "forma",
+     "id": "Polygon3",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "#C6C6C6",
+     "traco": "#AAAAAA",
+     "espessura": 1
+    },
+    {
+     "t": "texto",
+     "id": "Text9",
+     "x": 333,
+     "y": 18,
+     "w": 548,
+     "h": 42,
+     "texto": "CALIBRAR BALANÇA DO TANQUE 2",
+     "fonte": 34.6658,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "imagem",
+     "id": "Image4",
+     "x": 1133,
+     "y": 14,
+     "w": 143,
+     "h": 63,
+     "arq": "ls - 753 x 294 px_ff000080_ffffffff_T.jpg"
+    },
+    {
+     "t": "botao",
+     "id": "GotoDisplayButton2",
+     "modo": "ir",
+     "x": 1137,
+     "y": 444,
+     "w": 133,
+     "h": 62,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#37A9E0",
+       "claro": "#8FCEED",
+       "escuro": "#1E8FC5",
+       "legenda": {
+        "texto": "RETORNAR",
+        "fonte": 18.6662,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "destino": "Liquido L2"
+    },
+    {
+     "t": "forma",
+     "id": "Polygon1",
+     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "preenche": "#AAD38F",
+     "traco": "gray",
+     "espessura": 1
+    },
+    {
+     "t": "texto",
+     "id": "Text2",
+     "x": 310,
+     "y": 331,
+     "w": 103,
+     "h": 25,
+     "texto": "Peso padrão",
+     "fonte": 18.6662,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "texto",
+     "id": "Text3",
+     "x": 310,
+     "y": 410,
+     "w": 265,
+     "h": 25,
+     "texto": "Verifique se a balança está vazia",
+     "fonte": 18.6662,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "numero",
+     "id": "NumericDisplay1",
+     "x": 505,
+     "y": 193,
+     "w": 120,
+     "h": 48,
+     "texto": "",
+     "fonte": 23.999399999999998,
+     "cor": "white",
+     "negrito": true,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": "black",
+     "borda": "#71AF65",
+     "bordaEsp": 2,
+     "casas": 1,
+     "digitos": 5,
+     "completa": "none",
+     "valor": "v(\"MainProgram.Peso_Tk_L2\")"
+    },
+    {
+     "t": "texto",
+     "id": "Text16",
+     "x": 628,
+     "y": 202,
+     "w": 33,
+     "h": 29,
+     "texto": "Kg",
+     "fonte": 23.999399999999998,
+     "cor": "black",
+     "negrito": true,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "texto",
+     "id": "Text5",
+     "x": 632,
+     "y": 337,
+     "w": 21,
+     "h": 18,
+     "texto": "Kg",
+     "fonte": 15.9996,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "texto",
+     "id": "Text4",
+     "x": 310,
+     "y": 489,
+     "w": 241,
+     "h": 25,
+     "texto": "Aceitar valor de balança vazia",
+     "fonte": 18.6662,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "texto",
+     "id": "Text6",
+     "x": 310,
+     "y": 568,
+     "w": 276,
+     "h": 25,
+     "texto": "Calibrar balança com peso padrão",
+     "fonte": 18.6662,
+     "cor": "black",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleCenter",
+     "fundo": null
+    },
+    {
+     "t": "botao",
+     "id": "MomentaryPushButton1",
+     "modo": "momentaneo",
+     "x": 697,
+     "y": 475,
+     "w": 120,
+     "h": 48,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "Error",
+       "valor": null,
+       "fundo": "navy",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "Error",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#AAD38F",
+       "claro": "#E1EFD8",
+       "escuro": "#8EC46A",
+       "legenda": {
+        "texto": "VAZIA",
+        "fonte": 13.332999999999998,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "1",
+       "valor": 1,
+       "fundo": "green",
+       "claro": "#00E600",
+       "escuro": "#004D00",
+       "legenda": {
+        "texto": "VAZIA",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "escreve": "MainProgram.Cmd_Cero_Tk_L2",
+     "indicador": "v(\"MainProgram.Cmd_Cero_Tk_L2\")"
+    },
+    {
+     "t": "botao",
+     "id": "MomentaryPushButton2",
+     "modo": "momentaneo",
+     "x": 697,
+     "y": 554,
+     "w": 120,
+     "h": 48,
+     "forma": "reto",
+     "esp": 4,
+     "estados": [
+      {
+       "id": "Error",
+       "valor": null,
+       "fundo": "navy",
+       "claro": "#0000E6",
+       "escuro": "#00004D",
+       "legenda": {
+        "texto": "Error",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "0",
+       "valor": 0,
+       "fundo": "#AAD38F",
+       "claro": "#E1EFD8",
+       "escuro": "#8EC46A",
+       "legenda": {
+        "texto": "CALIBRAR",
+        "fonte": 13.332999999999998,
+        "cor": "black",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      },
+      {
+       "id": "1",
+       "valor": 1,
+       "fundo": "green",
+       "claro": "#00E600",
+       "escuro": "#004D00",
+       "legenda": {
+        "texto": "CALIBRAR",
+        "fonte": 13.332999999999998,
+        "cor": "white",
+        "negrito": false,
+        "italico": false,
+        "alinha": "middleCenter"
+       }
+      }
+     ],
+     "escreve": "MainProgram.Cmd_Calib_Tk_L2",
+     "indicador": "v(\"MainProgram.Cmd_Calib_Tk_L2\")"
+    }
+   ]
+  }
+ ],
+ "nome": "Calibra Balanza Tk L2"
+}
