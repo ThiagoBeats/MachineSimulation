@@ -92,6 +92,18 @@ nomes.forEach(function (n) {
 const foto = path.join(pastaFonte, 'maquina.jpg');
 if (fs.existsSync(foto)) fs.copyFileSync(foto, path.join(pastaSaida, 'maquina.jpg'));
 
+// Foto do painel, usada como moldura em volta da IHM
+let temMoldura = false;
+if (maquina.painel && maquina.painel.foto) {
+  const origem = path.join(pastaFonte, maquina.painel.foto);
+  if (!fs.existsSync(origem)) {
+    console.error('a moldura aponta para ' + maquina.painel.foto + ', que nao esta na pasta');
+    process.exit(1);
+  }
+  fs.copyFileSync(origem, path.join(pastaSaida, maquina.painel.foto));
+  temMoldura = true;
+}
+
 // --- pagina -------------------------------------------------------------------
 // O mapa vai embutido na pagina em vez de ser buscado por fetch: assim o
 // percurso tambem abre direto do disco, sem servidor.
@@ -101,6 +113,7 @@ const cfg = {
   menu: telas.menu,
   telas: telas.telas
 };
+if (temMoldura) cfg.painel = maquina.painel;
 
 const modelo = fs.readFileSync(path.join(RAIZ, 'web', 'percurso.html'), 'utf8');
 const pagina = modelo

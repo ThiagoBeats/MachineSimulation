@@ -1,44 +1,110 @@
 {
-  "_comentario": "Mapa das telas e da navegacao. As coordenadas das areas clicaveis estao em PORCENTAGEM da tela de 800x600, para nao dependerem da escala.",
-  "resolucao": { "largura": 800, "altura": 600 },
+  "_comentario": "Mapa das telas da LS-B18. Tudo aqui foi OBSERVADO no simulador do Vijeo rodando contra o CLP simulado: cada destino foi alcancado clicando e conferindo a tela que apareceu. As coordenadas estao em PORCENTAGEM da tela de 806x606, para nao dependerem da escala.",
+  "resolucao": { "largura": 806, "altura": 606 },
   "inicial": "Inicio",
 
-  "_menu": "Menu lateral direito, identico em todas as telas. Medido nos pixels da tela Inicio exportada.",
+  "_menu": "Menu lateral direito. Medido nos pixels da captura: 9 posicoes de altura uniforme. A oitava fica em branco no nivel de usuario OPER - no editor ela e a tela MODO -, entao nao virou area clicavel.",
   "menu": [
-    { "rotulo": "PRINCIPAL",  "destino": "Inicio",         "x": 87.25, "y": 14.17, "w": 12.75, "h": 6.00 },
-    { "rotulo": "POLVO",      "destino": "POLVO",          "x": 87.25, "y": 23.83, "w": 12.75, "h": 6.00 },
-    { "rotulo": "LIQUIDOS",   "destino": "LIQUIDOS",       "x": 87.25, "y": 33.17, "w": 12.75, "h": 6.00 },
-    { "rotulo": "BALANZA",    "destino": "Pesaje",         "x": 87.25, "y": 42.50, "w": 12.75, "h": 6.00 },
-    { "rotulo": "HOMOGEN.",   "destino": "HOMOGENEIZADOR", "x": 87.25, "y": 52.00, "w": 12.75, "h": 6.00 },
-    { "rotulo": "PERIFERICO", "destino": "SinPerifericos", "x": 87.25, "y": 61.33, "w": 12.75, "h": 6.00, "duvida": true },
-    { "rotulo": "RECETAS",    "destino": "Tareas_Recetas", "x": 87.25, "y": 71.17, "w": 12.75, "h": 6.00 },
-    { "rotulo": "MODO",       "destino": "Modos",          "x": 87.25, "y": 80.83, "w": 12.75, "h": 6.00 },
-    { "rotulo": "ALARMAS",    "destino": "Alarmas",        "x": 87.25, "y": 90.83, "w": 12.75, "h": 5.67 }
+    { "rotulo": "MAIN",      "destino": "Inicio",         "x": 86.8, "y": 14.191, "w": 12.8, "h": 5.281 },
+    { "rotulo": "POWDER",    "destino": "Polvo",          "x": 86.8, "y": 23.762, "w": 12.8, "h": 5.281 },
+    { "rotulo": "LIQUIDS",   "destino": "Liquidos",       "x": 86.8, "y": 33.003, "w": 12.8, "h": 5.281 },
+    { "rotulo": "SCALE",     "destino": "Balanca",        "x": 86.8, "y": 42.244, "w": 12.8, "h": 5.281 },
+    { "rotulo": "HOMOGEN.",  "destino": "Homogeneizador", "x": 86.8, "y": 51.650, "w": 12.8, "h": 5.281 },
+    { "rotulo": "PERIPHERY", "destino": "Perifericos",    "x": 86.8, "y": 60.891, "w": 12.8, "h": 5.281 },
+    { "rotulo": "RECIPES",   "destino": "Receitas",       "x": 86.8, "y": 70.627, "w": 12.8, "h": 5.281 },
+    { "rotulo": "ALARMS",    "destino": "Alarmes",        "x": 86.8, "y": 89.934, "w": 12.8, "h": 5.281 }
   ],
 
   "telas": {
-    "Inicio":               { "rotulo": { "pt": "Início",                        "es": "Inicio",                        "en": "Home" },                        "imagem": "telas/Inicio.png", "menu": true },
-    "POLVO":                { "rotulo": { "pt": "Pó",                            "es": "Polvo",                         "en": "Powder" },                      "menu": true },
-    "LIQUIDOS":             { "rotulo": { "pt": "Líquidos",                      "es": "Líquidos",                      "en": "Liquids" },                     "menu": true },
-    "Pesaje":               { "rotulo": { "pt": "Balança",                       "es": "Balanza",                       "en": "Scale" },                       "menu": true },
-    "HOMOGENEIZADOR":       { "rotulo": { "pt": "Homogeneizador",                "es": "Homogeneizador",                "en": "Homogenizer" },                 "menu": true },
-    "SinPerifericos":       { "rotulo": { "pt": "Periféricos",                   "es": "Periféricos",                   "en": "Peripherals" },                 "menu": true },
-    "PerifericoElevDoble":  { "rotulo": { "pt": "Periférico — elevador duplo",   "es": "Periférico — elevador doble",   "en": "Peripheral — double elevator" },"menu": true },
-    "Tareas_Recetas":       { "rotulo": { "pt": "Receitas",                      "es": "Recetas",                       "en": "Recipes" },                     "menu": true },
-    "Modos":                { "rotulo": { "pt": "Modos",                         "es": "Modos",                         "en": "Modes" },                       "menu": true },
-    "Alarmas":              { "rotulo": { "pt": "Alarmes",                       "es": "Alarmas",                       "en": "Alarms" },                      "menu": true },
-    "RecetaActiva":         { "rotulo": { "pt": "Receita ativa",                 "es": "Receta activa",                 "en": "Active recipe" },               "menu": true },
-    "RecetaActiva_Cont":    { "rotulo": { "pt": "Receita ativa (continuação)",   "es": "Receta activa (continuación)",  "en": "Active recipe (cont.)" },       "menu": true },
-    "BajaModifReceta":      { "rotulo": { "pt": "Alterar ou excluir receita",    "es": "Baja o modificar receta",       "en": "Edit or delete recipe" },       "menu": true },
-    "BajaModifReceta_Cont": { "rotulo": { "pt": "Alterar receita (continuação)", "es": "Modificar receta (continuación)","en": "Edit recipe (cont.)" },        "menu": true },
-    "Peleteado":            { "rotulo": { "pt": "Peletização",                   "es": "Peleteado",                     "en": "Pelleting" },                   "menu": true },
-    "TomaMuestras":         { "rotulo": { "pt": "Coleta de amostras",            "es": "Toma de muestras",              "en": "Sampling" },                    "menu": true },
-    "ElevCarga_CintaSal":   { "rotulo": { "pt": "Elevador de carga e esteira",   "es": "Elevador de carga y cinta",     "en": "Load elevator and belt" },      "menu": true },
-    "MantenimientoSemilla": { "rotulo": { "pt": "Manutenção",                    "es": "Mantenimiento",                 "en": "Maintenance" },                 "menu": true },
-    "TuneSecado":           { "rotulo": { "pt": "Túnel de secagem",              "es": "Túnel de secado",               "en": "Drying tunnel" },               "menu": true },
-    "CaixaAdicional":       { "rotulo": { "pt": "Caixa adicional",               "es": "Caja adicional",                "en": "Additional hopper" },           "menu": true },
-    "Bienvenida":           { "rotulo": { "pt": "Boas-vindas",                   "es": "Bienvenida",                    "en": "Welcome" },                     "menu": false },
-    "Borrador":             { "rotulo": { "pt": "Rascunho",                      "es": "Borrador",                      "en": "Draft" },                       "menu": false },
-    "Panel20":              { "rotulo": { "pt": "Painel 20",                     "es": "Panel 20",                      "en": "Panel 20" },                    "menu": false }
+    "Inicio": {
+      "rotulo": { "pt": "Início", "es": "Inicio", "en": "Main" },
+      "imagem": "telas/Inicio.png", "menu": true
+    },
+    "Polvo": {
+      "rotulo": { "pt": "Pó", "es": "Polvo", "en": "Powder" },
+      "imagem": "telas/Polvo.png", "menu": true
+    },
+    "Liquidos": {
+      "rotulo": { "pt": "Líquidos", "es": "Líquidos", "en": "Liquids" },
+      "imagem": "telas/Liquidos.png", "menu": true
+    },
+    "Balanca": {
+      "rotulo": { "pt": "Balança", "es": "Balanza", "en": "Scale" },
+      "imagem": "telas/Balanca.png", "menu": true,
+      "areas": [
+        { "rotulo": "Historical", "destino": "BalancaHistorico", "x": 2.98, "y": 91.42, "w": 9.93, "h": 6.60 }
+      ]
+    },
+    "BalancaHistorico": {
+      "rotulo": { "pt": "Balança — últimas pesagens", "es": "Balanza — últimas pesadas", "en": "Scale — last weighings" },
+      "imagem": "telas/BalancaHistorico.png", "menu": true,
+      "areas": [
+        { "rotulo": "X (fechar)", "destino": "Balanca", "x": 74.20, "y": 19.30, "w": 5.00, "h": 5.60 }
+      ]
+    },
+    "Homogeneizador": {
+      "rotulo": { "pt": "Homogeneizador", "es": "Homogeneizador", "en": "Homogenizer" },
+      "imagem": "telas/Homogeneizador.png", "menu": true
+    },
+    "Perifericos": {
+      "rotulo": { "pt": "Periféricos", "es": "Periféricos", "en": "Periphery" },
+      "imagem": "telas/Perifericos.png", "menu": true,
+      "areas": [
+        { "rotulo": "Additional Box", "destino": "CaixaAdicional", "x": 4.22, "y": 60.07, "w": 9.18, "h": 6.27 }
+      ]
+    },
+    "CaixaAdicional": {
+      "rotulo": { "pt": "Caixa adicional", "es": "Caja adicional", "en": "Additional hopper" },
+      "imagem": "telas/CaixaAdicional.png", "menu": false,
+      "areas": [
+        { "rotulo": "Go back", "destino": "Perifericos", "x": 88.50, "y": 1.80, "w": 10.00, "h": 5.30 }
+      ]
+    },
+    "Receitas": {
+      "rotulo": { "pt": "Receitas", "es": "Recetas", "en": "Recipes" },
+      "imagem": "telas/Receitas.png", "menu": true,
+      "areas": [
+        { "rotulo": "LIQUID Table",              "destino": "ReceitaTabela",     "x": 30.52, "y": 17.82, "w": 30.15, "h": 8.58 },
+        { "rotulo": "Recipe Coating alta-baja",  "destino": "ReceitaAlterar",    "x": 30.52, "y": 34.82, "w": 30.15, "h": 8.58 },
+        { "rotulo": "Receta Coating en Proceso", "destino": "ReceitaEmProcesso", "x": 30.52, "y": 50.33, "w": 30.15, "h": 8.58 }
+      ]
+    },
+    "ReceitaTabela": {
+      "_nota": "As tres telas de receita saem identicas sem receita carregada: a diferenca esta na funcao, nao no desenho.",
+      "rotulo": { "pt": "Receita — tabela de líquidos", "es": "Receta — tabla de líquidos", "en": "Recipe — liquid table" },
+      "imagem": "telas/ReceitaTabela.png", "menu": false,
+      "areas": [
+        { "rotulo": "continue",   "destino": "ReceitaPagina2", "x": 47.30, "y": 91.30, "w": 22.00, "h": 6.90 },
+        { "rotulo": "X (fechar)", "destino": "Receitas",       "x": 93.80, "y": 4.30,  "w": 5.20,  "h": 6.30 }
+      ]
+    },
+    "ReceitaAlterar": {
+      "rotulo": { "pt": "Receita — alterar ou excluir", "es": "Receta — alta, baja, modificar", "en": "Recipe — edit or delete" },
+      "imagem": "telas/ReceitaAlterar.png", "menu": false,
+      "areas": [
+        { "rotulo": "continue",   "destino": "ReceitaPagina2", "x": 47.30, "y": 91.30, "w": 22.00, "h": 6.90 },
+        { "rotulo": "X (fechar)", "destino": "Receitas",       "x": 93.80, "y": 4.30,  "w": 5.20,  "h": 6.30 }
+      ]
+    },
+    "ReceitaEmProcesso": {
+      "rotulo": { "pt": "Receita em processo", "es": "Receta en proceso", "en": "Recipe in process" },
+      "imagem": "telas/ReceitaEmProcesso.png", "menu": false,
+      "areas": [
+        { "rotulo": "continue",   "destino": "ReceitaPagina2", "x": 47.30, "y": 91.30, "w": 22.00, "h": 6.90 },
+        { "rotulo": "X (fechar)", "destino": "Receitas",       "x": 93.80, "y": 4.30,  "w": 5.20,  "h": 6.30 }
+      ]
+    },
+    "ReceitaPagina2": {
+      "_nota": "Segunda pagina da receita: pos, homogeneizado e descarga. O 'return' volta para a tabela de onde se veio; aqui aponta para a de alterar, que foi o caminho observado.",
+      "rotulo": { "pt": "Receita — pós e descarga", "es": "Receta — polvos y descarga", "en": "Recipe — powders and discharge" },
+      "imagem": "telas/ReceitaPagina2.png", "menu": false,
+      "areas": [
+        { "rotulo": "return", "destino": "ReceitaAlterar", "x": 45.70, "y": 84.00, "w": 22.00, "h": 6.90 }
+      ]
+    },
+    "Alarmes": {
+      "rotulo": { "pt": "Alarmes", "es": "Alarmas", "en": "Alarms" },
+      "imagem": "telas/Alarmes.png", "menu": true
+    }
   }
 }

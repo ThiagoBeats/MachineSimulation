@@ -139,14 +139,15 @@ arquivos, sem nenhuma lógica de servidor. Se funcionar aqui, funciona publicado
 
 Nem toda IHM nossa é web. A **LS-B18** foi feita em **Vijeo Designer**, cujo projeto é
 um binário fechado: não existe HTML para servir, nem variáveis para simular. Ela entra
-na plataforma como **percurso**: imagens reais das telas, exportadas do projeto, com
-áreas clicáveis por cima. A navegação é fiel; os valores ficam parados.
+na plataforma como **percurso**: imagens reais das telas, com áreas clicáveis por cima.
+A navegação é fiel; os valores ficam parados.
 
 ```
 maquinas/ls-b18/
-  maquina.json     tipoSimulacao: "percurso"
-  telas.json       as 23 telas, o menu lateral e as áreas clicáveis
-  telas/*.png      as telas exportadas, em 800x600 (resolução nativa do painel)
+  maquina.json     tipoSimulacao: "percurso" + a moldura do painel
+  telas.json       as telas, o menu lateral e as áreas clicáveis
+  telas/*.png      as telas capturadas, em 806x606
+  painel.jpg       foto do Magelis HMIGTO6310, usada como moldura
   maquina.jpg      retrato da máquina para o card do portal
 ```
 
@@ -154,18 +155,33 @@ Gere com `node ferramentas/build-percurso.js ls-b18`. O script recusa publicar u
 quebrado: confere se a tela inicial tem imagem, se toda área aponta para uma tela que
 existe e se todo arquivo declarado está na pasta.
 
-### Como exportar as telas do Vijeo
+### Como as telas foram capturadas
 
-Em `Telas Base`, botão direito → **Report** → **Single Panel Per Page** → imprimir em PDF.
-Sai na resolução nativa. No fim de cada página há o link para a próxima tela.
+**Do simulador rodando, não do editor.** Com o projeto aberto no simulador do Vijeo e
+ligado ao CLP simulado, a janela `Vijeo-Designer Runtime` é trazida para a frente,
+fotografada pela área cliente e navegada por clique — conferindo a cada passo, pela
+diferença de pixels, se a tela mudou de verdade.
 
-**Antes de exportar, oculte as camadas de tela mestre** (botão direito na tela base).
-As telas mestre são compostas por cima das telas base e saem *queimadas* na imagem —
-na B18 elas cobrem 29% da tela com a tarja de emergência e os avisos de dosagem, e não
-há como removê-las depois, porque tapam o conteúdo que está embaixo.
+Duas coisas a saber antes de repetir isso:
 
-As coordenadas das áreas em `telas.json` estão em **porcentagem** da tela de 800x600,
-para não dependerem da escala em que a página desenha.
+**O clique tem de ser real.** O Vijeo desenha numa janela filha MFC que ignora
+`PostMessage`, tanto na janela principal quanto na filha. Só o clique sintético
+funciona — ou seja, ele move o cursor e toma conta da máquina enquanto roda.
+
+**Nem toda tela tem o menu lateral.** As telas de receita e a caixa adicional são
+modais: saem por `return`, pelo X do canto ou por `Go back`. Clicar no menu nelas não
+faz nada, e a captura seguinte sai errada sem avisar. Por isso o roteiro confere o
+destino a cada passo.
+
+O caminho alternativo, pelo editor (`Telas Base` → botão direito → **Report** →
+**Single Panel Per Page** → imprimir em PDF), também sai na resolução nativa, mas tem
+dois defeitos: compõe as telas mestre por cima — a tarja de emergência e os avisos de
+dosagem saem *queimados*, cobrindo 29% da imagem e tapando o que está embaixo — e mostra
+marcadores (`AaBbCcDd`, `123456`) no lugar dos valores. Em execução a tela mestre só
+aparece quando o evento dispara, e os valores são os reais.
+
+As coordenadas das áreas em `telas.json` estão em **porcentagem** da tela, para não
+dependerem da escala em que a página desenha.
 
 ## Limites conhecidos
 

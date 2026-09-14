@@ -3,34 +3,44 @@
   "modelo": "LS-B18",
   "fabricante": "LS do Brasil",
   "tipoSimulacao": "percurso",
-  "_origem": "IHM antiga feita em Vijeo Designer (arquivo LSB18_12L2P.vdz). O formato do Vijeo e binario fechado: nao existe HTML para servir, entao esta maquina entra na plataforma como percurso navegavel de telas reais capturadas, e nao como simulacao de valores.",
+  "_origem": "IHM antiga feita em Vijeo Designer (arquivo LSB18_12L2P.vdz). O formato do Vijeo e binario fechado: nao existe HTML para servir, entao esta maquina entra na plataforma como percurso navegavel de telas reais, e nao como simulacao de valores.",
   "_captura": {
-    "origem": "Vijeo Designer 6.2 > Telas Base > botao direito > Report > Single Panel Per Page > imprimir em PDF",
-    "resolucaoNativa": "800x600",
-    "atencao": "As telas mestre (Telas Mestre > Emergencia) sao compostas por cima das telas base e saem QUEIMADAS na exportacao, cobrindo 29% da imagem. Antes de exportar e preciso ocultar as camadas de tela mestre (botao direito na tela base) ou esvaziar a tela mestre na copia do projeto."
+    "metodo": "Captura do simulador do Vijeo em execucao, ligado ao CLP simulado.",
+    "comoFoiFeito": "A janela 'Vijeo-Designer Runtime' foi trazida para frente e fotografada pela area cliente; a navegacao foi feita por clique sintetico, conferindo a cada passo se a tela mudou. O Vijeo desenha numa janela filha MFC que ignora PostMessage, entao o clique precisa mover o cursor de verdade.",
+    "porQueNaoOEditor": "O relatorio do editor (Report > Single Panel Per Page) tambem exporta em resolucao nativa, mas compoe as telas mestre por cima: a tarja de emergencia e os avisos de dosagem saem QUEIMADOS, cobrindo 29% da imagem, e tapam o conteudo de baixo. Em execucao a tela mestre so aparece quando o evento dispara, entao as capturas saem limpas - e com valores reais no lugar dos marcadores AaBbCcDd do editor.",
+    "areaCliente": "810x606 com 2px de moldura da janela; as imagens foram recortadas em (2,2) para 806x606.",
+    "idiomaDaIHM": "A IHM estava rodando em ingles no nivel de usuario OPER. O botao de idioma ao lado do titulo nao respondeu nesse nivel - o projeto tem espanhol, portugues e ingles definidos (ver o CSV de variaveis)."
   },
   "painel": {
-    "_comentario": "Sem foto do painel ainda. Quando houver, e so acrescentar 'foto', 'fotoLargura', 'fotoAltura' e 'tela' aqui, no mesmo formato do tablet das outras maquinas.",
-    "resolucao": { "largura": 800, "altura": 600 }
+    "_comentario": "Magelis HMIGTO6310, o painel da maquina. O retangulo da tela foi medido na foto e ajustado para 4:3 exatos, para a IHM encaixar sem sobra.",
+    "modelo": "Schneider Magelis HMIGTO6310",
+    "foto": "painel.jpg",
+    "fotoLargura": 1353,
+    "fotoAltura": 1021,
+    "resolucao": { "largura": 806, "altura": 606 },
+    "tela": { "esquerda": 11.94, "topo": 13.026, "largura": 75.89, "altura": 75.612 },
+    "larguraMinima": 1100,
+    "alturaMinima": 620,
+    "ocupacaoAltura": 0.92
   },
   "textos": {
     "pt": {
       "nome": "LS-B18",
       "tipo": "Tratamento de sementes",
-      "descricao": "Tratadora da linha B18, com IHM antiga em Vijeo. Percurso navegável pelas telas reais do equipamento: os valores ficam parados, a navegação é fiel.",
-      "recursos": ["23 telas reais do equipamento", "Navegação pelo menu lateral", "12 linhas de líquido e 2 de pó"]
+      "descricao": "Tratadora da linha B18, de IHM antiga em Vijeo. Percurso pelas telas reais do equipamento, capturadas da máquina em funcionamento: a navegação é fiel, os valores ficam parados.",
+      "recursos": ["Telas capturadas da máquina rodando", "Navegação conferida clique a clique", "12 linhas de líquido e 2 de pó"]
     },
     "es": {
       "nome": "LS-B18",
       "tipo": "Tratamiento de semillas",
-      "descricao": "Tratadora de la línea B18, con HMI antigua en Vijeo. Recorrido navegable por las pantallas reales del equipo: los valores quedan fijos, la navegación es fiel.",
-      "recursos": ["23 pantallas reales del equipo", "Navegación por el menú lateral", "12 líneas de líquido y 2 de polvo"]
+      "descricao": "Tratadora de la línea B18, con HMI antigua en Vijeo. Recorrido por las pantallas reales del equipo, capturadas de la máquina en funcionamiento: la navegación es fiel, los valores quedan fijos.",
+      "recursos": ["Pantallas capturadas de la máquina en marcha", "Navegación verificada clic a clic", "12 líneas de líquido y 2 de polvo"]
     },
     "en": {
       "nome": "LS-B18",
       "tipo": "Seed treatment",
-      "descricao": "B18 line seed treater with a legacy Vijeo HMI. A walkthrough of the machine's real screens: values stay fixed, navigation is faithful.",
-      "recursos": ["23 real machine screens", "Side-menu navigation", "12 liquid lines and 2 powder lines"]
+      "descricao": "B18 line seed treater with a legacy Vijeo HMI. A walkthrough of the machine's real screens, captured from the running machine: navigation is faithful, values stay fixed.",
+      "recursos": ["Screens captured from the running machine", "Navigation verified click by click", "12 liquid lines and 2 powder lines"]
     }
   }
 }
