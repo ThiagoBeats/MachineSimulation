@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__NOME__ — Percurso de telas</title>
+<link rel="icon" href="../assets/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --fundo:#0B1113;
+    --barra:#131D20;
+    --linha:#233437;
+    --texto:#E6F0ED;
+    --texto-fraco:#94A8A4;
+    --acento:#00E0B8;
+    --altura-barra:44px;
+    /* altura util do palco, ja descontadas a barra e a folga */
+    --disp-h:calc(100vh - var(--altura-barra) - 24px);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;background:var(--fundo);color:var(--texto);overflow:hidden;
+    font-family:"Barlow",system-ui,-apple-system,Segoe UI,sans-serif;
+  }
+
+  /* --- barra de controle -------------------------------------------------- */
+  .barra{
+    height:var(--altura-barra);display:flex;align-items:center;gap:12px;
+    padding:0 14px;background:var(--barra);border-bottom:1px solid var(--linha);
+  }
+  .barra a.voltar{
+    color:var(--texto-fraco);text-decoration:none;font-size:.88rem;
+    display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+  }
+  .barra a.voltar:hover{color:var(--texto)}
+  .barra .nome{
+    font-weight:600;font-size:.92rem;letter-spacing:.02em;
+    padding-left:12px;border-left:1px solid var(--linha);white-space:nowrap;
+  }
+  .barra .espaco{flex:1}
+
+  .barra button, .barra select{
+    font-family:inherit;font-size:.82rem;color:var(--texto-fraco);
+    background:#0E1719;border:1px solid var(--linha);border-radius:5px;
+    padding:6px 10px;cursor:pointer;white-space:nowrap;
+  }
+  .barra button:hover, .barra select:hover{color:var(--texto);border-color:var(--texto-fraco)}
+  .barra button:focus-visible, .barra select:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+  .barra button[aria-pressed="true"]{background:var(--acento);border-color:var(--acento);color:#06211C}
+  .barra button:disabled{opacity:.4;cursor:default}
+  .barra select{max-width:210px}
+  /* display:flex venceria o [hidden] do navegador - precisa ser explicito */
+  [hidden]{display:none !important}
+
+  /* --- palco --------------------------------------------------------------- */
+  .palco{
+    height:calc(100% - var(--altura-barra));
+    display:flex;align-items:center;justify-content:center;
+    padding:12px;overflow:hidden;
+  }
+  /* A tela nasce em 800x600 e nunca distorce: a largura fica limitada ao que a
+     altura disponivel permite naquela proporcao. */
+  .quadro{
+    position:relative;aspect-ratio:800/600;
+    width:min(100%, calc(var(--disp-h) * 800 / 600));
+    background:#000;box-shadow:0 0 0 1px var(--linha);
+  }
+  .quadro img{display:block;width:100%;height:100%}
+
+  /* --- areas clicaveis ------------------------------------------------------ */
+  .area{
+    position:absolute;padding:0;margin:0;cursor:pointer;
+    background:transparent;border:0;border-radius:3px;
+  }
+  .area:hover{background:rgba(0,224,184,.22);box-shadow:inset 0 0 0 2px var(--acento)}
+  .area:focus-visible{outline:2px solid var(--acento);outline-offset:1px}
+  body[data-areas="1"] .area{background:rgba(0,224,184,.14);box-shadow:inset 0 0 0 1px rgba(0,224,184,.65)}
+  body[data-areas="1"] .area:hover{background:rgba(0,224,184,.3)}
+
+  /* --- tela ainda nao capturada --------------------------------------------- */
+  .pendente{
+    position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:12px;padding:24px;
+    background:#0E1719;text-align:center;
+  }
+  .pendente h2{margin:0;font-size:1.05rem;font-weight:600;letter-spacing:.02em}
+  .pendente .tecnico{
+    font-size:.78rem;color:var(--texto-fraco);
+    font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+  }
+  .pendente p{margin:0;max-width:46ch;font-size:.86rem;color:var(--texto-fraco);line-height:1.5}
+  .pendente .atalhos{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:4px}
+  .pendente .atalhos button{
+    font-family:inherit;font-size:.76rem;color:var(--texto-fraco);
+    background:#131D20;border:1px solid var(--linha);border-radius:4px;
+    padding:5px 9px;cursor:pointer;
+  }
+  .pendente .atalhos button:hover{color:var(--texto);border-color:var(--texto-fraco)}
+  .pendente .atalhos button:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+
+  @media (max-width:760px){ .barra select{max-width:120px} }
+</style>
+</head>
+<body data-areas="0">
+
+<div class="barra">
+  <a class="voltar" href="../index.html">&#8592; <span data-i18n="voltar">Máquinas</span></a>
+  <span class="nome">__NOME__</span>
+  <span class="espaco"></span>
+  <button id="anterior" type="button" data-i18n="anterior">Voltar</button>
+  <select id="indice" aria-label="Telas"></select>
+  <button id="areas" type="button" aria-pressed="false" data-i18n="areas">Mostrar áreas</button>
+  <select id="idioma" aria-label="Idioma">
+    <option value="pt">PT</option><option value="es">ES</option><option value="en">EN</option>
+  </select>
+</div>
+
+<div class="palco">
+  <div class="quadro" id="quadro"></div>
+</div>
+
+<script>
+var CFG = __CFG__;
+
+var TEXTOS = {
+  pt:{ voltar:'Máquinas', anterior:'Voltar', areas:'Mostrar áreas',
+       pendenteTitulo:'Tela ainda não capturada',
+       pendenteTexto:'Ela existe no equipamento, mas a imagem ainda não foi exportada do projeto. A navegação já funciona: use os botões abaixo para seguir o percurso.' },
+  es:{ voltar:'Máquinas', anterior:'Volver', areas:'Mostrar áreas',
+       pendenteTitulo:'Pantalla aún no capturada',
+       pendenteTexto:'Existe en el equipo, pero la imagen todavía no se exportó del proyecto. La navegación ya funciona: use los botones de abajo para seguir el recorrido.' },
+  en:{ voltar:'Machines', anterior:'Back', areas:'Show areas',
+       pendenteTitulo:'Screen not captured yet',
+       pendenteTexto:'It exists on the machine, but its image has not been exported from the project yet. Navigation already works: use the buttons below to continue.' }
+};
+
+var quadro    = document.getElementById('quadro');
+var indice    = document.getElementById('indice');
+var btAreas   = document.getElementById('areas');
+var btAnt     = document.getElementById('anterior');
+var selIdioma = document.getElementById('idioma');
+
+var idioma = 'pt';
+var atual  = CFG.inicial;
+var pilha  = [];
+
+function txt(){ return TEXTOS[idioma] || TEXTOS.pt; }
+
+function rotulo(nome){
+  var t = CFG.telas[nome];
+  if (!t || !t.rotulo) return nome;
+  return t.rotulo[idioma] || t.rotulo.pt || nome;
+}
+
+// O circulo marca a tela que ainda nao tem imagem - da para ver o que falta
+// capturar sem sair da pagina.
+function montarIndice(){
+  indice.innerHTML = '';
+  Object.keys(CFG.telas).forEach(function(nome){
+    var o = document.createElement('option');
+    o.value = nome;
+    o.textContent = (CFG.telas[nome].imagem ? '' : '○ ') + rotulo(nome);
+    indice.appendChild(o);
+  });
+  indice.value = atual;
+}
+
+function irPara(nome, empilhar){
+  if (!CFG.telas[nome]) return;
+  if (empilhar !== false && nome !== atual) pilha.push(atual);
+  atual = nome;
+  desenhar();
+}
+
+function areasDaTela(nome){
+  var t = CFG.telas[nome], lista = [];
+  if (t.menu) lista = lista.concat(CFG.menu);
+  if (t.areas) lista = lista.concat(t.areas);
+  // Uma tela nao vira botao para ela mesma.
+  return lista.filter(function(a){ return a.destino !== nome; });
+}
+
+function desenhar(){
+  var t = CFG.telas[atual];
+  quadro.innerHTML = '';
+
+  if (t.imagem){
+    var img = document.createElement('img');
+    img.src = t.imagem;
+    img.alt = rotulo(atual);
+    quadro.appendChild(img);
+
+    areasDaTela(atual).forEach(function(a){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'area';
+      b.style.left   = a.x + '%';
+      b.style.top    = a.y + '%';
+      b.style.width  = a.w + '%';
+      b.style.height = a.h + '%';
+      b.title = a.rotulo + ' → ' + rotulo(a.destino);
+      b.setAttribute('aria-label', b.title);
+      b.addEventListener('click', function(){ irPara(a.destino); });
+      quadro.appendChild(b);
+    });
+  } else {
+    var p = document.createElement('div');
+    p.className = 'pendente';
+
+    var h = document.createElement('h2');
+    h.textContent = rotulo(atual);
+    var c = document.createElement('div');
+    c.className = 'tecnico';
+    c.textContent = atual;
+    var d = document.createElement('p');
+    d.textContent = txt().pendenteTitulo + ' — ' + txt().pendenteTexto;
+    var g = document.createElement('div');
+    g.className = 'atalhos';
+
+    CFG.menu.forEach(function(a){
+      if (a.destino === atual) return;
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = rotulo(a.destino);
+      b.addEventListener('click', function(){ irPara(a.destino); });
+      g.appendChild(b);
+    });
+
+    p.appendChild(h); p.appendChild(c); p.appendChild(d); p.appendChild(g);
+    quadro.appendChild(p);
+  }
+
+  indice.value = atual;
+  btAnt.disabled = pilha.length === 0;
+}
+
+function aplicarIdioma(){
+  document.documentElement.lang = idioma === 'pt' ? 'pt-BR' : idioma;
+  var t = txt();
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k = el.getAttribute('data-i18n');
+    if (t[k]) el.textContent = t[k];
+  });
+  montarIndice();
+  desenhar();
+}
+
+btAreas.addEventListener('click', function(){
+  var ligado = document.body.getAttribute('data-areas') === '1';
+  document.body.setAttribute('data-areas', ligado ? '0' : '1');
+  btAreas.setAttribute('aria-pressed', ligado ? 'false' : 'true');
+});
+btAnt.addEventListener('click', function(){
+  if (pilha.length) irPara(pilha.pop(), false);
+});
+indice.addEventListener('change', function(){ irPara(indice.value); });
+selIdioma.addEventListener('change', function(){ idioma = selIdioma.value; aplicarIdioma(); });
+
+aplicarIdioma();
+</script>
+</body>
+</html>

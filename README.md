@@ -135,6 +135,38 @@ arquivos, sem nenhuma lógica de servidor. Se funcionar aqui, funciona publicado
 
 ---
 
+## Máquinas de IHM não-web: o percurso
+
+Nem toda IHM nossa é web. A **LS-B18** foi feita em **Vijeo Designer**, cujo projeto é
+um binário fechado: não existe HTML para servir, nem variáveis para simular. Ela entra
+na plataforma como **percurso**: imagens reais das telas, exportadas do projeto, com
+áreas clicáveis por cima. A navegação é fiel; os valores ficam parados.
+
+```
+maquinas/ls-b18/
+  maquina.json     tipoSimulacao: "percurso"
+  telas.json       as 23 telas, o menu lateral e as áreas clicáveis
+  telas/*.png      as telas exportadas, em 800x600 (resolução nativa do painel)
+  maquina.jpg      retrato da máquina para o card do portal
+```
+
+Gere com `node ferramentas/build-percurso.js ls-b18`. O script recusa publicar um mapa
+quebrado: confere se a tela inicial tem imagem, se toda área aponta para uma tela que
+existe e se todo arquivo declarado está na pasta.
+
+### Como exportar as telas do Vijeo
+
+Em `Telas Base`, botão direito → **Report** → **Single Panel Per Page** → imprimir em PDF.
+Sai na resolução nativa. No fim de cada página há o link para a próxima tela.
+
+**Antes de exportar, oculte as camadas de tela mestre** (botão direito na tela base).
+As telas mestre são compostas por cima das telas base e saem *queimadas* na imagem —
+na B18 elas cobrem 29% da tela com a tarja de emergência e os avisos de dosagem, e não
+há como removê-las depois, porque tapam o conteúdo que está embaixo.
+
+As coordenadas das áreas em `telas.json` estão em **porcentagem** da tela de 800x600,
+para não dependerem da escala em que a página desenha.
+
 ## Limites conhecidos
 
 - O gerenciador de usuários do cabeçalho fica inerte (é um recurso do servidor real).

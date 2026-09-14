@@ -229,6 +229,27 @@
               recursos:['Two homogenizers','12 dosing lines','Start with 3 s pre-run'] }
       }
     }
+    ,
+    {
+      // A IHM da B18 e Vijeo (binario fechado): nao ha HTML para servir, entao
+      // ela entra como percurso de telas reais. Nao tem valores para reiniciar.
+      id: 'ls-b18',
+      nome: 'LS-B18',
+      caminho: 'ls-b18/',
+      foto: 'ls-b18/maquina.jpg',
+      percurso: true,
+      textos: {
+        pt: { tipo:'Tratamento de sementes',
+              descricao:'Tratadora da linha B18, de IHM antiga. Percurso pelas telas reais do equipamento: a navegação é fiel, os valores ficam parados.',
+              recursos:['23 telas reais do equipamento','Navegação pelo menu lateral','12 linhas de líquido e 2 de pó'] },
+        es: { tipo:'Tratamiento de semillas',
+              descricao:'Tratadora de la línea B18, de HMI antigua. Recorrido por las pantallas reales del equipo: la navegación es fiel, los valores quedan fijos.',
+              recursos:['23 pantallas reales del equipo','Navegación por el menú lateral','12 líneas de líquido y 2 de polvo'] },
+        en: { tipo:'Seed treatment',
+              descricao:'B18 line seed treater with a legacy HMI. A walkthrough of the machine’s real screens: navigation is faithful, values stay fixed.',
+              recursos:['23 real machine screens','Side-menu navigation','12 liquid lines and 2 powder lines'] }
+      }
+    }
   ];
 
   var TEXTOS = {
@@ -237,6 +258,7 @@
       intro:'Simulações das interfaces de operação das nossas máquinas, para treinamento. Tudo roda no seu navegador: nenhuma máquina real é acessada e nenhum comando chega a um CLP.',
       disponiveis:'Máquinas disponíveis',
       abrir:'Abrir simulação',
+      abrirPercurso:'Abrir percurso',
       reiniciar:'Reiniciar do zero',
       breve:'Mais máquinas em breve',
       breveTexto:'Novos modelos serão adicionados aqui.',
@@ -250,6 +272,7 @@
       intro:'Simulaciones de las interfaces de operación de nuestras máquinas, para capacitación. Todo funciona en su navegador: no se accede a ninguna máquina real ni se envía ningún comando a un PLC.',
       disponiveis:'Máquinas disponibles',
       abrir:'Abrir simulación',
+      abrirPercurso:'Abrir recorrido',
       reiniciar:'Reiniciar desde cero',
       breve:'Más máquinas próximamente',
       breveTexto:'Nuevos modelos se agregarán aquí.',
@@ -263,6 +286,7 @@
       intro:'Simulations of our machines’ operator interfaces, for training. Everything runs in your browser: no real machine is reached and no command ever gets to a PLC.',
       disponiveis:'Available machines',
       abrir:'Open simulation',
+      abrirPercurso:'Open walkthrough',
       reiniciar:'Reset to start',
       breve:'More machines coming',
       breveTexto:'New models will be added here.',
@@ -332,14 +356,17 @@
       var abrir = document.createElement('a');
       abrir.className = 'botao';
       abrir.href = m.caminho;
-      abrir.textContent = t.abrir;
+      abrir.textContent = m.percurso ? t.abrirPercurso : t.abrir;
       acoes.appendChild(abrir);
 
-      var reiniciar = document.createElement('a');
-      reiniciar.className = 'link-secundario';
-      reiniciar.href = m.caminho + '?reset=1';
-      reiniciar.textContent = t.reiniciar;
-      acoes.appendChild(reiniciar);
+      // Um percurso nao guarda estado nenhum, entao nao ha o que reiniciar.
+      if (!m.percurso) {
+        var reiniciar = document.createElement('a');
+        reiniciar.className = 'link-secundario';
+        reiniciar.href = m.caminho + '?reset=1';
+        reiniciar.textContent = t.reiniciar;
+        acoes.appendChild(reiniciar);
+      }
 
       corpo.appendChild(acoes);
       cartao.appendChild(corpo);

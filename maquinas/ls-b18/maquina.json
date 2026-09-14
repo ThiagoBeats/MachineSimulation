@@ -1,0 +1,36 @@
+{
+  "id": "ls-b18",
+  "modelo": "LS-B18",
+  "fabricante": "LS do Brasil",
+  "tipoSimulacao": "percurso",
+  "_origem": "IHM antiga feita em Vijeo Designer (arquivo LSB18_12L2P.vdz). O formato do Vijeo e binario fechado: nao existe HTML para servir, entao esta maquina entra na plataforma como percurso navegavel de telas reais capturadas, e nao como simulacao de valores.",
+  "_captura": {
+    "origem": "Vijeo Designer 6.2 > Telas Base > botao direito > Report > Single Panel Per Page > imprimir em PDF",
+    "resolucaoNativa": "800x600",
+    "atencao": "As telas mestre (Telas Mestre > Emergencia) sao compostas por cima das telas base e saem QUEIMADAS na exportacao, cobrindo 29% da imagem. Antes de exportar e preciso ocultar as camadas de tela mestre (botao direito na tela base) ou esvaziar a tela mestre na copia do projeto."
+  },
+  "painel": {
+    "_comentario": "Sem foto do painel ainda. Quando houver, e so acrescentar 'foto', 'fotoLargura', 'fotoAltura' e 'tela' aqui, no mesmo formato do tablet das outras maquinas.",
+    "resolucao": { "largura": 800, "altura": 600 }
+  },
+  "textos": {
+    "pt": {
+      "nome": "LS-B18",
+      "tipo": "Tratamento de sementes",
+      "descricao": "Tratadora da linha B18, com IHM antiga em Vijeo. Percurso navegável pelas telas reais do equipamento: os valores ficam parados, a navegação é fiel.",
+      "recursos": ["23 telas reais do equipamento", "Navegação pelo menu lateral", "12 linhas de líquido e 2 de pó"]
+    },
+    "es": {
+      "nome": "LS-B18",
+      "tipo": "Tratamiento de semillas",
+      "descricao": "Tratadora de la línea B18, con HMI antigua en Vijeo. Recorrido navegable por las pantallas reales del equipo: los valores quedan fijos, la navegación es fiel.",
+      "recursos": ["23 pantallas reales del equipo", "Navegación por el menú lateral", "12 líneas de líquido y 2 de polvo"]
+    },
+    "en": {
+      "nome": "LS-B18",
+      "tipo": "Seed treatment",
+      "descricao": "B18 line seed treater with a legacy Vijeo HMI. A walkthrough of the machine's real screens: values stay fixed, navigation is faithful.",
+      "recursos": ["23 real machine screens", "Side-menu navigation", "12 liquid lines and 2 powder lines"]
+    }
+  }
+}
