@@ -45,7 +45,7 @@ function analisarExpressao(texto) {
     espacos();
     if (s[i] === '(') {
       i++;
-      const e = comparacao();
+      const e = disjuncao();
       espacos();
       if (s[i] === ')') i++;
       return e;
@@ -85,10 +85,11 @@ function analisarExpressao(texto) {
     const e = soma();
     espacos();
     const dois = s.slice(i, i + 2);
-    if (dois === '>=' || dois === '<=' || dois === '<>') {
+    if (dois === '>=' || dois === '<=' || dois === '<>' || dois === '!=') {
       i += 2;
-      return { t: 'cmp', o: dois === '<>' ? '<>' : dois, a: e, b: soma() };
+      return { t: 'cmp', o: (dois === '<>' || dois === '!=') ? '<>' : dois, a: e, b: soma() };
     }
+    if (s.slice(i, i + 2) === '==') { i += 2; return { t: 'cmp', o: '=', a: e, b: soma() }; }
     const c = s[i];
     if (c === '>' || c === '<' || c === '=') {
       i++;
@@ -97,8 +98,37 @@ function analisarExpressao(texto) {
     return e;
   }
 
-  const r = comparacao();
-  return r;
+  // Os blocos funcionais convertidos trazem expressoes logicas dentro do CMP:
+  //   CMP(TONR_01.FBD_TIMER.DN && __lD9F2CF5567E28EBB)
+  // Sem tratar && , || e ! o CMP devolvia sempre falso, e a dosagem nunca
+  // terminava - o Fin_Test do Control_Liquido depende de uma dessas.
+  function negacao() {
+    espacos();
+    if (s[i] === '!' && s[i + 1] !== '=') { i++; return { t: 'nao', a: negacao() }; }
+    return comparacao();
+  }
+
+  function conjuncao() {
+    let e = negacao();
+    for (;;) {
+      espacos();
+      if (s.slice(i, i + 2) !== '&&') return e;
+      i += 2;
+      e = { t: 'e', a: e, b: negacao() };
+    }
+  }
+
+  function disjuncao() {
+    let e = conjuncao();
+    for (;;) {
+      espacos();
+      if (s.slice(i, i + 2) !== '||') return e;
+      i += 2;
+      e = { t: 'ou', a: e, b: conjuncao() };
+    }
+  }
+
+  return disjuncao();
 }
 
 // --- instrucoes que carregam expressao em vez de lista de tags ------------------

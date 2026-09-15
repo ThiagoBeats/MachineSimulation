@@ -345,6 +345,12 @@ function abrir(arquivo) {
 
   // Os parametros de um AOI sao as tags dele, na ordem em que estao gravadas.
   // E assim que a chamada do AOI casa posicao por posicao com os argumentos.
+  // O byte 0x302 tambem diz COMO o parametro e passado, e isso muda o
+  // comportamento: no Logix, Input e Output sao COPIADOS (a AOI mexe na copia
+  // dela), e so InOut e por referencia. Tratar tudo por referencia faz a AOI
+  // escrever em tags do programa que ela so deveria ler - foi assim que o
+  // ONS(T1s) do ArranqueDirecto zerava o relogio de 1 s do MainRoutine.
+  const MODO_DO_USO = { 100: 'entrada', 104: 'saida', 108: 'entradaSaida' };
   const USO_PARAMETRO = new Set([100, 104, 108]);
 
   function membrosDe(tipo) {
@@ -359,7 +365,28 @@ function abrir(arquivo) {
       if (!USO_PARAMETRO.has(r.uso)) continue;
       if (resto === 'EnableIn' || resto === 'EnableOut') continue;
       if (/^[$_]/.test(resto)) continue;
-      achados.push({ nome: resto, ordem: r.ordem });
+      achados.push({ nome: resto, ordem: r.ordem, modo: MODO_DO_USO[r.uso] });
+    }
+    achados.sort((a, b) => a.ordem - b.ordem);
+    return achados.map(x => ({ nome: x.nome, modo: x.modo }));
+  }
+
+  // A ordem dos parametros na chamada e a ordem de DECLARACAO do AOI, e quem
+  // a preserva e o tipo de dados (RxTypeMemberCollection), nao a colecao de
+  // tags. Em RegistrosConsumo as duas discordam: pela colecao de tags sairia
+  // "Trigger, Totalizador", e a chamada passa o totalizador no lugar do
+  // gatilho. Pelo tipo sai "Totalizador, Trigger", que e o que faz sentido.
+  // Os parametros InOut nao existem no tipo (nao ocupam memoria da instancia),
+  // entao eles ficam na posicao que a colecao de tags indica.
+  function membrosDoTipo(tipo) {
+    const alvo = tipo + '.RxTypeMemberCollection.';
+    const achados = [];
+    for (const [id, cam] of comps.caminho) {
+      const i = cam.indexOf(alvo);
+      if (i < 0) continue;
+      const resto = cam.slice(i + alvo.length);
+      if (!resto || resto.indexOf('.') >= 0) continue;
+      achados.push({ nome: resto, ordem: comps.porId.get(id).ordem });
     }
     achados.sort((a, b) => a.ordem - b.ordem);
     return achados.map(x => x.nome);
@@ -367,6 +394,7 @@ function abrir(arquivo) {
 
   return {
     membrosDe,
+    membrosDoTipo,
     regioes: Object.keys(regioes),
     componentes: comps.caminho.size,
     conferenciaDoCodigo: codigo.conferidos + '/' + codigo.esperados,

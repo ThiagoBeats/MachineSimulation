@@ -43,16 +43,37 @@
     var membro = ponto < 0 ? resto : resto.slice(0, ponto);
     var cauda = ponto < 0 ? '' : resto.slice(ponto);
     if (escopo.params[membro] !== undefined) return escopo.params[membro] + cauda;
-    return escopo.instancia + '.' + resto;
+    // Membro que nao e parametro mora no bloco de dados da instancia, e o
+    // caminho leva o NOME DO TIPO no meio: o resto do programa referencia
+    // esses membros como <instancia>.<tipo>.<membro> - por exemplo
+    // MainProgram.Control_Liquido01.Control_Liquido.PesoSemilla. Sao 51
+    // instancias assim no projeto. Sem o nivel do tipo, o AOI grava num lugar
+    // e quem le de fora procura em outro.
+    return escopo.instancia + '.' + escopo.aoi + '.' + resto;
   }
 
   var RE_BIT = /^(.*)\.(\d{1,2})$/;
+
+  // Indice indireto: RECETARIO[Indice_RecetaEnProceso].RECETA.Dosis_L1 quer
+  // dizer "a receita que estiver selecionada agora". Sem resolver o que esta
+  // entre colchetes, cada indice viraria uma tag diferente e a receita nunca
+  // chegaria em RecetaEnProceso. Aparece tambem nas tabelas de calibracao e
+  // nos modulos de E/S.
+  function expandirIndices(caminho) {
+    if (caminho.indexOf('[') < 0) return caminho;
+    return caminho.replace(/\[([^\]]+)\]/g, function (tudo, dentro) {
+      var d = dentro.trim();
+      if (/^-?\d+$/.test(d)) return tudo;                 // ja e numero
+      var v = ler(d);
+      return '[' + (Math.round(Number(v)) || 0) + ']';
+    });
+  }
 
   function ler(ref) {
     if (typeof ref === 'number') return ref;
     if (ref === undefined || ref === null || ref === '' || ref === '?') return 0;
     if (/^-?[0-9]/.test(ref)) return Number(ref);
-    var r = resolver(String(ref));
+    var r = expandirIndices(resolver(String(ref)));
     var m = RE_BIT.exec(r);
     if (m) return (Number(lerTag(m[1])) >> Number(m[2])) & 1;
     var v = lerTag(r);
@@ -62,7 +83,7 @@
   function escrever(ref, valor) {
     if (ref === undefined || ref === null || ref === '' || ref === '?') return;
     if (/^-?[0-9]/.test(ref)) return;                 // constante: nao ha onde gravar
-    var r = resolver(String(ref));
+    var r = expandirIndices(resolver(String(ref)));
     var m = RE_BIT.exec(r);
     if (m) {
       var base = Number(lerTag(m[1])) | 0;
@@ -88,6 +109,9 @@
         if (e.o === '/') return b === 0 ? 0 : a / b;
         return 0;
       }
+      case 'nao': return avaliar(e.a) ? 0 : 1;
+      case 'e': return (avaliar(e.a) && avaliar(e.b)) ? 1 : 0;
+      case 'ou': return (avaliar(e.a) || avaliar(e.b)) ? 1 : 0;
       case 'cmp': {
         var x = avaliar(e.a), y = avaliar(e.b);
         if (e.o === '>') return x > y ? 1 : 0;
@@ -126,16 +150,38 @@
     AFI: function () { return false; },
     // Um tiro so: passa energia apenas na subida.
     ONS: function (a, e) { var antes = !!ler(a[0]); escrever(a[0], e ? 1 : 0); return e && !antes; },
-    // Estas nao mudam o desenho do rung: sao marcas que o Studio 5000 deixa
-    // quando converte bloco funcional para ladder.
     NOP: function (a, e) { return e; },
-    IRD: function (a, e) { return e; },
-    ATI: function (a, e) { return e; },
+
+    // IRD INVERTE a linha. E o que o Studio 5000 usa ao converter ST para
+    // ladder, em dois lugares:
+    //   cond OTL(x) IRD() OTU(x)     -> a atribuicao  x := cond
+    //   cond IRD() JMP(fim)          -> o IF: salta quando cond e FALSA,
+    //                                   entao o corpo roda quando ela e VERDADEIRA
+    // Tratar IRD como passagem faz o programa rodar ao contrario: na primeira
+    // tentativa a maquina apagava o receituario inteiro a cada varredura,
+    // porque o bloco "salvar receita" roda quando o comando esta DESLIGADO.
+    IRD: function (a, e) { return !e; },
+
+    // ATI devolve a linha para verdadeira. Aparece nos blocos funcionais
+    // convertidos, entre a parte condicional e a ligacao dos parametros - que
+    // acontece sempre, independente da condicao.
+    ATI: function () { return true; },
     LBL: function (a, e) { return e; },
     NTCH: function (a, e) { return e; },
-    start_block: function (a, e) { return e; },
-    end_block1: function (a, e) { return e; },
-    end_block2: function (a, e) { return e; }
+    // Delimitadores do bloco funcional convertido. O que esta entre eles e o
+    // calculo do bloco, e so acontece quando o EnableIn dele permite.
+    start_block: function (a, e) {
+      var base = String(a[0] || '').replace(/\.ulBoolInput\d*$/, '');
+      var pino = programa.fbdEnable && programa.fbdEnable[base];
+      return pino ? !!ler(pino) : true;
+    },
+    end_block1: function () { return true; },
+    // Bloco de comparacao: o resultado sai pelo Dest dele, nao pela linha.
+    end_block2: function (a, e) {
+      var base = String(a[0] || '').replace(/\.ulBoolInput\d*$/, '');
+      escrever(base + '.FBD_COMPARE.Dest', e ? 1 : 0);
+      return true;
+    }
   };
 
   // Saida: age quando recebe energia e repassa a energia inalterada.
@@ -284,6 +330,26 @@
   }
 
   function temporizador(base, energia, tipo) {
+    // O temporizador de bloco funcional nao e comandado pela linha: ele tem os
+    // proprios pinos, TimerEnable e Reset, e e sempre retentivo.
+    var p = (programa.temporizadores && programa.temporizadores[base]) || '.';
+    if (p === '.FBD_TIMER.') {
+      var pre2 = ler(membro(base, 'PRE'));
+      var acc2 = ler(membro(base, 'ACC'));
+      if (ler(membro(base, 'Reset'))) {
+        escrever(membro(base, 'ACC'), 0);
+        escrever(membro(base, 'DN'), 0);
+        return;
+      }
+      if (energia && ler(membro(base, 'TimerEnable')) && acc2 < pre2) {
+        acc2 += periodo;
+        escrever(membro(base, 'ACC'), acc2);
+      }
+      escrever(membro(base, 'DN'), acc2 >= pre2 ? 1 : 0);
+      escrever(membro(base, 'EN'), energia ? 1 : 0);
+      return;
+    }
+
     var pre = ler(membro(base, 'PRE'));
     var acc = ler(membro(base, 'ACC'));
     var en = !!ler(membro(base, 'EN'));
@@ -376,17 +442,53 @@
     pilha.pop();
   }
 
+  // No Logix, o modo de passagem do parametro muda o comportamento:
+  //   entrada       - o valor e COPIADO para dentro no inicio; o que o AOI
+  //                   escrever ali fica so nele;
+  //   saida         - o AOI escreve na copia dele e o valor e COPIADO para
+  //                   fora no fim;
+  //   entradaSaida  - por referencia; o AOI mexe direto na tag de quem chamou.
+  //
+  // Tratar tudo por referencia parece inofensivo e nao e: o ArranqueDirecto faz
+  // ONS(T1s) usando o parametro como bit de memoria, e T1s recebe o relogio de
+  // 1 s do programa. Por referencia, cada um dos 13 motores zerava o relogio da
+  // maquina inteira a cada varredura - e o ventilador entrava em falha de giro,
+  // travando a descarga da batelada.
   function rodarAoi(nome, args) {
     var def = programa.aoi[nome];
+    var modos = def.modos || [];
     var anterior = escopo;
-    var novo = { aoi: nome, instancia: resolver(String(args[0])), params: {} };
+    var instancia = resolver(String(args[0]));
+    var novo = { aoi: nome, instancia: instancia, params: {} };
+    var entradas = [], saidas = [];
+
     for (var i = 0; i < def.parametros.length; i++) {
+      var p = def.parametros[i];
       var a = args[i + 1];
-      novo.params[def.parametros[i]] = (a === undefined) ? '0' : (/^-?[0-9]/.test(a) ? a : resolver(String(a)));
+      var modo = modos[i] || 'entradaSaida';
+
+      if (modo === 'entradaSaida') {
+        novo.params[p] = (a === undefined) ? '0' : (/^-?[0-9]/.test(a) ? a : resolver(String(a)));
+        continue;
+      }
+      // entrada e saida moram no bloco de dados da instancia, no mesmo
+      // caminho com o nome do tipo no meio
+      var local = instancia + '.' + nome + '.' + p;
+      novo.params[p] = local;
+      if (a === undefined) continue;
+      if (modo === 'entrada') entradas.push([local, a]);
+      else if (!/^-?[0-9]/.test(a)) saidas.push([a, local]);
     }
+
+    // as copias acontecem com o escopo de FORA valendo, para os argumentos
+    // resolverem no contexto de quem chamou
+    for (var k = 0; k < entradas.length; k++) escrever(entradas[k][0], ler(entradas[k][1]));
+
     escopo = novo;
     rodarRotina(def.rotina);
     escopo = anterior;
+
+    for (var j = 0; j < saidas.length; j++) escrever(saidas[j][0], ler(saidas[j][1]));
   }
 
   // --- varredura ------------------------------------------------------------------------

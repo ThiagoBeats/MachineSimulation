@@ -254,13 +254,58 @@ semente. Deixar a dela trabalhar sai mais fiel.
 Carregar lote → Marcha: sai o aviso acústico, corre a pré-marcha de 3 s,
 `Run_Serv` sobe e os botões de comando aparecem na tela — eles estavam
 escondidos porque as expressões de visibilidade exigem a máquina rodando.
-Com Início, a balança enche, o CLP corta o grosso em 180 kg, passa ao fino e
-fecha a batelada dentro da faixa de aceite.
 
-E quando falta alguma coisa, a máquina se recusa — como deve. Na primeira
-tentativa ela não partia porque as chaves de liberação estavam em zero, e
-depois não carregava lote porque `kg_a_Procesar` era zero, o que faz
-`Total_Procesado >= kg_a_Procesar` valer de saída e acionar `Fin_Lote`.
+Com Início, a máquina entra em **produção contínua**:
+
+```
+pesa até 204 kg  →  corta o grosso em 180, passa ao fino  →  descarrega no tambor
+   →  dosa a L1 até 0,65 L  →  passa para a L2 (0,34 L)  →  passa para a L3 (0,16 L)
+   →  próxima batelada
+```
+
+A ordem das linhas e a quantidade de cada uma saem da **receita**, que o CLP copia
+de `RECETARIO[Indice_RecetaEnProceso]` para `RecetaEnProceso`. O alvo de cada
+dose é o próprio CLP que calcula, no bloco funcional do `Control_Liquido`:
+
+```
+litros = (PesoSemilla / 100) × (Dosis / 1000) × (1 − Offset)
+```
+
+e a dose fecha quando o **medidor de vazão** passa desse alvo. É o medidor que
+encerra a injeção e libera a próxima linha — não um temporizador.
+
+E quando falta alguma coisa, a máquina se recusa, como deve. Ela não partia
+porque as chaves de liberação estavam em zero; não carregava lote porque
+`kg_a_Procesar` era zero, o que faz `Total_Procesado >= kg_a_Procesar` valer de
+saída e acionar `Fin_Lote`; e não descarregava enquanto as três linhas da receita
+não estivessem sem alarme.
+
+### O que o interpretador precisou aprender
+
+Cinco coisas que não se adivinham, e que erradas fazem o programa rodar ao
+contrário em silêncio:
+
+- **`IRD` inverte a linha.** É como o Studio 5000 escreve o `IF` e a atribuição
+  ao converter ST para ladder: `cond IRD() JMP(fim)` salta quando a condição é
+  falsa. Tratando como passagem, o bloco "salvar receita" rodava quando o
+  comando estava desligado, e a máquina **apagava o receituário inteiro a cada
+  varredura**.
+- **Entrada, saída e entrada/saída são diferentes.** No Logix só o InOut é por
+  referência; entrada e saída são copiadas. O byte em `+0x302` diz qual é qual
+  (100, 104, 108). Passando tudo por referência, o `ONS(T1s)` do
+  `ArranqueDirecto` zerava o relógio de 1 s do programa — e os 13 motores
+  entravam em falha de giro, travando a descarga.
+- **A ordem dos parâmetros vem do tipo de dados**, não da coleção de tags. As
+  duas discordam em `RegistrosConsumo`, onde a coleção inverteria `Totalizador`
+  com `Trigger`.
+- **Membro de AOI mora em `<instância>.<tipo>.<membro>`.** São 51 instâncias
+  referenciadas assim de fora. Sem o nível do tipo, o AOI grava num lugar e
+  quem lê procura em outro — era por isso que a dose corrigida da linha 3 nunca
+  chegava.
+- **Bloco funcional só calcula quando o `EnableIn` dele deixa**, e o cálculo fica
+  entre `start_block` e `end_block`. Ignorando isso, o `ADD` que guarda quantos
+  litros a batelada precisa recalculava a cada varredura e o alvo fugia junto
+  com o totalizador: a válvula abria e nunca mais fechava.
 
 ### Limites desta máquina
 
@@ -272,6 +317,11 @@ depois não carregava lote porque `kg_a_Procesar` era zero, o que faz
   temporizador, constantes de calibração e receitas moram num canto do arquivo
   que ainda não deciframos. 36 dos 100 temporizadores recebem preset do próprio
   programa; o resto está estimado em `valores.js`, declarado linha a linha.
+- **A receita de exemplo é inventada.** `RECETARIO[1]` traz três linhas de
+  líquido com dose, ordem e tempos plausíveis, mas não é a receita do cliente —
+  ela também mora nos valores iniciais que não saem do `.ACD`. O botão que
+  carrega a receita fica na tela de Receituário, uma das que só existem no
+  `.gfx`, então a simulação abre com ela já carregada.
 - O PID é um PI discreto com os mesmos ganhos e limites, não o PID do Logix.
 - `MainProgram.CalculoDensidade` e `MainProgram.IO_Mapping` são código morto:
   nenhum JSR aponta para elas.

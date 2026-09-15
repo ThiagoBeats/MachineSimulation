@@ -1,6 +1,6 @@
 {
  "arquivo": "LSB18-6Liquidos.ACD",
- "extraidoEm": "2026-09-14",
+ "extraidoEm": "2026-09-15",
  "como": "ferramentas/rockwell/acd.js - tabela de regioes no fim do arquivo, cada regiao em gzip; ordem de varredura pela lista ligada de RegnLink.Idx",
  "rotinas": 71,
  "blocosDeCodigo": 1735,
@@ -171,8 +171,8 @@
    "Cant"
   ],
   "RegistrosConsumo": [
-   "Trigger",
    "Totalizador",
+   "Trigger",
    "Zerar",
    "offset"
   ],

@@ -90,7 +90,50 @@ window.VALORES = {
   'MainProgram.CorteGruesoSemilla': 180,           // corte grosso; o CLP copia para CorteGruesoReal
   'MainProgram.CorteFinoSemilla': 196,             // corte fino
 
+
+  // --- receita em uso -------------------------------------------------------
+  // O receituario mora em RECETARIO[], tag de CONTROLADOR (sem prefixo de
+  // programa - escrever "MainProgram.RECETARIO" nao chega em lugar nenhum).
+  // O CLP copia RECETARIO[Indice_RecetaEnProceso] para RecetaEnProceso quando
+  // recebe Carga_Receta_Proceso, que e um botao da tela de Receituario - uma
+  // das telas que so existem no .gfx. Enquanto ela nao entra, a simulacao abre
+  // com a receita ja carregada.
+  'Carga_Receta_Proceso': 1,
+  'Indice_RecetaEnProceso': 1,
+  'Indice_RECETARIO': 1,
+
+  // Tres linhas ativas. Dose em mL por 100 kg de semente; ordem 0 desliga a
+  // linha (a IHM mostra o campo so quando Ord_Iny_Lx > 0).
+  'RECETARIO[1].RECETA.Dosis_L1': 300,
+  'RECETARIO[1].RECETA.Orden_L1': 1,
+  'RECETARIO[1].RECETA.T_inyeccion_L1': 4000,
+  'RECETARIO[1].RECETA.T_demora_L1': 500,
+  'RECETARIO[1].RECETA.Vel_aspersor_L1': 60,
+
+  'RECETARIO[1].RECETA.Dosis_L2': 150,
+  'RECETARIO[1].RECETA.Orden_L2': 2,
+  'RECETARIO[1].RECETA.T_inyeccion_L2': 3000,
+  'RECETARIO[1].RECETA.T_demora_L2': 500,
+  'RECETARIO[1].RECETA.Vel_aspersor_L2': 60,
+
+  'RECETARIO[1].RECETA.Dosis_L3': 80,
+  'RECETARIO[1].RECETA.Orden_L3': 3,
+  'RECETARIO[1].RECETA.T_inyeccion_L3': 2500,
+  'RECETARIO[1].RECETA.T_demora_L3': 500,
+  'RECETARIO[1].RECETA.Vel_aspersor_L3': 60,
+
+  // homogeneizacao e descarga
+  'RECETARIO[1].RECETA.Vel_homogenizado': 70,
+  'RECETARIO[1].RECETA.T_homogenizado': 6000,
+  'RECETARIO[1].RECETA.Vel_descarga': 50,
+  'RECETARIO[1].RECETA.T_descarga': 4000,
+
+  // o nome e um vetor de caracteres no CLP; a IHM le este campo direto
+  'MainProgram.RecetaEnProceso.Nombre': 'MILHO 2B',
+  'MainProgram.RecetaEnProceso.Nombre_L1': 'FUNGICIDA',
+  'MainProgram.RecetaEnProceso.Nombre_L2': 'INSETICIDA',
+  'MainProgram.RecetaEnProceso.Nombre_L3': 'POLIMERO',
+
   // --- lote de exemplo, para a tela abrir com algo escrito ---
-  'MainProgram.Indice_RecetaEnProceso': 1,
   'MainProgram.Total_Procesado': 0
 };

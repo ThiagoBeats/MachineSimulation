@@ -121,6 +121,16 @@
         });
       }
     }
+    // A maquina comeca PARADA E ASSENTADA, nao em transito. Sem isso, no
+    // primeiro instante os dois fins de curso de cada valvula ficam
+    // desligados - o que para o CLP quer dizer "atuador a caminho" - e o
+    // temporizador de falha de posicao comeca a contar. Depois de 2 s as 29
+    // valvulas entram em falha e a maquina nao dosa mais nada.
+    for (var j = 0; j < regras.valvulas.length; j++) {
+      cronometros[regras.valvulas[j].chave] = ATRASO_VALVULA;
+      cronometros[regras.valvulas[j].chave + 'e'] = false;
+    }
+
     return regras;
   }
 
@@ -224,14 +234,37 @@
     // de corte fino; sem isso a pesagem para no corte grosso.
     escrever('MainProgram.Z_VA2_W', 1);
 
+    // Descarga habilitada. No projeto isso vem de uma entrada digital pela
+    // rotina MainProgram.IO_Mapping - que e codigo morto: nenhum JSR aponta
+    // para ela. Na maquina quem manda e uma chave de habilitacao no campo.
+    escrever('MainProgram.DescHab', 1);
+
     // BalanzaVacia nao entra aqui: quem a aciona e o proprio CLP, no rung
     // Pesada #3, comparando o peso com a banda morta. So precisamos que a
     // banda morta tenha valor - esta em valores.js.
 
-    // Bombas de dosagem: a vazao acompanha a frequencia do inversor.
+    // --- medidores de vazao das 6 linhas de liquido -------------------------
+    // E por aqui que a dosagem termina. O CLP calcula quantos litros a
+    // batelada precisa - (PesoSemilla/100) x (Dosis/1000), corrigido pelo
+    // offset - e fica comparando com o totalizador do medidor ate passar do
+    // alvo. Sem o medidor contando, a valvula abre e nunca mais fecha.
+    //
+    // A vazao acompanha a frequencia que o CLP manda no inversor da bomba.
     for (var n = 1; n <= 6; n++) {
+      var injetando = !!ler('Inyectar_L' + n);
       var hz = Number(ler('MainProgram.InputBDL' + n + '.OutputFreq')) || 0;
-      escrever('MainProgram.Caudal_L' + n, hz * 0.6);
+      var nominal = Number(ler('Caudal_Nominal_Bomba_L' + n)) || 0;
+
+      // Enquanto o inversor nao responde, a bomba ainda assim empurra liquido:
+      // a dosagem da B18 usa bomba de diafragma, que parte junto com a valvula.
+      var fracao = hz > 0 ? (hz / 50) : (injetando ? 1 : 0);
+      var vazao = injetando ? nominal * fracao : 0;        // litros por hora
+
+      escrever('MainProgram.MedicionCaudalL' + n, vazao);
+      if (vazao > 0) {
+        var tot = Number(ler('MainProgram.Totalizador_L' + n)) || 0;
+        escrever('MainProgram.Totalizador_L' + n, tot + vazao / 3600 * s);
+      }
     }
   }
 

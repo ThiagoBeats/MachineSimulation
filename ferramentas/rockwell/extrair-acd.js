@@ -44,9 +44,11 @@ const todasAsTags = new Set();
 for (const b of projeto.blocos) {
   (b.texto.match(/[A-Za-z_][A-Za-z0-9_.:\[\]]*/g) || []).forEach(t => todasAsTags.add(t));
 }
-function prefixoDeMembro(base, tipo) {
-  const comTipo = base + '.' + tipo + '.';
-  for (const t of todasAsTags) if (t.indexOf(comTipo) === 0) return '.' + tipo + '.';
+function prefixoDeMembro(base, ...tipos) {
+  for (const tipo of tipos) {
+    const comTipo = base + '.' + tipo + '.';
+    for (const t of todasAsTags) if (t.indexOf(comTipo) === 0) return '.' + tipo + '.';
+  }
   return '.';
 }
 
@@ -62,7 +64,7 @@ const problemas = [];
 const nomesDeAoi = [...new Set(projeto.rotinas.filter(r => /\.Logic$/.test(r)).map(r => r.replace(/\.Logic$/, '')))];
 
 for (const nome of nomesDeAoi) {
-  const lista = projeto.membrosDe(nome).filter(n => !EXCLUI.has(n) && !/^[$_]/.test(n));
+  const lista = projeto.membrosDe(nome).filter(x => !EXCLUI.has(x.nome) && !/^[$_]/.test(x.nome));
 
   const quantidades = new Set();
   for (const b of projeto.blocos) {
@@ -90,7 +92,33 @@ for (const nome of nomesDeAoi) {
     problemas.push('o AOI ' + nome + ' e chamado com ' + n + ' argumentos, mas so tem ' + lista.length + ' parametros');
     continue;
   }
-  aoi[nome] = { rotina: nome + '.Logic', parametros: lista.slice(0, n) };
+  const usados = lista.slice(0, n);
+
+  // Reordena so os parametros de entrada e saida, seguindo a ordem do tipo de
+  // dados. Os InOut ficam onde estao: eles nao aparecem no tipo.
+  const ordemDoTipo = projeto.membrosDoTipo(nome);
+  const posicoesInOut = [];
+  const copiados = [];
+  usados.forEach((x, i) => {
+    if (x.modo === 'entradaSaida') posicoesInOut.push(i);
+    else copiados.push(x);
+  });
+  copiados.sort((a, b) => {
+    const ia = ordemDoTipo.indexOf(a.nome), ib = ordemDoTipo.indexOf(b.nome);
+    if (ia < 0 || ib < 0) return 0;
+    return ia - ib;
+  });
+  const finais = [];
+  let k = 0;
+  for (let i = 0; i < usados.length; i++) {
+    finais.push(posicoesInOut.indexOf(i) >= 0 ? usados[i] : copiados[k++]);
+  }
+
+  aoi[nome] = {
+    rotina: nome + '.Logic',
+    parametros: finais.map(x => x.nome),
+    modos: finais.map(x => x.modo || 'entradaSaida')
+  };
 }
 
 // --- pontos de entrada -------------------------------------------------------------
@@ -146,13 +174,29 @@ for (const b of projeto.blocos) {
   let m;
   while ((m = re.exec(b.texto))) {
     const base = m[2].trim();
-    if (/^[A-Za-z_]/.test(base)) saida.temporizadores[base] = prefixoDeMembro(base, 'TIMER');
+    if (/^[A-Za-z_]/.test(base)) saida.temporizadores[base] = prefixoDeMembro(base, 'FBD_TIMER', 'TIMER');
   }
   const re2 = /\b(CTU|CTD|RES)\(([^,)]+)/g;
   while ((m = re2.exec(b.texto))) {
     const base = m[2].trim();
-    if (/^[A-Za-z_]/.test(base)) saida.temporizadores[base] = prefixoDeMembro(base, 'COUNTER');
+    if (/^[A-Za-z_]/.test(base)) saida.temporizadores[base] = prefixoDeMembro(base, 'FBD_COUNTER', 'COUNTER');
   }
+}
+
+// --- blocos funcionais: quais tem o pino EnableIn ligado -----------------------
+// Um bloco de FBD so calcula quando o EnableIn dele esta ligado. Na conversao
+// para ladder isso vira "XIC(origem) OTE(BLOCO.FBD_XXX.EnableIn)", e o calculo
+// em si fica entre start_block e end_block. Quando o pino nao e ligado, o bloco
+// calcula sempre.
+//
+// Ignorar isso quebra a dosagem: o ADD que guarda quantos litros a batelada
+// precisa passa a recalcular a cada varredura, e o alvo foge junto com o
+// totalizador - a valvula abre e nunca mais fecha.
+saida.fbdEnable = {};
+for (const b of projeto.blocos) {
+  const re = new RegExp('OTE\\(([A-Za-z0-9_.]+)\\.(FBD_[A-Za-z_]+|SELECT|DOMINANT_SET)\\.EnableIn\\)', 'g');
+  let m;
+  while ((m = re.exec(b.texto))) saida.fbdEnable[m[1]] = m[1] + '.' + m[2] + '.EnableIn';
 }
 
 // --- interface com o mundo fisico ---------------------------------------------------
