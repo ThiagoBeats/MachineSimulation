@@ -201,12 +201,16 @@ maquinas/ls-b18-corteva/
   programa.json    o programa do CLP: 71 rotinas, 1735 blocos, na ordem de varredura
   planta.js        a parte física - a ÚNICA parte inventada
   valores.js       valores iniciais que o .ACD ainda não entrega
+  _telas-gfx.md    o que há nas 33 telas que o .mer não publicou em vetorial
 ```
 
 ```bash
 node ferramentas/rockwell/extrair-mer.js <arquivo.mer> ls-b18-corteva   # as telas
 node ferramentas/rockwell/extrair-acd.js <arquivo.ACD> ls-b18-corteva   # o CLP
 node ferramentas/build-vetorial.js ls-b18-corteva
+
+# o que ha nas telas que o .mer nao publicou em vetorial
+node ferramentas/rockwell/inventario-gfx.js <arquivo.mer> ls-b18-corteva
 ```
 
 ### Como os arquivos foram abertos
@@ -231,6 +235,61 @@ Duas descobertas fizeram a diferença:
   **17 AOIs**, de 1 a 48 parâmetros cada.
 - **Regiões vazias contam.** Descartá-las desloca o índice de todos os blocos
   seguintes da rotina.
+
+### Abrindo o `.gfx`, o formato nativo das telas
+
+Das 47 telas do projeto, só 14 saíram em XAML. O motivo estava no
+`Raml/manifest.xml`: ele lista **exatamente essas 14**, todas com
+`AddedToRAMLZip=true`, e as outras 33 não aparecem nele. Não ficaram de fora
+por barreira técnica — ficaram porque **não foram marcadas para o cliente web**
+quando o `.mer` foi gerado.
+
+As 33 restantes só existem como `.gfx`, que é serialização MFC (`CArchive`) sem
+formato publicado. Usando as 14 telas que existem nos **dois** formatos como
+pedra de Roseta, o leitor em `ferramentas/rockwell/gfx.js` recupera:
+
+| O quê | Acerto | Medido contra |
+| :--- | ---: | :--- |
+| nome de cada controle | 100% | 365 elementos, byte a byte |
+| posição e tamanho | 99,7% | 364 de 365 |
+| tipo do controle | — | vem do nome que o FactoryTalk gera sozinho |
+| tags do CLP da tela | 100% | 236 tags, todas reais |
+
+O retângulo aparece de três formas, e foi preciso as três:
+
+- na maioria dos controles, 15 bytes antes do nome, em 16 bits;
+- nos **textos**, entra uma cadeia de ligação entre o retângulo e o nome, e a
+  distância deixa de ser fixa — mas logo depois do retângulo vem sempre um tag
+  de objeto MFC (`0x80NN`), e é ele que ancora a busca para trás;
+- nas **imagens**, o retângulo é de 32 bits e vem *depois* do nome, precedido de
+  um zero e de um código pequeno.
+
+As duas primeiras regras nunca erraram quando deram resposta. A terceira errou
+uma vez em 365.
+
+As tags só apareceram depois de descobrir que a cadeia de ligação usa **prefixo
+de tamanho de 16 bits**, enquanto o nome do controle usa 8. Com o leitor
+procurando só o prefixo de 8, toda tela reportava zero tags — o número estava
+errado, não vazio.
+
+### Por que isso vira inventário, e não tela navegável
+
+O que o `.gfx` **não** entrega é a ligação entre cada controle e a tag dele. A
+ordem das cadeias no arquivo não acompanha a ordem dos elementos: testado contra
+o XAML, a atribuição acerta 1 de 255 tags e 0 de 271 legendas. Cor e fonte estão
+lá, como RGB0, mas num bloco compartilhado longe do elemento.
+
+Dá para desenhar as telas com os controles no lugar certo. Mas ligados na tag
+errada — e uma tela em que o aluno aperta um botão e a máquina faz outra coisa é
+pior do que tela nenhuma. Por isso o resultado sai em
+`maquinas/<id>/_telas-gfx.md`: **o que existe em cada tela que faltou**, com
+3263 controles posicionados e 1212 tags, sem fingir que é a tela.
+
+E ela já serviu para conferir a simulação. A tela "Receita em Processo" revela o
+registro de receita inteiro — nome, dose, ordem, tempo de injeção, demora,
+velocidade do aspersor por linha, mais homogeneização e descarga — e bate com os
+47 membros do tipo `RECETA` no `.ACD`: o formato que `valores.js` usa está
+certo, só os números é que são estimados.
 
 ### O que roda, e o que é invenção
 
@@ -309,19 +368,26 @@ contrário em silêncio:
 
 ### Limites desta máquina
 
-- **Das 49 telas do projeto, 11 têm forma vetorial.** As outras 38 existem só no
-  binário nativo `.gfx`. A maioria é cópia quase igual de outra, mas 7 são
-  desenhos únicos: Receituário, Lista de Líquidos, Parâmetros, Receita em
-  Processo, Histórico de Pesagens, Líquido L1–L6 e Líquido Circuito.
+- **Das 47 telas do projeto, 14 são navegáveis.** As outras 33 só existem no
+  `.gfx`: 7 são rascunhos que o programador deixou no projeto (prefixo `Z`,
+  `ZZZ-`, `zzz`), 19 são cópias por linha de líquido de telas que já temos, e
+  **7 são desenhos únicos** — Receituário, Lista de Líquidos, Parâmetros,
+  Receita em Processo, Histórico de Pesagens, Líquido L1–L6 e Líquido Circuito.
+  O conteúdo das 33 está lido e documentado em `_telas-gfx.md`; navegável não
+  fica, pelo motivo acima. O caminho limpo para tê-las é republicar o `.mer` no
+  FactoryTalk View Studio com todos os displays marcados: aí saem em XAML e
+  passam pelo mesmo extrator que já funciona.
 - **Os valores iniciais das tags não são lidos do `.ACD`.** Presets de
   temporizador, constantes de calibração e receitas moram num canto do arquivo
   que ainda não deciframos. 36 dos 100 temporizadores recebem preset do próprio
   programa; o resto está estimado em `valores.js`, declarado linha a linha.
 - **A receita de exemplo é inventada.** `RECETARIO[1]` traz três linhas de
   líquido com dose, ordem e tempos plausíveis, mas não é a receita do cliente —
-  ela também mora nos valores iniciais que não saem do `.ACD`. O botão que
-  carrega a receita fica na tela de Receituário, uma das que só existem no
-  `.gfx`, então a simulação abre com ela já carregada.
+  ela também mora nos valores iniciais que não saem do `.ACD`. A **estrutura**
+  está certa, confirmada pelo tipo `RECETA` e pela tela "Receita em Processo";
+  são os valores que são estimados. O botão que carrega a receita fica na tela
+  de Receituário, uma das que só existem no `.gfx`, então a simulação abre com
+  ela já carregada.
 - O PID é um PI discreto com os mesmos ganhos e limites, não o PID do Logix.
 - `MainProgram.CalculoDensidade` e `MainProgram.IO_Mapping` são código morto:
   nenhum JSR aponta para elas.
