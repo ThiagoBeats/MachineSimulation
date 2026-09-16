@@ -84,6 +84,33 @@ for (const nome of faltam) {
   });
 }
 
+// --- 2b. o que o publish do ViewPoint descartou das telas que TEMOS -----------
+// Uma tela pode existir nos dois formatos e ainda assim sair incompleta: o
+// publish descarta os campos de entrada numerica inteiros. Comparando os dois,
+// sobra exatamente o que falta - com a posicao vinda do binario, que e medida,
+// nao estimada. O que o binario nao diz e a tag e o rotulo de cada campo; isso
+// fica para a camada de aparencia.
+const faltantes = {};
+for (const nome of Object.keys(gfxPorTela)) {
+  const arqTela = path.join(destino, 'telas', mesmaTela(nome) + '.json');
+  if (!fs.existsSync(arqTela)) continue;
+  const tela = JSON.parse(fs.readFileSync(arqTela, 'utf8'));
+  const temIds = new Set();
+  (function anda(l) { for (const e of l) { if (e.id) temIds.add(e.id); if (e.filhos) anda(e.filhos); } })(tela.elementos);
+
+  const { elementos } = analisarGfx(gfxPorTela[nome]);
+  const fora = elementos.filter(e => !temIds.has(e.id) && e.t !== 'desconhecido'
+    && !todasAsTelas.has(e.id) && !jaTemos.has(mesmaTela(e.id)));
+  if (fora.length) faltantes[mesmaTela(nome)] = fora.sort((a, b) => a.y - b.y || a.x - b.x);
+}
+
+fs.writeFileSync(path.join(destino, '_gfx-faltantes.json'), JSON.stringify({
+  aviso: 'Elementos que existem no .gfx e sumiram no publish do ViewPoint. A '
+    + 'posicao e o tipo sao extraidos do binario; a tag e o rotulo de cada um '
+    + 'nao estao la e vem da camada de aparencia.',
+  telas: faltantes,
+}, null, 1) + '\n');
+
 fs.writeFileSync(path.join(destino, '_telas-gfx.json'), JSON.stringify({
   aviso: 'Inventario, nao tela navegavel. Geometria e nome saem certos; a ligacao '
     + 'de cada controle com a tag dele nao sai. Ver ferramentas/rockwell/gfx.js.',

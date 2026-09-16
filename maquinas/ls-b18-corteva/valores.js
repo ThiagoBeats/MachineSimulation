@@ -77,62 +77,103 @@ window.VALORES = {
   'MainProgram.V_TOnResetAbrirCargaB': 800,
   'MainProgram.V_TOnResetCerrarCargaB': 800,
 
-  // --- parametros do lote e da pesagem ---
-  // Sem estes o CLP se recusa a comecar, e com razao: 'kg_a_Procesar' em zero
-  // faz Total_Procesado >= kg_a_Procesar valer de saida, o que aciona
-  // Fin_Lote e desarma o Inicio. A banda morta em zero tambem deixa a
-  // balanca "nunca vazia". Sao valores de receita, que moram nos valores
-  // iniciais do .ACD.
-  'MainProgram.kg_a_Procesar': 1000,               // tamanho do lote, kg
-  'MainProgram.BandaMuertaVacia': 3,               // abaixo disto a balanca esta vazia
-  'MainProgram.PesoSemilla': 200,                  // batelada, kg
-  'MainProgram.Tolerancia': 5,                     // % de tolerancia da batelada
-  'MainProgram.CorteGruesoSemilla': 180,           // corte grosso; o CLP copia para CorteGruesoReal
-  'MainProgram.CorteFinoSemilla': 196,             // corte fino
+  // --- parametros do lote e da pesagem --------------------------------------
+  // LIDOS DOS PRINTS da IHM de 25/06/2025, tela "BALANCA". Antes eram
+  // estimativa minha; agora sao os numeros da maquina.
+  'MainProgram.kg_a_Procesar': 99999,               // print "TRATADORA": SOLICITADO
+  'MainProgram.BandaMuertaVacia': 3.5,              // print: "Balanca vazia 3,5 Kg"
+  'MainProgram.PesoSemilla': 150,                   // print: "Peso da batelada 150"
+  'MainProgram.Tolerancia': 10,                     // print: "Tolerancia 10 %"
+  'MainProgram.CorteGruesoSemilla': 110,            // print: "Corte grosso 110"
+  'MainProgram.CorteFinoSemilla': 147,              // print: "Corte fino 147,0"
+  'MainProgram.T_MaxCargaBalanza': 10,              // print: "Tempo excedido Carga 10 Seg"
+  'MainProgram.T_MaxDescBalanza': 10,               // print: "Descarga 10 Seg"
 
+  // --- parametros dos tanques ------------------------------------------------
+  // Print "PARAMETROS": os seis tanques tem os mesmos limites e a mesma vazao.
+  // A tela de parametros e uma das que so existem no .gfx; estes valores vieram
+  // do print dela.
+  'MainProgram.SimulacionPeso': 0,                  // print: "Simulacao de peso DESLIGADA"
 
-  // --- receita em uso -------------------------------------------------------
+  // --- receita em uso ---------------------------------------------------------
   // O receituario mora em RECETARIO[], tag de CONTROLADOR (sem prefixo de
   // programa - escrever "MainProgram.RECETARIO" nao chega em lugar nenhum).
   // O CLP copia RECETARIO[Indice_RecetaEnProceso] para RecetaEnProceso quando
   // recebe Carga_Receta_Proceso, que e um botao da tela de Receituario - uma
   // das telas que so existem no .gfx. Enquanto ela nao entra, a simulacao abre
   // com a receita ja carregada.
+  //
+  // ESTA E A RECEITA REAL DO CLIENTE, lida do print "RECEITA DO LOTE" de
+  // 25/06/2025: a numero 43, "Max1.5+Ran+Lumi", com cinco linhas ativas. Antes
+  // havia aqui uma receita inventada de tres linhas.
   'Carga_Receta_Proceso': 1,
-  'Indice_RecetaEnProceso': 1,
-  'Indice_RECETARIO': 1,
+  'Indice_RecetaEnProceso': 43,
+  'Indice_RECETARIO': 43,
 
-  // Tres linhas ativas. Dose em mL por 100 kg de semente; ordem 0 desliga a
-  // linha (a IHM mostra o campo so quando Ord_Iny_Lx > 0).
-  'RECETARIO[1].RECETA.Dosis_L1': 300,
-  'RECETARIO[1].RECETA.Orden_L1': 1,
-  'RECETARIO[1].RECETA.T_inyeccion_L1': 4000,
-  'RECETARIO[1].RECETA.T_demora_L1': 500,
-  'RECETARIO[1].RECETA.Vel_aspersor_L1': 60,
+  // Dose em mL por 100 kg de semente. Todas as linhas tem ordem 1 - nesta
+  // receita elas injetam juntas, nao em sequencia.
+  'RECETARIO[43].RECETA.Dosis_L1': 379.20,
+  'RECETARIO[43].RECETA.Orden_L1': 1,
+  'RECETARIO[43].RECETA.T_inyeccion_L1': 10000,
+  'RECETARIO[43].RECETA.T_demora_L1': 0,
+  'RECETARIO[43].RECETA.Vel_aspersor_L1': 80,
 
-  'RECETARIO[1].RECETA.Dosis_L2': 150,
-  'RECETARIO[1].RECETA.Orden_L2': 2,
-  'RECETARIO[1].RECETA.T_inyeccion_L2': 3000,
-  'RECETARIO[1].RECETA.T_demora_L2': 500,
-  'RECETARIO[1].RECETA.Vel_aspersor_L2': 60,
+  'RECETARIO[43].RECETA.Dosis_L2': 260.02,
+  'RECETARIO[43].RECETA.Orden_L2': 1,
+  'RECETARIO[43].RECETA.T_inyeccion_L2': 10000,
+  'RECETARIO[43].RECETA.T_demora_L2': 0,
+  'RECETARIO[43].RECETA.Vel_aspersor_L2': 80,
 
-  'RECETARIO[1].RECETA.Dosis_L3': 80,
-  'RECETARIO[1].RECETA.Orden_L3': 3,
-  'RECETARIO[1].RECETA.T_inyeccion_L3': 2500,
-  'RECETARIO[1].RECETA.T_demora_L3': 500,
-  'RECETARIO[1].RECETA.Vel_aspersor_L3': 60,
+  'RECETARIO[43].RECETA.Dosis_L3': 54.17,
+  'RECETARIO[43].RECETA.Orden_L3': 1,
+  'RECETARIO[43].RECETA.T_inyeccion_L3': 10000,
+  'RECETARIO[43].RECETA.T_demora_L3': 0,
+  'RECETARIO[43].RECETA.Vel_aspersor_L3': 80,
 
-  // homogeneizacao e descarga
-  'RECETARIO[1].RECETA.Vel_homogenizado': 70,
-  'RECETARIO[1].RECETA.T_homogenizado': 6000,
-  'RECETARIO[1].RECETA.Vel_descarga': 50,
-  'RECETARIO[1].RECETA.T_descarga': 4000,
+  'RECETARIO[43].RECETA.Dosis_L4': 300.00,
+  'RECETARIO[43].RECETA.Orden_L4': 1,
+  'RECETARIO[43].RECETA.T_inyeccion_L4': 10000,
+  'RECETARIO[43].RECETA.T_demora_L4': 0,
+  'RECETARIO[43].RECETA.Vel_aspersor_L4': 80,
 
-  // o nome e um vetor de caracteres no CLP; a IHM le este campo direto
-  'MainProgram.RecetaEnProceso.Nombre': 'MILHO 2B',
-  'MainProgram.RecetaEnProceso.Nombre_L1': 'FUNGICIDA',
-  'MainProgram.RecetaEnProceso.Nombre_L2': 'INSETICIDA',
-  'MainProgram.RecetaEnProceso.Nombre_L3': 'POLIMERO',
+  // a linha 5 esta vazia na receita 43: ordem 0 desliga a linha
+  'RECETARIO[43].RECETA.Dosis_L5': 0,
+  'RECETARIO[43].RECETA.Orden_L5': 0,
+
+  'RECETARIO[43].RECETA.Dosis_L6': 600.00,
+  'RECETARIO[43].RECETA.Orden_L6': 1,
+  'RECETARIO[43].RECETA.T_inyeccion_L6': 10000,
+  'RECETARIO[43].RECETA.T_demora_L6': 0,
+  'RECETARIO[43].RECETA.Vel_aspersor_L6': 80,
+
+  // homogeneizacao e descarga, do mesmo print
+  'RECETARIO[43].RECETA.Vel_homogenizado': 80,
+  'RECETARIO[43].RECETA.T_homogenizado': 10000,
+  'RECETARIO[43].RECETA.Vel_descarga': 85,
+  'RECETARIO[43].RECETA.T_descarga': 10000,
+
+  // Os nomes: o CLP guarda como vetor de caracteres e a IHM le direto. Saem do
+  // print "RECEITA DO LOTE"; a linha 5 esta em branco na maquina tambem.
+  'MainProgram.RecetaEnProceso.Nombre': '43 - Max1.5+Ran+Lumi',
+  'MainProgram.RecetaEnProceso.Nombre_L1': 'PONCHO',
+  'MainProgram.RecetaEnProceso.Nombre_L2': 'DEMACOR',
+  'MainProgram.RecetaEnProceso.Nombre_L3': 'LUMIALZA',
+  'MainProgram.RecetaEnProceso.Nombre_L4': 'POLIMERO',
+  'MainProgram.RecetaEnProceso.Nombre_L5': '',
+  'MainProgram.RecetaEnProceso.Nombre_L6': 'PRE MISTURA',
+
+  // --- o lote que estava rodando quando os prints foram tirados --------------
+  'MainProgram.Variedad': 'Variedade 1',            // print: HIBRIDO
+  'MainProgram.Lote': 'BRV8380PWUE-X1-00',          // print: LOTE
+
+  // --- densidade e offset de cada produto ------------------------------------
+  // Print "LIQUIDOS": a tabela de produtos, com densidade e offset de correcao.
+  // O CLP usa o offset no calculo do alvo de cada dose.
+  'MainProgram.Densidad_L1': 1.200, 'MainProgram.Offset_L1': 0.065,   // PONCHO
+  'MainProgram.Densidad_L2': 1.200, 'MainProgram.Offset_L2': 0.015,   // DEMACOR
+  'MainProgram.Densidad_L3': 1.210, 'MainProgram.Offset_L3': -0.20,   // LUMIALZA
+  'MainProgram.Densidad_L4': 1.190, 'MainProgram.Offset_L4': 0.051,   // POLIMERO
+  'MainProgram.Densidad_L6': 1.000, 'MainProgram.Offset_L6': 0.039,   // PRE MISTURA
 
   // --- lote de exemplo, para a tela abrir com algo escrito ---
   'MainProgram.Total_Procesado': 0

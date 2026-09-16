@@ -14,8 +14,16 @@
   },
 
   "painel": {
-    "_comentario": "A IHM e de 1280x800, a mesma resolucao do tablet da LS-B130. Enquanto nao houver foto do painel desta maquina, a simulacao abre em tela cheia.",
-    "resolucao": { "largura": 1280, "altura": 800 }
+    "_comentario": "A IHM roda num terminal PanelView Plus de 1280x800. Nao ha foto do gabinete desta maquina, entao a moldura e desenhada pelo proprio navegador, e nao vem de imagem.",
+    "moldura": "panelview",
+    "resolucao": { "largura": 1280, "altura": 800 },
+    "larguraMinima": 1100,
+    "alturaMinima": 620
+  },
+
+  "cabecalho": {
+    "_comentario": "Faixa de topo com o operador logado e o relogio. Na maquina real e um display ancorado, sempre por cima de qualquer tela; o XAML publicado traz so o conteudo de cada tela, entao ela foi redesenhada a partir dos prints da IHM.",
+    "operador": "Thiago"
   },
 
   "textos": {

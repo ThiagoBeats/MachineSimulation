@@ -1,0 +1,399 @@
+{
+ "aviso": "Elementos que existem no .gfx e sumiram no publish do ViewPoint. A posicao e o tipo sao extraidos do binario; a tag e o rotulo de cada um nao estao la e vem da camada de aparencia.",
+ "telas": {
+  "MAIN": [
+   {
+    "t": "navegacao",
+    "id": "ShutdownButton1",
+    "x": 1155,
+    "y": 22,
+    "w": 102,
+    "h": 48
+   }
+  ],
+  "Alarmas": [
+   {
+    "t": "alarme",
+    "id": "AlarmList1",
+    "x": 9,
+    "y": 85,
+    "w": 1113,
+    "h": 572
+   }
+  ],
+  "Balanza": [
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint2",
+    "x": 865,
+    "y": 203,
+    "w": 108,
+    "h": 38
+   },
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint1",
+    "x": 865,
+    "y": 261,
+    "w": 108,
+    "h": 38
+   },
+   {
+    "t": "forma",
+    "id": "Wedge3",
+    "x": 514,
+    "y": 300,
+    "w": 51,
+    "h": 82
+   },
+   {
+    "t": "forma",
+    "id": "Wedge2",
+    "x": 507,
+    "y": 302,
+    "w": 57,
+    "h": 79
+   },
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint3",
+    "x": 865,
+    "y": 319,
+    "w": 108,
+    "h": 38
+   },
+   {
+    "t": "forma",
+    "id": "Wedge1",
+    "x": 479,
+    "y": 340,
+    "w": 86,
+    "h": 41
+   },
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint4",
+    "x": 863,
+    "y": 478,
+    "w": 108,
+    "h": 38
+   },
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint5",
+    "x": 863,
+    "y": 533,
+    "w": 108,
+    "h": 38
+   },
+   {
+    "t": "forma",
+    "id": "Wedge6",
+    "x": 515,
+    "y": 609,
+    "w": 51,
+    "h": 82
+   },
+   {
+    "t": "forma",
+    "id": "Wedge4",
+    "x": 479,
+    "y": 649,
+    "w": 86,
+    "h": 41
+   },
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint6",
+    "x": 863,
+    "y": 656,
+    "w": 108,
+    "h": 38
+   },
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint7",
+    "x": 863,
+    "y": 704,
+    "w": 108,
+    "h": 38
+   }
+  ],
+  "_ALARM_": [
+   {
+    "t": "alarme",
+    "id": "AlarmBanner1",
+    "x": 26,
+    "y": 18,
+    "w": 1216,
+    "h": 178
+   },
+   {
+    "t": "alarme",
+    "id": "AcknowledgeAlarmButton",
+    "x": 250,
+    "y": 211,
+    "w": 128,
+    "h": 119
+   },
+   {
+    "t": "alarme",
+    "id": "SilenceAlarmsButton",
+    "x": 450,
+    "y": 211,
+    "w": 128,
+    "h": 119
+   },
+   {
+    "t": "alarme",
+    "id": "ClearAlarmButton",
+    "x": 650,
+    "y": 211,
+    "w": 128,
+    "h": 119
+   }
+  ],
+  "Liquidos": [
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint2",
+    "x": 831,
+    "y": 279,
+    "w": 74,
+    "h": 36
+   },
+   {
+    "t": "indicador",
+    "id": "Scale3",
+    "x": 285,
+    "y": 631,
+    "w": 23,
+    "h": 75
+   },
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint3",
+    "x": 801,
+    "y": 645,
+    "w": 74,
+    "h": 36
+   }
+  ],
+  "Datos Lote": [
+   {
+    "t": "texto_valor",
+    "id": "StringInputEnable3",
+    "x": 303,
+    "y": 140,
+    "w": 237,
+    "h": 40
+   },
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint2",
+    "x": 773,
+    "y": 140,
+    "w": 100,
+    "h": 40
+   },
+   {
+    "t": "texto_valor",
+    "id": "StringInputEnable1",
+    "x": 303,
+    "y": 211,
+    "w": 237,
+    "h": 40
+   },
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint3",
+    "x": 773,
+    "y": 211,
+    "w": 100,
+    "h": 40
+   },
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint5",
+    "x": 894,
+    "y": 372,
+    "w": 100,
+    "h": 40
+   },
+   {
+    "t": "indicador",
+    "id": "ControlListSelector1",
+    "x": 235,
+    "y": 380,
+    "w": 297,
+    "h": 236
+   },
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint1",
+    "x": 894,
+    "y": 463,
+    "w": 100,
+    "h": 40
+   },
+   {
+    "t": "navegacao",
+    "id": "MoveUpButton1",
+    "x": 235,
+    "y": 624,
+    "w": 40,
+    "h": 40
+   },
+   {
+    "t": "navegacao",
+    "id": "EnterButton1",
+    "x": 329,
+    "y": 624,
+    "w": 108,
+    "h": 40
+   },
+   {
+    "t": "navegacao",
+    "id": "MoveDownButton1",
+    "x": 491,
+    "y": 624,
+    "w": 40,
+    "h": 40
+   }
+  ],
+  "Homogenizador": [
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint3",
+    "x": 998,
+    "y": 212,
+    "w": 80,
+    "h": 30
+   },
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint1",
+    "x": 294,
+    "y": 601,
+    "w": 74,
+    "h": 36
+   },
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint2",
+    "x": 940,
+    "y": 602,
+    "w": 74,
+    "h": 36
+   }
+  ],
+  "_DIAGNOSTICS_": [
+   {
+    "t": "alarme",
+    "id": "DiagnosticsList",
+    "x": 10,
+    "y": 8,
+    "w": 1246,
+    "h": 113
+   },
+   {
+    "t": "navegacao",
+    "id": "MoveLeftButton",
+    "x": 512,
+    "y": 134,
+    "w": 128,
+    "h": 119
+   },
+   {
+    "t": "navegacao",
+    "id": "MoveRightButton",
+    "x": 640,
+    "y": 134,
+    "w": 128,
+    "h": 119
+   },
+   {
+    "t": "navegacao",
+    "id": "MoveUpButton",
+    "x": 768,
+    "y": 134,
+    "w": 128,
+    "h": 119
+   },
+   {
+    "t": "navegacao",
+    "id": "MoveDownButton",
+    "x": 896,
+    "y": 134,
+    "w": 128,
+    "h": 119
+   }
+  ],
+  "_INFORMATION_": [
+   {
+    "t": "alarme",
+    "id": "InformationMessageDisplay",
+    "x": 4,
+    "y": 10,
+    "w": 1012,
+    "h": 119
+   }
+  ],
+  "Calibra Liquido 1": [
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint2",
+    "x": 227,
+    "y": 265,
+    "w": 77,
+    "h": 28
+   },
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint1",
+    "x": 962,
+    "y": 509,
+    "w": 107,
+    "h": 28
+   },
+   {
+    "t": "indicador",
+    "id": "Scale1",
+    "x": 1004,
+    "y": 562,
+    "w": 23,
+    "h": 75
+   }
+  ],
+  "Calibra Balanza Tk L1": [
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint1",
+    "x": 510,
+    "y": 326,
+    "w": 113,
+    "h": 36
+   }
+  ],
+  "Calibra Balanza Tk L2": [
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint1",
+    "x": 510,
+    "y": 326,
+    "w": 113,
+    "h": 36
+   }
+  ],
+  "Calibra Balanza Probeta": [
+   {
+    "t": "numero",
+    "id": "NumericInputCursorPoint1",
+    "x": 510,
+    "y": 326,
+    "w": 113,
+    "h": 36
+   }
+  ]
+ }
+}

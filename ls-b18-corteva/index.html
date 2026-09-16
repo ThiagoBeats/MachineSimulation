@@ -44,6 +44,30 @@
     position:absolute;left:var(--tela-x);top:var(--tela-y);
     width:var(--tela-w);height:var(--tela-h);background:#FFF}
 
+  /* --- moldura do PanelView Plus ------------------------------------------
+     Desenhada em CSS, nao em foto: fica nitida em qualquer escala e nao
+     carrega imagem. A geometria vem da proporcao do terminal real - bisel
+     estreito em cima e nos lados, largo embaixo, onde fica o nome do modelo. */
+  .painel.panelview{
+    border-radius:clamp(8px,1.4vw,22px);
+    background:linear-gradient(158deg,#EDEDEB 0%,#D6D6D4 26%,#BDBDBB 58%,#A5A5A3 82%,#959593 100%);
+    box-shadow:0 14px 40px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.8),
+               inset 0 -1px 0 rgba(0,0,0,.18)}
+  /* o rebaixo em volta da tela, que no terminal e uma canaleta escura */
+  .painel.panelview .quadro{
+    box-shadow:0 0 0 clamp(4px,.75vw,12px) #8E8E8C,
+               0 0 0 clamp(5px,.9vw,14px) #6E6E6C,
+               inset 0 0 clamp(6px,1vw,16px) rgba(0,0,0,.35)}
+  .painel.panelview .marca-ab,
+  .painel.panelview .marca-pv{
+    position:absolute;font-weight:600;letter-spacing:.04em;
+    font-size:clamp(7px,.95vw,15px);white-space:nowrap;pointer-events:none}
+  .painel.panelview .marca-ab{
+    left:2.4%;top:1.5%;color:#5A5A58;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+  .painel.panelview .marca-pv{
+    right:2.6%;bottom:3.6%;color:#F2F2F0;font-style:italic;
+    text-shadow:0 1px 1px rgba(0,0,0,.35)}
+
   .quadro svg{display:block;width:100%;height:100%}
   .aviso{padding:10px 16px;color:var(--fraco);font-size:13px;border-top:1px solid var(--linha)}
   [hidden]{display:none !important}
@@ -87,7 +111,10 @@
   var grupoModos = document.getElementById('grupo-modos');
 
   var CHAVE = 'sim:' + CFG.id;
-  var temPainel = !!(CFG.painel && CFG.painel.foto);
+  // O painel pode ser a foto do tablet real ou a moldura do PanelView Plus,
+  // desenhada em CSS para quem nao tem foto do gabinete.
+  var moldura = (CFG.painel && CFG.painel.moldura) || (CFG.painel && CFG.painel.foto ? 'foto' : null);
+  var temPainel = !!moldura;
   var pilha = [];
   var atual = null;
   var montada = null;
@@ -144,6 +171,7 @@
 
   var ctx = {
     pasta: '',
+    cabecalho: CFG.cabecalho || null,
     ir: function(destino){ if (CFG.telas[destino]) { pilha.push(atual); abrir(destino); } },
     voltar: function(){ if (pilha.length) abrir(pilha.pop(), true); },
     varrer: varrer
@@ -165,9 +193,31 @@
   function avisar(texto){ aviso.textContent = texto; aviso.hidden = !texto; }
 
   // --- moldura do painel -----------------------------------------------------
+  // Bisel do PanelView Plus, em fracao da tela: estreito em cima e nos lados,
+  // largo embaixo. Medido sobre a foto do terminal.
+  var BISEL = { lado: 0.110, topo: 0.060, base: 0.160 };
+
   function prepararPainel(){
     if (!temPainel) { grupoModos.hidden = true; return; }
     var p = CFG.painel, r = document.documentElement.style;
+
+    if (moldura === 'panelview') {
+      var res = p.resolucao || { largura: 1280, altura: 800 };
+      var lado = res.largura * BISEL.lado;
+      var larg = res.largura + lado * 2;
+      var alt  = res.altura + res.altura * (BISEL.topo + BISEL.base);
+      r.setProperty('--foto-prop', (larg / alt).toFixed(4));
+      r.setProperty('--ocupacao', String(p.ocupacaoAltura || 0.94));
+      r.setProperty('--tela-x', (100 * lado / larg).toFixed(4) + '%');
+      r.setProperty('--tela-y', (100 * res.altura * BISEL.topo / alt).toFixed(4) + '%');
+      r.setProperty('--tela-w', (100 * res.largura / larg).toFixed(4) + '%');
+      r.setProperty('--tela-h', (100 * res.altura / alt).toFixed(4) + '%');
+      painel.classList.add('panelview');
+      painel.insertAdjacentHTML('beforeend',
+        '<div class="marca-ab">Allen-Bradley</div><div class="marca-pv">PanelView Plus</div>');
+      return;
+    }
+
     r.setProperty('--foto-prop', (p.fotoLargura / p.fotoAltura).toFixed(4));
     r.setProperty('--ocupacao', String(p.ocupacaoAltura || 0.92));
     r.setProperty('--tela-x', p.tela.esquerda + '%');

@@ -12,7 +12,10 @@
   'use strict';
 
   var NS = 'http://www.w3.org/2000/svg';
-  var FONTE = 'Arial, "Helvetica Neue", Helvetica, sans-serif';
+  // O FactoryTalk View desenha em Tahoma, que e visivelmente mais estreita que
+  // a Arial nas maiusculas. Com Arial, titulos como "TRATADORA DE SEMENTES"
+  // estouram a caixa e quebram em duas linhas, o que na maquina nao acontece.
+  var FONTE = 'Tahoma, Verdana, "Segoe UI", Arial, sans-serif';
   var PERIODO = 200;                        // ms entre varreduras
 
   // --- estado --------------------------------------------------------------
@@ -149,6 +152,64 @@
   // --- monta uma tela --------------------------------------------------------
   // Devolve { svg, animados } onde animados e a lista do que precisa ser
   // reavaliado a cada varredura.
+  // --- faixa de cabecalho -------------------------------------------------------
+  // Na maquina real ela e um display ancorado, sempre por cima de qualquer tela,
+  // com o operador logado e o relogio. Nao sai no XAML publicado, que traz so o
+  // conteudo de cada tela - por isso e desenhada aqui, e nao vem dos dados.
+
+  var CAB = { altura: 72, painel: 258, painelAltura: 56 };
+
+  function doisDigitos(n) { return (n < 10 ? '0' : '') + n; }
+
+  function agora() {
+    var d = new Date();
+    return d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear() + ' '
+      + doisDigitos(d.getHours()) + ':' + doisDigitos(d.getMinutes()) + ':' + doisDigitos(d.getSeconds());
+  }
+
+  function montarCabecalho(svg, tela, cfg, animados) {
+    var g = criar('g', { class: 'cabecalho' });
+    var id = 'grad-cab';
+
+    var defs = criar('defs', {});
+    var grad = criar('linearGradient', { id: id, x1: '0', y1: '0', x2: '0', y2: '1' });
+    [['0', '#FCFCFC'], ['0.45', '#EFEFEF'], ['1', '#DCDCDC']].forEach(function (p) {
+      grad.appendChild(criar('stop', { offset: p[0], 'stop-color': p[1] }));
+    });
+    defs.appendChild(grad);
+    g.appendChild(defs);
+
+    g.appendChild(criar('rect', { x: 0, y: 0, width: tela.largura, height: CAB.altura, fill: 'url(#' + id + ')' }));
+    g.appendChild(criar('line', {
+      x1: 0, y1: CAB.altura, x2: tela.largura, y2: CAB.altura,
+      stroke: '#B4B4B4', 'stroke-width': 1
+    }));
+
+    // o quadro do operador, em relevo, no canto esquerdo
+    g.appendChild(criar('rect', {
+      x: 0, y: 0, width: CAB.painel, height: CAB.painelAltura,
+      fill: '#F4F4F4', stroke: '#BDBDBD', 'stroke-width': 1
+    }));
+    g.appendChild(criar('path', {
+      d: 'M0 ' + CAB.painelAltura + 'H' + CAB.painel + 'V0',
+      fill: 'none', stroke: '#9E9E9E', 'stroke-width': 1
+    }));
+
+    var est = { fonte: 13, cor: '#1A1A1A', negrito: false, italico: false, alinha: 'middleLeft' };
+    legenda(g, cfg.operador || 'Operador', 9, 2, CAB.painel - 18, 26, est, true);
+
+    var relogio = criar('g', {});
+    g.appendChild(relogio);
+    function pintarRelogio() {
+      while (relogio.firstChild) relogio.removeChild(relogio.firstChild);
+      legenda(relogio, agora(), 9, 26, CAB.painel - 18, 26, est, true);
+    }
+    pintarRelogio();
+    animados.push({ tipo: 'relogio', pintar: pintarRelogio });
+
+    svg.appendChild(g);
+  }
+
   function montarTela(tela, ctx) {
     var svg = criar('svg', {
       xmlns: NS,
@@ -158,6 +219,7 @@
     svg.appendChild(criar('rect', { width: tela.largura, height: tela.altura, fill: tela.fundo || '#FFFFFF' }));
 
     var animados = [];
+    if (ctx.cabecalho) montarCabecalho(svg, tela, ctx.cabecalho, animados);
 
     function registrar(no, el, extra) {
       if (el.visivel) animados.push({ tipo: 'visivel', no: no, fn: el.visivel.expr, quando: el.visivel.quando });
@@ -191,7 +253,10 @@
           no = criar('g', {});
           pai.appendChild(no);
           if (el.fundo) no.appendChild(criar('rect', { x: el.x, y: el.y, width: el.w, height: el.h, fill: el.fundo }));
-          legenda(no, el.texto, el.x, el.y, el.w, el.h, el);
+          // Objeto de texto do FactoryTalk nao quebra linha sozinho: o autor
+          // digita as linhas. Quebrar por conta propria desalinha rotulo de
+          // campo e faz titulo virar duas linhas.
+          legenda(no, el.texto, el.x, el.y, el.w, el.h, el, true);
           break;
 
         case 'numero':
@@ -287,13 +352,36 @@
     var texto = criar('g', {});
     g.appendChild(texto);
 
+    // A legenda de um botao nao pode transbordar a caixa: na maquina o autor
+    // escolheu um corpo que coubesse, e as caixas pequenas do .mer publicado
+    // guardam legendas de duas palavras. Entao encolhe ate caber, em vez de
+    // deixar a letra escapar por cima do botao vizinho.
+    function corpoQueCabe(estilo, linhas, largura) {
+      var corpo = estilo.fonte;
+      for (var i = 0; i < 14 && corpo > 7; i++) {
+        var maior = 0;
+        for (var k = 0; k < linhas.length; k++) {
+          maior = Math.max(maior, larguraDe(linhas[k], corpo, estilo.negrito));
+        }
+        if (maior <= largura) break;
+        corpo -= 1;
+      }
+      return corpo;
+    }
+
     function pintar(estado) {
       if (!estado) return;
       fundo.setAttribute('fill', estado.fundo);
       fundo.setAttribute('stroke', estado.escuro);
       luz.setAttribute('stroke', estado.claro);
       while (texto.firstChild) texto.removeChild(texto.firstChild);
-      legenda(texto, estado.legenda.texto, el.x, el.y, el.w, el.h, estado.legenda);
+      var linhas = String(estado.legenda.texto || '').split(/\r?\n/);
+      var estilo = estado.legenda;
+      var corpo = corpoQueCabe(estilo, linhas, el.w - el.esp * 2 - 6);
+      if (corpo !== estilo.fonte) {
+        estilo = Object.assign({}, estilo, { fonte: corpo });
+      }
+      legenda(texto, estado.legenda.texto, el.x, el.y, el.w, el.h, estilo, true);
     }
 
     // estado em repouso: o "0", ou o primeiro que nao seja o de erro
@@ -391,6 +479,9 @@
           if (a.el.estados[k].valor === n) { achado = a.el.estados[k]; break; }
         }
         if (achado) a.pintar(achado);
+
+      } else if (a.tipo === 'relogio') {
+        a.pintar();
 
       } else if (a.tipo === 'barra') {
         var val = Number(avaliar(a.fn, 0));

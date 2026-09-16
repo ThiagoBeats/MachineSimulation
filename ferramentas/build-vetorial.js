@@ -63,6 +63,17 @@ for (const arq of fs.readdirSync(pastaTelas).filter(f => f.endsWith('.json'))) {
   telas[t.nome] = t;
 }
 
+// --- camada de aparencia --------------------------------------------------------
+// Quando a maquina tem um aparencia.js, ele corrige as telas extraidas com o que
+// os prints da IHM real mostram e o arquivo publicado nao entrega. E reconstrucao
+// declarada, nao extracao: cada elemento que ela cria fica marcado com
+// "reconstruido", e o cabecalho do arquivo diz de onde cada correcao saiu.
+let aparencia = null;
+const arqAparencia = path.join(pastaFonte, 'aparencia.js');
+if (fs.existsSync(arqAparencia)) {
+  aparencia = require(arqAparencia).aplicar(telas);
+}
+
 // --- conferencias que evitam publicar uma simulacao quebrada --------------------
 const problemas = [];
 const nomes = Object.keys(telas);
@@ -80,6 +91,9 @@ function conferir(lista, tela) {
     if (el.filhos) conferir(el.filhos, tela);
     if (el.valor || el.indicador || el.visivel || el.animaCor) comLigacao++;
     if (el.arq) imagensUsadas.add(el.arq);
+    // O icone de dentro de um botao tambem e imagem. Sem esta linha, o botao
+    // HOME saia com a marca de imagem quebrada em toda tela de processo.
+    if (el.icone && el.icone.arq) imagensUsadas.add(el.icone.arq);
     if (el.t === 'botao' && el.modo === 'ir') {
       // Um destino que nao foi extraido nao e erro: e uma das telas que so
       // existem no formato binario. Mas o botao nao pode ficar mudo sem
@@ -133,6 +147,8 @@ if (fs.existsSync(arqPrograma)) {
 const foto = path.join(pastaFonte, 'maquina.jpg');
 if (fs.existsSync(foto)) fs.copyFileSync(foto, path.join(pastaSaida, 'maquina.jpg'));
 
+// A moldura pode ser a foto do gabinete ou um desenho pronto, como o do
+// PanelView Plus, que o proprio navegador traca e nao precisa de arquivo.
 let temMoldura = false;
 if (maquina.painel && maquina.painel.foto) {
   const origem = path.join(pastaFonte, maquina.painel.foto);
@@ -141,6 +157,8 @@ if (maquina.painel && maquina.painel.foto) {
     process.exit(1);
   }
   fs.copyFileSync(origem, path.join(pastaSaida, maquina.painel.foto));
+  temMoldura = true;
+} else if (maquina.painel && maquina.painel.moldura) {
   temMoldura = true;
 }
 
@@ -171,6 +189,7 @@ const cfg = {
   rungs: rungs
 };
 if (temMoldura) cfg.painel = maquina.painel;
+if (maquina.cabecalho) cfg.cabecalho = maquina.cabecalho;
 
 fs.writeFileSync(path.join(pastaSaida, 'telas.js'),
   '// Gerado por ferramentas/build-vetorial.js - nao edite a mao.\n'
@@ -186,6 +205,10 @@ console.log('maquina vetorial "' + id + '" gerada em ' + path.relative(RAIZ, pas
 console.log('  telas          : ' + nomes.length);
 console.log('  ligacoes vivas : ' + comLigacao);
 console.log('  imagens        : ' + imagensUsadas.size);
+if (aparencia) {
+  console.log('  aparencia      : ' + Object.keys(aparencia)
+    .map(k => aparencia[k] + ' ' + k).join(', ') + ' (reconstruido dos prints)');
+}
 console.log('  rungs emulados : ' + (cfg.rungs || 'nenhum ainda'));
 if (destinosPerdidos) {
   console.log('  ATENCAO        : ' + destinosPerdidos + ' botoes apontam para telas que nao foram extraidas');
