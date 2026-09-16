@@ -1,13 +1,188 @@
 {
- "tags": [],
+ "alarmes": [
+  {
+   "id": 1,
+   "texto": "EMERGÊNCIA",
+   "tag": "PE"
+  },
+  {
+   "id": 2,
+   "texto": "FALHA NO AGITADOR DO LIQUIDO 1",
+   "tag": "Falla_TP1"
+  },
+  {
+   "id": 3,
+   "texto": "FALHA NO AGITADOR DO LIQUIDO 2",
+   "tag": "Falla_TP2"
+  },
+  {
+   "id": 4,
+   "texto": "FALHA NO VENTILADOR DO HOMOGENEIZADOR",
+   "tag": "Falla_Vent"
+  },
+  {
+   "id": 5,
+   "texto": "BAIXA PRESSÃO NA LINHA PNEUMÁTICA",
+   "tag": "Falla_PresAire"
+  },
+  {
+   "id": 6,
+   "texto": "FALHA NA VÁLVULA DE INJEÇÃO/CALIBRAÇÃO",
+   "tag": "Falla_VA_DL"
+  },
+  {
+   "id": 7,
+   "texto": "FALHA NA BOMBA DE DOSAGEM DA LINHA 1",
+   "tag": "Falla_BD_L1"
+  },
+  {
+   "id": 8,
+   "texto": "FALHA NA BOMBA DE DOSAGEM DA LINHA 2",
+   "tag": "Falla_BD_L2"
+  },
+  {
+   "id": 9,
+   "texto": "FALHA NO ASPERSOR",
+   "tag": "Falla_ASP"
+  },
+  {
+   "id": 10,
+   "texto": "FALHA NA DESCARGA DA BALANÇA",
+   "tag": "Falla_VA_CBD"
+  },
+  {
+   "id": 11,
+   "texto": "FALHA NA DESCARGA DA BATELADA",
+   "tag": "Falla_VA_CDB"
+  },
+  {
+   "id": 12,
+   "texto": "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 1",
+   "tag": "Falla_VA_L1"
+  },
+  {
+   "id": 13,
+   "texto": "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 2",
+   "tag": "Falla_VA_L2"
+  },
+  {
+   "id": 14,
+   "texto": "FALHA NO AGITADOR DO LIQUIDO 3",
+   "tag": "Falla_TP3"
+  },
+  {
+   "id": 15,
+   "texto": "FALHA NO AGITADOR DO LIQUIDO 4",
+   "tag": "Falla_TP4"
+  },
+  {
+   "id": 16,
+   "texto": "FALHA NO AGITADOR DO LIQUIDO 5",
+   "tag": "Falla_TP5"
+  },
+  {
+   "id": 17,
+   "texto": "FALHA NO AGITADOR DO LIQUIDO 6",
+   "tag": "Falla_TP6"
+  },
+  {
+   "id": 18,
+   "texto": "FALHA NA BOMBA DE DOSAGEM DA LINHA 3",
+   "tag": "Falla_BD_L3"
+  },
+  {
+   "id": 19,
+   "texto": "FALHA NA BOMBA DE DOSAGEM DA LINHA 4",
+   "tag": "Falla_BD_L4"
+  },
+  {
+   "id": 20,
+   "texto": "FALHA NA BOMBA DE DOSAGEM DA LINHA 5",
+   "tag": "Falla_BD_L5"
+  },
+  {
+   "id": 21,
+   "texto": "FALHA NA BOMBA DE DOSAGEM DA LINHA 6",
+   "tag": "Falla_BD_L6"
+  },
+  {
+   "id": 22,
+   "texto": "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 3",
+   "tag": "Falla_VA_L3"
+  },
+  {
+   "id": 23,
+   "texto": "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 4",
+   "tag": "Falla_VA_L4"
+  },
+  {
+   "id": 24,
+   "texto": "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 5",
+   "tag": "Falla_VA_L5"
+  },
+  {
+   "id": 25,
+   "texto": "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 6",
+   "tag": "Falla_VA_L6"
+  }
+ ],
  "textos": [
-  "CORTEVA",
-  "EMERGÊNCIAL",
-  "FALHA NO AGITADOR DO LIQUIDO 1L",
-  "FALHA NO AGITADOR DO LIQUIDO 2FALHA NO VENTILADOR DO HOMOGENEIZADORBAIXA PRESSÃO NA LINHA PNEUMÁTICAFALHA NA VÁLVULA DE INJEÇÃO/CALIBRAÇÃOFALHA NA BOMBA DE DOSAGEM DA LINHA 1L",
-  "FALHA NA BOMBA DE DOSAGEM DA LINHA 2FALHA NO ASPERSORFALHA NA DESCARGA DA BALANÇAL",
-  "FALHA NA DESCARGA DA BATELADAFALHA NA VÁLVULA DE LIQUIDO DA LINHA 1L",
-  "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 2FALHA NO AGITADOR DO LIQUIDO 3L",
-  "FALHA NO AGITADOR DO LIQUIDO 4FALHA NO AGITADOR DO LIQUIDO 5FALHA NO AGITADOR DO LIQUIDO 6FALHA NA BOMBA DE DOSAGEM DA LINHA 3FALHA NA BOMBA DE DOSAGEM DA LINHA 4FALHA NA BOMBA DE DOSAGEM DA LINHA 5FALHA NA BOMBA DE DOSAGEM DA LINHA 6FALHA NA VÁLVULA DE LIQUIDO DA LINHA 3FALHA NA VÁLVULA DE LIQUIDO DA LINHA 4FALHA NA VÁLVULA DE LIQUIDO DA LINHA 5FALHA NA VÁLVULA DE LIQUIDO DA LINHA 6P"
- ]
+  "EMERGÊNCIA",
+  "FALHA NO AGITADOR DO LIQUIDO 1",
+  "FALHA NO AGITADOR DO LIQUIDO 2",
+  "FALHA NO VENTILADOR DO HOMOGENEIZADOR",
+  "BAIXA PRESSÃO NA LINHA PNEUMÁTICA",
+  "FALHA NA VÁLVULA DE INJEÇÃO/CALIBRAÇÃO",
+  "FALHA NA BOMBA DE DOSAGEM DA LINHA 1",
+  "FALHA NA BOMBA DE DOSAGEM DA LINHA 2",
+  "FALHA NO ASPERSOR",
+  "FALHA NA DESCARGA DA BALANÇA",
+  "FALHA NA DESCARGA DA BATELADA",
+  "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 1",
+  "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 2",
+  "FALHA NO AGITADOR DO LIQUIDO 3",
+  "FALHA NO AGITADOR DO LIQUIDO 4",
+  "FALHA NO AGITADOR DO LIQUIDO 5",
+  "FALHA NO AGITADOR DO LIQUIDO 6",
+  "FALHA NA BOMBA DE DOSAGEM DA LINHA 3",
+  "FALHA NA BOMBA DE DOSAGEM DA LINHA 4",
+  "FALHA NA BOMBA DE DOSAGEM DA LINHA 5",
+  "FALHA NA BOMBA DE DOSAGEM DA LINHA 6",
+  "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 3",
+  "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 4",
+  "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 5",
+  "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 6"
+ ],
+ "tags": [
+  "PE",
+  "Falla_TP1",
+  "Falla_TP2",
+  "Falla_Vent",
+  "Falla_PresAire",
+  "Falla_VA_DL",
+  "Falla_BD_L1",
+  "Falla_BD_L2",
+  "Falla_ASP",
+  "Falla_VA_CBD",
+  "Falla_VA_CDB",
+  "Falla_VA_L1",
+  "Falla_VA_L2",
+  "Falla_TP3",
+  "Falla_TP4",
+  "Falla_TP5",
+  "Falla_TP6",
+  "Falla_BD_L3",
+  "Falla_BD_L4",
+  "Falla_BD_L5",
+  "Falla_BD_L6",
+  "Falla_VA_L3",
+  "Falla_VA_L4",
+  "Falla_VA_L5",
+  "Falla_VA_L6"
+ ],
+ "conferencia": {
+  "conferiveis": 18,
+  "batem": 18,
+  "divergem": []
+ }
 }

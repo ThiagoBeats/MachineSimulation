@@ -1,6 +1,6 @@
 {
  "arquivo": "Corteva_LSB18_v2.mer",
- "extraidoEm": "2026-09-14",
+ "extraidoEm": "2026-09-16",
  "como": "OLE2 + LZ77 proprio da Rockwell (ferramentas/rockwell/lz.js), telas do XAML do cliente web embutido no .mer",
  "telasGeradas": [
   {

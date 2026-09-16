@@ -133,6 +133,19 @@ function colunaDaEsquerda(tela) {
   };
 }
 
+// --- 4c. a lista de alarmes ---------------------------------------------------
+// O publish do ViewPoint nao leva o objeto AlarmList: a tela de alarmes sai
+// vazia. O .gfx diz onde ele fica, e o .mal traz as 25 mensagens com a tag que
+// dispara cada uma - entao a lista e alimentada pela logica emulada, e nao por
+// um roteiro escrito a mao.
+
+function listaDeAlarmes(vao) {
+  return {
+    t: 'listaAlarmes', id: vao.id, reconstruido: true,
+    x: vao.x, y: vao.y, w: vao.w, h: vao.h,
+  };
+}
+
 // --- 5. o que o MAIN mostra em cada linha de liquido --------------------------
 // Print "TRATADORA DE SEMENTES": as caixas nao dizem "LIQUIDO 1", dizem o nome
 // do produto da receita em processo - PONCHO, DEMACOR, LUMIALZA, POLIMERO. Sao
@@ -294,6 +307,16 @@ function aplicar(telas) {
       for (const vao of vaos[nome]) {
         const c = ENTRADAS[nome][vao.id];
         if (c) { tela.elementos.push(campoNumerico(vao, c)); conta.entrada++; }
+      }
+    }
+
+    // 4c. a lista de alarmes, tambem no vao que o .gfx aponta
+    if (vaos[nome]) {
+      for (const vao of vaos[nome]) {
+        if (vao.t === 'alarme' && /^AlarmList/.test(vao.id)) {
+          tela.elementos.push(listaDeAlarmes(vao));
+          conta.alarmes = (conta.alarmes || 0) + 1;
+        }
       }
     }
   }

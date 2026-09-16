@@ -366,6 +366,65 @@ contrário em silêncio:
   litros a batelada precisa recalculava a cada varredura e o alvo fugia junto
   com o totalizador: a válvula abria e nunca mais fechava.
 
+### Os prints da IHM, e o que eles corrigiram
+
+O cliente mandou 16 fotos da IHM em produção, de 25/06/2025. Comparando com o
+que a simulação mostrava, apareceram **três causas distintas** de divergência —
+e vale separá-las, porque só uma era defeito meu:
+
+1. **O `.mer` é mais velho que a máquina.** Ele é de 01/jun. No meio, o trilho
+   de navegação passou de azul para cinza com relevo e entraram botões que o
+   nosso arquivo não tem: PRÉ MISTURA, TRIPLICE LAVAGEM, CONSUMO e MANUT. Não há
+   `.mer` mais novo disponível.
+2. **O publish do ViewPoint é com perda.** Ele descarta os campos de entrada
+   numérica inteiros — a BALANÇA real tem sete, o XAML publicado tem nenhum — e
+   grava a legenda de 48 dos 110 botões em branco.
+3. **Defeitos do renderizador.** O build recolhia só `el.arq` e ignorava o ícone
+   de dentro do botão, então o HOME saía com marca de imagem quebrada em toda
+   tela. O texto quebrava linha, coisa que o FactoryTalk não faz, e a fonte era
+   Arial em vez de Tahoma — por isso "TRATADORA DE SEMENTES" virava duas linhas.
+
+A resposta é `maquinas/<id>/aparencia.js`, uma camada de reconstrução declarada,
+no mesmo espírito do `planta.js`. Cada correção diz de qual print saiu, e o que
+ela cria fica marcado com `reconstruido`.
+
+**Os campos descartados voltam com posição medida, não estimada.** O
+`inventario-gfx.js` compara o binário `.gfx` de cada tela com o XAML dela e emite
+`_gfx-faltantes.json` com o que sobra — 24 campos em 13 telas. Do print vem
+apenas *qual tag* cada um mostra; a geometria vem do binário, que acerta 99,7%.
+
+### A tabela de alarmes
+
+O `.mal` guarda as 25 mensagens **todas grudadas** num bloco só, sem separador, e
+as tags de disparo depois. O que as separa é o próprio vocabulário: toda mensagem
+começa por FALHA, BAIXA, EMERGÊNCIA, NÍVEL… O que confirma o corte não é a
+contagem, é o **significado**: `PE` cai em EMERGÊNCIA, `Falla_BD_Lx` em BOMBA DE
+DOSAGEM DA LINHA x, `Falla_VA_Lx` em VÁLVULA DE LIQUIDO DA LINHA x, `Falla_TPx`
+em AGITADOR DO LIQUIDO x. Os 25 pares batem um a um, e o extrator **confere isso
+sozinho** — quando a tag e a mensagem falam da mesma linha numerada, o número tem
+de ser o mesmo. São 18 pares verificáveis, e os 18 batem.
+
+Com isso a tela de alarmes ficou viva: quem escreve nela é a lógica emulada, não
+um roteiro. Uma sutileza: quase toda tag de alarme vale 1 quando o alarme está de
+pé, mas `PE` é o contrário — é permissivo, vale 1 enquanto está tudo bem. Sem
+essa distinção a máquina abria com EMERGÊNCIA na lista.
+
+### A linha 6 é de outra máquina
+
+Ao carregar a receita real do cliente, a máquina parou de produzir. A causa foi
+uma descoberta, não um defeito: **a pré-mistura é um equipamento separado, com
+CLP próprio, ligado por rede.**
+
+O intertravamento é explícito. `RegBDL6_Ok` só sobe com `CommPreMixToTratadora`
+em RunMode, sem falha de conexão, e com a bomba de lá rodando. Sem isso
+`Aux1ServOk` cai, `ServOk` cai junto, e a máquina não chega nem a pesar. A rotina
+`_CommPreMix` desempacota uma palavra que vem do vizinho, bit a bit: `.2` é a
+bomba rodando, `.3` e `.4` são os níveis baixos dos dois tanques de lá.
+
+É nessa palavra que o `planta.js` escreve agora. Forçar `BombaPremixRodando`
+direto não adiantava: quem escreve essa tag é o próprio CLP, e a força era
+desfeita na varredura seguinte.
+
 ### Limites desta máquina
 
 - **Das 47 telas do projeto, 14 são navegáveis.** As outras 33 só existem no
@@ -378,16 +437,20 @@ contrário em silêncio:
   FactoryTalk View Studio com todos os displays marcados: aí saem em XAML e
   passam pelo mesmo extrator que já funciona.
 - **Os valores iniciais das tags não são lidos do `.ACD`.** Presets de
-  temporizador, constantes de calibração e receitas moram num canto do arquivo
-  que ainda não deciframos. 36 dos 100 temporizadores recebem preset do próprio
-  programa; o resto está estimado em `valores.js`, declarado linha a linha.
-- **A receita de exemplo é inventada.** `RECETARIO[1]` traz três linhas de
-  líquido com dose, ordem e tempos plausíveis, mas não é a receita do cliente —
-  ela também mora nos valores iniciais que não saem do `.ACD`. A **estrutura**
-  está certa, confirmada pelo tipo `RECETA` e pela tela "Receita em Processo";
-  são os valores que são estimados. O botão que carrega a receita fica na tela
-  de Receituário, uma das que só existem no `.gfx`, então a simulação abre com
-  ela já carregada.
+  temporizador e constantes de calibração moram num canto do arquivo que ainda
+  não deciframos. 36 dos 100 temporizadores recebem preset do próprio programa.
+  O resto agora vem **dos prints da IHM**, não mais de estimativa: batelada de
+  150 kg, corte grosso em 110, fino em 147, tolerância de 10%, balança vazia em
+  3,5 kg. E a receita é a do cliente — a do slot 8, "43 - Max1.5+Ran+Lumi", com
+  as cinco linhas e as doses que o print mostra.
+- **Uma coisa contraria o print de propósito.** Na tela PARAMETROS da máquina
+  real está "Simulação de peso DESLIGADA", porque lá há célula de carga. Aqui
+  não há: é essa rotina do próprio CLP que gera o peso. Copiar o print ao pé da
+  letra deixava a balança sem carregar nunca.
+- **A receita não é mais inventada, mas a linha 6 fica desligada por ora.** A
+  receita carregada é a do cliente, lida do print. Todas as linhas dela têm
+  ordem 1, ou seja **injetam juntas**, não em sequência — a receita que eu havia
+  inventado antes dosava uma de cada vez, e isso estava errado.
 - O PID é um PI discreto com os mesmos ganhos e limites, não o PID do Logix.
 - `MainProgram.CalculoDensidade` e `MainProgram.IO_Mapping` são código morto:
   nenhum JSR aponta para elas.

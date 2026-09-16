@@ -58,8 +58,35 @@
     'MainProgram.PE',                // cadeia de emergencia liberada
     'MainProgram.Presion_Aire',      // ar comprimido na linha
     'MainProgram.Siempre1',
-    'ConnectionsOK'
+    'ConnectionsOK',
+
+    // A LINHA 6 NAO E DESTA MAQUINA. A pre-mistura vem de um equipamento
+    // separado, com CLP proprio, ligado por rede. O intertravamento e explicito:
+    // RegBDL6_Ok so sobe com essa conexao em RunMode, sem falha, e com a bomba
+    // de la rodando. Sem isso Aux1ServOk cai, ServOk cai junto, e a maquina nao
+    // chega nem a pesar - foi exatamente o que aconteceu ao carregar a receita
+    // real do cliente, que usa a linha 6.
+    //
+    // A rotina _CommPreMix desempacota UMA PALAVRA vinda do vizinho, bit a bit.
+    // E nessa palavra que se escreve, e nao nas tags que ela alimenta: quem
+    // escreve BombaPremixRodando e o proprio CLP, e forcar a tag derivada e
+    // desfeito na varredura seguinte.
+    'CommPreMixToTratadora.UDT_Comm.Connection_Status.CONNECTION_STATUS.RunMode'
   ];
+
+  // Do lado da pre-mistura, o que precisa estar em zero para ela liberar.
+  var SEMPRE_ZERO = [
+    'CommPreMixToTratadora.UDT_Comm.Connection_Status.CONNECTION_STATUS.ConnectionFaulted'
+  ];
+
+  // A palavra que o vizinho manda, bit a bit, conforme a rotina _CommPreMix:
+  //   .0 solicita agua   .1 solicita polimero   .2 bomba rodando
+  //   .3 tanque 1 em nivel baixo   .4 tanque 2 em nivel baixo
+  // Escreve-se o NUMERO, e nao "...ArrayDint[0].2": o interpretador le bit como
+  // deslocamento sobre o valor da tag, entao gravar a string com o ponto cria
+  // uma chave que ninguem consulta.
+  var PALAVRA_PREMIX = 'CommPreMixToTratadora.UDT_Comm.ArrayDint[0]';
+  var PREMIX_SADIA = 1 << 2;        // bomba rodando, nenhum tanque em nivel baixo
 
   // Le o argumento que foi passado numa posicao de parametro do AOI.
   function arg(chamada, parametros, nome) {
@@ -165,6 +192,8 @@
     // o que aconteceu na primeira tentativa: a maquina partia e nao dosava,
     // porque as chaves de liberacao estavam em zero.
     for (i = 0; i < SEMPRE_UM.length; i++) escrever(SEMPRE_UM[i], 1);
+    for (i = 0; i < SEMPRE_ZERO.length; i++) escrever(SEMPRE_ZERO[i], 0);
+    escrever(PALAVRA_PREMIX, PREMIX_SADIA);
     for (i = 0; i < permissivos.length; i++) escrever(permissivos[i], 1);
     for (i = 0; i < falhas.length; i++) escrever(falhas[i], 0);
 

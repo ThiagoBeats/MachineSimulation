@@ -191,6 +191,14 @@ const cfg = {
 if (temMoldura) cfg.painel = maquina.painel;
 if (maquina.cabecalho) cfg.cabecalho = maquina.cabecalho;
 
+// A tabela de alarmes alimenta a lista da tela de alarmes: cada mensagem com a
+// tag do CLP que a dispara.
+const arqAlarmes = path.join(pastaFonte, 'alarmes.json');
+if (fs.existsSync(arqAlarmes)) {
+  const a = lerJson(arqAlarmes);
+  if (a.alarmes && a.alarmes.length) cfg.alarmes = { alarmes: a.alarmes };
+}
+
 fs.writeFileSync(path.join(pastaSaida, 'telas.js'),
   '// Gerado por ferramentas/build-vetorial.js - nao edite a mao.\n'
   + 'window.TELAS_CFG = ' + serializar(cfg, null) + ';\n', 'utf8');

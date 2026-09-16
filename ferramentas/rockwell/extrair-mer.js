@@ -146,19 +146,121 @@ function pegarImagem(fonte) {
 }
 
 // --- 5. alarmes ---------------------------------------------------------------
-// O .mal e binario, mas os textos e as tags estao em claro: os textos em
-// UTF-16 e as tags em ASCII com um byte de tamanho antes.
-function lerAlarmes(b) {
-  if (!b) return [];
-  const tags = [];
-  const re = /\[B18_CORTEVA\]|\]Program:MainProgram\./g;
-  const ascii = b.toString('latin1');
-  const reTag = /::\[[A-Za-z0-9_]+\](Program:MainProgram\.)?([A-Za-z0-9_.]+)/g;
+// O .mal guarda as mensagens TODAS GRUDADAS num bloco so, sem separador nem
+// tabela de tamanhos que se possa seguir, e as tags de disparo logo depois, uma
+// por vez, na ordem da tabela de alarmes.
+//
+// O que separa as mensagens e o proprio vocabulario: toda mensagem comeca por
+// uma das palavras abaixo. E o que confirma o corte e a contagem - mensagens e
+// tags tem que dar o mesmo numero - e, melhor ainda, o significado: PE cai em
+// EMERGENCIA, Falla_BD_Lx em BOMBA DE DOSAGEM DA LINHA x, Falla_VA_Lx em
+// VALVULA DE LIQUIDO DA LINHA x, Falla_TPx em AGITADOR DO LIQUIDO x. Os 25
+// pares batem um a um.
+
+const INICIO_DE_MENSAGEM = ['FALHA', 'BAIXA', 'EMERGÊNCIA', 'NÍVEL', 'ALTA', 'FALTA', 'ERRO'];
+
+function trechosLegiveis(buf) {
+  const out = [];
+  let s = '', ini = 0;
+  for (let p = 0; p + 1 < buf.length; p += 2) {
+    const c = buf.readUInt16LE(p);
+    if (c >= 32 && c <= 0x2000) { if (!s) ini = p; s += String.fromCharCode(c); }
+    else { if (s.length >= 4) out.push({ off: ini, texto: s }); s = ''; }
+  }
+  if (s.length >= 4) out.push({ off: ini, texto: s });
+  return out;
+}
+
+function separarMensagens(texto) {
+  const cortes = new Set([0, texto.length]);
+  for (const palavra of INICIO_DE_MENSAGEM) {
+    let i = -1;
+    while ((i = texto.indexOf(palavra, i + 1)) >= 0) cortes.add(i);
+  }
+  // "LabelN" e o que o FactoryTalk escreve nas linhas que o autor nunca usou
+  const re = /Label\d+/g;
   let m;
-  while ((m = reTag.exec(ascii))) tags.push(m[2]);
-  const textos = (b.toString('utf16le').match(/[A-ZÀ-Ú][A-ZÀ-Ú0-9 ÇÃÕÁÉÍÓÚÂÊÔ\/]{6,}/g) || [])
-    .map(t => t.trim()).filter(t => t.length > 6);
-  return { tags: [...new Set(tags)], textos: [...new Set(textos)] };
+  while ((m = re.exec(texto))) { cortes.add(m.index); cortes.add(m.index + m[0].length); }
+
+  const ordem = [...cortes].sort((a, b) => a - b);
+  const out = [];
+  for (let k = 0; k + 1 < ordem.length; k++) {
+    let s = texto.slice(ordem[k], ordem[k + 1]).trim();
+    if (!s || /^Label\d+$/.test(s)) continue;
+    // o fim do bloco traz sobra de outro campo colado
+    s = s.replace(/(Program|system)[.\\][A-Za-z0-9_.]*$/, '').trim();
+    out.push(s);
+  }
+  return out;
+}
+
+function lerAlarmes(b) {
+  if (!b) return { alarmes: [], textos: [], tags: [] };
+  const trechos = trechosLegiveis(b);
+  if (!trechos.length) return { alarmes: [], textos: [], tags: [] };
+
+  // o bloco das mensagens e, de longe, o maior trecho legivel do arquivo
+  const bloco = trechos.reduce((a, c) => (c.texto.length > a.texto.length ? c : a));
+  const mensagens = separarMensagens(bloco.texto);
+
+  // A LISTA BOA DE TAGS COMECA DEPOIS DO MARCADOR "[ALARM]". Entre o bloco de
+  // mensagens e esse marcador ha um resto de listagem parcial; usando ela, os
+  // pares saem deslocados e EMERGENCIA cai em Falla_TP6.
+  const marcador = trechos.find(t => t.off > bloco.off && t.texto.indexOf('[ALARM]') >= 0);
+  const daqui = marcador ? marcador.off : bloco.off;
+
+  const tags = [];
+  for (const t of trechos) {
+    if (t.off <= daqui) continue;
+    const m = /::\[[^\]]+\](?:Program:)?(?:MainProgram\.)?([A-Za-z0-9_.]+)$/.exec(t.texto);
+    if (m && tags.indexOf(m[1]) < 0) tags.push(m[1]);
+  }
+  // Reset_acustica e o botao de silenciar, nao um disparo
+  const disparos = tags.filter(t => t !== 'Reset_acustica');
+
+  // O fluxo acaba no meio da lista: a ultima tag nao cabe. Ela existe, porem,
+  // na listagem parcial que vem ANTES do bloco de mensagens - de la sai o que
+  // faltou, sem inventar nome nenhum.
+  if (disparos.length < mensagens.length) {
+    const antes = [];
+    for (const t of trechos) {
+      if (t.off >= bloco.off) break;
+      const m = /::\[[^\]]+\](?:Program:)?(?:MainProgram\.)?([A-Za-z0-9_.]+)$/.exec(t.texto);
+      if (m && m[1] !== 'Reset_acustica' && disparos.indexOf(m[1]) < 0
+        && antes.indexOf(m[1]) < 0) antes.push(m[1]);
+    }
+    while (disparos.length < mensagens.length && antes.length) disparos.push(antes.shift());
+  }
+
+  const alarmes = mensagens.map((texto, i) => ({
+    id: i + 1, texto, tag: disparos[i] || null,
+  }));
+
+  return { alarmes, textos: mensagens, tags: disparos, conferencia: conferir(alarmes) };
+}
+
+// Conferencia automatica do casamento. Nao basta a contagem bater: a ordem pode
+// estar deslocada e ninguem perceber. Quando a tag e a mensagem falam da mesma
+// linha numerada, o numero tem que ser o mesmo - e isso e verificavel sozinho.
+function conferir(alarmes) {
+  const numeroDaTag = t => {
+    const m = /_L(\d)$|TP(\d)$/.exec(t || '');
+    return m ? Number(m[1] || m[2]) : null;
+  };
+  const numeroDaMensagem = s => {
+    const m = /\b(?:LINHA|LIQUIDO)\s+(\d)\b/.exec(s || '');
+    return m ? Number(m[1]) : null;
+  };
+  let conferiveis = 0, batem = 0;
+  const divergem = [];
+  for (const a of alarmes) {
+    const nt = numeroDaTag(a.tag), nm = numeroDaMensagem(a.texto);
+    if (nt === null || nm === null) continue;
+    conferiveis++;
+    if (nt === nm) batem++;
+    else divergem.push(a.tag + ' <-> ' + a.texto);
+  }
+  return { conferiveis, batem, divergem };
 }
 const alarmes = lerAlarmes(aberto['M_Alarms/MachineAlarms.mal']);
 
@@ -212,7 +314,11 @@ relatorio.telasGeradas.forEach(t => console.log('   ' + String(t.elementos).padS
 const usadas = Object.values(imagens).filter(Boolean).length;
 console.log('imagens         : ' + usadas + ' convertidas' + (semImagem.length ? ', ' + [...new Set(semImagem)].length + ' nao encontradas' : ''));
 console.log('tags usadas     : ' + relatorio.tags.length);
-console.log('alarmes         : ' + alarmes.textos.length + ' textos, ' + alarmes.tags.length + ' tags');
+const c = alarmes.conferencia;
+console.log('alarmes         : ' + alarmes.alarmes.length + ' mensagens, '
+  + alarmes.alarmes.filter(a => a.tag).length + ' com tag de disparo');
+console.log('  conferencia   : ' + c.batem + ' de ' + c.conferiveis
+  + ' pares numerados batem' + (c.divergem.length ? '  DIVERGEM: ' + c.divergem.join('; ') : ''));
 console.log('so no .gfx      : ' + relatorio.telasSoEmGfx.length + ' telas (ver _origem.json)');
 const ign = Object.entries(relatorio.tiposIgnorados);
 if (ign.length) {

@@ -43,8 +43,11 @@ window.VALORES = {
   // --- balanca ---
   'MainProgram.TOF_BalancaVazia.TIMER.PRE': 2000,
   'MainProgram.TOF_PesarProduto.TIMER.PRE': 1500,
-  'MainProgram.T_MaxCargaBalanza': 25000,          // limite de carga, em gramas
-  'MainProgram.T_MaxDescBalanza': 20000,
+  // O print da BALANCA mostra 'Tempo excedido Carga 10 Seg' e 'Descarga 10 Seg'.
+  // O preset do CLP conta em MILISSEGUNDOS: gravar 10 estoura o tempo de carga
+  // na primeira varredura e a maquina nem parte.
+  'MainProgram.T_MaxCargaBalanza': 10000,
+  'MainProgram.T_MaxDescBalanza': 10000,
 
   // --- atraso de dosagem por linha ---
   'TON_AtrasoDosagem_L1.TIMER.PRE': 1000,
@@ -67,6 +70,12 @@ window.VALORES = {
   // ele mesmo integra o peso da balanca em vez de ler a celula de carga. E o
   // modo que a fabricante usa para comissionar sem semente. Usar o dela sai
   // mais fiel do que inventar uma balanca aqui.
+  // A UNICA COISA AQUI QUE CONTRARIA O PRINT, e de proposito. Na tela
+  // PARAMETROS da maquina real esta 'Simulacao de peso DESLIGADA', porque la
+  // ha celula de carga de verdade. Aqui nao ha: e esta rotina do proprio CLP
+  // que gera o peso. Desligando, a balanca nunca carrega e a maquina nao sai
+  // do lugar - foi exatamente o que aconteceu quando copiei o print ao pe da
+  // letra.
   'MainProgram.SimulacionPeso': 1,
   'MainProgram.ClockSimulacionPeso.TIMER.PRE': 200,
   'MainProgram.Delta_peso_simula': 40,             // kg por tique de 200 ms
@@ -86,14 +95,11 @@ window.VALORES = {
   'MainProgram.Tolerancia': 10,                     // print: "Tolerancia 10 %"
   'MainProgram.CorteGruesoSemilla': 110,            // print: "Corte grosso 110"
   'MainProgram.CorteFinoSemilla': 147,              // print: "Corte fino 147,0"
-  'MainProgram.T_MaxCargaBalanza': 10,              // print: "Tempo excedido Carga 10 Seg"
-  'MainProgram.T_MaxDescBalanza': 10,               // print: "Descarga 10 Seg"
 
   // --- parametros dos tanques ------------------------------------------------
   // Print "PARAMETROS": os seis tanques tem os mesmos limites e a mesma vazao.
   // A tela de parametros e uma das que so existem no .gfx; estes valores vieram
   // do print dela.
-  'MainProgram.SimulacionPeso': 0,                  // print: "Simulacao de peso DESLIGADA"
 
   // --- receita em uso ---------------------------------------------------------
   // O receituario mora em RECETARIO[], tag de CONTROLADOR (sem prefixo de
@@ -104,53 +110,56 @@ window.VALORES = {
   // com a receita ja carregada.
   //
   // ESTA E A RECEITA REAL DO CLIENTE, lida do print "RECEITA DO LOTE" de
-  // 25/06/2025: a numero 43, "Max1.5+Ran+Lumi", com cinco linhas ativas. Antes
-  // havia aqui uma receita inventada de tres linhas.
+  // 25/06/2025. Ela ocupa o SLOT 8 do receituario, que tem 20 posicoes - o
+  // print da tela RECEITAS mostra a lista inteira, e a linha 8 esta destacada.
+  // O "43" e parte do NOME da receita, nao o indice dela: ler errado apontava
+  // para RECETARIO[43], que nao existe, e a maquina parava de produzir sem
+  // dizer por que. Antes daqui havia uma receita inventada de tres linhas.
   'Carga_Receta_Proceso': 1,
-  'Indice_RecetaEnProceso': 43,
-  'Indice_RECETARIO': 43,
+  'Indice_RecetaEnProceso': 8,
+  'Indice_RECETARIO': 8,
 
   // Dose em mL por 100 kg de semente. Todas as linhas tem ordem 1 - nesta
   // receita elas injetam juntas, nao em sequencia.
-  'RECETARIO[43].RECETA.Dosis_L1': 379.20,
-  'RECETARIO[43].RECETA.Orden_L1': 1,
-  'RECETARIO[43].RECETA.T_inyeccion_L1': 10000,
-  'RECETARIO[43].RECETA.T_demora_L1': 0,
-  'RECETARIO[43].RECETA.Vel_aspersor_L1': 80,
+  'RECETARIO[8].RECETA.Dosis_L1': 379.20,
+  'RECETARIO[8].RECETA.Orden_L1': 1,
+  'RECETARIO[8].RECETA.T_inyeccion_L1': 10000,
+  'RECETARIO[8].RECETA.T_demora_L1': 0,
+  'RECETARIO[8].RECETA.Vel_aspersor_L1': 80,
 
-  'RECETARIO[43].RECETA.Dosis_L2': 260.02,
-  'RECETARIO[43].RECETA.Orden_L2': 1,
-  'RECETARIO[43].RECETA.T_inyeccion_L2': 10000,
-  'RECETARIO[43].RECETA.T_demora_L2': 0,
-  'RECETARIO[43].RECETA.Vel_aspersor_L2': 80,
+  'RECETARIO[8].RECETA.Dosis_L2': 260.02,
+  'RECETARIO[8].RECETA.Orden_L2': 1,
+  'RECETARIO[8].RECETA.T_inyeccion_L2': 10000,
+  'RECETARIO[8].RECETA.T_demora_L2': 0,
+  'RECETARIO[8].RECETA.Vel_aspersor_L2': 80,
 
-  'RECETARIO[43].RECETA.Dosis_L3': 54.17,
-  'RECETARIO[43].RECETA.Orden_L3': 1,
-  'RECETARIO[43].RECETA.T_inyeccion_L3': 10000,
-  'RECETARIO[43].RECETA.T_demora_L3': 0,
-  'RECETARIO[43].RECETA.Vel_aspersor_L3': 80,
+  'RECETARIO[8].RECETA.Dosis_L3': 54.17,
+  'RECETARIO[8].RECETA.Orden_L3': 1,
+  'RECETARIO[8].RECETA.T_inyeccion_L3': 10000,
+  'RECETARIO[8].RECETA.T_demora_L3': 0,
+  'RECETARIO[8].RECETA.Vel_aspersor_L3': 80,
 
-  'RECETARIO[43].RECETA.Dosis_L4': 300.00,
-  'RECETARIO[43].RECETA.Orden_L4': 1,
-  'RECETARIO[43].RECETA.T_inyeccion_L4': 10000,
-  'RECETARIO[43].RECETA.T_demora_L4': 0,
-  'RECETARIO[43].RECETA.Vel_aspersor_L4': 80,
+  'RECETARIO[8].RECETA.Dosis_L4': 300.00,
+  'RECETARIO[8].RECETA.Orden_L4': 1,
+  'RECETARIO[8].RECETA.T_inyeccion_L4': 10000,
+  'RECETARIO[8].RECETA.T_demora_L4': 0,
+  'RECETARIO[8].RECETA.Vel_aspersor_L4': 80,
 
   // a linha 5 esta vazia na receita 43: ordem 0 desliga a linha
-  'RECETARIO[43].RECETA.Dosis_L5': 0,
-  'RECETARIO[43].RECETA.Orden_L5': 0,
+  'RECETARIO[8].RECETA.Dosis_L5': 0,
+  'RECETARIO[8].RECETA.Orden_L5': 0,
 
-  'RECETARIO[43].RECETA.Dosis_L6': 600.00,
-  'RECETARIO[43].RECETA.Orden_L6': 1,
-  'RECETARIO[43].RECETA.T_inyeccion_L6': 10000,
-  'RECETARIO[43].RECETA.T_demora_L6': 0,
-  'RECETARIO[43].RECETA.Vel_aspersor_L6': 80,
+  'RECETARIO[8].RECETA.Dosis_L6': 600.00,
+  'RECETARIO[8].RECETA.Orden_L6': 1,
+  'RECETARIO[8].RECETA.T_inyeccion_L6': 10000,
+  'RECETARIO[8].RECETA.T_demora_L6': 0,
+  'RECETARIO[8].RECETA.Vel_aspersor_L6': 80,
 
   // homogeneizacao e descarga, do mesmo print
-  'RECETARIO[43].RECETA.Vel_homogenizado': 80,
-  'RECETARIO[43].RECETA.T_homogenizado': 10000,
-  'RECETARIO[43].RECETA.Vel_descarga': 85,
-  'RECETARIO[43].RECETA.T_descarga': 10000,
+  'RECETARIO[8].RECETA.Vel_homogenizado': 80,
+  'RECETARIO[8].RECETA.T_homogenizado': 10000,
+  'RECETARIO[8].RECETA.Vel_descarga': 85,
+  'RECETARIO[8].RECETA.T_descarga': 10000,
 
   // Os nomes: o CLP guarda como vetor de caracteres e a IHM le direto. Saem do
   // print "RECEITA DO LOTE"; a linha 5 esta em branco na maquina tambem.

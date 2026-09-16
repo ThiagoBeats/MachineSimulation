@@ -172,6 +172,7 @@
   var ctx = {
     pasta: '',
     cabecalho: CFG.cabecalho || null,
+    alarmes: CFG.alarmes || null,
     ir: function(destino){ if (CFG.telas[destino]) { pilha.push(atual); abrir(destino); } },
     voltar: function(){ if (pilha.length) abrir(pilha.pop(), true); },
     varrer: varrer

@@ -278,6 +278,12 @@
           return;
         }
 
+        case 'listaAlarmes': {
+          no = montarListaAlarmes(el, ctx, animados);
+          pai.appendChild(no);
+          break;
+        }
+
         case 'imagem':
           if (!el.arq) return;
           no = criar('image', {
@@ -315,6 +321,96 @@
 
     for (var i = 0; i < tela.elementos.length; i++) desenhar(tela.elementos[i], svg);
     return { svg: svg, animados: animados };
+  }
+
+  // --- lista de alarmes ---------------------------------------------------------
+  // O objeto AlarmList nao sai no publish do ViewPoint: a tela de alarmes vem
+  // vazia. Ele e redesenhado aqui, e alimentado pela tabela do .mal - 25
+  // mensagens, cada uma com a tag do CLP que a dispara. Entao a lista e de
+  // verdade: quem escreve nela e a logica emulada, nao um roteiro.
+
+  var ALT_LINHA = 15, ALT_CABECALHO = 17;
+
+  function montarListaAlarmes(el, ctx, animados) {
+    var tabela = (ctx.alarmes && ctx.alarmes.alarmes) || [];
+    var g = criar('g', {});
+
+    g.appendChild(criar('rect', {
+      x: el.x, y: el.y, width: el.w, height: el.h,
+      fill: '#FFFFFF', stroke: '#FF0000', 'stroke-width': 2
+    }));
+    g.appendChild(criar('rect', {
+      x: el.x + 2, y: el.y + 2, width: el.w - 4, height: ALT_CABECALHO,
+      fill: '#D4D0C8', stroke: '#9A9A9A', 'stroke-width': 1
+    }));
+
+    var estilo = { fonte: 11, cor: 'black', negrito: false, italico: false, alinha: 'middleLeft' };
+    legenda(g, 'Data/hora', el.x + 6, el.y + 2, 150, ALT_CABECALHO, estilo, true);
+    legenda(g, 'Descrição', el.x + 132, el.y + 2, 400, ALT_CABECALHO, estilo, true);
+
+    var corpo = criar('g', {});
+    g.appendChild(corpo);
+
+    // o registro: uma linha por disparo, com a hora em que aconteceu
+    var registro = [];
+    var antes = {};
+
+    function carimbo() {
+      var d = new Date();
+      return d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear() + ' '
+        + doisDigitos(d.getHours()) + ':' + doisDigitos(d.getMinutes()) + ':' + doisDigitos(d.getSeconds());
+    }
+
+    // Quase toda tag de alarme e uma falha: vale 1 quando o alarme esta de pe.
+    // A excecao e o permissivo - PE, a parada de emergencia - que e o
+    // contrario: vale 1 enquanto esta TUDO BEM, e cair para 0 e que e o
+    // alarme. Sem esta distincao a maquina abre com EMERGENCIA na lista.
+    function estaDePe(tag) {
+      var v = !!ler('MainProgram.' + tag) || !!ler(tag);
+      return /^Falla/i.test(tag) ? v : !v;
+    }
+
+    function varrerAlarmes() {
+      var mudou = false;
+      for (var i = 0; i < tabela.length; i++) {
+        var a = tabela[i];
+        if (!a.tag) continue;
+        var v = estaDePe(a.tag);
+        if (v && !antes[a.tag]) {
+          registro.unshift({ quando: carimbo(), texto: a.texto, tag: a.tag, ativo: true });
+          if (registro.length > 60) registro.pop();
+          mudou = true;
+        } else if (!v && antes[a.tag]) {
+          for (var k = 0; k < registro.length; k++) {
+            if (registro[k].tag === a.tag && registro[k].ativo) { registro[k].ativo = false; mudou = true; break; }
+          }
+        }
+        antes[a.tag] = v;
+      }
+      if (mudou) pintar();
+    }
+
+    function pintar() {
+      while (corpo.firstChild) corpo.removeChild(corpo.firstChild);
+      var cabem = Math.floor((el.h - ALT_CABECALHO - 6) / ALT_LINHA);
+      for (var i = 0; i < registro.length && i < cabem; i++) {
+        var r = registro[i];
+        var y = el.y + 2 + ALT_CABECALHO + i * ALT_LINHA;
+        // vermelho enquanto o alarme esta de pe; azul depois que normalizou,
+        // como no painel da maquina
+        corpo.appendChild(criar('rect', {
+          x: el.x + 2, y: y, width: el.w - 4, height: ALT_LINHA,
+          fill: r.ativo ? '#FF0000' : '#000080'
+        }));
+        var est = { fonte: 11, cor: '#FFFFFF', negrito: false, italico: false, alinha: 'middleLeft' };
+        legenda(corpo, r.quando, el.x + 6, y, 150, ALT_LINHA, est, true);
+        legenda(corpo, r.texto, el.x + 132, y, el.w - 140, ALT_LINHA, est, true);
+      }
+    }
+
+    animados.push({ tipo: 'alarmes', varrer: varrerAlarmes });
+    varrerAlarmes();
+    return g;
   }
 
   // --- botoes ------------------------------------------------------------------
@@ -482,6 +578,9 @@
 
       } else if (a.tipo === 'relogio') {
         a.pintar();
+
+      } else if (a.tipo === 'alarmes') {
+        a.varrer();
 
       } else if (a.tipo === 'barra') {
         var val = Number(avaliar(a.fn, 0));
