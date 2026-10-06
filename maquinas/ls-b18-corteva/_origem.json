@@ -1,42 +1,63 @@
 {
- "arquivo": "Corteva_LSB18_v2.mer",
- "extraidoEm": "2026-09-16",
- "como": "OLE2 + LZ77 proprio da Rockwell (ferramentas/rockwell/lz.js), telas do XAML do cliente web embutido no .mer",
+ "arquivo": "Ihm_corteva",
+ "forma": "pasta do projeto do FactoryTalk View Studio",
+ "extraidoEm": "2026-10-06",
+ "como": "arquivos soltos da pasta do projeto; cada .gfx e um OLE2 cujo desenho esta no fluxo Contents e as legendas num fluxo ls<idioma>",
  "telasGeradas": [
-  {
-   "nome": "MAIN",
-   "arquivo": "MAIN.json",
-   "elementos": 141
-  },
   {
    "nome": "Alarmas",
    "arquivo": "Alarmas.json",
-   "elementos": 15
+   "elementos": 23
   },
   {
    "nome": "Balanza",
    "arquivo": "Balanza.json",
-   "elementos": 94
+   "elementos": 88
+  },
+  {
+   "nome": "Calibra Balanza Probeta",
+   "arquivo": "Calibra Balanza Probeta.json",
+   "elementos": 22
+  },
+  {
+   "nome": "Calibra Balanza semilla",
+   "arquivo": "Calibra Balanza semilla.json",
+   "elementos": 24
+  },
+  {
+   "nome": "Calibra Balanza Tk L1",
+   "arquivo": "Calibra Balanza Tk L1.json",
+   "elementos": 22
+  },
+  {
+   "nome": "Calibra Balanza Tk L2",
+   "arquivo": "Calibra Balanza Tk L2.json",
+   "elementos": 22
+  },
+  {
+   "nome": "Calibra Liquido 1",
+   "arquivo": "Calibra Liquido 1.json",
+   "elementos": 70
+  },
+  {
+   "nome": "Datos Lote",
+   "arquivo": "Datos Lote.json",
+   "elementos": 23
+  },
+  {
+   "nome": "Homogenizador",
+   "arquivo": "Homogenizador.json",
+   "elementos": 82
+  },
+  {
+   "nome": "MAIN",
+   "arquivo": "MAIN.json",
+   "elementos": 159
   },
   {
    "nome": "[ALARM]",
    "arquivo": "_ALARM_.json",
    "elementos": 2
-  },
-  {
-   "nome": "Liquidos",
-   "arquivo": "Liquidos.json",
-   "elementos": 174
-  },
-  {
-   "nome": "Datos Lote",
-   "arquivo": "Datos Lote.json",
-   "elementos": 16
-  },
-  {
-   "nome": "Homogenizador",
-   "arquivo": "Homogenizador.json",
-   "elementos": 84
   },
   {
    "nome": "[DIAGNOSTICS]",
@@ -47,34 +68,10 @@
    "nome": "[INFORMATION]",
    "arquivo": "_INFORMATION_.json",
    "elementos": 2
-  },
-  {
-   "nome": "Calibra Liquido 1",
-   "arquivo": "Calibra Liquido 1.json",
-   "elementos": 64
-  },
-  {
-   "nome": "Calibra Balanza Tk L1",
-   "arquivo": "Calibra Balanza Tk L1.json",
-   "elementos": 16
-  },
-  {
-   "nome": "Calibra Balanza Tk L2",
-   "arquivo": "Calibra Balanza Tk L2.json",
-   "elementos": 16
-  },
-  {
-   "nome": "Calibra Balanza Probeta",
-   "arquivo": "Calibra Balanza Probeta.json",
-   "elementos": 16
-  },
-  {
-   "nome": "Calibra Balanza semilla",
-   "arquivo": "Calibra Balanza semilla.json",
-   "elementos": 17
   }
  ],
  "telasSoEmGfx": [
+  "ArquiteturaDeRede",
   "Calibra Balanza Tk L3",
   "Calibra Balanza Tk L4",
   "Calibra Balanza Tk L5",
@@ -84,7 +81,9 @@
   "Calibra Liquido 4",
   "Calibra Liquido 5",
   "Calibra Liquido 6",
+  "Consumos",
   "Historia pesajes",
+  "Lavagem",
   "Liquido Circuito 2",
   "Liquido Circuito 3",
   "Liquido Circuito 4",
@@ -98,43 +97,26 @@
   "Liquido L6",
   "Liquido circuito 1",
   "Lista Liquidos",
+  "Manutencao",
   "Parametros",
   "Receta en proceso",
   "Recetario",
-  "ZLiquido L1",
-  "ZZZ - Liquido L2",
-  "ZZZ - Liquido L3",
-  "ZZZ - Liquido L4",
-  "ZZZ - Liquido L5",
-  "ZZZ - Liquido L6",
-  "zzzLiquido L2"
+  "TripliceLavagem"
  ],
- "tiposDeElementoIgnorados": {},
+ "tiposDeElementoIgnorados": {
+  "RamlControls:TimeAndDateControl": 10,
+  "RamlControls:NumericInputEnable": 1
+ },
  "imagensNaoEncontradas": [],
  "imagensSemTransparencia": [
-  "Tratadora LS-B18_ff000080_ffffffff_T",
-  "ls - 753 x 294 px_ff000080_ffffffff_T"
+  "fLECHA_ff000080_ffffffff_T"
  ],
  "tagsUsadas": [
   "Aspersor:I.Active",
-  "Caudal_Nominal_Bomba_L1",
   "MainProgram.AuxHs_R",
-  "MainProgram.CM_AgL1",
-  "MainProgram.CM_AgL2",
-  "MainProgram.CM_Vent",
   "MainProgram.CNT_ASP.1",
   "MainProgram.CNT_ASP.2",
   "MainProgram.CNT_ASP.6",
-  "MainProgram.CNT_A_TP1.1",
-  "MainProgram.CNT_A_TP1.2",
-  "MainProgram.CNT_A_TP1.6",
-  "MainProgram.CNT_A_TP2.1",
-  "MainProgram.CNT_A_TP2.2",
-  "MainProgram.CNT_A_TP2.6",
-  "MainProgram.CNT_BDL1.1",
-  "MainProgram.CNT_BDL1.2",
-  "MainProgram.CNT_BDL2.1",
-  "MainProgram.CNT_BDL2.2",
   "MainProgram.CNT_CBD.1",
   "MainProgram.CNT_CBD.2",
   "MainProgram.CNT_CBD.6",
@@ -144,15 +126,6 @@
   "MainProgram.CNT_CTF.1",
   "MainProgram.CNT_CTF.2",
   "MainProgram.CNT_CTF.6",
-  "MainProgram.CNT_DL.1",
-  "MainProgram.CNT_DL.2",
-  "MainProgram.CNT_DL.6",
-  "MainProgram.CNT_L1.1",
-  "MainProgram.CNT_L1.2",
-  "MainProgram.CNT_L1.6",
-  "MainProgram.CNT_L2.1",
-  "MainProgram.CNT_L2.2",
-  "MainProgram.CNT_L2.6",
   "MainProgram.CNT_V_VA2_W.1",
   "MainProgram.CNT_V_VA2_W.2",
   "MainProgram.CNT_V_VA2_W.3",
@@ -165,8 +138,6 @@
   "MainProgram.CalibraLxP.FinIniCal",
   "MainProgram.CalibraLxP.Vol_dentroProbeta",
   "MainProgram.Cancel_Cal_Balanza_semilla",
-  "MainProgram.CmdM_GuilloTolvaSemilla",
-  "MainProgram.CmdM_VA_TM1",
   "MainProgram.CmdM_Y_VA1_W",
   "MainProgram.Cmd_Calib_Probeta",
   "MainProgram.Cmd_Calib_Tk_L1",
@@ -193,21 +164,12 @@
   "MainProgram.Inicio_Cal_Balanza_semilla",
   "MainProgram.Inicio_Cal_L",
   "MainProgram.InputAsp.OutputFreq",
-  "MainProgram.InputBDL1.Active",
-  "MainProgram.InputBDL1.OutputFreq",
-  "MainProgram.InputBDL2.Active",
-  "MainProgram.InputBDL2.OutputFreq",
   "MainProgram.InputCTF.OutputFreq",
-  "MainProgram.LockOut_AgL1",
-  "MainProgram.LockOut_AgL2",
   "MainProgram.LockOut_Asp",
-  "MainProgram.LockOut_BDL1",
-  "MainProgram.LockOut_BDL2",
   "MainProgram.LockOut_CTF",
   "MainProgram.LockOut_Vent",
   "MainProgram.Lote",
   "MainProgram.LoteCargado",
-  "MainProgram.Manual",
   "MainProgram.OffsetL1",
   "MainProgram.Ord_Iny_L1",
   "MainProgram.Ord_Iny_L2",
@@ -217,25 +179,21 @@
   "MainProgram.Ord_Iny_L6",
   "MainProgram.PB_Reponer_Emergencia",
   "MainProgram.PE",
-  "MainProgram.PV_L1",
-  "MainProgram.PV_L2",
-  "MainProgram.Parcial_L1",
-  "MainProgram.Parcial_L2",
-  "MainProgram.Parcial_L3",
-  "MainProgram.Parcial_L4",
-  "MainProgram.Parcial_L5",
-  "MainProgram.Parcial_L6",
   "MainProgram.Pausa_Cal_LiqxPeso",
-  "MainProgram.Pausa_TM1",
-  "MainProgram.PesoEspec[19]",
+  "MainProgram.PesoEspec_L1",
   "MainProgram.PesoSemilla",
   "MainProgram.Peso_Patron_Semilla",
   "MainProgram.Peso_Real",
   "MainProgram.Peso_Tk_L1",
   "MainProgram.Peso_Tk_L2",
-  "MainProgram.Presion_Aire",
+  "MainProgram.QntBateladas",
   "MainProgram.RecetaEnProceso.Nombre",
   "MainProgram.RecetaEnProceso.Nombre_L1",
+  "MainProgram.RecetaEnProceso.Nombre_L2",
+  "MainProgram.RecetaEnProceso.Nombre_L3",
+  "MainProgram.RecetaEnProceso.Nombre_L4",
+  "MainProgram.RecetaEnProceso.Nombre_L5",
+  "MainProgram.RecetaEnProceso.Nombre_L6",
   "MainProgram.RecetaEnProceso.T_inyeccion_L1",
   "MainProgram.RegBDL1_Ok",
   "MainProgram.RegBDL2_Ok",
@@ -246,24 +204,16 @@
   "MainProgram.ResetGral",
   "MainProgram.Reset_acustica",
   "MainProgram.Run_Serv",
-  "MainProgram.STT_A_TP1.1",
-  "MainProgram.STT_A_TP1.4",
-  "MainProgram.STT_A_TP2.1",
-  "MainProgram.STT_A_TP2.4",
   "MainProgram.STT_Asp.1",
   "MainProgram.STT_Asp.5",
   "MainProgram.STT_CBD.5",
   "MainProgram.STT_CDB.5",
   "MainProgram.STT_CTF.1",
   "MainProgram.STT_CTF.5",
-  "MainProgram.STT_DL.5",
-  "MainProgram.STT_L1.5",
-  "MainProgram.STT_L2.5",
   "MainProgram.STT_V_VA2_W.1",
   "MainProgram.STT_V_VA2_W.2",
   "MainProgram.STT_V_VA2_W.3",
   "MainProgram.STT_Vent.0",
-  "MainProgram.STT_Vent.1",
   "MainProgram.STT_Vent.4",
   "MainProgram.ServOk",
   "MainProgram.TOnRecircBDL1.ACC",
@@ -272,33 +222,30 @@
   "MainProgram.TOnRecircBDL4.ACC",
   "MainProgram.TOnRecircBDL5.ACC",
   "MainProgram.TOnRecircBDL6.ACC",
-  "MainProgram.T_medicion_TM1.ACC",
   "MainProgram.TablaTiempo_Cal_L[0]",
   "MainProgram.TablaTiempo_Cal_L[1]",
   "MainProgram.TablaTiempo_Cal_L[2]",
-  "MainProgram.TablaVol_Cal_L[0]",
   "MainProgram.TablaVol_Cal_L[1]",
   "MainProgram.TablaVol_Cal_L[2]",
+  "MainProgram.Thttps://www.youtube.com/watch?v=zzg8Vm8rYrs&list=RDzzg8Vm8rYrs&start_radio=1[0]",
   "MainProgram.Total_Procesado",
   "MainProgram.UnCiclo",
-  "MainProgram.VAR_BALANCA",
   "MainProgram.VaciarTolvaSemilla",
   "MainProgram.Vaciar_Probeta",
   "MainProgram.Variedad",
-  "MainProgram.VolPedido_Cal_L",
   "MainProgram.Y_VA1_W",
-  "MainProgram.Y_VA_GuilloTolvaSemilla",
-  "MainProgram.ZH_VA1_L",
   "MainProgram.ZH_VA_H",
-  "MainProgram.ZH_VA_L1",
-  "MainProgram.ZH_VA_L2",
-  "MainProgram.ZL_VA1_L",
   "MainProgram.ZL_VA_H",
-  "MainProgram.ZL_VA_L1",
-  "MainProgram.ZL_VA_L2",
   "MainProgram.aManual",
   "MainProgram.kg_a_Procesar",
-  "Manual",
-  "Prato:I.Active"
+  "Prato:I.Active",
+  "RegistroConsumos_L1.Consumo_01",
+  "RegistroConsumos_L2.Consumo_01",
+  "RegistroConsumos_L3.Consumo_01",
+  "RegistroConsumos_L4.Consumo_01",
+  "RegistroConsumos_L5.Consumo_01",
+  "RegistroConsumos_L6.Consumo_01",
+  "TR_05:I.Input_Data10.0",
+  "TR_05:I.Input_Data9.0"
  ]
 }

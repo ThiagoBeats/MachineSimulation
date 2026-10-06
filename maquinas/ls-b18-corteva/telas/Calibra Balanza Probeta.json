@@ -1,6 +1,6 @@
 {
- "largura": 1280,
- "altura": 800,
+ "largura": 800,
+ "altura": 600,
  "fundo": "white",
  "elementos": [
   {
@@ -9,7 +9,7 @@
    "filhos": [
     {
      "t": "forma",
-     "id": "Polygon4",
+     "id": "Polygon2",
      "d": "MNaN undefinedHNaNVNaNHNaNZ",
      "preenche": "#C6C6C6",
      "traco": "#AAAAAA",
@@ -26,26 +26,17 @@
     {
      "t": "texto",
      "id": "Text9",
-     "x": 333,
-     "y": 18,
-     "w": 530,
-     "h": 42,
+     "x": 202,
+     "y": 14,
+     "w": 396,
+     "h": 31,
      "texto": "CALIBRAR BALANÇA DA PROVETA",
-     "fonte": 34.6658,
+     "fonte": 25.3327,
      "cor": "black",
      "negrito": false,
      "italico": false,
      "alinha": "middleCenter",
      "fundo": null
-    },
-    {
-     "t": "imagem",
-     "id": "Image4",
-     "x": 1133,
-     "y": 14,
-     "w": 143,
-     "h": 63,
-     "arq": "ls - 753 x 294 px_ff000080_ffffffff_T.jpg"
     },
     {
      "t": "forma",
@@ -58,12 +49,12 @@
     {
      "t": "texto",
      "id": "Text2",
-     "x": 310,
-     "y": 331,
-     "w": 103,
-     "h": 25,
+     "x": 193,
+     "y": 248,
+     "w": 74,
+     "h": 18,
      "texto": "Peso padrão",
-     "fonte": 18.6662,
+     "fonte": 13.332999999999998,
      "cor": "black",
      "negrito": false,
      "italico": false,
@@ -73,12 +64,12 @@
     {
      "t": "texto",
      "id": "Text3",
-     "x": 310,
-     "y": 410,
-     "w": 265,
-     "h": 25,
+     "x": 193,
+     "y": 309,
+     "w": 194,
+     "h": 18,
      "texto": "Verifique se a balança está vazia",
-     "fonte": 18.6662,
+     "fonte": 13.332999999999998,
      "cor": "black",
      "negrito": false,
      "italico": false,
@@ -88,19 +79,19 @@
     {
      "t": "numero",
      "id": "NumericDisplay1",
-     "x": 505,
-     "y": 193,
-     "w": 120,
-     "h": 48,
+     "x": 315,
+     "y": 144,
+     "w": 75,
+     "h": 36,
      "texto": "",
-     "fonte": 23.999399999999998,
+     "fonte": 18.6662,
      "cor": "white",
      "negrito": true,
      "italico": false,
      "alinha": "middleCenter",
      "fundo": "black",
      "borda": "#71AF65",
-     "bordaEsp": 2,
+     "bordaEsp": 1,
      "casas": 2,
      "digitos": 4,
      "completa": "none",
@@ -109,12 +100,12 @@
     {
      "t": "texto",
      "id": "Text16",
-     "x": 628,
-     "y": 202,
-     "w": 33,
-     "h": 29,
+     "x": 394,
+     "y": 151,
+     "w": 20,
+     "h": 21,
      "texto": "Kg",
-     "fonte": 23.999399999999998,
+     "fonte": 13.332999999999998,
      "cor": "black",
      "negrito": true,
      "italico": false,
@@ -124,12 +115,12 @@
     {
      "t": "texto",
      "id": "Text5",
-     "x": 632,
-     "y": 337,
-     "w": 21,
-     "h": 18,
+     "x": 396,
+     "y": 252,
+     "w": 12,
+     "h": 13,
      "texto": "Kg",
-     "fonte": 15.9996,
+     "fonte": 13.332999999999998,
      "cor": "black",
      "negrito": false,
      "italico": false,
@@ -139,12 +130,12 @@
     {
      "t": "texto",
      "id": "Text1",
-     "x": 310,
-     "y": 489,
-     "w": 241,
-     "h": 25,
+     "x": 193,
+     "y": 368,
+     "w": 176,
+     "h": 18,
      "texto": "Aceitar valor de balança vazia",
-     "fonte": 18.6662,
+     "fonte": 13.332999999999998,
      "cor": "black",
      "negrito": false,
      "italico": false,
@@ -154,12 +145,12 @@
     {
      "t": "texto",
      "id": "Text6",
-     "x": 310,
-     "y": 568,
-     "w": 276,
-     "h": 25,
+     "x": 193,
+     "y": 427,
+     "w": 198,
+     "h": 18,
      "texto": "Calibrar balança com peso padrão",
-     "fonte": 18.6662,
+     "fonte": 13.332999999999998,
      "cor": "black",
      "negrito": false,
      "italico": false,
@@ -170,12 +161,12 @@
      "t": "botao",
      "id": "MomentaryPushButton1",
      "modo": "momentaneo",
-     "x": 697,
-     "y": 475,
-     "w": 120,
-     "h": 48,
+     "x": 436,
+     "y": 357,
+     "w": 75,
+     "h": 36,
      "forma": "reto",
-     "esp": 4,
+     "esp": 2,
      "estados": [
       {
        "id": "Error",
@@ -185,7 +176,7 @@
        "escuro": "#00004D",
        "legenda": {
         "texto": "Error",
-        "fonte": 13.332999999999998,
+        "fonte": 9.3331,
         "cor": "white",
         "negrito": false,
         "italico": false,
@@ -200,7 +191,7 @@
        "escuro": "#8EC46A",
        "legenda": {
         "texto": "VAZIA",
-        "fonte": 13.332999999999998,
+        "fonte": 9.3331,
         "cor": "black",
         "negrito": false,
         "italico": false,
@@ -215,7 +206,7 @@
        "escuro": "#004D00",
        "legenda": {
         "texto": "VAZIA",
-        "fonte": 13.332999999999998,
+        "fonte": 9.3331,
         "cor": "white",
         "negrito": false,
         "italico": false,
@@ -230,12 +221,12 @@
      "t": "botao",
      "id": "MomentaryPushButton2",
      "modo": "momentaneo",
-     "x": 697,
-     "y": 554,
-     "w": 120,
-     "h": 48,
+     "x": 436,
+     "y": 416,
+     "w": 75,
+     "h": 36,
      "forma": "reto",
-     "esp": 4,
+     "esp": 2,
      "estados": [
       {
        "id": "Error",
@@ -245,7 +236,7 @@
        "escuro": "#00004D",
        "legenda": {
         "texto": "Error",
-        "fonte": 13.332999999999998,
+        "fonte": 9.3331,
         "cor": "white",
         "negrito": false,
         "italico": false,
@@ -260,7 +251,7 @@
        "escuro": "#8EC46A",
        "legenda": {
         "texto": "CALIBRAR",
-        "fonte": 13.332999999999998,
+        "fonte": 9.3331,
         "cor": "black",
         "negrito": false,
         "italico": false,
@@ -275,7 +266,7 @@
        "escuro": "#004D00",
        "legenda": {
         "texto": "CALIBRAR",
-        "fonte": 13.332999999999998,
+        "fonte": 9.3331,
         "cor": "white",
         "negrito": false,
         "italico": false,
@@ -290,29 +281,163 @@
      "t": "botao",
      "id": "ReturntoDisplayButton1",
      "modo": "voltar",
-     "x": 1134,
-     "y": 444,
-     "w": 141,
-     "h": 59,
+     "x": 720,
+     "y": 550,
+     "w": 80,
+     "h": 44,
      "forma": "reto",
-     "esp": 4,
+     "esp": 2,
      "estados": [
       {
        "id": "0",
        "valor": 0,
-       "fundo": "#37A9E0",
+       "fundo": "#D4D0C8",
        "claro": "#8FCEED",
        "escuro": "#1E8FC5",
        "legenda": {
         "texto": "VOLTAR",
-        "fonte": 18.6662,
+        "fonte": 13.999649999999999,
         "cor": "black",
         "negrito": false,
         "italico": false,
         "alinha": "middleCenter"
        }
       }
-     ]
+     ],
+     "icone": {
+      "arq": "VrfyBtnFace_Value_ff000080_ffffffff_T.png",
+      "esticado": true
+     }
+    },
+    {
+     "t": "cadeia",
+     "id": "StringDisplay4",
+     "x": 5,
+     "y": 3,
+     "w": 190,
+     "h": 28,
+     "texto": "",
+     "fonte": 13.332999999999998,
+     "cor": "#212121",
+     "negrito": false,
+     "italico": false,
+     "alinha": "middleLeft",
+     "fundo": null,
+     "borda": "#C6C6C6",
+     "bordaEsp": 1,
+     "valor": null
+    },
+    {
+     "t": "grupo",
+     "id": "Group32",
+     "filhos": [
+      {
+       "t": "grupo",
+       "id": "Group4",
+       "filhos": [
+        {
+         "t": "forma",
+         "id": "Polygon7",
+         "d": "MNaN undefinedHNaNVNaNHNaNZ",
+         "preenche": "#E22028",
+         "traco": "black",
+         "espessura": 1
+        },
+        {
+         "t": "botao",
+         "id": "MomentaryPushButton6",
+         "modo": "momentaneo",
+         "x": 95,
+         "y": 7,
+         "w": 34,
+         "h": 40,
+         "forma": "reto",
+         "esp": 2,
+         "estados": [
+          {
+           "id": "Error",
+           "valor": null,
+           "fundo": "#D4D0C8",
+           "claro": "#0000E6",
+           "escuro": "#00004D",
+           "legenda": {
+            "texto": "Error",
+            "fonte": 9.3331,
+            "cor": "white",
+            "negrito": false,
+            "italico": false,
+            "alinha": "middleCenter"
+           }
+          },
+          {
+           "id": "0",
+           "valor": 0,
+           "fundo": "#D4D0C8",
+           "claro": "#333333",
+           "escuro": "#000000",
+           "legenda": {
+            "texto": "",
+            "fonte": 9.3331,
+            "cor": "white",
+            "negrito": false,
+            "italico": false,
+            "alinha": "middleCenter"
+           }
+          },
+          {
+           "id": "1",
+           "valor": 1,
+           "fundo": "#D4D0C8",
+           "claro": "#0000E6",
+           "escuro": "#00004D",
+           "legenda": {
+            "texto": "",
+            "fonte": 9.3331,
+            "cor": "white",
+            "negrito": false,
+            "italico": false,
+            "alinha": "middleCenter"
+           }
+          }
+         ],
+         "escreve": "MainProgram.PB_Reponer_Emergencia",
+         "indicador": "v(\"MainProgram.PB_Reponer_Emergencia\")"
+        }
+       ]
+      },
+      {
+       "t": "texto",
+       "id": "Text4",
+       "x": 10,
+       "y": 19,
+       "w": 74,
+       "h": 15,
+       "texto": "EMERGENCIA",
+       "fonte": 13.332999999999998,
+       "cor": "white",
+       "negrito": true,
+       "italico": false,
+       "alinha": "middleCenter",
+       "fundo": null,
+       "visivel": {
+        "expr": "! v(\"MainProgram.PE\")",
+        "quando": "visible"
+       }
+      }
+     ],
+     "visivel": {
+      "expr": "! v(\"MainProgram.PE\")",
+      "quando": "visible"
+     }
+    },
+    {
+     "t": "imagem",
+     "id": "Image7",
+     "x": 700,
+     "y": 0,
+     "w": 100,
+     "h": 60,
+     "arq": "Logo-LS-Brasil-RGB_ff000080_ffffffff_T.png"
     }
    ]
   }

@@ -4,395 +4,387 @@
   "MAIN": [
    {
     "t": "navegacao",
+    "id": "LoginButton12",
+    "x": 649,
+    "y": 12,
+    "w": 40,
+    "h": 42
+   },
+   {
+    "t": "navegacao",
     "id": "ShutdownButton1",
-    "x": 1155,
-    "y": 22,
-    "w": 102,
-    "h": 48
+    "x": 723,
+    "y": 16,
+    "w": 63,
+    "h": 36
    }
   ],
   "Alarmas": [
    {
     "t": "alarme",
     "id": "AlarmList1",
-    "x": 9,
-    "y": 85,
-    "w": 1113,
-    "h": 572
+    "x": 6,
+    "y": 63,
+    "w": 695,
+    "h": 429
+   },
+   {
+    "t": "alarme",
+    "id": "AcknowledgeAlarmButton1",
+    "x": 126,
+    "y": 519,
+    "w": 100,
+    "h": 57
+   },
+   {
+    "t": "alarme",
+    "id": "ClearAlarmHistoryButton1",
+    "x": 362,
+    "y": 519,
+    "w": 100,
+    "h": 56
+   },
+   {
+    "t": "alarme",
+    "id": "ResetAlarmStatusButton2",
+    "x": 480,
+    "y": 520,
+    "w": 100,
+    "h": 55
    }
   ],
   "Balanza": [
    {
     "t": "numero",
     "id": "NumericInputCursorPoint2",
-    "x": 865,
-    "y": 203,
-    "w": 108,
-    "h": 38
+    "x": 584,
+    "y": 154,
+    "w": 67,
+    "h": 28
    },
    {
     "t": "numero",
     "id": "NumericInputCursorPoint1",
-    "x": 865,
-    "y": 261,
-    "w": 108,
-    "h": 38
+    "x": 584,
+    "y": 198,
+    "w": 67,
+    "h": 28
    },
    {
     "t": "forma",
     "id": "Wedge3",
-    "x": 514,
-    "y": 300,
-    "w": 51,
-    "h": 82
+    "x": 320,
+    "y": 225,
+    "w": 31,
+    "h": 61
    },
    {
     "t": "forma",
     "id": "Wedge2",
-    "x": 507,
-    "y": 302,
-    "w": 57,
-    "h": 79
+    "x": 320,
+    "y": 227,
+    "w": 35,
+    "h": 59
    },
    {
     "t": "numero",
     "id": "NumericInputCursorPoint3",
-    "x": 865,
-    "y": 319,
-    "w": 108,
-    "h": 38
+    "x": 584,
+    "y": 243,
+    "w": 67,
+    "h": 28
    },
    {
     "t": "forma",
     "id": "Wedge1",
-    "x": 479,
-    "y": 340,
-    "w": 86,
-    "h": 41
+    "x": 297,
+    "y": 256,
+    "w": 53,
+    "h": 30
    },
    {
     "t": "numero",
     "id": "NumericInputCursorPoint4",
-    "x": 863,
-    "y": 478,
-    "w": 108,
-    "h": 38
+    "x": 569,
+    "y": 338,
+    "w": 67,
+    "h": 28
    },
    {
     "t": "numero",
     "id": "NumericInputCursorPoint5",
-    "x": 863,
-    "y": 533,
-    "w": 108,
-    "h": 38
-   },
-   {
-    "t": "forma",
-    "id": "Wedge6",
-    "x": 515,
-    "y": 609,
-    "w": 51,
-    "h": 82
-   },
-   {
-    "t": "forma",
-    "id": "Wedge4",
-    "x": 479,
-    "y": 649,
-    "w": 86,
-    "h": 41
+    "x": 568,
+    "y": 379,
+    "w": 67,
+    "h": 28
    },
    {
     "t": "numero",
     "id": "NumericInputCursorPoint6",
-    "x": 863,
-    "y": 656,
-    "w": 108,
-    "h": 38
+    "x": 536,
+    "y": 494,
+    "w": 67,
+    "h": 28
+   },
+   {
+    "t": "forma",
+    "id": "Wedge5",
+    "x": 320,
+    "y": 501,
+    "w": 32,
+    "h": 59
    },
    {
     "t": "numero",
     "id": "NumericInputCursorPoint7",
-    "x": 863,
-    "y": 704,
-    "w": 108,
-    "h": 38
+    "x": 536,
+    "y": 528,
+    "w": 67,
+    "h": 28
+   },
+   {
+    "t": "forma",
+    "id": "Wedge6",
+    "x": 299,
+    "y": 531,
+    "w": 53,
+    "h": 30
    }
   ],
   "_ALARM_": [
    {
     "t": "alarme",
     "id": "AlarmBanner1",
-    "x": 26,
-    "y": 18,
-    "w": 1216,
-    "h": 178
+    "x": 16,
+    "y": 13,
+    "w": 760,
+    "h": 133
    },
    {
     "t": "alarme",
     "id": "AcknowledgeAlarmButton",
-    "x": 250,
-    "y": 211,
-    "w": 128,
-    "h": 119
+    "x": 156,
+    "y": 158,
+    "w": 80,
+    "h": 89
    },
    {
     "t": "alarme",
     "id": "SilenceAlarmsButton",
-    "x": 450,
-    "y": 211,
-    "w": 128,
-    "h": 119
+    "x": 281,
+    "y": 158,
+    "w": 80,
+    "h": 89
    },
    {
     "t": "alarme",
     "id": "ClearAlarmButton",
-    "x": 650,
-    "y": 211,
-    "w": 128,
-    "h": 119
-   }
-  ],
-  "Liquidos": [
-   {
-    "t": "numero",
-    "id": "NumericInputCursorPoint2",
-    "x": 831,
-    "y": 279,
-    "w": 74,
-    "h": 36
-   },
-   {
-    "t": "indicador",
-    "id": "Scale3",
-    "x": 285,
-    "y": 631,
-    "w": 23,
-    "h": 75
-   },
-   {
-    "t": "numero",
-    "id": "NumericInputCursorPoint3",
-    "x": 801,
-    "y": 645,
-    "w": 74,
-    "h": 36
+    "x": 407,
+    "y": 158,
+    "w": 80,
+    "h": 89
    }
   ],
   "Datos Lote": [
    {
     "t": "texto_valor",
     "id": "StringInputEnable3",
-    "x": 303,
-    "y": 140,
-    "w": 237,
-    "h": 40
+    "x": 189,
+    "y": 105,
+    "w": 148,
+    "h": 30
    },
    {
     "t": "numero",
     "id": "NumericInputCursorPoint2",
-    "x": 773,
-    "y": 140,
-    "w": 100,
-    "h": 40
+    "x": 484,
+    "y": 105,
+    "w": 62,
+    "h": 30
    },
    {
     "t": "texto_valor",
     "id": "StringInputEnable1",
-    "x": 303,
-    "y": 211,
-    "w": 237,
-    "h": 40
+    "x": 189,
+    "y": 158,
+    "w": 148,
+    "h": 30
    },
    {
     "t": "numero",
     "id": "NumericInputCursorPoint3",
-    "x": 773,
-    "y": 211,
-    "w": 100,
-    "h": 40
-   },
-   {
-    "t": "numero",
-    "id": "NumericInputCursorPoint5",
-    "x": 894,
-    "y": 372,
-    "w": 100,
-    "h": 40
+    "x": 484,
+    "y": 158,
+    "w": 62,
+    "h": 30
    },
    {
     "t": "indicador",
     "id": "ControlListSelector1",
-    "x": 235,
-    "y": 380,
-    "w": 297,
-    "h": 236
+    "x": 267,
+    "y": 293,
+    "w": 232,
+    "h": 177
    },
    {
-    "t": "numero",
-    "id": "NumericInputCursorPoint1",
-    "x": 894,
-    "y": 463,
+    "t": "navegacao",
+    "id": "MoveUpButton2",
+    "x": 267,
+    "y": 473,
+    "w": 60,
+    "h": 60
+   },
+   {
+    "t": "navegacao",
+    "id": "EnterButton2",
+    "x": 333,
+    "y": 473,
     "w": 100,
-    "h": 40
+    "h": 60
    },
    {
     "t": "navegacao",
-    "id": "MoveUpButton1",
-    "x": 235,
-    "y": 624,
-    "w": 40,
-    "h": 40
-   },
-   {
-    "t": "navegacao",
-    "id": "EnterButton1",
-    "x": 329,
-    "y": 624,
-    "w": 108,
-    "h": 40
-   },
-   {
-    "t": "navegacao",
-    "id": "MoveDownButton1",
-    "x": 491,
-    "y": 624,
-    "w": 40,
-    "h": 40
+    "id": "MoveDownButton2",
+    "x": 439,
+    "y": 473,
+    "w": 60,
+    "h": 60
    }
   ],
   "Homogenizador": [
    {
     "t": "numero",
-    "id": "NumericInputCursorPoint3",
-    "x": 998,
-    "y": 212,
-    "w": 80,
-    "h": 30
-   },
-   {
-    "t": "numero",
     "id": "NumericInputCursorPoint1",
-    "x": 294,
-    "y": 601,
-    "w": 74,
-    "h": 36
+    "x": 184,
+    "y": 451,
+    "w": 46,
+    "h": 27
    },
    {
     "t": "numero",
     "id": "NumericInputCursorPoint2",
-    "x": 940,
-    "y": 602,
-    "w": 74,
-    "h": 36
+    "x": 589,
+    "y": 452,
+    "w": 46,
+    "h": 27
    }
   ],
   "_DIAGNOSTICS_": [
    {
     "t": "alarme",
     "id": "DiagnosticsList",
-    "x": 10,
-    "y": 8,
-    "w": 1246,
-    "h": 113
+    "x": 6,
+    "y": 6,
+    "w": 778,
+    "h": 84
    },
    {
     "t": "navegacao",
     "id": "MoveLeftButton",
-    "x": 512,
-    "y": 134,
-    "w": 128,
-    "h": 119
+    "x": 320,
+    "y": 101,
+    "w": 80,
+    "h": 89
    },
    {
     "t": "navegacao",
     "id": "MoveRightButton",
-    "x": 640,
-    "y": 134,
-    "w": 128,
-    "h": 119
+    "x": 400,
+    "y": 101,
+    "w": 80,
+    "h": 89
    },
    {
     "t": "navegacao",
     "id": "MoveUpButton",
-    "x": 768,
-    "y": 134,
-    "w": 128,
-    "h": 119
+    "x": 480,
+    "y": 101,
+    "w": 80,
+    "h": 89
    },
    {
     "t": "navegacao",
     "id": "MoveDownButton",
-    "x": 896,
-    "y": 134,
-    "w": 128,
-    "h": 119
+    "x": 560,
+    "y": 101,
+    "w": 80,
+    "h": 89
    }
   ],
   "_INFORMATION_": [
    {
     "t": "alarme",
     "id": "InformationMessageDisplay",
-    "x": 4,
-    "y": 10,
-    "w": 1012,
-    "h": 119
+    "x": 2,
+    "y": 7,
+    "w": 632,
+    "h": 89
    }
   ],
   "Calibra Liquido 1": [
    {
     "t": "numero",
     "id": "NumericInputCursorPoint2",
-    "x": 227,
-    "y": 265,
-    "w": 77,
-    "h": 28
+    "x": 203,
+    "y": 198,
+    "w": 48,
+    "h": 21
    },
    {
     "t": "numero",
     "id": "NumericInputCursorPoint1",
-    "x": 962,
-    "y": 509,
-    "w": 107,
-    "h": 28
+    "x": 603,
+    "y": 382,
+    "w": 66,
+    "h": 21
    },
    {
     "t": "indicador",
     "id": "Scale1",
-    "x": 1004,
-    "y": 562,
-    "w": 23,
-    "h": 75
+    "x": 628,
+    "y": 422,
+    "w": 14,
+    "h": 56
    }
   ],
   "Calibra Balanza Tk L1": [
    {
     "t": "numero",
     "id": "NumericInputCursorPoint1",
-    "x": 510,
-    "y": 326,
-    "w": 113,
-    "h": 36
+    "x": 318,
+    "y": 244,
+    "w": 70,
+    "h": 27
    }
   ],
   "Calibra Balanza Tk L2": [
    {
     "t": "numero",
     "id": "NumericInputCursorPoint1",
-    "x": 510,
-    "y": 326,
-    "w": 113,
-    "h": 36
+    "x": 318,
+    "y": 244,
+    "w": 70,
+    "h": 27
    }
   ],
   "Calibra Balanza Probeta": [
    {
     "t": "numero",
     "id": "NumericInputCursorPoint1",
-    "x": 510,
-    "y": 326,
-    "w": 113,
-    "h": 36
+    "x": 318,
+    "y": 244,
+    "w": 70,
+    "h": 27
+   }
+  ],
+  "Calibra Balanza semilla": [
+   {
+    "t": "numero",
+    "id": "NumericInputEnable1",
+    "x": 339,
+    "y": 251,
+    "w": 102,
+    "h": 28
    }
   ]
  }

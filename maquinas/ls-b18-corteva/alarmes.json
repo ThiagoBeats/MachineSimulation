@@ -3,127 +3,458 @@
   {
    "id": 1,
    "texto": "EMERGÊNCIA",
-   "tag": "PE"
+   "tag": "PE",
+   "inverte": true
   },
   {
    "id": 2,
    "texto": "FALHA NO AGITADOR DO LIQUIDO 1",
-   "tag": "Falla_TP1"
+   "tag": "Falla_TP1",
+   "inverte": false
   },
   {
    "id": 3,
    "texto": "FALHA NO AGITADOR DO LIQUIDO 2",
-   "tag": "Falla_TP2"
+   "tag": "Falla_TP2",
+   "inverte": false
   },
   {
    "id": 4,
    "texto": "FALHA NO VENTILADOR DO HOMOGENEIZADOR",
-   "tag": "Falla_Vent"
+   "tag": "Falla_Vent",
+   "inverte": false
   },
   {
    "id": 5,
    "texto": "BAIXA PRESSÃO NA LINHA PNEUMÁTICA",
-   "tag": "Falla_PresAire"
+   "tag": "Falla_PresAire",
+   "inverte": false
   },
   {
    "id": 6,
    "texto": "FALHA NA VÁLVULA DE INJEÇÃO/CALIBRAÇÃO",
-   "tag": "Falla_VA_DL"
+   "tag": "Falla_VA_DL",
+   "inverte": false
   },
   {
    "id": 7,
    "texto": "FALHA NA BOMBA DE DOSAGEM DA LINHA 1",
-   "tag": "Falla_BD_L1"
+   "tag": "Falla_BD_L1",
+   "inverte": false
   },
   {
    "id": 8,
    "texto": "FALHA NA BOMBA DE DOSAGEM DA LINHA 2",
-   "tag": "Falla_BD_L2"
+   "tag": "Falla_BD_L2",
+   "inverte": false
   },
   {
    "id": 9,
    "texto": "FALHA NO ASPERSOR",
-   "tag": "Falla_ASP"
+   "tag": "Falla_ASP",
+   "inverte": false
   },
   {
    "id": 10,
    "texto": "FALHA NA DESCARGA DA BALANÇA",
-   "tag": "Falla_VA_CBD"
+   "tag": "Falla_VA_CBD",
+   "inverte": false
   },
   {
    "id": 11,
    "texto": "FALHA NA DESCARGA DA BATELADA",
-   "tag": "Falla_VA_CDB"
+   "tag": "Falla_VA_CDB",
+   "inverte": false
   },
   {
    "id": 12,
    "texto": "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 1",
-   "tag": "Falla_VA_L1"
+   "tag": "Falla_VA_L1",
+   "inverte": false
   },
   {
    "id": 13,
    "texto": "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 2",
-   "tag": "Falla_VA_L2"
+   "tag": "Falla_VA_L2",
+   "inverte": false
   },
   {
    "id": 14,
    "texto": "FALHA NO AGITADOR DO LIQUIDO 3",
-   "tag": "Falla_TP3"
+   "tag": "Falla_TP3",
+   "inverte": false
   },
   {
    "id": 15,
    "texto": "FALHA NO AGITADOR DO LIQUIDO 4",
-   "tag": "Falla_TP4"
+   "tag": "Falla_TP4",
+   "inverte": false
   },
   {
    "id": 16,
    "texto": "FALHA NO AGITADOR DO LIQUIDO 5",
-   "tag": "Falla_TP5"
+   "tag": "Falla_TP5",
+   "inverte": false
   },
   {
    "id": 17,
    "texto": "FALHA NO AGITADOR DO LIQUIDO 6",
-   "tag": "Falla_TP6"
+   "tag": "Falla_TP6",
+   "inverte": false
   },
   {
    "id": 18,
    "texto": "FALHA NA BOMBA DE DOSAGEM DA LINHA 3",
-   "tag": "Falla_BD_L3"
+   "tag": "Falla_BD_L3",
+   "inverte": false
   },
   {
    "id": 19,
    "texto": "FALHA NA BOMBA DE DOSAGEM DA LINHA 4",
-   "tag": "Falla_BD_L4"
+   "tag": "Falla_BD_L4",
+   "inverte": false
   },
   {
    "id": 20,
    "texto": "FALHA NA BOMBA DE DOSAGEM DA LINHA 5",
-   "tag": "Falla_BD_L5"
+   "tag": "Falla_BD_L5",
+   "inverte": false
   },
   {
    "id": 21,
    "texto": "FALHA NA BOMBA DE DOSAGEM DA LINHA 6",
-   "tag": "Falla_BD_L6"
+   "tag": "Falla_BD_L6",
+   "inverte": false
   },
   {
    "id": 22,
    "texto": "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 3",
-   "tag": "Falla_VA_L3"
+   "tag": "Falla_VA_L3",
+   "inverte": false
   },
   {
    "id": 23,
    "texto": "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 4",
-   "tag": "Falla_VA_L4"
+   "tag": "Falla_VA_L4",
+   "inverte": false
   },
   {
    "id": 24,
    "texto": "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 5",
-   "tag": "Falla_VA_L5"
+   "tag": "Falla_VA_L5",
+   "inverte": false
   },
   {
    "id": 25,
    "texto": "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 6",
-   "tag": "Falla_VA_L6"
+   "tag": "Falla_VA_L6",
+   "inverte": false
+  },
+  {
+   "id": 26,
+   "texto": "DESCARGA PAUSADA REMOTAMENTE (VERIFICAR SISTEMAS DE ENSAQUE)",
+   "tag": "Rem_Habilita",
+   "inverte": true
+  },
+  {
+   "id": 27,
+   "texto": "NÍVEL BAIXO DE SEMENTES NA CAIXA SUPERIOR",
+   "tag": "TR_05",
+   "inverte": true
+  },
+  {
+   "id": 28,
+   "texto": "AGITADOR DA LINHA 1 BLOQUEADO",
+   "tag": "Agitador_L1.LockOut",
+   "inverte": true
+  },
+  {
+   "id": 29,
+   "texto": "AGITADOR DA LINHA 2 BLOQUEADO",
+   "tag": "Agitador_L2.LockOut",
+   "inverte": true
+  },
+  {
+   "id": 30,
+   "texto": "AGITADOR DA LINHA 3 BLOQUEADO",
+   "tag": "Agitador_L3.LockOut",
+   "inverte": true
+  },
+  {
+   "id": 31,
+   "texto": "AGITADOR DA LINHA 4 BLOQUEADO",
+   "tag": "Agitador_L4.LockOut",
+   "inverte": true
+  },
+  {
+   "id": 32,
+   "texto": "AGITADOR DA LINHA 5 BLOQUEADO",
+   "tag": "Agitador_L5.LockOut",
+   "inverte": true
+  },
+  {
+   "id": 33,
+   "texto": "AGITADOR DA LINHA 1 BLOQUEADO",
+   "tag": "Agitador_L1_2.LockOut",
+   "inverte": true
+  },
+  {
+   "id": 34,
+   "texto": "AGITADOR DA LINHA 2 BLOQUEADO",
+   "tag": "Agitador_L2_2.LockOut",
+   "inverte": true
+  },
+  {
+   "id": 35,
+   "texto": "AGITADOR DA LINHA 3 BLOQUEADO",
+   "tag": "Agitador_L3_2.LockOut",
+   "inverte": true
+  },
+  {
+   "id": 36,
+   "texto": "AGITADOR DA LINHA 4 BLOQUEADO",
+   "tag": "Agitador_L4_2.LockOut",
+   "inverte": true
+  },
+  {
+   "id": 37,
+   "texto": "AGITADOR DA LINHA 5 BLOQUEADO",
+   "tag": "Agitador_L5_2.LockOut",
+   "inverte": true
+  },
+  {
+   "id": 38,
+   "texto": "ATRASO NA CARGA DA BALANÇA. VERIFICAR CAIXA SUPERIOR",
+   "tag": "AlarmaCargaBalanza",
+   "inverte": false
+  },
+  {
+   "id": 39,
+   "texto": "ATRASO DA DESCARGA DA BALANÇA",
+   "tag": "AlarmaDescBalanza",
+   "inverte": false
+  },
+  {
+   "id": 40,
+   "texto": "ATRASO DE DOSAGEM NA LINHA 1",
+   "tag": "PU1_13",
+   "inverte": false
+  },
+  {
+   "id": 41,
+   "texto": "ATRASO DE DOSAGEM NA LINHA 2",
+   "tag": "PU1_15",
+   "inverte": false
+  },
+  {
+   "id": 42,
+   "texto": "ATRASO DE DOSAGEM NA LINHA 3",
+   "tag": "PU1_17",
+   "inverte": false
+  },
+  {
+   "id": 43,
+   "texto": "ATRASO DE DOSAGEM NA LINHA 4",
+   "tag": "PU1_19",
+   "inverte": false
+  },
+  {
+   "id": 44,
+   "texto": "ATRASO DE DOSAGEM NA LINHA 5",
+   "tag": "PU1_20",
+   "inverte": false
+  },
+  {
+   "id": 45,
+   "texto": "ATRASO DE DOSAGEM NA LINHA DA PRÉ MISTURA",
+   "tag": "PU1_2",
+   "inverte": false
+  },
+  {
+   "id": 46,
+   "texto": "FALHA DE COMUNICAÇÃO NA REMOTA PU1_13",
+   "tag": "PU1_3",
+   "inverte": false
+  },
+  {
+   "id": 47,
+   "texto": "FALHA DE COMUNICAÇÃO NA REMOTA PU1_15",
+   "tag": "PU1_5",
+   "inverte": false
+  },
+  {
+   "id": 48,
+   "texto": "FALHA DE COMUNICAÇÃO NA REMOTA PU1_17",
+   "tag": "PU1_7",
+   "inverte": false
+  },
+  {
+   "id": 49,
+   "texto": "FALHA DE COMUNICAÇÃO NA REMOTA PU1_19",
+   "tag": "PU1_8",
+   "inverte": false
+  },
+  {
+   "id": 50,
+   "texto": "FALHA DE COMUNICAÇÃO NA REMOTA PU1_20",
+   "tag": "TR_04",
+   "inverte": false
+  },
+  {
+   "id": 51,
+   "texto": "FALHA DE COMUNICAÇÃO NA REMOTA PU1_2",
+   "tag": "TR_05",
+   "inverte": false
+  },
+  {
+   "id": 52,
+   "texto": "FALHA DE COMUNICAÇÃO NA REMOTA PU1_3",
+   "tag": "TR_06",
+   "inverte": false
+  },
+  {
+   "id": 53,
+   "texto": "FALHA DE COMUNICAÇÃO NA REMOTA PU1_5",
+   "tag": "TR_3",
+   "inverte": false
+  },
+  {
+   "id": 54,
+   "texto": "FALHA DE COMUNICAÇÃO NA REMOTA PU1_7",
+   "tag": "TR_L1_FT1",
+   "inverte": false
+  },
+  {
+   "id": 55,
+   "texto": "FALHA DE COMUNICAÇÃO NA REMOTA PU1_8",
+   "tag": "TR_L2_FT1",
+   "inverte": false
+  },
+  {
+   "id": 56,
+   "texto": "FALHA DE COMUNICAÇÃO NA REMOTA TR_04",
+   "tag": "TR_L3_FT1",
+   "inverte": false
+  },
+  {
+   "id": 57,
+   "texto": "FALHA DE COMUNICAÇÃO NA REMOTA TR_05",
+   "tag": "TR_L4_FT1",
+   "inverte": false
+  },
+  {
+   "id": 58,
+   "texto": "FALHA DE COMUNICAÇÃO NA REMOTA TR_06",
+   "tag": "TR_L5_FT1",
+   "inverte": false
+  },
+  {
+   "id": 59,
+   "texto": "FALHA DE COMUNICAÇÃO NA REMOTA TR_03",
+   "tag": "TR_L6_FT1",
+   "inverte": false
+  },
+  {
+   "id": 60,
+   "texto": "FALHA NO FLUXOMETRO DA LINHA 1",
+   "tag": "Prato",
+   "inverte": false
+  },
+  {
+   "id": 61,
+   "texto": "FALHA NO FLUXOMETRO DA LINHA 2",
+   "tag": "Aspersor",
+   "inverte": false
+  },
+  {
+   "id": 62,
+   "texto": "FALHA NO FLUXOMETRO DA LINHA 3",
+   "tag": "BombaL1",
+   "inverte": false
+  },
+  {
+   "id": 63,
+   "texto": "FALHA NO FLUXOMETRO DA LINHA 4",
+   "tag": "BombaL2",
+   "inverte": false
+  },
+  {
+   "id": 64,
+   "texto": "FALHA NO FLUXOMETRO DA LINHA 5",
+   "tag": "BombaL3",
+   "inverte": false
+  },
+  {
+   "id": 65,
+   "texto": "FALHA NO FLUXOMETRO DA LINHA DE PRÉ MISTURA",
+   "tag": "BombaL4",
+   "inverte": false
+  },
+  {
+   "id": 66,
+   "texto": "FALHA NO INVERSOR DO HOMOGENEIZADOR",
+   "tag": "BombaL5",
+   "inverte": false
+  },
+  {
+   "id": 67,
+   "texto": "FALHA NO INVERSOR DO ASPERSOR",
+   "tag": "BombaL6",
+   "inverte": false
+  },
+  {
+   "id": 68,
+   "texto": "FALHA NO INVERSOR DA BOMBA DE DOSAGEM 1",
+   "tag": "Reset_acustica",
+   "inverte": false
+  },
+  {
+   "id": 69,
+   "texto": "FALHA NO INVERSOR DA BOMBA DE DOSAGEM 2",
+   "tag": null,
+   "inverte": false
+  },
+  {
+   "id": 70,
+   "texto": "FALHA NO INVERSOR DA BOMBA DE DOSAGEM 3",
+   "tag": null,
+   "inverte": false
+  },
+  {
+   "id": 71,
+   "texto": "FALHA NO INVERSOR DA BOMBA DE DOSAGEM 4",
+   "tag": null,
+   "inverte": false
+  },
+  {
+   "id": 72,
+   "texto": "FALHA NO INVERSOR DA BOMBA DE DOSAGEM 5",
+   "tag": null,
+   "inverte": false
+  },
+  {
+   "id": 73,
+   "texto": "FALHA NO INVERSOR DA BOMBA DE DOSAGEM 6",
+   "tag": null,
+   "inverte": false
+  },
+  {
+   "id": 74,
+   "texto": "FALHA DE COMUNICAÇÃO COM O CLP DA PRÉ MISTURA",
+   "tag": null,
+   "inverte": false
+  },
+  {
+   "id": 75,
+   "texto": "BAIXO NÍVEL NO TANQUE 1 DA PRÉ MISTURA",
+   "tag": null,
+   "inverte": false
+  },
+  {
+   "id": 76,
+   "texto": "BAIXO NÍVEL NO TANQUE 2 DA PRÉ MISTURA",
+   "tag": null,
+   "inverte": false
   }
  ],
  "textos": [
@@ -151,7 +482,58 @@
   "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 3",
   "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 4",
   "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 5",
-  "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 6"
+  "FALHA NA VÁLVULA DE LIQUIDO DA LINHA 6",
+  "DESCARGA PAUSADA REMOTAMENTE (VERIFICAR SISTEMAS DE ENSAQUE)",
+  "NÍVEL BAIXO DE SEMENTES NA CAIXA SUPERIOR",
+  "AGITADOR DA LINHA 1 BLOQUEADO",
+  "AGITADOR DA LINHA 2 BLOQUEADO",
+  "AGITADOR DA LINHA 3 BLOQUEADO",
+  "AGITADOR DA LINHA 4 BLOQUEADO",
+  "AGITADOR DA LINHA 5 BLOQUEADO",
+  "AGITADOR DA LINHA 1 BLOQUEADO",
+  "AGITADOR DA LINHA 2 BLOQUEADO",
+  "AGITADOR DA LINHA 3 BLOQUEADO",
+  "AGITADOR DA LINHA 4 BLOQUEADO",
+  "AGITADOR DA LINHA 5 BLOQUEADO",
+  "ATRASO NA CARGA DA BALANÇA. VERIFICAR CAIXA SUPERIOR",
+  "ATRASO DA DESCARGA DA BALANÇA",
+  "ATRASO DE DOSAGEM NA LINHA 1",
+  "ATRASO DE DOSAGEM NA LINHA 2",
+  "ATRASO DE DOSAGEM NA LINHA 3",
+  "ATRASO DE DOSAGEM NA LINHA 4",
+  "ATRASO DE DOSAGEM NA LINHA 5",
+  "ATRASO DE DOSAGEM NA LINHA DA PRÉ MISTURA",
+  "FALHA DE COMUNICAÇÃO NA REMOTA PU1_13",
+  "FALHA DE COMUNICAÇÃO NA REMOTA PU1_15",
+  "FALHA DE COMUNICAÇÃO NA REMOTA PU1_17",
+  "FALHA DE COMUNICAÇÃO NA REMOTA PU1_19",
+  "FALHA DE COMUNICAÇÃO NA REMOTA PU1_20",
+  "FALHA DE COMUNICAÇÃO NA REMOTA PU1_2",
+  "FALHA DE COMUNICAÇÃO NA REMOTA PU1_3",
+  "FALHA DE COMUNICAÇÃO NA REMOTA PU1_5",
+  "FALHA DE COMUNICAÇÃO NA REMOTA PU1_7",
+  "FALHA DE COMUNICAÇÃO NA REMOTA PU1_8",
+  "FALHA DE COMUNICAÇÃO NA REMOTA TR_04",
+  "FALHA DE COMUNICAÇÃO NA REMOTA TR_05",
+  "FALHA DE COMUNICAÇÃO NA REMOTA TR_06",
+  "FALHA DE COMUNICAÇÃO NA REMOTA TR_03",
+  "FALHA NO FLUXOMETRO DA LINHA 1",
+  "FALHA NO FLUXOMETRO DA LINHA 2",
+  "FALHA NO FLUXOMETRO DA LINHA 3",
+  "FALHA NO FLUXOMETRO DA LINHA 4",
+  "FALHA NO FLUXOMETRO DA LINHA 5",
+  "FALHA NO FLUXOMETRO DA LINHA DE PRÉ MISTURA",
+  "FALHA NO INVERSOR DO HOMOGENEIZADOR",
+  "FALHA NO INVERSOR DO ASPERSOR",
+  "FALHA NO INVERSOR DA BOMBA DE DOSAGEM 1",
+  "FALHA NO INVERSOR DA BOMBA DE DOSAGEM 2",
+  "FALHA NO INVERSOR DA BOMBA DE DOSAGEM 3",
+  "FALHA NO INVERSOR DA BOMBA DE DOSAGEM 4",
+  "FALHA NO INVERSOR DA BOMBA DE DOSAGEM 5",
+  "FALHA NO INVERSOR DA BOMBA DE DOSAGEM 6",
+  "FALHA DE COMUNICAÇÃO COM O CLP DA PRÉ MISTURA",
+  "BAIXO NÍVEL NO TANQUE 1 DA PRÉ MISTURA",
+  "BAIXO NÍVEL NO TANQUE 2 DA PRÉ MISTURA"
  ],
  "tags": [
   "PE",
@@ -178,7 +560,50 @@
   "Falla_VA_L3",
   "Falla_VA_L4",
   "Falla_VA_L5",
-  "Falla_VA_L6"
+  "Falla_VA_L6",
+  "Rem_Habilita",
+  "TR_05",
+  "Agitador_L1.LockOut",
+  "Agitador_L2.LockOut",
+  "Agitador_L3.LockOut",
+  "Agitador_L4.LockOut",
+  "Agitador_L5.LockOut",
+  "Agitador_L1_2.LockOut",
+  "Agitador_L2_2.LockOut",
+  "Agitador_L3_2.LockOut",
+  "Agitador_L4_2.LockOut",
+  "Agitador_L5_2.LockOut",
+  "AlarmaCargaBalanza",
+  "AlarmaDescBalanza",
+  "PU1_13",
+  "PU1_15",
+  "PU1_17",
+  "PU1_19",
+  "PU1_20",
+  "PU1_2",
+  "PU1_3",
+  "PU1_5",
+  "PU1_7",
+  "PU1_8",
+  "TR_04",
+  "TR_05",
+  "TR_06",
+  "TR_3",
+  "TR_L1_FT1",
+  "TR_L2_FT1",
+  "TR_L3_FT1",
+  "TR_L4_FT1",
+  "TR_L5_FT1",
+  "TR_L6_FT1",
+  "Prato",
+  "Aspersor",
+  "BombaL1",
+  "BombaL2",
+  "BombaL3",
+  "BombaL4",
+  "BombaL5",
+  "BombaL6",
+  "Reset_acustica"
  ],
  "conferencia": {
   "conferiveis": 18,

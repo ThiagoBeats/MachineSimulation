@@ -1,7 +1,19 @@
 // ---------------------------------------------------------------------------
-// EXTRAI AS TELAS DE UM RUNTIME FactoryTalk View ME (.mer)
+// EXTRAI AS TELAS DE UM PROJETO FactoryTalk View ME
 // ---------------------------------------------------------------------------
-//   node ferramentas/rockwell/extrair-mer.js <arquivo.mer> <id-da-maquina>
+//   node ferramentas/rockwell/extrair-mer.js <origem> <id-da-maquina>
+//
+// A <origem> pode ser das duas formas em que o projeto aparece:
+//
+//   - o RUNTIME .mer        um documento composto OLE2 cujos fluxos usam um
+//                           LZ77 proprio da Rockwell;
+//   - a PASTA DO PROJETO    o que o FactoryTalk View Studio grava em disco,
+//                           com as mesmas subpastas (Raml/, Gfx/, Images/,
+//                           M_Alarms/) mas sem compressao nenhuma.
+//
+// A pasta e melhor quando existe: traz as telas que o publish do ViewPoint
+// deixou de fora e, dentro de cada .gfx, uma tabela com as legendas que o
+// publish apaga.
 //
 // Gera, em maquinas/<id>/:
 //   telas/<nome>.json   uma tela: os elementos desenhaveis e as ligacoes
@@ -9,11 +21,11 @@
 //   alarmes.json        a tabela de alarmes, com texto e tag de disparo
 //   _origem.json        o que foi lido, o que foi ignorado e por que
 //
-// O .mer traz as telas em DUAS formas:
-//   - Raml/<tela>.ramlz  -> XAML vetorial, completo e legivel (11 telas)
-//   - Gfx/<tela>.gfx     -> binario nativo da Rockwell (as 49 telas)
-// Este extrator le a primeira. As telas que so existem em .gfx ficam de fora e
-// sao listadas em _origem.json, para ninguem achar que estao faltando por erro.
+// As telas vem em DUAS formas, e esta parte vale para as duas origens:
+//   - Raml/<tela>.ramlz  -> XAML vetorial, completo e legivel
+//   - Gfx/<tela>.gfx     -> binario nativo da Rockwell
+// Este extrator le a primeira. As que so existem em .gfx ficam listadas em
+// _origem.json, para ninguem achar que estao faltando por erro.
 // ---------------------------------------------------------------------------
 'use strict';
 
@@ -28,20 +40,61 @@ const { compilar } = require('./expressao.js');
 const imagem = require('./imagem.js');
 
 const RAIZ = path.resolve(__dirname, '..', '..');
-const arqMer = process.argv[2];
+const origemArg = process.argv[2];
 const id = process.argv[3];
 
-if (!arqMer || !id) {
-  console.error('uso: node ferramentas/rockwell/extrair-mer.js <arquivo.mer> <id-da-maquina>');
+if (!origemArg || !id) {
+  console.error('uso: node ferramentas/rockwell/extrair-mer.js <arquivo.mer|pasta-do-projeto> <id-da-maquina>');
   process.exit(1);
 }
 
 const destino = path.join(RAIZ, 'maquinas', id);
 
-// --- 1. abre o .mer -----------------------------------------------------------
-const fluxos = ole2.extrair(fs.readFileSync(arqMer));
-const aberto = {};
-for (const [nome, dados] of Object.entries(fluxos)) aberto[nome] = lz.abrir(dados);
+// --- 1. abre a origem ---------------------------------------------------------
+// Os dois formatos entregam a mesma coisa: um mapa de "Raml/MAIN.ramlz" -> bytes.
+// No .mer os fluxos vem comprimidos; na pasta sao arquivos soltos. Daqui para
+// baixo o resto do extrator nao precisa saber de qual veio.
+
+const AS_PASTAS = ['Raml', 'Gfx', 'Images', 'M_Alarms', 'Global Objects'];
+
+function lerDaPasta(raiz) {
+  const mapa = {};
+  for (const sub of AS_PASTAS) {
+    const dir = path.join(raiz, sub);
+    if (!fs.existsSync(dir)) continue;
+    for (const arq of fs.readdirSync(dir)) {
+      const cheio = path.join(dir, arq);
+      if (!fs.statSync(cheio).isFile()) continue;
+      mapa[sub + '/' + arq] = fs.readFileSync(cheio);
+    }
+  }
+  // Na pasta, cada .gfx e um documento OLE2 por si so. O desenho fica no fluxo
+  // "Contents" e as legendas em "ls<idioma>" - um bloco que o .mer nao carrega.
+  const textos = {};
+  for (const nome of Object.keys(mapa)) {
+    if (!/^Gfx\/.+\.gfx$/.test(nome)) continue;
+    try {
+      const dentro = ole2.extrair(mapa[nome]);
+      if (dentro['Contents']) mapa[nome] = dentro['Contents'];
+      const ls = Object.keys(dentro).find(k => /^ls[0-9a-f]+$/i.test(k));
+      if (ls) textos[nome.replace(/^Gfx\//, '').replace(/\.gfx$/, '')] = dentro[ls];
+    } catch (e) { /* .gfx que nao abre fica como esta, e o leitor avisa depois */ }
+  }
+  return { mapa, textos };
+}
+
+const ehPasta = fs.existsSync(origemArg) && fs.statSync(origemArg).isDirectory();
+let aberto, textosDeTela = {};
+
+if (ehPasta) {
+  const r = lerDaPasta(origemArg);
+  aberto = r.mapa;
+  textosDeTela = r.textos;
+} else {
+  const fluxos = ole2.extrair(fs.readFileSync(origemArg));
+  aberto = {};
+  for (const [nome, dados] of Object.entries(fluxos)) aberto[nome] = lz.abrir(dados);
+}
 
 // --- 2. desembrulha os .ramlz (sao zip, com 8 bytes de cabecalho antes) --------
 function lerZip(b) {
@@ -194,6 +247,77 @@ function separarMensagens(texto) {
   return out;
 }
 
+// --- 5b. a tabela de alarmes da PASTA do projeto -------------------------------
+// Na pasta, o .mal e um OLE2 com dois fluxos, e os dois sao melhores do que o
+// que o runtime entrega:
+//
+//   Alarms        as condicoes de disparo, uma por linha, na ordem da tabela -
+//                 e com o "NOT" escrito quando o alarme dispara no ZERO, como
+//                 acontece com a emergencia. No runtime isso nao aparece, e eu
+//                 tinha deduzido a inversao pelo nome da tag.
+//   ls<idioma>    as mensagens JA SEPARADAS, em vez do bloco grudado que o
+//                 runtime traz e que eu precisava recortar por vocabulario.
+//                 As linhas que o autor nunca preencheu aparecem como "LabelN".
+
+function tabelaDeTextos(ls) {
+  const n = ls.readUInt32LE(2), BASE = 10, pool = BASE + n * 12;
+  const ent = [];
+  for (let k = 0; k < n; k++) {
+    const o = BASE + k * 12;
+    if (o + 12 > ls.length) break;
+    ent.push({ id: ls.readUInt32LE(o), des: ls.readUInt32LE(o + 4) });
+  }
+  // entradas que compartilham o mesmo deslocamento sao objetos sem texto
+  const chars = (ls.length - pool) / 2, out = [];
+  for (let k = 0; k < ent.length; k++) {
+    const prox = k + 1 < ent.length ? ent[k + 1].des : chars;
+    if (prox <= ent[k].des) continue;
+    let s = '';
+    for (let p = pool + ent[k].des * 2; p + 1 < pool + prox * 2 && p + 1 < ls.length; p += 2) {
+      s += String.fromCharCode(ls.readUInt16LE(p));
+    }
+    out.push({ id: ent[k].id, texto: s });
+  }
+  return out;
+}
+
+function lerAlarmesDaPasta(bruto) {
+  let dentro;
+  try { dentro = ole2.extrair(bruto); } catch (e) { return null; }
+  const ls = Object.keys(dentro).find(k => /^ls[0-9a-f]+$/i.test(k));
+  if (!dentro['Alarms'] || !ls) return null;
+
+  const mensagens = tabelaDeTextos(dentro[ls])
+    .map(x => x.texto.trim())
+    .filter(t => t && !/^Label\d+$/.test(t));
+
+  // os gatilhos, na ordem da tabela
+  const A = dentro['Alarms'];
+  const gatilhos = [];
+  let s = '';
+  for (let p = 0; p + 1 < A.length; p += 2) {
+    const c = A.readUInt16LE(p);
+    if (c >= 32 && c <= 0x2000) s += String.fromCharCode(c);
+    else {
+      if (/::\[/.test(s)) gatilhos.push(s.trim());
+      s = '';
+    }
+  }
+  if (/::\[/.test(s)) gatilhos.push(s.trim());
+
+  const alarmes = mensagens.map((texto, i) => {
+    const g = gatilhos[i] || '';
+    const m = /::\[[^\]]+\](?:Program:)?(?:MainProgram\.)?([A-Za-z0-9_.]+)/.exec(g);
+    return {
+      id: i + 1, texto,
+      tag: m ? m[1] : null,
+      // "NOT {tag}" quer dizer que o alarme esta de pe quando a tag vale ZERO
+      inverte: /^\s*NOT\b/i.test(g),
+    };
+  });
+  return { alarmes, textos: mensagens, tags: alarmes.map(a => a.tag).filter(Boolean), conferencia: conferir(alarmes) };
+}
+
 function lerAlarmes(b) {
   if (!b) return { alarmes: [], textos: [], tags: [] };
   const trechos = trechosLegiveis(b);
@@ -262,7 +386,9 @@ function conferir(alarmes) {
   }
   return { conferiveis, batem, divergem };
 }
-const alarmes = lerAlarmes(aberto['M_Alarms/MachineAlarms.mal']);
+// a pasta traz a forma boa; o runtime, a que precisa de recorte por vocabulario
+const bruto = aberto['M_Alarms/MachineAlarms.mal'];
+const alarmes = (ehPasta && lerAlarmesDaPasta(bruto)) || lerAlarmes(bruto);
 
 // --- 6. converte cada tela ----------------------------------------------------
 fs.mkdirSync(path.join(destino, 'telas'), { recursive: true });
@@ -298,9 +424,12 @@ for (const nome of Object.keys(aberto)) {
 relatorio.tags = [...todasTags].sort();
 fs.writeFileSync(path.join(destino, 'alarmes.json'), JSON.stringify(alarmes, null, 1), 'utf8');
 fs.writeFileSync(path.join(destino, '_origem.json'), JSON.stringify({
-  arquivo: path.basename(arqMer),
+  arquivo: path.basename(origemArg),
+  forma: ehPasta ? 'pasta do projeto do FactoryTalk View Studio' : 'runtime .mer',
   extraidoEm: new Date().toISOString().slice(0, 10),
-  como: 'OLE2 + LZ77 proprio da Rockwell (ferramentas/rockwell/lz.js), telas do XAML do cliente web embutido no .mer',
+  como: ehPasta
+    ? 'arquivos soltos da pasta do projeto; cada .gfx e um OLE2 cujo desenho esta no fluxo Contents e as legendas num fluxo ls<idioma>'
+    : 'OLE2 + LZ77 proprio da Rockwell (ferramentas/rockwell/lz.js), telas do XAML do cliente web embutido no .mer',
   telasGeradas: relatorio.telasGeradas,
   telasSoEmGfx: relatorio.telasSoEmGfx.sort(),
   tiposDeElementoIgnorados: relatorio.tiposIgnorados,

@@ -1,6 +1,6 @@
 {
- "largura": 1280,
- "altura": 133,
+ "largura": 800,
+ "altura": 99,
  "fundo": "silver",
  "elementos": [
   {
@@ -11,12 +11,12 @@
      "t": "botao",
      "id": "CloseDisplayButton",
      "modo": "fechar",
-     "x": 1150,
-     "y": 10,
-     "w": 128,
-     "h": 119,
+     "x": 719,
+     "y": 7,
+     "w": 80,
+     "h": 89,
      "forma": "reto",
-     "esp": 4,
+     "esp": 2,
      "estados": [
       {
        "id": "0",
@@ -25,8 +25,8 @@
        "claro": "#0000E6",
        "escuro": "#00004D",
        "legenda": {
-        "texto": "Close\n[F2]",
-        "fonte": 13.332999999999998,
+        "texto": "Fechar\n[F2]",
+        "fonte": 7.9998,
         "cor": "white",
         "negrito": true,
         "italico": false,
