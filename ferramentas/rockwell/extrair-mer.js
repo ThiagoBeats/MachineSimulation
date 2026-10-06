@@ -198,6 +198,27 @@ function pegarImagem(fonte) {
   return arq;
 }
 
+// --- 4b. o acervo inteiro, para as telas desenhadas a mao ----------------------
+// As telas que so existem em .gfx nao dizem qual arquivo cada imagem usa: esse
+// elo esta no binario e nao foi decifrado. Mas o acervo tem nomes que se
+// explicam sozinhos ("Gate valve (verde)", "Tank 1", "Turbine agitator 3"),
+// entao quem desenha a tela a mao escolhe pelo nome. Por isso convertemos tudo,
+// e nao so o que o XAML pede.
+
+function converterAcervoInteiro() {
+  let n = 0;
+  for (const base of Object.keys(acervo)) {
+    const arq = base.replace(/[^A-Za-z0-9 _.()-]/g, '_') + '.png';
+    const destinoArq = path.join(destino, 'imagens', arq);
+    if (fs.existsSync(destinoArq)) continue;
+    const r = imagem.converter(acervo[base], imagem.separarNome(base));
+    if (!r) continue;
+    fs.writeFileSync(path.join(destino, 'imagens', base.replace(/[^A-Za-z0-9 _.()-]/g, '_') + '.' + r.extensao), r.dados);
+    n++;
+  }
+  return n;
+}
+
 // --- 5. alarmes ---------------------------------------------------------------
 // O .mal guarda as mensagens TODAS GRUDADAS num bloco so, sem separador nem
 // tabela de tamanhos que se possa seguir, e as tags de disparo logo depois, uma
@@ -422,6 +443,7 @@ for (const nome of Object.keys(aberto)) {
 }
 
 relatorio.tags = [...todasTags].sort();
+const doAcervo = converterAcervoInteiro();
 fs.writeFileSync(path.join(destino, 'alarmes.json'), JSON.stringify(alarmes, null, 1), 'utf8');
 fs.writeFileSync(path.join(destino, '_origem.json'), JSON.stringify({
   arquivo: path.basename(origemArg),
@@ -441,7 +463,7 @@ fs.writeFileSync(path.join(destino, '_origem.json'), JSON.stringify({
 console.log('telas geradas   : ' + relatorio.telasGeradas.length);
 relatorio.telasGeradas.forEach(t => console.log('   ' + String(t.elementos).padStart(4) + ' elementos  ' + t.nome));
 const usadas = Object.values(imagens).filter(Boolean).length;
-console.log('imagens         : ' + usadas + ' convertidas' + (semImagem.length ? ', ' + [...new Set(semImagem)].length + ' nao encontradas' : ''));
+console.log('imagens         : ' + usadas + ' das telas, + ' + doAcervo + ' do acervo' + (semImagem.length ? ', ' + [...new Set(semImagem)].length + ' nao encontradas' : ''));
 console.log('tags usadas     : ' + relatorio.tags.length);
 const c = alarmes.conferencia;
 console.log('alarmes         : ' + alarmes.alarmes.length + ' mensagens, '

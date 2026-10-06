@@ -157,7 +157,18 @@
   // com o operador logado e o relogio. Nao sai no XAML publicado, que traz so o
   // conteudo de cada tela - por isso e desenhada aqui, e nao vem dos dados.
 
-  var CAB = { altura: 72, painel: 258, painelAltura: 56 };
+  // Em fracao da tela, para a faixa ficar certa tanto num terminal de 800x600
+  // quanto num de 1280x800. As fracoes saem dos prints da maquina.
+  var CAB = { altura: 0.075, painel: 0.20, painelAltura: 0.067 };
+
+  function medidasDoCabecalho(tela) {
+    return {
+      altura: Math.round(tela.altura * CAB.altura),
+      painel: Math.round(tela.largura * CAB.painel),
+      painelAltura: Math.round(tela.altura * CAB.painelAltura),
+      corpo: Math.max(9, Math.round(tela.altura * 0.0217)),
+    };
+  }
 
   function doisDigitos(n) { return (n < 10 ? '0' : '') + n; }
 
@@ -168,6 +179,7 @@
   }
 
   function montarCabecalho(svg, tela, cfg, animados) {
+    var m = medidasDoCabecalho(tela);
     var g = criar('g', { class: 'cabecalho' });
     var id = 'grad-cab';
 
@@ -179,30 +191,31 @@
     defs.appendChild(grad);
     g.appendChild(defs);
 
-    g.appendChild(criar('rect', { x: 0, y: 0, width: tela.largura, height: CAB.altura, fill: 'url(#' + id + ')' }));
+    g.appendChild(criar('rect', { x: 0, y: 0, width: tela.largura, height: m.altura, fill: 'url(#' + id + ')' }));
     g.appendChild(criar('line', {
-      x1: 0, y1: CAB.altura, x2: tela.largura, y2: CAB.altura,
+      x1: 0, y1: m.altura, x2: tela.largura, y2: m.altura,
       stroke: '#B4B4B4', 'stroke-width': 1
     }));
 
     // o quadro do operador, em relevo, no canto esquerdo
     g.appendChild(criar('rect', {
-      x: 0, y: 0, width: CAB.painel, height: CAB.painelAltura,
+      x: 0, y: 0, width: m.painel, height: m.painelAltura,
       fill: '#F4F4F4', stroke: '#BDBDBD', 'stroke-width': 1
     }));
     g.appendChild(criar('path', {
-      d: 'M0 ' + CAB.painelAltura + 'H' + CAB.painel + 'V0',
+      d: 'M0 ' + m.painelAltura + 'H' + m.painel + 'V0',
       fill: 'none', stroke: '#9E9E9E', 'stroke-width': 1
     }));
 
-    var est = { fonte: 13, cor: '#1A1A1A', negrito: false, italico: false, alinha: 'middleLeft' };
-    legenda(g, cfg.operador || 'Operador', 9, 2, CAB.painel - 18, 26, est, true);
+    var est = { fonte: m.corpo, cor: '#1A1A1A', negrito: false, italico: false, alinha: 'middleLeft' };
+    var meia = m.painelAltura / 2;
+    legenda(g, cfg.operador || 'Operador', 6, 1, m.painel - 12, meia, est, true);
 
     var relogio = criar('g', {});
     g.appendChild(relogio);
     function pintarRelogio() {
       while (relogio.firstChild) relogio.removeChild(relogio.firstChild);
-      legenda(relogio, agora(), 9, 26, CAB.painel - 18, 26, est, true);
+      legenda(relogio, agora(), 6, meia, m.painel - 12, meia, est, true);
     }
     pintarRelogio();
     animados.push({ tipo: 'relogio', pintar: pintarRelogio });

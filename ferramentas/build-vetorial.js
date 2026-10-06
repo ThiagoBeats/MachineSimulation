@@ -63,6 +63,25 @@ for (const arq of fs.readdirSync(pastaTelas).filter(f => f.endsWith('.json'))) {
   telas[t.nome] = t;
 }
 
+// --- telas desenhadas a mao -----------------------------------------------------
+// Algumas telas so existem no binario .gfx, de onde sai a posicao de cada
+// controle mas nao o tracado das formas. Essas sao desenhadas a mao, num modulo
+// por desenho, e entram aqui antes das conferencias - para que um destino
+// quebrado nelas apareca no mesmo relatorio das outras.
+let desenhadas = 0;
+const pastaMao = path.join(pastaFonte, 'telas-mao');
+if (fs.existsSync(pastaMao)) {
+  for (const arq of fs.readdirSync(pastaMao).filter(f => f.endsWith('.js'))) {
+    const mod = require(path.join(pastaMao, arq));
+    const quantas = mod.quantas || 1;
+    for (let i = 1; i <= quantas; i++) {
+      const t = mod.montar(i);
+      telas[t.nome] = t;
+      desenhadas++;
+    }
+  }
+}
+
 // --- camada de aparencia --------------------------------------------------------
 // Quando a maquina tem um aparencia.js, ele corrige as telas extraidas com o que
 // os prints da IHM real mostram e o arquivo publicado nao entrega. E reconstrucao
@@ -210,7 +229,7 @@ fs.writeFileSync(path.join(pastaSaida, 'index.html'),
 
 // --- relatorio ---------------------------------------------------------------------
 console.log('maquina vetorial "' + id + '" gerada em ' + path.relative(RAIZ, pastaSaida) + '/');
-console.log('  telas          : ' + nomes.length);
+console.log('  telas          : ' + nomes.length + (desenhadas ? '  (' + desenhadas + ' desenhadas a mao)' : ''));
 console.log('  ligacoes vivas : ' + comLigacao);
 console.log('  imagens        : ' + imagensUsadas.size);
 if (aparencia) {
