@@ -196,6 +196,23 @@ window.VALORES = {
   // so e escrito, nunca lido pelo resto do programa.
   //
   // Os nomes saem do print "TABELA DE LIQUIDOS", de 25/06/2025.
+  // --- limites dos tanques de liquido -----------------------------------------
+  // Print "PARAMETROS": os seis tanques tem os mesmos limites, 20 e 50 kg.
+  'MainProgram.Peso_Min_Tk_L1': 20,
+  'MainProgram.Peso_Max_Tk_L1': 50,
+  'MainProgram.Peso_Min_Tk_L2': 20,
+  'MainProgram.Peso_Max_Tk_L2': 50,
+  'MainProgram.Peso_Min_Tk_L3': 20,
+  'MainProgram.Peso_Max_Tk_L3': 50,
+  'MainProgram.Peso_Min_Tk_L4': 20,
+  'MainProgram.Peso_Max_Tk_L4': 50,
+  'MainProgram.Peso_Min_Tk_L5': 20,
+  'MainProgram.Peso_Max_Tk_L5': 50,
+  'MainProgram.Peso_Min_Tk_L6': 20,
+  'MainProgram.Peso_Max_Tk_L6': 50,
+  'MainProgram.Presion_Aire_Min': 4,
+  'MainProgram.Presion_Aire_Max': 8,
+
   // --- o cadastro de produtos -------------------------------------------------
   // A tela "Liquido Circuito" escolhe daqui o que esta carregado em cada linha.
   // Os nomes saem do print "LIQUIDOS", que mostra a tabela cadastrada; as
