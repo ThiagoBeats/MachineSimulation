@@ -196,6 +196,29 @@ window.VALORES = {
   // so e escrito, nunca lido pelo resto do programa.
   //
   // Os nomes saem do print "TABELA DE LIQUIDOS", de 25/06/2025.
+  // --- o cadastro de produtos -------------------------------------------------
+  // A tela "Liquido Circuito" escolhe daqui o que esta carregado em cada linha.
+  // Os nomes saem do print "LIQUIDOS", que mostra a tabela cadastrada; as
+  // posicoes 10 a 20 estao vazias na maquina tambem.
+  'MainProgram.ListaLiquidos[0]': '5-MQ.NIPx2.DL440/UNI',
+  'MainProgram.ListaLiquidos[1]': '5-LUM.DL440.ACTP/KG',
+  'MainProgram.ListaLiquidos[2]': '2-MQ.NIPT.DL440.ACT.',
+  'MainProgram.ListaLiquidos[3]': 'SIN BOMBA',
+  'MainProgram.ListaLiquidos[4]': 'PONCHO',
+  'MainProgram.ListaLiquidos[5]': 'DEMACOR',
+  'MainProgram.ListaLiquidos[6]': 'LUMIALZA',
+  'MainProgram.ListaLiquidos[7]': 'POLIMERO',
+  'MainProgram.ListaLiquidos[8]': 'PRE MISTURA',
+
+  // qual item da lista cada circuito esta mostrando (a tela comeca no produto
+  // que de fato esta na linha)
+  'MainProgram.IndiceL1_Recetario': 4,
+  'MainProgram.IndiceL2_Recetario': 5,
+  'MainProgram.IndiceL3_Recetario': 6,
+  'MainProgram.IndiceL4_Recetario': 7,
+  'MainProgram.IndiceL5_Recetario': 3,
+  'MainProgram.IndiceL6_Recetario': 8,
+
   'MainProgram.NombreLiquido1': 'PONCHO',
   'MainProgram.NombreLiquido2': 'DEMACOR',
   'MainProgram.NombreLiquido3': 'LUMIALZA',

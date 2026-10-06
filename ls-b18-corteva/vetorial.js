@@ -620,6 +620,19 @@
     }
     if (!el.escreve) return;
 
+    // Botao que COPIA uma tag para outra: o "ENTER" das telas de lista, que
+    // confirma o item escolhido. O endereco de origem costuma depender de um
+    // indice, entao vem como funcao.
+    if (el.copia) {
+      alvo.addEventListener('click', function () {
+        var de = typeof el.copia.de === 'function' ? el.copia.de(ler) : el.copia.de;
+        if (!de) return;
+        escrever(el.copia.para, ler(de));
+        ctx.varrer();
+      });
+      return;
+    }
+
     // Botao que anda com um indice: as setas da lista de receitas. O passo e
     // preso entre os limites para o indice nao sair do vetor.
     if (el.passo) {
