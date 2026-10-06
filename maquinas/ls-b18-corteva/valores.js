@@ -163,6 +163,24 @@ window.VALORES = {
 
   // Os nomes: o CLP guarda como vetor de caracteres e a IHM le direto. Saem do
   // print "RECEITA DO LOTE"; a linha 5 esta em branco na maquina tambem.
+  // --- qual produto esta carregado em cada linha ------------------------------
+  // NAO E A RECEITA: e o liquido que esta fisicamente na linha, que o operador
+  // escolhe na tela "Lista de Liquidos". Ninguem no programa do CLP escreve
+  // essas tags - quem escreve e a IHM -, entao elas tem que vir daqui.
+  //
+  // O CLP as compara com NombreVacio em VerifNombresServOk para acender o aviso
+  // "falta nome" de cada linha ativa. Esse aviso nao trava nada: FaltaNombreLx
+  // so e escrito, nunca lido pelo resto do programa.
+  //
+  // Os nomes saem do print "TABELA DE LIQUIDOS", de 25/06/2025.
+  'MainProgram.NombreLiquido1': 'PONCHO',
+  'MainProgram.NombreLiquido2': 'DEMACOR',
+  'MainProgram.NombreLiquido3': 'LUMIALZA',
+  'MainProgram.NombreLiquido4': 'POLIMERO',
+  'MainProgram.NombreLiquido5': '',            // linha 5 vazia, e a receita nao a usa
+  'MainProgram.NombreLiquido6': 'PRE MISTURA',
+  'MainProgram.NombreVacio': '',               // o sentinela de "sem produto"
+
   'MainProgram.RecetaEnProceso.Nombre': '43 - Max1.5+Ran+Lumi',
   'MainProgram.RecetaEnProceso.Nombre_L1': 'PONCHO',
   'MainProgram.RecetaEnProceso.Nombre_L2': 'DEMACOR',
