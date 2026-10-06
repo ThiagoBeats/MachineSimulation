@@ -68,17 +68,27 @@ for (const arq of fs.readdirSync(pastaTelas).filter(f => f.endsWith('.json'))) {
 // controle mas nao o tracado das formas. Essas sao desenhadas a mao, num modulo
 // por desenho, e entram aqui antes das conferencias - para que um destino
 // quebrado nelas apareca no mesmo relatorio das outras.
-let desenhadas = 0;
+// Um modulo pode DESENHAR uma tela do zero (montar) ou DERIVAR copias de uma
+// tela que ja existe (derivar) - o caso das telas que so mudam o numero da
+// linha. As derivadas rodam depois, para encontrarem as extraidas prontas.
+let desenhadas = 0, derivadas = 0;
 const pastaMao = path.join(pastaFonte, 'telas-mao');
 if (fs.existsSync(pastaMao)) {
-  for (const arq of fs.readdirSync(pastaMao).filter(f => f.endsWith('.js'))) {
-    const mod = require(path.join(pastaMao, arq));
+  const mods = fs.readdirSync(pastaMao).filter(f => f.endsWith('.js'))
+    .map(arq => require(path.join(pastaMao, arq)));
+
+  for (const mod of mods) {
+    if (typeof mod.montar !== 'function') continue;
     const quantas = mod.quantas || 1;
     for (let i = 1; i <= quantas; i++) {
       const t = mod.montar(i);
       telas[t.nome] = t;
       desenhadas++;
     }
+  }
+  for (const mod of mods) {
+    if (typeof mod.derivar !== 'function') continue;
+    derivadas += (mod.derivar(telas) || []).length;
   }
 }
 
@@ -229,7 +239,7 @@ fs.writeFileSync(path.join(pastaSaida, 'index.html'),
 
 // --- relatorio ---------------------------------------------------------------------
 console.log('maquina vetorial "' + id + '" gerada em ' + path.relative(RAIZ, pastaSaida) + '/');
-console.log('  telas          : ' + nomes.length + (desenhadas ? '  (' + desenhadas + ' desenhadas a mao)' : ''));
+console.log('  telas          : ' + nomes.length + (desenhadas ? '  (' + desenhadas + ' desenhadas' : '') + (derivadas ? ', ' + derivadas + ' derivadas' : '') + (desenhadas||derivadas ? ')' : ''));
 console.log('  ligacoes vivas : ' + comLigacao);
 console.log('  imagens        : ' + imagensUsadas.size);
 if (aparencia) {

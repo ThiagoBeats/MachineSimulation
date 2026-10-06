@@ -41,7 +41,67 @@ function colunaDaEsquerda(tela) {
 
 const AMARELO = '#FFFF80';
 
+// As familias: a geometria e a mesma nas seis telas e so a tag muda de linha.
+//
+// A POSICAO VEM JUNTO porque _gfx-faltantes.json so cobre as telas que o
+// ViewPoint publicou - as copias derivadas nao estao la. Como as telas da
+// familia sao identicas (conferido no binario: mesma contagem de elementos e
+// mesma geometria), a posicao da gemea publicada vale para todas.
+const ENTRADAS_POR_FAMILIA = [
+  {
+    tela: /^Calibra Balanza Tk L(\d)$/,
+    campos: {
+      NumericInputCursorPoint1: {
+        tag: n => 'MainProgram.Peso_Patron_Tk_L' + n, casas: 1,
+        onde: { x: 318, y: 244, w: 70, h: 27 },
+      },
+    },
+  },
+  {
+    tela: /^Calibra Liquido (\d)$/,
+    campos: {
+      NumericInputCursorPoint2: {
+        tag: () => 'MainProgram.Tolerancia_Cal_L', casas: 1,
+        onde: { x: 203, y: 198, w: 48, h: 21 },
+      },
+      NumericInputCursorPoint1: {
+        tag: () => 'MainProgram.Vol_de_Probeta', casas: 1,
+        onde: { x: 603, y: 382, w: 66, h: 21 },
+      },
+    },
+  },
+];
+
+// Os campos que a familia manda e que nenhum vao do .gfx cobre - o caso das
+// telas derivadas, que nao entraram no inventario.
+function entradasDaFamilia(nome, jaPostos) {
+  const fora = [];
+  for (const fam of ENTRADAS_POR_FAMILIA) {
+    const m = fam.tela.exec(nome);
+    if (!m) continue;
+    for (const id of Object.keys(fam.campos)) {
+      if (jaPostos.has(id)) continue;
+      const c = fam.campos[id];
+      fora.push({
+        vao: { id: id, x: c.onde.x, y: c.onde.y, w: c.onde.w, h: c.onde.h },
+        conf: { tag: c.tag(m[1]), casas: c.casas },
+      });
+    }
+  }
+  return fora;
+}
+
 const ENTRADAS = {
+  'Calibra Balanza Probeta': {
+    NumericInputCursorPoint1: { tag: 'MainProgram.Peso_Patron_Probeta', casas: 1 },
+  },
+  'Calibra Balanza semilla': {
+    NumericInputEnable1: { tag: 'MainProgram.Peso_Patron_Semilla', casas: 1 },
+  },
+  Homogenizador: {
+    NumericInputCursorPoint1: { tag: 'MainProgram.RefFrecCTF', casas: 0 },
+    NumericInputCursorPoint2: { tag: 'MainProgram.RefFrecASP', casas: 0 },
+  },
   Balanza: {
     NumericInputCursorPoint2: { tag: 'MainProgram.PesoSemilla', casas: 0 },
     NumericInputCursorPoint1: { tag: 'MainProgram.CorteGruesoSemilla', casas: 0 },
@@ -76,12 +136,74 @@ function listaDeAlarmes(vao) {
 
 // ---------------------------------------------------------------------------
 
+// --- 4. defeitos do projeto que valem reparar na leitura ----------------------
+// Nao e maquiagem: sao erros que estao no arquivo do cliente e que, repetidos
+// aqui, apareceriam como defeito NOSSO. Cada um esta reportado para correcao no
+// projeto; enquanto nao for, a simulacao usa o valor certo.
+
+const CORRECOES = [
+  {
+    // vale para a 1 e para todas as copias que saem dela
+    tela: /^Calibra Liquido \d$/,
+    // Alguem colou um link do YouTube dentro do campo de tag do NumericDisplay2
+    // ao editar a tela. A tag virou "MainProgram.T" + a URL + "[0]", que nao
+    // existe - na maquina real esse campo nao mostra nada. Qual era a tag certa
+    // sabe-se comparando com a tela irma: "Calibra Liquido 2" tem
+    // TablaVol_Cal_L[0] nessa mesma posicao.
+    de: /MainProgram\.Thttps[^"')]*\[0\]/g,
+    para: 'MainProgram.TablaVol_Cal_L[0]',
+    porque: 'URL colada por engano dentro do nome da tag',
+  },
+  {
+    tela: /^Liquido L5$/,
+    // A tela da linha 5 mostra o peso do TANQUE 4: copia-e-cola que ficou para
+    // tras quando a tela foi duplicada.
+    de: /MainProgram\.Peso_Tk_L4\b/g,
+    para: 'MainProgram.Peso_Tk_L5',
+    porque: 'tela da linha 5 lia o peso do tanque 4',
+  },
+];
+
+function corrigir(telas) {
+  const feitas = [];
+  for (const c of CORRECOES) {
+    for (const nome of Object.keys(telas)) {
+      if (!c.tela.test(nome)) continue;
+      const tela = telas[nome];
+      let n = 0;
+    (function anda(lista) {
+      for (const e of lista) {
+        for (const campo of ['valor', 'escreve', 'indicador']) {
+          if (typeof e[campo] === 'string' && c.de.test(e[campo])) {
+            c.de.lastIndex = 0;
+            e[campo] = e[campo].replace(c.de, c.para); n++;
+          }
+          c.de.lastIndex = 0;
+        }
+        if (e.visivel && typeof e.visivel.expr === 'string') {
+          if (c.de.test(e.visivel.expr)) { c.de.lastIndex = 0; e.visivel.expr = e.visivel.expr.replace(c.de, c.para); n++; }
+          c.de.lastIndex = 0;
+        }
+        if (e.filhos) anda(e.filhos);
+      }
+      })(tela.elementos);
+      if (n) feitas.push(nome + ': ' + c.porque);
+    }
+  }
+  return feitas;
+}
+
 function cadaElemento(tela, fn) {
   (function anda(lista) { for (const e of lista) { fn(e); if (e.filhos) anda(e.filhos); } })(tela.elementos);
 }
 
 function aplicar(telas) {
   const conta = { coluna: 0, entrada: 0, alarmes: 0 };
+
+  // repara os defeitos do projeto antes de qualquer coisa, para as telas
+  // derivadas ja saírem do valor certo
+  const reparos = corrigir(telas);
+  reparos.forEach(r => console.log("  reparo        : " + r));
 
   let vaos = {};
   try { vaos = require('./_gfx-faltantes.json').telas || {}; }
@@ -98,15 +220,33 @@ function aplicar(telas) {
       conta.coluna++;
     }
 
-    if (vaos[nome]) {
-      for (const vao of vaos[nome]) {
-        const c = ENTRADAS[nome] && ENTRADAS[nome][vao.id];
-        if (c) { tela.elementos.push(campoNumerico(vao, c)); conta.entrada++; continue; }
-        if (vao.t === 'alarme' && /^AlarmList/.test(vao.id)) {
-          tela.elementos.push(listaDeAlarmes(vao));
-          conta.alarmes++;
+    const postos = new Set();
+    for (const vao of (vaos[nome] || [])) {
+      let c = ENTRADAS[nome] && ENTRADAS[nome][vao.id];
+      if (!c) {
+        for (const fam of ENTRADAS_POR_FAMILIA) {
+          const m = fam.tela.exec(nome);
+          if (!m || !fam.campos[vao.id]) continue;
+          const base = fam.campos[vao.id];
+          c = { tag: base.tag(m[1]), casas: base.casas };
+          break;
         }
       }
+      if (c) {
+        tela.elementos.push(campoNumerico(vao, c));
+        postos.add(vao.id); conta.entrada++;
+        continue;
+      }
+      if (vao.t === 'alarme' && /^AlarmList/.test(vao.id)) {
+        tela.elementos.push(listaDeAlarmes(vao));
+        conta.alarmes++;
+      }
+    }
+
+    // as copias derivadas nao tem vao no inventario: a familia traz a posicao
+    for (const x of entradasDaFamilia(nome, postos)) {
+      tela.elementos.push(campoNumerico(x.vao, x.conf));
+      conta.entrada++;
     }
   }
   return conta;
