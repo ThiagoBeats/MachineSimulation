@@ -52,6 +52,22 @@ const bool = v => v === 'true' || v === 'True';
 const PT_PARA_PX = 1.3333;                     // a IHM desenha a 96 dpi
 
 // --- geometria ----------------------------------------------------------------
+// O XAML separa as coordenadas por VIRGULA ou por ESPACO, conforme quem gravou:
+// o .mer de junho usava virgula ("448,465,213,100") e a pasta do projeto de
+// agosto usa espaco ("448 465 213 100"). Dividir so por virgula fazia 77 das
+// 106 formas sairem com caminho "MNaN undefined..." - ou seja, invisiveis.
+function numeros(s, quantos) {
+  const v = String(s || '').trim().split(/[\s,]+/).map(Number).filter(x => !isNaN(x));
+  while (quantos && v.length < quantos) v.push(0);
+  return v;
+}
+
+// Um par de coordenadas, sempre separado por espaco, como o SVG quer.
+function par(s) {
+  const v = numeros(s, 2);
+  return v[0] + ' ' + v[1];
+}
+
 function caminhoDe(no) {
   const p = [];
   for (const g of no.filhos) {
@@ -60,24 +76,26 @@ function caminhoDe(no) {
         .filter(x => x.nome === 'PathFigure');
       for (const fig of figuras) {
         if (!fig.at.StartPoint) continue;
-        p.push('M' + fig.at.StartPoint.replace(',', ' '));
+        p.push('M' + par(fig.at.StartPoint));
         const segs = fig.filhos.flatMap(x => x.nome === 'PathSegmentCollection' ? x.filhos : [x]);
         for (const seg of segs) {
-          if (seg.nome === 'LineSegment') p.push('L' + seg.at.Point.replace(',', ' '));
+          if (seg.nome === 'LineSegment') p.push('L' + par(seg.at.Point));
           else if (seg.nome === 'PolyLineSegment') {
-            (seg.at.Points || '').trim().split(/\s+/).forEach(pt => pt && p.push('L' + pt.replace(',', ' ')));
+            // a lista vem como "x,y x,y" ou "x y x y": le-se aos pares
+            const pts = numeros(seg.at.Points);
+            for (let k = 0; k + 1 < pts.length; k += 2) p.push('L' + pts[k] + ' ' + pts[k + 1]);
           } else if (seg.nome === 'ArcSegment') {
-            p.push('A' + (seg.at.Size || '1,1').replace(',', ' ')
+            p.push('A' + par(seg.at.Size || '1 1')
               + ' ' + num(seg.at.RotationAngle)
               + ' ' + (bool(seg.at.IsLargeArc) ? 1 : 0)
               + ' ' + (seg.at.SweepDirection === 'Clockwise' ? 1 : 0)
-              + ' ' + seg.at.Point.replace(',', ' '));
+              + ' ' + par(seg.at.Point));
           }
         }
         if (bool(fig.at.IsClosed)) p.push('Z');
       }
     } else if (g.nome === 'RectangleGeometry') {
-      const [x, y, w, h] = (g.at.Rect || '0,0,0,0').split(',').map(Number);
+      const [x, y, w, h] = numeros(g.at.Rect, 4);
       const rx = num(g.at.RadiusX);
       if (rx) {
         p.push(`M${x + rx} ${y}H${x + w - rx}A${rx} ${rx} 0 0 1 ${x + w} ${y + rx}`
@@ -88,7 +106,7 @@ function caminhoDe(no) {
         p.push(`M${x} ${y}H${x + w}V${y + h}H${x}Z`);
       }
     } else if (g.nome === 'EllipseGeometry') {
-      const [cx, cy] = (g.at.Center || '0,0').split(',').map(Number);
+      const [cx, cy] = numeros(g.at.Center, 2);
       const rx = num(g.at.RadiusX), ry = num(g.at.RadiusY);
       p.push(`M${cx - rx} ${cy}a${rx} ${ry} 0 1 0 ${rx * 2} 0a${rx} ${ry} 0 1 0 ${-rx * 2} 0Z`);
     }

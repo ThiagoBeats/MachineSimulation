@@ -10,7 +10,7 @@
     {
      "t": "forma",
      "id": "Polygon4",
-     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "d": "M0.5 0.5H799.5V59.5H0.5Z",
      "preenche": "#C6C6C6",
      "traco": "#AAAAAA",
      "espessura": 1
@@ -18,7 +18,7 @@
     {
      "t": "forma",
      "id": "Polygon3",
-     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "d": "M710.5 60.5H799.5V599.5H710.5Z",
      "preenche": "#C6C6C6",
      "traco": "#AAAAAA",
      "espessura": 1
@@ -74,7 +74,7 @@
     {
      "t": "forma",
      "id": "Polygon1",
-     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "d": "M157.5 107.5H568.5V519.5H157.5Z",
      "preenche": "#AAD38F",
      "traco": "gray",
      "espessura": 1
@@ -339,7 +339,7 @@
         {
          "t": "forma",
          "id": "Polygon7",
-         "d": "MNaN undefinedHNaNVNaNHNaNZ",
+         "d": "M8.5 7.5H96.5V46.5H8.5Z",
          "preenche": "#E22028",
          "traco": "black",
          "espessura": 1

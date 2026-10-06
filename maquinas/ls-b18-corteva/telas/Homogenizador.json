@@ -19,7 +19,7 @@
     {
      "t": "forma",
      "id": "Polygon15",
-     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "d": "M175.5 389.5H256.5V443.5H175.5Z",
      "preenche": "black",
      "traco": "#AAAAAA",
      "espessura": 1
@@ -27,7 +27,7 @@
     {
      "t": "forma",
      "id": "Polygon13",
-     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "d": "M584.5 124.5H665.5V149.5H584.5Z",
      "preenche": "black",
      "traco": "#AAAAAA",
      "espessura": 1
@@ -35,7 +35,7 @@
     {
      "t": "forma",
      "id": "Polygon12",
-     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "d": "M579.5 390.5H660.5V444.5H579.5Z",
      "preenche": "black",
      "traco": "#AAAAAA",
      "espessura": 1
@@ -43,7 +43,7 @@
     {
      "t": "forma",
      "id": "Polygon6",
-     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "d": "M0 60H90V600H0Z",
      "preenche": "#E9E9BF",
      "traco": null,
      "espessura": 1
@@ -51,7 +51,7 @@
     {
      "t": "forma",
      "id": "Polygon5",
-     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "d": "M710.5 60.5H799.5V599.5H710.5Z",
      "preenche": "#C6C6C6",
      "traco": "#AAAAAA",
      "espessura": 1
@@ -59,7 +59,7 @@
     {
      "t": "forma",
      "id": "Polygon4",
-     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "d": "M0.5 0.5H799.5V59.5H0.5Z",
      "preenche": "#C6C6C6",
      "traco": "#AAAAAA",
      "espessura": 1
@@ -203,7 +203,7 @@
       {
        "t": "forma",
        "id": "Polygon1",
-       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "d": "M175.5 443.5H256.5V536.5H175.5Z",
        "preenche": "black",
        "traco": "#AAAAAA",
        "espessura": 1
@@ -356,7 +356,7 @@
       {
        "t": "forma",
        "id": "Polygon2",
-       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "d": "M580.5 445.5H661.5V538.5H580.5Z",
        "preenche": "black",
        "traco": "#AAAAAA",
        "espessura": 1
@@ -586,7 +586,7 @@
       {
        "t": "forma",
        "id": "Polygon11",
-       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "d": "M579.5 444.5H660.5V476.5H579.5Z",
        "preenche": "yellow",
        "traco": "black",
        "espessura": 1
@@ -619,7 +619,7 @@
       {
        "t": "forma",
        "id": "Polygon3",
-       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "d": "M584.5 148.5H665.5V201.5H584.5Z",
        "preenche": "black",
        "traco": "#AAAAAA",
        "espessura": 1
@@ -757,7 +757,7 @@
       {
        "t": "forma",
        "id": "Polygon14",
-       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "d": "M584.5 148.5H665.5V180.5H584.5Z",
        "preenche": "yellow",
        "traco": "black",
        "espessura": 1
@@ -790,7 +790,7 @@
       {
        "t": "forma",
        "id": "Polygon17",
-       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "d": "M175.5 443.5H256.5V509.5H175.5Z",
        "preenche": "#0B84FD",
        "traco": "black",
        "espessura": 1
@@ -997,7 +997,7 @@
     {
      "t": "forma",
      "id": "Polygon8",
-     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "d": "M411.5 345.5H414.5V365.5H411.5Z",
      "preenche": "black",
      "traco": "#AAAAAA",
      "espessura": 1
@@ -1005,7 +1005,7 @@
     {
      "t": "forma",
      "id": "Polygon10",
-     "d": "MNaN undefinedHNaNVNaNHNaNZ",
+     "d": "M402.5 345.5H444.5V365.5H402.5Z",
      "preenche": "#919191",
      "traco": "#AAAAAA",
      "espessura": 1
@@ -1013,7 +1013,7 @@
     {
      "t": "forma",
      "id": "RoundedRectangle2",
-     "d": "MNaN undefinedHNaNA50 50 0 0 1 NaN NaNVNaNA50 50 0 0 1 NaN NaNHNaNA50 50 0 0 1 NaN NaNVNaNA50 50 0 0 1 NaN undefinedZ",
+     "d": "M50 0H150A50 50 0 0 1 200 50V150A50 50 0 0 1 150 200H50A50 50 0 0 1 0 150V50A50 50 0 0 1 50 0Z",
      "preenche": "#C6C6C6",
      "traco": "black",
      "espessura": 1
@@ -1025,7 +1025,7 @@
       {
        "t": "forma",
        "id": "Polygon16",
-       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "d": "M175.5 443.5H256.5V475.5H175.5Z",
        "preenche": "yellow",
        "traco": "black",
        "espessura": 1
@@ -1091,7 +1091,7 @@
       {
        "t": "forma",
        "id": "Polygon7",
-       "d": "MNaN undefinedHNaNVNaNHNaNZ",
+       "d": "M0.5 198.5H89.5V269.5H0.5Z",
        "preenche": "silver",
        "traco": "#E8E8E8",
        "espessura": 1
@@ -1511,7 +1511,7 @@
         {
          "t": "forma",
          "id": "Polygon18",
-         "d": "MNaN undefinedHNaNVNaNHNaNZ",
+         "d": "M8.5 7.5H96.5V46.5H8.5Z",
          "preenche": "#E22028",
          "traco": "black",
          "espessura": 1

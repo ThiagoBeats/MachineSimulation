@@ -178,26 +178,14 @@
       + doisDigitos(d.getHours()) + ':' + doisDigitos(d.getMinutes()) + ':' + doisDigitos(d.getSeconds());
   }
 
+  // A FAIXA CINZA JA E DA PROPRIA TELA: cada uma desenha a sua, e ela aparece
+  // agora que as formas pararam de sair com caminho NaN. O que falta, e que e
+  // de um display ancorado por cima de tudo, e o quadro do operador com o
+  // relogio - por isso ele se desenha por ULTIMO, e nao por baixo.
   function montarCabecalho(svg, tela, cfg, animados) {
     var m = medidasDoCabecalho(tela);
     var g = criar('g', { class: 'cabecalho' });
-    var id = 'grad-cab';
 
-    var defs = criar('defs', {});
-    var grad = criar('linearGradient', { id: id, x1: '0', y1: '0', x2: '0', y2: '1' });
-    [['0', '#FCFCFC'], ['0.45', '#EFEFEF'], ['1', '#DCDCDC']].forEach(function (p) {
-      grad.appendChild(criar('stop', { offset: p[0], 'stop-color': p[1] }));
-    });
-    defs.appendChild(grad);
-    g.appendChild(defs);
-
-    g.appendChild(criar('rect', { x: 0, y: 0, width: tela.largura, height: m.altura, fill: 'url(#' + id + ')' }));
-    g.appendChild(criar('line', {
-      x1: 0, y1: m.altura, x2: tela.largura, y2: m.altura,
-      stroke: '#B4B4B4', 'stroke-width': 1
-    }));
-
-    // o quadro do operador, em relevo, no canto esquerdo
     g.appendChild(criar('rect', {
       x: 0, y: 0, width: m.painel, height: m.painelAltura,
       fill: '#F4F4F4', stroke: '#BDBDBD', 'stroke-width': 1
@@ -232,7 +220,6 @@
     svg.appendChild(criar('rect', { width: tela.largura, height: tela.altura, fill: tela.fundo || '#FFFFFF' }));
 
     var animados = [];
-    if (ctx.cabecalho) montarCabecalho(svg, tela, ctx.cabecalho, animados);
 
     function registrar(no, el, extra) {
       if (el.visivel) animados.push({ tipo: 'visivel', no: no, fn: el.visivel.expr, quando: el.visivel.quando });
@@ -347,6 +334,7 @@
     }
 
     for (var i = 0; i < tela.elementos.length; i++) desenhar(tela.elementos[i], svg);
+    if (ctx.cabecalho) montarCabecalho(svg, tela, ctx.cabecalho, animados);
     return { svg: svg, animados: animados };
   }
 
