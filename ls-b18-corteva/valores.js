@@ -213,6 +213,41 @@ window.VALORES = {
   'MainProgram.Presion_Aire_Min': 4,
   'MainProgram.Presion_Aire_Max': 8,
 
+  // --- historico de pesagem ---------------------------------------------------
+  // Do print "HISTORIA DE PESAGENS": as dez ultimas bateladas, com o erro de
+  // cada uma. Na maquina quem escreve e o CLP ao fechar cada batelada; aqui
+  // entram como ponto de partida, para a tela nao abrir vazia.
+  'MainProgram.Pesadas[00]': 150.7,
+  'MainProgram.Error_Pesada[00]': -0.7,
+  'MainProgram.Pesadas[01]': 150.4,
+  'MainProgram.Error_Pesada[01]': -0.4,
+  'MainProgram.Pesadas[02]': 150.4,
+  'MainProgram.Error_Pesada[02]': -0.4,
+  'MainProgram.Pesadas[03]': 149.9,
+  'MainProgram.Error_Pesada[03]': 0.1,
+  'MainProgram.Pesadas[04]': 149.9,
+  'MainProgram.Error_Pesada[04]': 0.1,
+  'MainProgram.Pesadas[05]': 149.7,
+  'MainProgram.Error_Pesada[05]': 0.3,
+  'MainProgram.Pesadas[06]': 150.1,
+  'MainProgram.Error_Pesada[06]': -0.1,
+  'MainProgram.Pesadas[07]': 151,
+  'MainProgram.Error_Pesada[07]': -1,
+  'MainProgram.Pesadas[08]': 150.5,
+  'MainProgram.Error_Pesada[08]': -0.5,
+  'MainProgram.Pesadas[09]': 149.2,
+  'MainProgram.Error_Pesada[09]': 0.8,
+
+  // --- consumo por dosagem: NAO se semeia ------------------------------------
+  // A tela "TABELA DE LIQUIDOS" mostra RegistroConsumos_Lx, que e o AOI
+  // RegistrosConsumo. Ele tem uma entrada "Zerar" ligada em LoteCargado: ao
+  // carregar um lote novo, o historico de consumo e apagado - e o certo, e
+  // valor posto aqui seria apagado junto.
+  //
+  // Cada registro e gravado quando uma dose TERMINA, na borda de descida de
+  // Ini_Iny_Lx. Entao a grade comeca vazia e vai se preenchendo conforme a
+  // maquina dosa, que e como ela se comporta na fabrica.
+
   // --- o cadastro de produtos -------------------------------------------------
   // A tela "Liquido Circuito" escolhe daqui o que esta carregado em cada linha.
   // Os nomes saem do print "LIQUIDOS", que mostra a tabela cadastrada; as
