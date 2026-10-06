@@ -395,6 +395,76 @@
   // --- execucao de um elemento ------------------------------------------------------
   var contexto = { salto: null };
 
+  // ---------------------------------------------------------------------------
+  // DOIS AOIs QUE A EXTRACAO NAO CONSEGUIU TRAZER
+  // ---------------------------------------------------------------------------
+  // Quase todo AOI do projeto roda aqui como ladder, interpretado rung a rung,
+  // igual ao original. Estes dois nao: Tabla_Ultimos e Promedio_Tabla usam um
+  // laco de JMP/LBL com indice variavel, e o que saiu do .ACD esta corrompido
+  // de um jeito que nao da para consertar lendo o ladder:
+  //
+  //   - os rungs 5 e 6 perderam a condicao e viraram "MOV 0 Posicion" seguido
+  //     de "MOV 18 Posicion", um sobrescrevendo o outro;
+  //   - os pares OTL/OTU do mesmo bit, que no original estao em ramos
+  //     paralelos exclusivos, foram achatados na mesma serie, entao o bit e
+  //     ligado e desligado na mesma varredura;
+  //   - as comparacoes do rung 8 viraram literais ("-1 > 0").
+  //
+  // Rodar isso como esta nao da erro: da uma tabela que nunca recebe nada.
+  // Pesadas[] ficava em zero, a tela "Historia de pesajes" ficava em branco e
+  // Total_Procesado nunca somava - o lote nao terminava nunca.
+  //
+  // Entao os dois sao implementados aqui pelo que FAZEM, que o nome e os
+  // parametros dizem sem ambiguidade: empurrar o ultimo valor para o topo de
+  // uma tabela e tirar a media dos primeiros N. E a unica parte do CLP que
+  // nao e o ladder do projeto, e esta declarada.
+  var TAMANHO_TABELA = 20;      // o rung 6 do original comeca o laco em 18
+
+  function membroInstancia(inst, m) { return inst + '.' + m; }
+
+  // sobe o valor para Dato[0] na borda de Trigger; pulsa Finalizado
+  function tablaUltimos(args) {
+    var inst = resolver(String(args[0]));
+    var ingresso = Number(ler(resolver(String(args[1])))) || 0;
+    var gatilho = !!ler(resolver(String(args[2])));
+    var finalizado = resolver(String(args[3]));
+    var tabela = resolver(String(args[4]));
+
+    var marca = membroInstancia(inst, '__gatilhoAnterior');
+    var antes = !!ler(marca);
+    escrever(marca, gatilho ? 1 : 0);
+
+    if (!gatilho || antes) { escrever(finalizado, 0); return; }
+
+    for (var i = TAMANHO_TABELA - 2; i >= 0; i--) {
+      escrever(tabela + '[' + (i + 1) + ']', ler(tabela + '[' + i + ']'));
+    }
+    escrever(tabela + '[0]', ingresso);
+    escrever(finalizado, 1);
+  }
+
+  // media dos primeiros Cant elementos, na borda de Trigger
+  function promedioTabla(args) {
+    var inst = resolver(String(args[0]));
+    var gatilho = !!ler(resolver(String(args[1])));
+    var resultado = resolver(String(args[2]));
+    var tabela = resolver(String(args[3]));
+    var quantos = Number(ler(resolver(String(args[4])))) || 0;
+
+    var marca = membroInstancia(inst, '__gatilhoAnterior');
+    var antes = !!ler(marca);
+    escrever(marca, gatilho ? 1 : 0);
+    if (!gatilho || antes) return;
+
+    if (quantos < 1) quantos = 1;
+    if (quantos > TAMANHO_TABELA) quantos = TAMANHO_TABELA;
+    var soma = 0;
+    for (var i = 0; i < quantos; i++) soma += Number(ler(tabela + '[' + i + ']')) || 0;
+    escrever(resultado, soma / quantos);
+  }
+
+  var NATIVOS = { Tabla_Ultimos: tablaUltimos, Promedio_Tabla: promedioTabla };
+
   function executar(no, energia) {
     if (!no) return energia;
     if (orcamento-- < 0) return false;
@@ -417,6 +487,7 @@
     if (SAIDAS[nome]) { SAIDAS[nome](args, energia); return energia; }
 
     // chamada de AOI
+    if (NATIVOS[nome]) { if (energia) NATIVOS[nome](args); return energia; }
     if (programa.aoi[nome]) { if (energia) rodarAoi(nome, args); return energia; }
 
     naoImplementadas[nome] = (naoImplementadas[nome] || 0) + 1;
@@ -505,13 +576,33 @@
   }
 
   // --- varredura ------------------------------------------------------------------------
+  // O orcamento existe para que um laco de JSR mal extraido nao trave a aba.
+  // Nao e um limite de tempo de varredura, e e importante que nunca se
+  // comporte como um: se cortar uma varredura normal, as ultimas rotinas
+  // simplesmente nao rodam e o CLP passa a mentir, em silencio e sem erro.
+  //
+  // O programa desta maquina custa cerca de 21 mil passos por varredura, com
+  // pico medido de 21 246 - duas ordens de grandeza abaixo do limite. Ele foi
+  // folgado para 4 milhoes e passou a contar quantas varreduras o estouram,
+  // para que o dia em que isso acontecer seja um numero visivel e nao um
+  // comportamento estranho da maquina.
+  var ORCAMENTO = 4000000;
+  var cortadas = 0;             // varreduras que nao chegaram ao fim
+  var ultimoCusto = 0;
+  var picoCusto = 0;
+  var varreduras = 0;
+
   function varrer() {
     if (!programa) return;
     agora += periodo;
-    orcamento = 400000;
+    orcamento = ORCAMENTO;
     escopo = null;
     pilha.length = 0;
     for (var i = 0; i < programa.entradas.length; i++) rodarRotina(programa.entradas[i]);
+    varreduras++;
+    ultimoCusto = ORCAMENTO - orcamento;
+    if (ultimoCusto > picoCusto) picoCusto = ultimoCusto;
+    if (orcamento < 0) cortadas++;
   }
 
   raiz.Ladder = {
@@ -524,6 +615,7 @@
     },
     varrer: varrer,
     naoImplementadas: function () { return naoImplementadas; },
+    custo: function () { return { varreduras: varreduras, passos: ultimoCusto, pico: picoCusto, limite: ORCAMENTO, cortadas: cortadas }; },
     resumo: function () {
       if (!programa) return null;
       var n = 0;

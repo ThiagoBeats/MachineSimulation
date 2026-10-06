@@ -22,14 +22,31 @@
   var valores = {};
   var ouvintes = [];
 
+  // O projeto escreve o indice de vetor com zero a esquerda - ListaLiquidos[00],
+  // Pesadas[07] - e o CLP com o numero puro - ListaLiquidos[0]. Para o Logix e o
+  // mesmo elemento; para um mapa de chaves em texto, nao. Sem normalizar, a tela
+  // le [00] e nunca acha o que foi gravado em [0].
+  var RE_INDICE = /\[0+(\d)/g;
+
+  function normalizar(caminho) {
+    return caminho.indexOf('[0') < 0 ? caminho : caminho.replace(RE_INDICE, '[$1');
+  }
+
+  // A normalizacao tem de valer SEMPRE, na leitura e na escrita, nao so quando
+  // a chave original falta. Tentar a chave crua primeiro parece inofensivo e
+  // nao e: basta alguem semear Pesadas[00] para as duas chaves passarem a
+  // existir lado a lado, e entao a tela mostra para sempre a semente enquanto
+  // o CLP grava em Pesadas[0] - foi o que aconteceu com a Historia de pesagens,
+  // que exibia dez bateladas inventadas com a maquina rodando ao lado.
   function ler(caminho) {
-    var v = valores[caminho];
+    var v = valores[normalizar(caminho)];
     return v === undefined ? 0 : v;
   }
 
   function escrever(caminho, valor) {
-    if (valores[caminho] === valor) return false;
-    valores[caminho] = valor;
+    var c = normalizar(caminho);
+    if (valores[c] === valor) return false;
+    valores[c] = valor;
     return true;
   }
 
@@ -698,7 +715,16 @@
 
       } else if (a.tipo === 'mostrar') {
         var bruto = avaliar(a.fn, a.el.t === 'numero' ? 0 : '');
-        a.no.textContent = a.el.t === 'numero' ? formatarNumero(bruto, a.el) : String(bruto);
+        if (a.el.t === 'numero') {
+          a.no.textContent = formatarNumero(bruto, a.el);
+        } else {
+          // Campo de texto com tag vazia: o interpretador devolve 0 para
+          // qualquer chave que o CLP ainda nao escreveu. Um display de cadeia
+          // do FactoryTalk fica em branco nesse caso, nao escreve "0" - era o
+          // que enchia as doze linhas vagas do cadastro de liquidos.
+          a.no.textContent = (bruto === 0 || bruto === null || bruto === undefined)
+            ? '' : String(bruto);
+        }
 
       } else if (a.tipo === 'estado') {
         var n = Number(avaliar(a.fn, 0));
@@ -747,7 +773,13 @@
     ler: ler,
     escrever: escrever,
     valores: function () { return valores; },
-    definirValores: function (v) { valores = v; },
+    // As chaves entram normalizadas, senao uma semente escrita Pesadas[00]
+    // ficaria para sempre ao lado do Pesadas[0] que o CLP grava, e a tela
+    // leria a semente.
+    definirValores: function (v) {
+      valores = {};
+      for (var k in v) valores[normalizar(k)] = v[k];
+    },
     montarTela: montarTela,
     atualizar: atualizar,
     avaliar: avaliar,

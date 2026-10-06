@@ -297,6 +297,54 @@
     }
 
     tanquesDeLavagem(ler, escrever, s);
+    historicoDeConsumo(ler, escrever);
+  }
+
+  // --- a tabela de liquidos consumidos --------------------------------------
+  // A tela "Tabela de Liquidos" mostra as ultimas vinte dosagens de cada linha.
+  // Quem as grava e o AOI RegistrosConsumo, uma instancia por linha, empurrando
+  // a dosagem fechada para Consumo_01 e deslocando o resto para baixo.
+  //
+  // Numa sessao de treinamento a tabela nasce vazia e so comeca a encher depois
+  // de vinte bateladas - o operador nunca chega a ver a tela funcionando. Pior:
+  // o rung que liga RegistrosConsumo.Zerar a LoteCargado limpa tudo na borda de
+  // descida, entao semear os valores em valores.js nao adianta, somem no
+  // primeiro lote.
+  //
+  // Entao o historico entra aqui, na planta: um registro so se preenche quando
+  // esta em ZERO. O que o CLP escrever de verdade e diferente de zero e fica -
+  // a dosagem real da batelada sempre vence o numero inventado.
+  //
+  // Os valores sao inventados, como o usuario pediu, mas nao sorteados a cada
+  // varredura: isso faria a tela tremer. Sao uma sequencia fixa por linha, com
+  // a ordem de grandeza que a linha tem de verdade (litros por batelada).
+  var BASE_CONSUMO = { 1: 11.4, 2: 7.8, 3: 4.2, 4: 9.1, 5: 0, 6: 18.6 };
+  var historico = null;
+
+  function montarHistorico() {
+    var t = {};
+    for (var n = 1; n <= 6; n++) {
+      var base = BASE_CONSUMO[n];
+      t[n] = [];
+      for (var d = 1; d <= 20; d++) {
+        // oscilacao de +-6% em torno da base, deterministica
+        var onda = Math.sin(n * 2.3 + d * 0.9) * 0.06;
+        t[n].push(base ? Math.round(base * (1 + onda) * 10) / 10 : 0);
+      }
+    }
+    return t;
+  }
+
+  function historicoDeConsumo(ler, escrever) {
+    if (!historico) historico = montarHistorico();
+    for (var n = 1; n <= 6; n++) {
+      if (!BASE_CONSUMO[n]) continue;                 // linha 5 nao tem bomba
+      var raiz = 'RegistroConsumos_L' + n + '.RegistrosConsumo.Consumo_';
+      for (var d = 1; d <= 20; d++) {
+        var chave = raiz + (d < 10 ? '0' : '') + d;
+        if (!Number(ler(chave))) escrever(chave, historico[n][d - 1]);
+      }
+    }
   }
 
   // --- o tanque de cada linha, durante a lavagem -----------------------------

@@ -96,6 +96,12 @@ window.VALORES = {
   'MainProgram.CorteGruesoSemilla': 110,            // print: "Corte grosso 110"
   'MainProgram.CorteFinoSemilla': 147,              // print: "Corte fino 147,0"
 
+  // Sobre quantas pesagens o CLP tira o erro medio. Nao esta em nenhum print:
+  // e o parametro Cant do AOI Promedio_Tabla, e a tabela tem dez linhas na
+  // tela. Em zero o AOI dividiria por zero, entao vale declarar.
+  'MainProgram.CantErrorPromedio': 10,
+  'MainProgram.CantErrorPromedioCorteFino': 10,
+
   // --- parametros dos tanques ------------------------------------------------
   // Print "PARAMETROS": os seis tanques tem os mesmos limites e a mesma vazao.
   // A tela de parametros e uma das que so existem no .gfx; estes valores vieram
@@ -252,6 +258,26 @@ window.VALORES = {
   // A tela "Liquido Circuito" escolhe daqui o que esta carregado em cada linha.
   // Os nomes saem do print "LIQUIDOS", que mostra a tabela cadastrada; as
   // posicoes 10 a 20 estao vazias na maquina tambem.
+  // densidade e offset de cada produto, do mesmo print
+  'MainProgram.PesoEspec[0]': 1.19,
+  'MainProgram.OffsetLiquidos[0]': 0.534,
+  'MainProgram.PesoEspec[1]': 1.07,
+  'MainProgram.OffsetLiquidos[1]': 0.482,
+  'MainProgram.PesoEspec[2]': 1.08,
+  'MainProgram.OffsetLiquidos[2]': 0.075,
+  'MainProgram.PesoEspec[3]': 0,
+  'MainProgram.OffsetLiquidos[3]': 0,
+  'MainProgram.PesoEspec[4]': 1.2,
+  'MainProgram.OffsetLiquidos[4]': 0.065,
+  'MainProgram.PesoEspec[5]': 1.2,
+  'MainProgram.OffsetLiquidos[5]': 0.015,
+  'MainProgram.PesoEspec[6]': 1.21,
+  'MainProgram.OffsetLiquidos[6]': -0.2,
+  'MainProgram.PesoEspec[7]': 1.19,
+  'MainProgram.OffsetLiquidos[7]': 0.051,
+  'MainProgram.PesoEspec[8]': 1,
+  'MainProgram.OffsetLiquidos[8]': 0.039,
+
   'MainProgram.ListaLiquidos[0]': '5-MQ.NIPx2.DL440/UNI',
   'MainProgram.ListaLiquidos[1]': '5-LUM.DL440.ACTP/KG',
   'MainProgram.ListaLiquidos[2]': '2-MQ.NIPT.DL440.ACT.',
@@ -301,5 +327,30 @@ window.VALORES = {
   'MainProgram.Densidad_L6': 1.000, 'MainProgram.Offset_L6': 0.039,   // PRE MISTURA
 
   // --- lote de exemplo, para a tela abrir com algo escrito ---
-  'MainProgram.Total_Procesado': 0
+  'MainProgram.Total_Procesado': 0,
+
+  // --- os dois temporizadores de esvaziamento da lavagem --------------------
+  // O AOI Lavagem tem tres passos: encher (10), recircular (15) e esvaziar
+  // (20). No passo 20 ele arma dois temporizadores em paralelo -
+  // TON_Esvaziamento, que confirma o tanque vazio, e TON_ForcarFinalizacao,
+  // que desiste se demorar demais - e qualquer um dos dois encerra a lavagem.
+  //
+  // Os presets deles sao tags do AOI e nao vieram do .ACD: ficavam em zero.
+  // Em zero, TON_ForcarFinalizacao termina na MESMA varredura em que o passo
+  // 20 comeca, entao a lavagem terminava sem nunca esvaziar - a sequencia
+  // rodava inteira e o tanque continuava com 50 kg dentro.
+  //
+  // Os numeros abaixo sao estimativa, nao vieram do projeto: tres segundos de
+  // tanque abaixo de 1 kg para confirmar que esvaziou, e dois minutos de
+  // paciencia antes de desistir (o tanque leva ~13 s para esvaziar).
+  'Lavagem_L1.Lavagem.TON_Esvaziamento.TIMER.PRE': 3000,
+  'Lavagem_L2.Lavagem.TON_Esvaziamento.TIMER.PRE': 3000,
+  'Lavagem_L3.Lavagem.TON_Esvaziamento.TIMER.PRE': 3000,
+  'Lavagem_L4.Lavagem.TON_Esvaziamento.TIMER.PRE': 3000,
+  'Lavagem_L5.Lavagem.TON_Esvaziamento.TIMER.PRE': 3000,
+  'Lavagem_L1.Lavagem.TON_ForcarFinalizacao.TIMER.PRE': 120000,
+  'Lavagem_L2.Lavagem.TON_ForcarFinalizacao.TIMER.PRE': 120000,
+  'Lavagem_L3.Lavagem.TON_ForcarFinalizacao.TIMER.PRE': 120000,
+  'Lavagem_L4.Lavagem.TON_ForcarFinalizacao.TIMER.PRE': 120000,
+  'Lavagem_L5.Lavagem.TON_ForcarFinalizacao.TIMER.PRE': 120000
 };
