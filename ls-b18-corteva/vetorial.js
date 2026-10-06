@@ -288,6 +288,20 @@
           registrar(no, el, {
             tipo: 'mostrar', no: alvo, caixa: caixa, fn: el.valor, el: el
           });
+
+          // Campo que o operador ajusta: no terminal real, tocar nele abre um
+          // teclado. Sem isso nao se acerta o tempo de limpeza nem a receita.
+          if (el.escreve) {
+            caixa.setAttribute('style', 'cursor:pointer');
+            var toque = criar('rect', {
+              x: el.x, y: el.y, width: el.w, height: el.h,
+              fill: 'transparent', style: 'cursor:pointer'
+            });
+            no.appendChild(toque);
+            toque.addEventListener('click', function () {
+              abrirTeclado(ctx, el);
+            });
+          }
           return;
         }
 
@@ -334,6 +348,97 @@
 
     for (var i = 0; i < tela.elementos.length; i++) desenhar(tela.elementos[i], svg);
     return { svg: svg, animados: animados };
+  }
+
+  // --- teclado numerico ---------------------------------------------------------
+  // No terminal, tocar num campo de entrada abre um teclado. Aqui ele e um
+  // painel desenhado por cima da tela, nas coordenadas dela, para continuar
+  // funcionando em qualquer escala e tambem no toque.
+
+  var TECLAS = [
+    ['7', '8', '9'],
+    ['4', '5', '6'],
+    ['1', '2', '3'],
+    ['0', ',', '⌫'],
+  ];
+
+  function abrirTeclado(ctx, el) {
+    var svg = ctx.svgAtual && ctx.svgAtual();
+    if (!svg) return;
+    var larg = Number(svg.getAttribute('viewBox').split(' ')[2]);
+    var alt = Number(svg.getAttribute('viewBox').split(' ')[3]);
+
+    var P = { w: 236, h: 280 };
+    var x0 = Math.round((larg - P.w) / 2), y0 = Math.round((alt - P.h) / 2);
+    var digitado = '';
+
+    var g = criar('g', { class: 'teclado' });
+
+    // escurece o fundo e segura o clique de fora
+    var veu = criar('rect', { x: 0, y: 0, width: larg, height: alt, fill: 'rgba(0,0,0,.35)' });
+    g.appendChild(veu);
+
+    g.appendChild(criar('rect', {
+      x: x0, y: y0, width: P.w, height: P.h,
+      fill: '#ECECEC', stroke: '#5A5A5A', 'stroke-width': 2
+    }));
+
+    var estTitulo = { fonte: 12, cor: '#333', negrito: false, italico: false, alinha: 'middleCenter' };
+    legenda(g, el.rotulo || 'Novo valor', x0, y0 + 6, P.w, 18, estTitulo, true);
+
+    var visor = criar('rect', {
+      x: x0 + 12, y: y0 + 28, width: P.w - 24, height: 34,
+      fill: '#FFFFFF', stroke: '#707070', 'stroke-width': 1
+    });
+    g.appendChild(visor);
+    var noVisor = criar('g', {});
+    g.appendChild(noVisor);
+
+    function mostrar() {
+      while (noVisor.firstChild) noVisor.removeChild(noVisor.firstChild);
+      legenda(noVisor, digitado || '0', x0 + 16, y0 + 28, P.w - 32, 34,
+        { fonte: 20, cor: 'black', negrito: false, italico: false, alinha: 'middleRight' }, true);
+    }
+    mostrar();
+
+    function tecla(rotulo, x, y, w, h, aoTocar, cor) {
+      var b = criar('g', {});
+      b.appendChild(criar('rect', {
+        x: x, y: y, width: w, height: h, fill: cor || '#D4D0C8',
+        stroke: '#808080', 'stroke-width': 1, style: 'cursor:pointer'
+      }));
+      legenda(b, rotulo, x, y, w, h,
+        { fonte: 16, cor: 'black', negrito: false, italico: false, alinha: 'middleCenter' }, true);
+      b.addEventListener('click', aoTocar);
+      g.appendChild(b);
+    }
+
+    var tw = 56, th = 36, gx = x0 + 14, gy = y0 + 72;
+    TECLAS.forEach(function (linha, i) {
+      linha.forEach(function (t, j) {
+        tecla(t, gx + j * (tw + 6), gy + i * (th + 6), tw, th, function () {
+          if (t === '⌫') digitado = digitado.slice(0, -1);
+          else if (t === ',') { if (digitado.indexOf('.') < 0) digitado += digitado ? '.' : '0.'; }
+          else digitado += t;
+          mostrar();
+        });
+      });
+    });
+
+    function fechar() { if (g.parentNode) g.parentNode.removeChild(g); }
+
+    var baseY = gy + 4 * (th + 6) + 4;
+    tecla('Cancelar', x0 + 14, baseY, 100, 32, fechar, '#D4D0C8');
+    tecla('OK', x0 + 122, baseY, 100, 32, function () {
+      if (digitado !== '') {
+        escrever(el.escreve, Number(digitado));
+        ctx.varrer();
+      }
+      fechar();
+    }, '#9FD69F');
+
+    veu.addEventListener('click', fechar);
+    svg.appendChild(g);
   }
 
   // --- lista de alarmes ---------------------------------------------------------
@@ -526,6 +631,19 @@
       return;
     }
     if (!el.escreve) return;
+
+    // Botao que anda com um indice: as setas da lista de receitas. O passo e
+    // preso entre os limites para o indice nao sair do vetor.
+    if (el.passo) {
+      alvo.addEventListener('click', function () {
+        var lim = el.limite || [0, 9999];
+        var v = Number(ler(el.escreve)) || 0;
+        v = Math.max(lim[0], Math.min(lim[1], v + el.passo));
+        escrever(el.escreve, v);
+        ctx.varrer();
+      });
+      return;
+    }
 
     if (el.modo === 'momentaneo') {
       // O botao momentaneo vale 1 enquanto esta pressionado. Solto sempre no

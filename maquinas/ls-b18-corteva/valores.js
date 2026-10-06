@@ -112,54 +112,77 @@ window.VALORES = {
   // ESTA E A RECEITA REAL DO CLIENTE, lida do print "RECEITA DO LOTE" de
   // 25/06/2025. Ela ocupa o SLOT 8 do receituario, que tem 20 posicoes - o
   // print da tela RECEITAS mostra a lista inteira, e a linha 8 esta destacada.
+  // O VETOR E BASE ZERO - a tabela de legendas do .gfx mostra a lista ligada
+  // em RECETARIO[00] a RECETARIO[19] -, entao a linha 8 e RECETARIO[7].
   // O "43" e parte do NOME da receita, nao o indice dela: ler errado apontava
   // para RECETARIO[43], que nao existe, e a maquina parava de produzir sem
   // dizer por que. Antes daqui havia uma receita inventada de tres linhas.
+  // Os nomes das demais receitas, do print da tela RECEITAS. So o nome: as
+  // doses de cada uma nao aparecem no print, e nao se inventam.
+  'RECETARIO[0].RECETA.Nombre': '5-NIP-MQ-LUM-DISL440',
+  'RECETARIO[1].RECETA.Nombre': '2-NIPSIT-MQ-DISCL440',
+  'RECETARIO[2].RECETA.Nombre': '2-NIPSIT-MQ-DISCL440',
+  'RECETARIO[3].RECETA.Nombre': 'RECETA 4',
+  'RECETARIO[4].RECETA.Nombre': 'RECETA 5',
+  'RECETARIO[5].RECETA.Nombre': 'RECETA 6',
+  'RECETARIO[6].RECETA.Nombre': 'RECETA 7',
+  'RECETARIO[8].RECETA.Nombre': 'RECETA O2',
+
   'Carga_Receta_Proceso': 1,
-  'Indice_RecetaEnProceso': 8,
-  'Indice_RECETARIO': 8,
+  'Indice_RecetaEnProceso': 7,
+  'Indice_RECETARIO': 7,
 
   // Dose em mL por 100 kg de semente. Todas as linhas tem ordem 1 - nesta
   // receita elas injetam juntas, nao em sequencia.
-  'RECETARIO[8].RECETA.Dosis_L1': 379.20,
-  'RECETARIO[8].RECETA.Orden_L1': 1,
-  'RECETARIO[8].RECETA.T_inyeccion_L1': 10000,
-  'RECETARIO[8].RECETA.T_demora_L1': 0,
-  'RECETARIO[8].RECETA.Vel_aspersor_L1': 80,
+  // O nome da receita e o produto de cada linha moram no proprio receituario;
+  // RecetaEnProceso e so a copia que o CLP faz ao carregar.
+  'RECETARIO[7].RECETA.Nombre': '43 - Max1.5+Ran+Lumi',
+  'RECETARIO[7].RECETA.Nombre_L1': 'PONCHO',
+  'RECETARIO[7].RECETA.Nombre_L2': 'DEMACOR',
+  'RECETARIO[7].RECETA.Nombre_L3': 'LUMIALZA',
+  'RECETARIO[7].RECETA.Nombre_L4': 'POLIMERO',
+  'RECETARIO[7].RECETA.Nombre_L5': '',
+  'RECETARIO[7].RECETA.Nombre_L6': 'PRE MISTURA',
 
-  'RECETARIO[8].RECETA.Dosis_L2': 260.02,
-  'RECETARIO[8].RECETA.Orden_L2': 1,
-  'RECETARIO[8].RECETA.T_inyeccion_L2': 10000,
-  'RECETARIO[8].RECETA.T_demora_L2': 0,
-  'RECETARIO[8].RECETA.Vel_aspersor_L2': 80,
+  'RECETARIO[7].RECETA.Dosis_L1': 379.20,
+  'RECETARIO[7].RECETA.Orden_L1': 1,
+  'RECETARIO[7].RECETA.T_inyeccion_L1': 10000,
+  'RECETARIO[7].RECETA.T_demora_L1': 0,
+  'RECETARIO[7].RECETA.Vel_aspersor_L1': 80,
 
-  'RECETARIO[8].RECETA.Dosis_L3': 54.17,
-  'RECETARIO[8].RECETA.Orden_L3': 1,
-  'RECETARIO[8].RECETA.T_inyeccion_L3': 10000,
-  'RECETARIO[8].RECETA.T_demora_L3': 0,
-  'RECETARIO[8].RECETA.Vel_aspersor_L3': 80,
+  'RECETARIO[7].RECETA.Dosis_L2': 260.02,
+  'RECETARIO[7].RECETA.Orden_L2': 1,
+  'RECETARIO[7].RECETA.T_inyeccion_L2': 10000,
+  'RECETARIO[7].RECETA.T_demora_L2': 0,
+  'RECETARIO[7].RECETA.Vel_aspersor_L2': 80,
 
-  'RECETARIO[8].RECETA.Dosis_L4': 300.00,
-  'RECETARIO[8].RECETA.Orden_L4': 1,
-  'RECETARIO[8].RECETA.T_inyeccion_L4': 10000,
-  'RECETARIO[8].RECETA.T_demora_L4': 0,
-  'RECETARIO[8].RECETA.Vel_aspersor_L4': 80,
+  'RECETARIO[7].RECETA.Dosis_L3': 54.17,
+  'RECETARIO[7].RECETA.Orden_L3': 1,
+  'RECETARIO[7].RECETA.T_inyeccion_L3': 10000,
+  'RECETARIO[7].RECETA.T_demora_L3': 0,
+  'RECETARIO[7].RECETA.Vel_aspersor_L3': 80,
+
+  'RECETARIO[7].RECETA.Dosis_L4': 300.00,
+  'RECETARIO[7].RECETA.Orden_L4': 1,
+  'RECETARIO[7].RECETA.T_inyeccion_L4': 10000,
+  'RECETARIO[7].RECETA.T_demora_L4': 0,
+  'RECETARIO[7].RECETA.Vel_aspersor_L4': 80,
 
   // a linha 5 esta vazia na receita 43: ordem 0 desliga a linha
-  'RECETARIO[8].RECETA.Dosis_L5': 0,
-  'RECETARIO[8].RECETA.Orden_L5': 0,
+  'RECETARIO[7].RECETA.Dosis_L5': 0,
+  'RECETARIO[7].RECETA.Orden_L5': 0,
 
-  'RECETARIO[8].RECETA.Dosis_L6': 600.00,
-  'RECETARIO[8].RECETA.Orden_L6': 1,
-  'RECETARIO[8].RECETA.T_inyeccion_L6': 10000,
-  'RECETARIO[8].RECETA.T_demora_L6': 0,
-  'RECETARIO[8].RECETA.Vel_aspersor_L6': 80,
+  'RECETARIO[7].RECETA.Dosis_L6': 600.00,
+  'RECETARIO[7].RECETA.Orden_L6': 1,
+  'RECETARIO[7].RECETA.T_inyeccion_L6': 10000,
+  'RECETARIO[7].RECETA.T_demora_L6': 0,
+  'RECETARIO[7].RECETA.Vel_aspersor_L6': 80,
 
   // homogeneizacao e descarga, do mesmo print
-  'RECETARIO[8].RECETA.Vel_homogenizado': 80,
-  'RECETARIO[8].RECETA.T_homogenizado': 10000,
-  'RECETARIO[8].RECETA.Vel_descarga': 85,
-  'RECETARIO[8].RECETA.T_descarga': 10000,
+  'RECETARIO[7].RECETA.Vel_homogenizado': 80,
+  'RECETARIO[7].RECETA.T_homogenizado': 10000,
+  'RECETARIO[7].RECETA.Vel_descarga': 85,
+  'RECETARIO[7].RECETA.T_descarga': 10000,
 
   // Os nomes: o CLP guarda como vetor de caracteres e a IHM le direto. Saem do
   // print "RECEITA DO LOTE"; a linha 5 esta em branco na maquina tambem.

@@ -98,13 +98,17 @@ function montar() {
 
     el.push(texto('Text-linha' + n, COL.rotulo, y, 69, ALT, 'LINHA ' + n, { fonte: 12, negrito: true }));
 
-    // tempo de limpeza, em minutos: o CLP multiplica por 60000 para o preset
+    // Tempo de limpeza, em minutos: o CLP multiplica por 60000 para virar o
+    // preset do temporizador de recirculacao. E campo de ENTRADA - tocar nele
+    // abre o teclado, como no terminal. O CLP so aceita acima de 1 minuto.
     el.push({
       t: 'numero', id: 'NumericInput' + n, x: COL.tempo, y: y, w: 148, h: ALT,
       texto: '', fonte: 13, cor: 'black', negrito: false, italico: false,
       alinha: 'middleCenter', fundo: '#FFFFFF', borda: '#707070', bordaEsp: 1,
       casas: 0, digitos: 4, completa: 'none',
       valor: 'v("' + inst + 'Minutos")',
+      escreve: inst + 'Minutos',
+      rotulo: 'Tempo de limpeza da linha ' + n + ' (min)',
     });
 
     el.push(comando('Iniciar' + n, COL.iniciar, y, 87, ALT, 'Iniciar', inst + 'Iniciar'));
