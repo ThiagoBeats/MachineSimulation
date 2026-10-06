@@ -295,6 +295,55 @@
         escrever('MainProgram.Totalizador_L' + n, tot + vazao / 3600 * s);
       }
     }
+
+    tanquesDeLavagem(ler, escrever, s);
+  }
+
+  // --- o tanque de cada linha, durante a lavagem -----------------------------
+  // A rotina Lavagem.Logic e uma maquina de estados de tres passos: enche o
+  // tanque, recircula pelo tempo que o operador pediu, esvazia. Ela avanca
+  // olhando para o PESO do tanque e para a chave de nivel alto - duas coisas
+  // que o programa le e nunca escreve, porque no mundo real vem do campo.
+  //
+  // Sem isto a lavagem comeca e para no enchimento: o peso nunca sobe, a chave
+  // nunca fecha, e o passo 10 fica para sempre.
+  //
+  // As vazoes sao estimativa: enche em ~25 s e esvazia em ~15 s, que e a ordem
+  // de grandeza de um tanque de linha. Nao ha no projeto nada que as fixe.
+  var CHEIO = 60;              // kg; acima de 50 o CLP ja considera cheio
+  var ENCHE = 2.5;             // kg por segundo
+  var ESVAZIA = 4.0;           // kg por segundo
+
+  // NAO se escreve Peso_Tk_Lx: quem o escreve e o proprio CLP, na rotina
+  // Balanza_Tanque_Lx, dividindo por 1000 o que a celula de carga manda. Mexer
+  // no peso direto nao adianta - na varredura seguinte o CLP o reescreve.
+  // Entao alimentamos a CELULA, que e uma entrada de campo de verdade.
+  var CELULA = '&d67a12b9:I.AB:ETHERNET_MODULE_SINT_52Bytes:I:0.Data[';
+  var DESLOC = { 1: 20, 2: 28, 3: 32, 4: 36, 5: 40 };
+
+  function tanquesDeLavagem(ler, escrever, s) {
+    for (var n = 1; n <= 5; n++) {
+      var inst = 'Lavagem_L' + n + '.Lavagem.';
+      var cel = CELULA + DESLOC[n] + ']';
+      var peso = (Number(ler(cel)) || 0) / 1000;
+
+      if (ler(inst + 'EncherTanque')) peso += ENCHE * s;
+      else if (ler(inst + 'EsvaziarTanque')) peso -= ESVAZIA * s;
+
+      if (peso < 0) peso = 0;
+      if (peso > CHEIO) peso = CHEIO;
+      escrever(cel, peso * 1000);
+
+      // A CHAVE DE NIVEL ALTO E NORMALMENTE FECHADA. A logica sai do passo de
+      // enchimento com XIO(NivelAlto), ou seja, quando a chave esta em ZERO.
+      // Entao ela vale 1 enquanto o tanque NAO esta cheio e cai a 0 ao encher -
+      // fiacao a prova de falha, em que um fio partido parece "cheio" e para o
+      // enchimento em vez de transbordar.
+      //
+      // Com a polaridade ao contrario a lavagem pulava o enchimento inteiro e
+      // ia direto para a recirculacao, com o tanque vazio.
+      escrever('HH_TQ0' + n, peso >= CHEIO - 1 ? 0 : 1);
+    }
   }
 
   raiz.PLANTA = {

@@ -72,12 +72,25 @@
   function ler(ref) {
     if (typeof ref === 'number') return ref;
     if (ref === undefined || ref === null || ref === '' || ref === '?') return 0;
+
+    // Literal de TEXTO. O programa usa isto para escrever a frase de estado
+    // direto numa tag, como em MOV('Lavagem em processo', Lavagem.Status).
+    // Lendo como numero, a frase virava 0 e a tela de lavagem ficava muda.
+    if (ref.length > 1 && ref.charAt(0) === "'" && ref.charAt(ref.length - 1) === "'") {
+      return ref.slice(1, -1);
+    }
+
     if (/^-?[0-9]/.test(ref)) return Number(ref);
     var r = expandirIndices(resolver(String(ref)));
     var m = RE_BIT.exec(r);
     if (m) return (Number(lerTag(m[1])) >> Number(m[2])) & 1;
     var v = lerTag(r);
-    return typeof v === 'boolean' ? (v ? 1 : 0) : (Number(v) || 0);
+    if (typeof v === 'boolean') return v ? 1 : 0;
+    // Tag que guarda TEXTO sai como texto, e nao como zero: ha comparacao de
+    // nomes no programa (VerifNombresServOk confere o produto de cada linha
+    // contra NombreVacio) que so decide certo se os dois lados forem texto.
+    if (typeof v === 'string' && v !== '' && !/^-?[0-9.]+$/.test(v)) return v;
+    return Number(v) || 0;
   }
 
   function escrever(ref, valor) {
