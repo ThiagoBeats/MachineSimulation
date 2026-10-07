@@ -315,6 +315,12 @@
           break;
         }
 
+        case 'listaSelecao': {
+          no = montarListaSelecao(el, animados);
+          pai.appendChild(no);
+          break;
+        }
+
         case 'imagem':
           if (!el.arq) return;
           no = criar('image', {
@@ -453,6 +459,72 @@
   // verdade: quem escreve nela e a logica emulada, nao um roteiro.
 
   var ALT_LINHA = 15, ALT_CABECALHO = 17;
+
+  // ---------------------------------------------------------------------------
+  // SELETOR DE LISTA
+  // ---------------------------------------------------------------------------
+  // O ControlListSelector do FactoryTalk: uma lista rolante em que o operador
+  // escolhe um item com as setas e confirma com Enter. E assim que se escolhe
+  // a receita do lote, e o ViewPoint nao publica o controle - a tela Datos
+  // Lote chegava aqui com os rotulos e nenhum lugar para escolher nada.
+  //
+  // Duas tags, as duas lidas do .gfx: uma recebe o indice realcado enquanto o
+  // operador navega, a outra e o pulso do Enter. Quem faz o resto e o CLP: o
+  // rung Gestion_Recetas #126 copia RECETARIO[indice] inteiro para
+  // RecetaEnProceso quando o pulso chega.
+  function montarListaSelecao(el, animados) {
+    var g = criar('g', {});
+    var ALT_LINHA = 22;
+    var quantas = Math.max(1, Math.floor((el.h - 4) / ALT_LINHA));
+
+    g.appendChild(criar('rect', {
+      x: el.x, y: el.y, width: el.w, height: el.h,
+      fill: '#FFFFFF', stroke: '#707070', 'stroke-width': 1
+    }));
+
+    var corpo = criar('g', {});
+    g.appendChild(corpo);
+
+    // o indice realcado mora na tag; o topo da janela e local, so para rolar
+    var topo = 0;
+
+    function escolhido() {
+      var v = Number(ler(el.tagIndice)) || 0;
+      if (v < 0) v = 0;
+      if (v > el.itens.length - 1) v = el.itens.length - 1;
+      return v;
+    }
+
+    function pintar() {
+      var sel = escolhido();
+      if (sel < topo) topo = sel;
+      if (sel > topo + quantas - 1) topo = sel - quantas + 1;
+      if (topo < 0) topo = 0;
+
+      while (corpo.firstChild) corpo.removeChild(corpo.firstChild);
+      for (var k = 0; k < quantas; k++) {
+        var i = topo + k;
+        if (i >= el.itens.length) break;
+        var y = el.y + 2 + k * ALT_LINHA;
+        var marcado = i === sel;
+        if (marcado) {
+          corpo.appendChild(criar('rect', {
+            x: el.x + 2, y: y, width: el.w - 4, height: ALT_LINHA, fill: '#000080'
+          }));
+        }
+        legenda(corpo, el.itens[i](ler), el.x + 6, y, el.w - 12, ALT_LINHA, {
+          fonte: 11, cor: marcado ? 'white' : 'black',
+          negrito: false, italico: false, alinha: 'middleLeft'
+        }, true);
+      }
+    }
+
+    pintar();
+    // repinta junto com o resto da tela; as setas sao botoes comuns, com
+    // 'passo' sobre a mesma tag, e o Enter e um momentaneo
+    animados.push({ tipo: 'relogio', pintar: pintar });
+    return g;
+  }
 
   function montarListaAlarmes(el, ctx, animados) {
     var tabela = (ctx.alarmes && ctx.alarmes.alarmes) || [];

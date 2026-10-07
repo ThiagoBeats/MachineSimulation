@@ -102,6 +102,15 @@ const ENTRADAS = {
     NumericInputCursorPoint1: { tag: 'MainProgram.RefFrecCTF', casas: 0 },
     NumericInputCursorPoint2: { tag: 'MainProgram.RefFrecASP', casas: 0 },
   },
+  'Datos Lote': {
+    // Os quatro campos da porta de entrada da operacao. As tags saem do
+    // proprio .gfx; Peneira e Variedad nao aparecem no ladder porque sao
+    // dados do lote, guardados para o relatorio e nao usados no controle.
+    NumericInputCursorPoint2: { tag: 'MainProgram.kg_a_Procesar', casas: 0 },
+    NumericInputCursorPoint3: { tag: 'MainProgram.Peneira', casas: 0 },
+    StringInputEnable3: { tag: 'MainProgram.Variedad', texto: true },
+    StringInputEnable1: { tag: 'MainProgram.Lote', texto: true },
+  },
   Balanza: {
     NumericInputCursorPoint2: { tag: 'MainProgram.PesoSemilla', casas: 0 },
     NumericInputCursorPoint1: { tag: 'MainProgram.CorteGruesoSemilla', casas: 0 },
@@ -115,13 +124,29 @@ const ENTRADAS = {
 };
 
 function campoNumerico(vao, c) {
+  if (c.texto) return campoTexto(vao, c);
   return {
     t: 'numero', id: vao.id, reconstruido: true,
     x: vao.x, y: vao.y, w: vao.w, h: vao.h,
     texto: '', fonte: 12, cor: 'black', negrito: false, italico: false,
     alinha: 'middleCenter', fundo: AMARELO, borda: '#707070', bordaEsp: 1,
     casas: c.casas, digitos: 7, completa: 'none',
+    escreve: c.escala ? undefined : c.tag,
     valor: c.escala ? 'v("' + c.tag + '")/' + c.escala : 'v("' + c.tag + '")',
+  };
+}
+
+// O StringInputEnable tambem some no publish. Aqui ele e so leitura: um
+// teclado alfanumerico na tela e trabalho de outra ordem, e o nome do lote e
+// da variedade nao mudam nada no controle - o CLP nem os le. Ficam mostrando
+// o que o cenario inicial trouxe dos prints.
+function campoTexto(vao, c) {
+  return {
+    t: 'cadeia', id: vao.id, reconstruido: true,
+    x: vao.x, y: vao.y, w: vao.w, h: vao.h,
+    texto: '', fonte: 12, cor: 'black', negrito: false, italico: false,
+    alinha: 'middleCenter', fundo: AMARELO, borda: '#707070', bordaEsp: 1,
+    valor: 'v("' + c.tag + '")',
   };
 }
 
@@ -129,6 +154,55 @@ function campoNumerico(vao, c) {
 // O objeto AlarmList tambem nao sai no publish: a tela de alarmes vem vazia. A
 // posicao vem do .gfx; o conteudo, da tabela do .mal - 76 mensagens, cada uma
 // com a tag que a dispara e com a inversao escrita no proprio arquivo.
+
+// --- 3b. o seletor de receita da tela Datos Lote ------------------------------
+// O ControlListSelector tambem nao sai no publish, e sem ele nao ha como
+// escolher a receita - a tela Datos Lote chegava com os rotulos e nada para
+// operar, bem na porta de entrada da producao.
+//
+// As duas tags sao lidas do .gfx: o seletor realca o item em
+// Indice_RecetaEnProceso, e o Enter pulsa Carga_Receta_Proceso. Quem faz o
+// trabalho e o CLP: o rung Gestion_Recetas #126 copia RECETARIO[indice]
+// inteiro - nome, dose e ordem das seis linhas - para RecetaEnProceso.
+const TAG_INDICE = 'Indice_RecetaEnProceso';
+const TAG_CARGA = 'Carga_Receta_Proceso';
+const QUANTAS_RECEITAS = 20;
+
+function seletorDeReceita(vao) {
+  const itens = [];
+  for (let i = 0; i < QUANTAS_RECEITAS; i++) {
+    itens.push('(' + (i + 1) + ') + " - " + (v("RECETARIO[' + i + '].RECETA.Nombre") || "")');
+  }
+  return {
+    t: 'listaSelecao', id: vao.id, reconstruido: true,
+    x: vao.x, y: vao.y, w: vao.w, h: vao.h,
+    tagIndice: TAG_INDICE, itens: itens,
+  };
+}
+
+function botaoDaLista(vao, rotulo, extra) {
+  return Object.assign({
+    t: 'botao', id: vao.id, reconstruido: true, modo: 'momentaneo',
+    x: vao.x, y: vao.y, w: vao.w, h: vao.h, forma: 'reto', esp: 3,
+    estados: [{
+      id: '0', valor: 0, fundo: '#D4D0C8', claro: '#FFFFFF', escuro: '#808080',
+      legenda: { texto: rotulo, fonte: 14, cor: 'black', negrito: true, italico: false, alinha: 'middleCenter' },
+    }],
+  }, extra);
+}
+
+function controlesDaLista(vao) {
+  if (/^MoveUpButton/.test(vao.id)) {
+    return botaoDaLista(vao, '▲', { modo: 'mantido', escreve: TAG_INDICE, passo: -1, limite: [0, QUANTAS_RECEITAS - 1] });
+  }
+  if (/^MoveDownButton/.test(vao.id)) {
+    return botaoDaLista(vao, '▼', { modo: 'mantido', escreve: TAG_INDICE, passo: 1, limite: [0, QUANTAS_RECEITAS - 1] });
+  }
+  if (/^EnterButton/.test(vao.id)) {
+    return botaoDaLista(vao, 'ENTER', { modo: 'momentaneo', escreve: TAG_CARGA });
+  }
+  return null;
+}
 
 function listaDeAlarmes(vao) {
   return { t: 'listaAlarmes', id: vao.id, reconstruido: true, x: vao.x, y: vao.y, w: vao.w, h: vao.h };
@@ -240,7 +314,15 @@ function aplicar(telas) {
       if (vao.t === 'alarme' && /^AlarmList/.test(vao.id)) {
         tela.elementos.push(listaDeAlarmes(vao));
         conta.alarmes++;
+        continue;
       }
+      if (/^ControlListSelector/.test(vao.id)) {
+        tela.elementos.push(seletorDeReceita(vao));
+        conta.entrada++;
+        continue;
+      }
+      const botao = controlesDaLista(vao);
+      if (botao) { tela.elementos.push(botao); conta.entrada++; }
     }
 
     // as copias derivadas nao tem vao no inventario: a familia traz a posicao

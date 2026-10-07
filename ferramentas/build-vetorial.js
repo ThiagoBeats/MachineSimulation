@@ -194,13 +194,21 @@ if (maquina.painel && maquina.painel.foto) {
 // --- gera telas.js ---------------------------------------------------------------
 // As chaves que guardam expressao viram funcao. O nome dessas chaves esta aqui
 // numa lista so, para nao haver duvida sobre o que e codigo e o que e dado.
-const CAMPOS_DE_EXPRESSAO = new Set(['valor', 'indicador', 'expr']);
+// 'itens' guarda uma expressao por linha no seletor de lista. Em animaCor a
+// mesma chave guarda objetos de cor; como so texto vira funcao, os dois
+// convivem sem ambiguidade.
+const CAMPOS_DE_EXPRESSAO = new Set(['valor', 'indicador', 'expr', 'itens']);
 
 function serializar(v, chave) {
   if (CAMPOS_DE_EXPRESSAO.has(chave) && typeof v === 'string') {
     return 'function(v){return ' + v + ';}';
   }
-  if (Array.isArray(v)) return '[' + v.map(x => serializar(x, null)).join(',') + ']';
+  // o array carrega a chave para dentro: sem isso, uma lista de expressoes
+  // seria serializada como lista de textos
+  if (Array.isArray(v)) {
+    const sub = CAMPOS_DE_EXPRESSAO.has(chave) ? chave : null;
+    return '[' + v.map(x => serializar(x, sub)).join(',') + ']';
+  }
   if (v && typeof v === 'object') {
     return '{' + Object.keys(v).map(k => JSON.stringify(k) + ':' + serializar(v[k], k)).join(',') + '}';
   }
