@@ -169,21 +169,6 @@
      "esp": 2,
      "estados": [
       {
-       "id": "Error",
-       "valor": null,
-       "fundo": "navy",
-       "claro": "#0000E6",
-       "escuro": "#00004D",
-       "legenda": {
-        "texto": "Error",
-        "fonte": 9.3331,
-        "cor": "white",
-        "negrito": false,
-        "italico": false,
-        "alinha": "middleCenter"
-       }
-      },
-      {
        "id": "0",
        "valor": 0,
        "fundo": "#AAD38F",
@@ -214,6 +199,21 @@
        }
       }
      ],
+     "estadoErro": {
+      "id": "Error",
+      "valor": null,
+      "fundo": "navy",
+      "claro": "#0000E6",
+      "escuro": "#00004D",
+      "legenda": {
+       "texto": "Error",
+       "fonte": 9.3331,
+       "cor": "white",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter"
+      }
+     },
      "escreve": "MainProgram.Cmd_Cero_Probeta",
      "indicador": "v(\"MainProgram.Cmd_Cero_Probeta\")"
     },
@@ -229,21 +229,6 @@
      "esp": 2,
      "estados": [
       {
-       "id": "Error",
-       "valor": null,
-       "fundo": "navy",
-       "claro": "#0000E6",
-       "escuro": "#00004D",
-       "legenda": {
-        "texto": "Error",
-        "fonte": 9.3331,
-        "cor": "white",
-        "negrito": false,
-        "italico": false,
-        "alinha": "middleCenter"
-       }
-      },
-      {
        "id": "0",
        "valor": 0,
        "fundo": "#AAD38F",
@@ -274,6 +259,21 @@
        }
       }
      ],
+     "estadoErro": {
+      "id": "Error",
+      "valor": null,
+      "fundo": "navy",
+      "claro": "#0000E6",
+      "escuro": "#00004D",
+      "legenda": {
+       "texto": "Error",
+       "fonte": 9.3331,
+       "cor": "white",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter"
+      }
+     },
      "escreve": "MainProgram.Cmd_Calib_Probeta",
      "indicador": "v(\"MainProgram.Cmd_Calib_Probeta\")"
     },
@@ -355,21 +355,6 @@
          "esp": 2,
          "estados": [
           {
-           "id": "Error",
-           "valor": null,
-           "fundo": "#D4D0C8",
-           "claro": "#0000E6",
-           "escuro": "#00004D",
-           "legenda": {
-            "texto": "Error",
-            "fonte": 9.3331,
-            "cor": "white",
-            "negrito": false,
-            "italico": false,
-            "alinha": "middleCenter"
-           }
-          },
-          {
            "id": "0",
            "valor": 0,
            "fundo": "#D4D0C8",
@@ -400,6 +385,21 @@
            }
           }
          ],
+         "estadoErro": {
+          "id": "Error",
+          "valor": null,
+          "fundo": "#D4D0C8",
+          "claro": "#0000E6",
+          "escuro": "#00004D",
+          "legenda": {
+           "texto": "Error",
+           "fonte": 9.3331,
+           "cor": "white",
+           "negrito": false,
+           "italico": false,
+           "alinha": "middleCenter"
+          }
+         },
          "escreve": "MainProgram.PB_Reponer_Emergencia",
          "indicador": "v(\"MainProgram.PB_Reponer_Emergencia\")"
         }

@@ -200,16 +200,39 @@ function analisarXaml(texto, conn, op) {
     el.forma = /round|ellipse/i.test(a.Shape || a.ButtonShape || '') ? 'redondo' : 'reto';
     el.esp = num(a.BorderThickness) || 2;
 
+    // O ESTADO DE ERRO VEM PRIMEIRO E NAO E UM ESTADO.
+    //
+    // Todo botao do FactoryTalk carrega, antes dos estados de verdade, um
+    // estado de erro: aquele que o terminal mostra quando a tag sai da faixa
+    // declarada. Ele se reconhece por nao ter o atributo Value, e sua legenda
+    // e literalmente "Error".
+    //
+    // Tratando-o como estado normal ele fica sendo o PRIMEIRO da lista - ou
+    // seja, o que a tela desenha antes de qualquer animacao rodar. Nos botoes
+    // sem animacao de estado, que sao a maioria dos botoes de comando, nada o
+    // substitui depois. O resultado era uma tela principal com MARCHA,
+    // PARADA, PAUSAR, UM CICLO e ESVAZIAR BALANCA todos escritos "Error":
+    // 95 legendas em 19 telas, os botoes funcionando e ninguem sabendo qual
+    // era qual.
+    //
+    // Ele sai da lista e fica guardado a parte, para o dia em que a simulacao
+    // quiser mostrar faixa invalida.
     const lista = (no.filhos.find(f => /\.States$/.test(f.nome)) || { filhos: [] })
       .filhos.filter(x => x.nome === 'RamlControls:State');
-    el.estados = lista.map(x => ({
+    const deErro = lista.filter(x => x.at.Value === undefined);
+    const reais = lista.filter(x => x.at.Value !== undefined);
+
+    const comoEstado = x => ({
       id: x.at.StateId,
       valor: x.at.Value !== undefined ? num(x.at.Value) : null,
       fundo: cor(x.at.BackColor) || '#D4D0C8',
       claro: cor(x.at.BorderColorH) || '#FFFFFF',
       escuro: cor(x.at.BorderColorL) || '#808080',
       legenda: Object.assign(legendaDe(x.at, 'Caption'), { texto: x.at.CaptionText || '' })
-    }));
+    });
+
+    el.estados = (reais.length ? reais : lista).map(comoEstado);
+    if (deErro.length && reais.length) el.estadoErro = comoEstado(deErro[0]);
 
     // Os botoes de navegacao nao tem lista de estados: a aparencia vem dos
     // atributos do proprio botao e a legenda de <Botao.Caption>.

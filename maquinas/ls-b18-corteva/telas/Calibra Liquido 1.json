@@ -458,21 +458,6 @@
      "esp": 2,
      "estados": [
       {
-       "id": "Error",
-       "valor": null,
-       "fundo": "navy",
-       "claro": "#0000E6",
-       "escuro": "#00004D",
-       "legenda": {
-        "texto": "Error",
-        "fonte": 9.3331,
-        "cor": "white",
-        "negrito": false,
-        "italico": false,
-        "alinha": "middleCenter"
-       }
-      },
-      {
        "id": "0",
        "valor": 0,
        "fundo": "yellow",
@@ -503,6 +488,21 @@
        }
       }
      ],
+     "estadoErro": {
+      "id": "Error",
+      "valor": null,
+      "fundo": "navy",
+      "claro": "#0000E6",
+      "escuro": "#00004D",
+      "legenda": {
+       "texto": "Error",
+       "fonte": 9.3331,
+       "cor": "white",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter"
+      }
+     },
      "escreve": "MainProgram.Pausa_Cal_LiqxPeso",
      "indicador": "v(\"MainProgram.Pausa_Cal_LiqxPeso\")"
     },
@@ -517,21 +517,6 @@
      "forma": "reto",
      "esp": 2,
      "estados": [
-      {
-       "id": "Error",
-       "valor": null,
-       "fundo": "navy",
-       "claro": "#0000E6",
-       "escuro": "#00004D",
-       "legenda": {
-        "texto": "Error",
-        "fonte": 9.3331,
-        "cor": "white",
-        "negrito": false,
-        "italico": false,
-        "alinha": "middleCenter"
-       }
-      },
       {
        "id": "0",
        "valor": 0,
@@ -563,6 +548,21 @@
        }
       }
      ],
+     "estadoErro": {
+      "id": "Error",
+      "valor": null,
+      "fundo": "navy",
+      "claro": "#0000E6",
+      "escuro": "#00004D",
+      "legenda": {
+       "texto": "Error",
+       "fonte": 9.3331,
+       "cor": "white",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter"
+      }
+     },
      "escreve": "MainProgram.IniCalibrar_L1",
      "indicador": "v(\"MainProgram.IniCalibrar_L1\")"
     },
@@ -577,21 +577,6 @@
      "forma": "reto",
      "esp": 2,
      "estados": [
-      {
-       "id": "Error",
-       "valor": null,
-       "fundo": "navy",
-       "claro": "#0000E6",
-       "escuro": "#00004D",
-       "legenda": {
-        "texto": "Error",
-        "fonte": 9.3331,
-        "cor": "white",
-        "negrito": false,
-        "italico": false,
-        "alinha": "middleCenter"
-       }
-      },
       {
        "id": "0",
        "valor": 0,
@@ -623,6 +608,21 @@
        }
       }
      ],
+     "estadoErro": {
+      "id": "Error",
+      "valor": null,
+      "fundo": "navy",
+      "claro": "#0000E6",
+      "escuro": "#00004D",
+      "legenda": {
+       "texto": "Error",
+       "fonte": 9.3331,
+       "cor": "white",
+       "negrito": false,
+       "italico": false,
+       "alinha": "middleCenter"
+      }
+     },
      "escreve": "MainProgram.Continuar_Cal_L",
      "indicador": "v(\"MainProgram.Continuar_Cal_L\")"
     },
@@ -1115,21 +1115,6 @@
          "esp": 2,
          "estados": [
           {
-           "id": "Error",
-           "valor": null,
-           "fundo": "#D4D0C8",
-           "claro": "#0000E6",
-           "escuro": "#00004D",
-           "legenda": {
-            "texto": "Error",
-            "fonte": 9.3331,
-            "cor": "white",
-            "negrito": false,
-            "italico": false,
-            "alinha": "middleCenter"
-           }
-          },
-          {
            "id": "0",
            "valor": 0,
            "fundo": "#D4D0C8",
@@ -1160,6 +1145,21 @@
            }
           }
          ],
+         "estadoErro": {
+          "id": "Error",
+          "valor": null,
+          "fundo": "#D4D0C8",
+          "claro": "#0000E6",
+          "escuro": "#00004D",
+          "legenda": {
+           "texto": "Error",
+           "fonte": 9.3331,
+           "cor": "white",
+           "negrito": false,
+           "italico": false,
+           "alinha": "middleCenter"
+          }
+         },
          "escreve": "MainProgram.PB_Reponer_Emergencia",
          "indicador": "v(\"MainProgram.PB_Reponer_Emergencia\")"
         }
