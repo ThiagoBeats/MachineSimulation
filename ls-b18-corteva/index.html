@@ -127,6 +127,7 @@
   }
 
   function carregar(){
+    V.definirApelidos(CFG.apelidos || {});
     var base = cenarioInicial();
     // O portal oferece "reiniciar" como link, com ?reset=1.
     if (/[?&]reset=1\b/.test(location.search)) {

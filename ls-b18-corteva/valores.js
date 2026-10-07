@@ -305,13 +305,18 @@ window.VALORES = {
   'MainProgram.NombreLiquido6': 'PRE MISTURA',
   'MainProgram.NombreVacio': '',               // o sentinela de "sem produto"
 
-  'MainProgram.RecetaEnProceso.Nombre': '43 - Max1.5+Ran+Lumi',
-  'MainProgram.RecetaEnProceso.Nombre_L1': 'PONCHO',
-  'MainProgram.RecetaEnProceso.Nombre_L2': 'DEMACOR',
-  'MainProgram.RecetaEnProceso.Nombre_L3': 'LUMIALZA',
-  'MainProgram.RecetaEnProceso.Nombre_L4': 'POLIMERO',
-  'MainProgram.RecetaEnProceso.Nombre_L5': '',
-  'MainProgram.RecetaEnProceso.Nombre_L6': 'PRE MISTURA',
+  // COM o nivel do tipo, que e onde o CLP grava. As telas leem o caminho
+  // curto, e o build descobre o par sozinho e o declara em CFG.apelidos. Pondo
+  // a semente no caminho longo, ela e substituida de verdade quando o operador
+  // carrega outra receita - no caminho curto ela ficava por baixo para sempre,
+  // e uma receita sem produto na linha continuava mostrando o produto antigo.
+  'MainProgram.RecetaEnProceso.RECETA.Nombre': '43 - Max1.5+Ran+Lumi',
+  'MainProgram.RecetaEnProceso.RECETA.Nombre_L1': 'PONCHO',
+  'MainProgram.RecetaEnProceso.RECETA.Nombre_L2': 'DEMACOR',
+  'MainProgram.RecetaEnProceso.RECETA.Nombre_L3': 'LUMIALZA',
+  'MainProgram.RecetaEnProceso.RECETA.Nombre_L4': 'POLIMERO',
+  'MainProgram.RecetaEnProceso.RECETA.Nombre_L5': '',
+  'MainProgram.RecetaEnProceso.RECETA.Nombre_L6': 'PRE MISTURA',
 
   // --- o lote que estava rodando quando os prints foram tirados --------------
   'MainProgram.Variedad': 'Variedade 1',            // print: HIBRIDO

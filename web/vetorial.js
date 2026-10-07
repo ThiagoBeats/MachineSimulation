@@ -38,8 +38,22 @@
   // existir lado a lado, e entao a tela mostra para sempre a semente enquanto
   // o CLP grava em Pesadas[0] - foi o que aconteceu com a Historia de pesagens,
   // que exibia dez bateladas inventadas com a maquina rodando ao lado.
+  // O caminho longo, com o nivel do tipo, e o que o CLP grava
+  // (RecetaEnProceso.RECETA.Nombre); o curto e o que a tela le
+  // (RecetaEnProceso.Nombre). O build descobre os pares comparando o que as
+  // telas leem com o que o programa escreve, e entrega a tabela aqui.
+  //
+  // O caminho longo vence sempre que existir - e la que o CLP grava, e e la
+  // que o cenario inicial semeia. Nao se tenta adivinhar "vazio quer dizer
+  // nao escrito": uma receita que nao usa a linha 3 grava vazio na linha 3, e
+  // a tela tem de mostrar vazio, nao o produto da receita anterior.
+  var apelidos = {};
+
   function ler(caminho) {
-    var v = valores[normalizar(caminho)];
+    var c = normalizar(caminho);
+    var longo = apelidos[c];
+    var v = longo !== undefined && valores[longo] !== undefined
+      ? valores[longo] : valores[c];
     return v === undefined ? 0 : v;
   }
 
@@ -852,6 +866,7 @@
       valores = {};
       for (var k in v) valores[normalizar(k)] = v[k];
     },
+    definirApelidos: function (a) { apelidos = a || {}; },
     montarTela: montarTela,
     atualizar: atualizar,
     avaliar: avaliar,

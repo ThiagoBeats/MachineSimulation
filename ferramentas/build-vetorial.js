@@ -162,9 +162,10 @@ for (const arq of ['valores.js', 'planta.js']) {
 // O programa do CLP vira um .js em vez de .json para a pagina abrir direto do
 // disco, sem servidor: <script src> funciona em file://, fetch nao.
 let rungs = 0;
+let programa = null;
 const arqPrograma = path.join(pastaFonte, 'programa.json');
 if (fs.existsSync(arqPrograma)) {
-  const programa = lerJson(arqPrograma);
+  programa = lerJson(arqPrograma);
   for (const lista of Object.values(programa.rotinas)) rungs += lista.filter(Boolean).length;
   fs.writeFileSync(path.join(pastaSaida, 'programa.js'),
     '// Gerado por ferramentas/rockwell/extrair-acd.js a partir do .ACD - nao edite a mao.\n'
@@ -218,6 +219,71 @@ function serializar(v, chave) {
 const origem = fs.existsSync(path.join(pastaFonte, '_origem.json'))
   ? lerJson(path.join(pastaFonte, '_origem.json')) : {};
 
+// ---------------------------------------------------------------------------
+// O NIVEL DO TIPO: quando a tela e o CLP falam de lugares diferentes
+// ---------------------------------------------------------------------------
+// No Logix, um membro de estrutura carrega o nome do TIPO no meio do caminho:
+// o CLP grava MainProgram.RecetaEnProceso.RECETA.Nombre. As telas, porem,
+// costumam ler o caminho curto - MainProgram.RecetaEnProceso.Nombre. Para o
+// controlador e o mesmo dado; para um mapa de chaves em texto, sao duas
+// chaves, e o campo da tela fica mudo ou preso na semente. Foi o que fazia a
+// tela principal continuar anunciando a receita antiga depois de o operador
+// carregar outra.
+//
+// Em vez de uma lista escrita a mao, o apelido e DESCOBERTO: para cada tag que
+// alguma tela le e que o programa nunca escreve, procura-se um caminho escrito
+// que seja o mesmo com um nivel a mais no meio. Se houver exatamente um, o par
+// vira apelido. Havendo mais de um, nao ha escolha obvia e o par e descartado.
+function descobrirApelidos(telas, programa) {
+  const escritas = new Set();
+  const SAIDA_1 = new Set(['OTE', 'OTL', 'OTU', 'CPT', 'CLR', 'TON', 'TOF', 'RTO', 'CTU', 'CTD']);
+  (function varrerRungs(no) {
+    if (!no) return;
+    if (Array.isArray(no)) return no.forEach(varrerRungs);
+    if (no.t === 'serie') return no.i.forEach(varrerRungs);
+    if (no.t === 'par') return no.r.forEach(varrerRungs);
+    if (no.t !== 'i') return;
+    const a = no.a || [];
+    if (SAIDA_1.has(no.n)) escritas.add(String(a[0]));
+    else if (no.n === 'MOV' || no.n === 'MVM' || no.n === 'COP') escritas.add(String(a[1]));
+    else if (['ADD', 'SUB', 'MUL', 'DIV'].includes(no.n)) escritas.add(String(a[2]));
+  })(Object.values(programa.rotinas || {}));
+
+  // as expressoes ainda sao texto neste ponto; percorrer a estrutura evita
+  // o escape de aspas que um JSON.stringify introduziria
+  const lidas = new Set();
+  const RE = /v\(\s*"([^"]+)"\s*\)/g;
+  (function varrer(v) {
+    if (!v) return;
+    if (Array.isArray(v)) return v.forEach(varrer);
+    if (typeof v === 'string') {
+      let m; RE.lastIndex = 0;
+      while ((m = RE.exec(v))) lidas.add(m[1]);
+      return;
+    }
+    if (typeof v === 'object') Object.values(v).forEach(varrer);
+  })(telas);
+
+  const apelidos = {};
+  for (const curta of lidas) {
+    if (escritas.has(curta)) continue;
+    const p = curta.split('.');
+    if (p.length < 2) continue;
+    // o nivel extra pode entrar em qualquer posicao interna do caminho
+    const candidatos = [];
+    for (const longa of escritas) {
+      const q = longa.split('.');
+      if (q.length !== p.length + 1) continue;
+      for (let k = 1; k < q.length; k++) {
+        const semNivel = q.slice(0, k).concat(q.slice(k + 1)).join('.');
+        if (semNivel === curta) { candidatos.push(longa); break; }
+      }
+    }
+    if (candidatos.length === 1) apelidos[curta] = candidatos[0];
+  }
+  return apelidos;
+}
+
 const cfg = {
   id: id,
   inicial: maquina.inicial,
@@ -227,6 +293,10 @@ const cfg = {
 };
 if (temMoldura) cfg.painel = maquina.painel;
 if (maquina.cabecalho) cfg.cabecalho = maquina.cabecalho;
+
+const apelidos = programa ? descobrirApelidos(telas, programa) : {};
+const quantosApelidos = Object.keys(apelidos).length;
+if (quantosApelidos) cfg.apelidos = apelidos;
 
 // A tabela de alarmes alimenta a lista da tela de alarmes: cada mensagem com a
 // tag do CLP que a dispara.
@@ -249,6 +319,7 @@ fs.writeFileSync(path.join(pastaSaida, 'index.html'),
 console.log('maquina vetorial "' + id + '" gerada em ' + path.relative(RAIZ, pastaSaida) + '/');
 console.log('  telas          : ' + nomes.length + (desenhadas ? '  (' + desenhadas + ' desenhadas' : '') + (derivadas ? ', ' + derivadas + ' derivadas' : '') + (desenhadas||derivadas ? ')' : ''));
 console.log('  ligacoes vivas : ' + comLigacao);
+if (quantosApelidos) console.log('  nivel de tipo  : ' + quantosApelidos + ' tags que a tela le pelo caminho curto');
 console.log('  imagens        : ' + imagensUsadas.size);
 if (aparencia) {
   console.log('  aparencia      : ' + Object.keys(aparencia)
