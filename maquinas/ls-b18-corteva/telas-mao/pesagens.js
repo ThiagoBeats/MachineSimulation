@@ -11,6 +11,11 @@
 
 'use strict';
 
+// A MESMA logo das telas extraidas, na mesma caixa. Antes estas telas usavam
+// outro arquivo, em 96x56: ao navegar, o cabecalho mudava de tamanho e de
+// desenho de uma tela para a outra.
+const LOGO = 'Logo-LS-Brasil-RGB_ff000080_ffffffff_T.png';
+
 const LARGURA = 800, ALTURA = 600;
 const CREME = '#EFEFD5';
 const LINHAS = 10;
@@ -44,7 +49,7 @@ function montar() {
     t: 'forma', id: 'ColunaEsquerda',
     d: 'M0 45H88V' + ALTURA + 'H0Z', preenche: CREME, traco: '#D8D8BE', espessura: 1,
   });
-  el.push({ t: 'imagem', id: 'Image3', x: 700, y: 2, w: 96, h: 56, arq: 'ls - 753 x 294 px.jpg' });
+  el.push({ t: 'imagem', id: 'Image7', x: 700, y: 0, w: 100, h: 60, arq: LOGO });
 
   el.push(texto('h-peso', COL.peso - 10, 118, 80, 26, 'Pesagens (Kg)', { fonte: 11 }));
   el.push(texto('h-erro', COL.erro, 118, 56, 26, 'Erro', { fonte: 11 }));
@@ -60,10 +65,10 @@ function montar() {
 
   el.push({
     t: 'botao', id: 'ReturntoDisplayButton1', modo: 'ir', x: 720, y: 550, w: 80, h: 46,
-    forma: 'reto', esp: 3, destino: 'Balanza',
+    forma: 'reto', esp: 2, destino: 'Balanza',
     estados: [{
-      id: '0', valor: 0, fundo: '#D4D0C8', claro: '#FFFFFF', escuro: '#808080',
-      legenda: { texto: 'VOLTAR', fonte: 11, cor: 'black', negrito: false, italico: false, alinha: 'middleCenter' },
+      id: '0', valor: 0, fundo: '#D4D0C8', claro: '#8FCEED', escuro: '#1E8FC5',
+      legenda: { texto: 'VOLTAR', fonte: 14, cor: 'black', negrito: false, italico: false, alinha: 'middleCenter' },
     }],
   });
 

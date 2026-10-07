@@ -16,6 +16,11 @@
 
 'use strict';
 
+// A MESMA logo das telas extraidas, na mesma caixa. Antes estas telas usavam
+// outro arquivo, em 96x56: ao navegar, o cabecalho mudava de tamanho e de
+// desenho de uma tela para a outra.
+const LOGO = 'Logo-LS-Brasil-RGB_ff000080_ffffffff_T.png';
+
 const LARGURA = 800, ALTURA = 600;
 const ITENS = 20;
 const Y0 = 64, PASSO = 26.3, ALT = 22;
@@ -68,11 +73,11 @@ function chave(id, x, y, w, tag, inverte) {
 
 function navegar(id, x, y, w, h, rotulo, destino) {
   return {
-    t: 'botao', id: id, modo: 'ir', x: x, y: y, w: w, h: h, forma: 'reto', esp: 3,
+    t: 'botao', id: id, modo: 'ir', x: x, y: y, w: w, h: h, forma: 'reto', esp: 2,
     destino: destino,
     estados: [{
-      id: '0', valor: 0, fundo: '#D4D0C8', claro: '#FFFFFF', escuro: '#808080',
-      legenda: { texto: rotulo, fonte: 11, cor: 'black', negrito: false, italico: false, alinha: 'middleCenter' },
+      id: '0', valor: 0, fundo: '#D4D0C8', claro: '#8FCEED', escuro: '#1E8FC5',
+      legenda: { texto: rotulo, fonte: 14, cor: 'black', negrito: false, italico: false, alinha: 'middleCenter' },
     }],
   };
 }
@@ -81,7 +86,7 @@ function montar() {
   const el = [];
 
   el.push(texto('Text-titulo', 240, 8, 240, 30, 'LIQUIDOS', { fonte: 18, negrito: true }));
-  el.push({ t: 'imagem', id: 'Image3', x: 700, y: 2, w: 96, h: 56, arq: 'ls - 753 x 294 px.jpg' });
+  el.push({ t: 'imagem', id: 'Image7', x: 700, y: 0, w: 100, h: 60, arq: LOGO });
 
   // --- cabecalho das colunas --------------------------------------------------
   el.push(texto('h-prod', COL.produto, 40, 148, 22, 'PRODUTO', { fonte: 10, negrito: true }));

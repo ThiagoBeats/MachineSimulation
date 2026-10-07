@@ -17,6 +17,11 @@
 
 'use strict';
 
+// A MESMA logo das telas extraidas, na mesma caixa. Antes estas telas usavam
+// outro arquivo, em 96x56: ao navegar, o cabecalho mudava de tamanho e de
+// desenho de uma tela para a outra.
+const LOGO = 'Logo-LS-Brasil-RGB_ff000080_ffffffff_T.png';
+
 const LARGURA = 800, ALTURA = 600;
 const CREME = '#EFEFD5';
 const CANO = '#9A9A9A';
@@ -84,13 +89,13 @@ function caixa(id, x, y, w, h, o) {
 function navegar(id, x, y, w, h, rotulo, destino, o) {
   o = o || {};
   return {
-    t: 'botao', id: id, modo: 'ir', x: x, y: y, w: w, h: h, forma: 'reto', esp: 3,
+    t: 'botao', id: id, modo: 'ir', x: x, y: y, w: w, h: h, forma: 'reto', esp: 2,
     destino: destino,
     estados: [{
       id: '0', valor: 0,
-      fundo: o.fundo || '#D4D0C8', claro: '#FFFFFF', escuro: '#808080',
+      fundo: o.fundo || '#D4D0C8', claro: '#8FCEED', escuro: '#1E8FC5',
       legenda: {
-        texto: rotulo, fonte: o.fonte || 11, cor: o.cor || 'black',
+        texto: rotulo, fonte: o.fonte || 14, cor: o.cor || 'black',
         negrito: false, italico: false, alinha: 'middleCenter',
       },
     }],
@@ -111,7 +116,7 @@ function montar(n) {
 
   // --- titulo e produto -------------------------------------------------------
   el.push(texto('Text9', 330, 14, 139, 31, 'LIQUIDO L' + L, { fonte: 20 }));
-  el.push(imagem('Image3', 700, 2, 96, 56, 'ls - 753 x 294 px.jpg'));
+  el.push(imagem('Image7', 700, 0, 100, 60, LOGO));
   el.push(cadeia('StringDisplay1', 264, 65, 273, 30, 'MainProgram.RecetaEnProceso.Nombre_L' + L,
     { fonte: 16, negrito: true }));
 

@@ -28,6 +28,11 @@
 
 'use strict';
 
+// A MESMA logo das telas extraidas, na mesma caixa. Antes estas telas usavam
+// outro arquivo, em 96x56: ao navegar, o cabecalho mudava de tamanho e de
+// desenho de uma tela para a outra.
+const LOGO = 'Logo-LS-Brasil-RGB_ff000080_ffffffff_T.png';
+
 const LARGURA = 800, ALTURA = 600;
 const Y0 = 139, PASSO = 30, ALT = 30;
 const COL = { nome: 73, ip: 291, estado: 506 };
@@ -67,7 +72,7 @@ function montar() {
     t: 'forma', id: 'Polygon2',
     d: 'M0 0H' + LARGURA + 'V60H0Z', preenche: '#D4D0C8', traco: '#A0A0A0', espessura: 1,
   });
-  el.push({ t: 'imagem', id: 'Image7', x: 700, y: 2, w: 96, h: 56, arq: 'ls - 753 x 294 px.jpg' });
+  el.push({ t: 'imagem', id: 'Image7', x: 700, y: 0, w: 100, h: 60, arq: LOGO });
   el.push(texto('Text9', 258, 14, 285, 31, 'ARQUITETURA DE REDE',
     { fonte: 18, negrito: true, alinha: 'middleCenter' }));
   el.push(texto('Text2', 10, 19, 74, 15, 'EMERGENCIA', {
@@ -116,10 +121,10 @@ function montar() {
 
   el.push({
     t: 'botao', id: 'GotoDisplayButton1', modo: 'ir', x: 720, y: 550, w: 80, h: 46,
-    forma: 'reto', esp: 3, destino: 'MAIN',
+    forma: 'reto', esp: 2, destino: 'MAIN',
     estados: [{
-      id: '0', valor: 0, fundo: '#D4D0C8', claro: '#FFFFFF', escuro: '#808080',
-      legenda: { texto: '', fonte: 11, cor: 'black', negrito: false, italico: false, alinha: 'middleCenter' },
+      id: '0', valor: 0, fundo: '#D4D0C8', claro: '#8FCEED', escuro: '#1E8FC5',
+      legenda: { texto: '', fonte: 14, cor: 'black', negrito: false, italico: false, alinha: 'middleCenter' },
     }],
   });
   el.push({ t: 'imagem', id: 'Image8', x: 744, y: 557, w: 32, h: 32, arq: 'Home01.png' });

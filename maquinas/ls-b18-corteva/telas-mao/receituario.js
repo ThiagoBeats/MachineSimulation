@@ -20,6 +20,11 @@
 
 'use strict';
 
+// A MESMA logo das telas extraidas, na mesma caixa. Antes estas telas usavam
+// outro arquivo, em 96x56: ao navegar, o cabecalho mudava de tamanho e de
+// desenho de uma tela para a outra.
+const LOGO = 'Logo-LS-Brasil-RGB_ff000080_ffffffff_T.png';
+
 const LARGURA = 800, ALTURA = 600;
 const CREME = '#EFEFD5';
 const AMARELO = '#FFFF80';
@@ -65,12 +70,12 @@ function campo(id, x, y, w, membro, casas) {
 function navegar(id, x, y, w, h, rotulo, destino, o) {
   o = o || {};
   return {
-    t: 'botao', id: id, modo: 'ir', x: x, y: y, w: w, h: h, forma: 'reto', esp: 3,
+    t: 'botao', id: id, modo: 'ir', x: x, y: y, w: w, h: h, forma: 'reto', esp: 2,
     destino: destino,
     estados: [{
-      id: '0', valor: 0, fundo: o.fundo || '#D4D0C8', claro: '#FFFFFF', escuro: '#808080',
+      id: '0', valor: 0, fundo: o.fundo || '#D4D0C8', claro: '#8FCEED', escuro: '#1E8FC5',
       legenda: {
-        texto: rotulo, fonte: o.fonte || 11, cor: 'black',
+        texto: rotulo, fonte: o.fonte || 14, cor: 'black',
         negrito: false, italico: false, alinha: 'middleCenter',
       },
     }],
@@ -99,7 +104,7 @@ function montar() {
   // lista de receitas ocupa a esquerda inteira.
 
   el.push(texto('Text-titulo', 300, 10, 200, 30, 'RECEITAS', { fonte: 20 }));
-  el.push({ t: 'imagem', id: 'Image3', x: 700, y: 2, w: 96, h: 56, arq: 'ls - 753 x 294 px.jpg' });
+  el.push({ t: 'imagem', id: 'Image7', x: 700, y: 0, w: 100, h: 60, arq: LOGO });
 
   // --- a lista das 20 receitas ------------------------------------------------
   el.push(caixa('quadro-lista', 8, 84, 150, 405, { preenche: '#FFFFFF', traco: '#4A4A4A', esp: 2 }));

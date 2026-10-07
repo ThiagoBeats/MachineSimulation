@@ -17,6 +17,11 @@
 
 'use strict';
 
+// A MESMA logo das telas extraidas, na mesma caixa. Antes estas telas usavam
+// outro arquivo, em 96x56: ao navegar, o cabecalho mudava de tamanho e de
+// desenho de uma tela para a outra.
+const LOGO = 'Logo-LS-Brasil-RGB_ff000080_ffffffff_T.png';
+
 const LARGURA = 800, ALTURA = 600;
 const CREME = '#EFEFD5';
 
@@ -46,12 +51,12 @@ function caixa(id, x, y, w, h, o) {
 function navegar(id, x, y, w, h, rotulo, destino, o) {
   o = o || {};
   return {
-    t: 'botao', id: id, modo: 'ir', x: x, y: y, w: w, h: h, forma: 'reto', esp: 3,
+    t: 'botao', id: id, modo: 'ir', x: x, y: y, w: w, h: h, forma: 'reto', esp: 2,
     destino: destino,
     estados: [{
-      id: '0', valor: 0, fundo: o.fundo || '#D4D0C8', claro: '#FFFFFF', escuro: '#808080',
+      id: '0', valor: 0, fundo: o.fundo || '#D4D0C8', claro: '#8FCEED', escuro: '#1E8FC5',
       legenda: {
-        texto: rotulo, fonte: o.fonte || 11, cor: 'black',
+        texto: rotulo, fonte: o.fonte || 14, cor: 'black',
         negrito: false, italico: false, alinha: 'middleCenter',
       },
     }],
@@ -84,7 +89,7 @@ function montar() {
 
   // --- titulo -----------------------------------------------------------------
   el.push(texto('Text9', 267, 14, 266, 31, 'LAVAGEM DAS LINHAS', { fonte: 20 }));
-  el.push({ t: 'imagem', id: 'Image7', x: 700, y: 2, w: 96, h: 56, arq: 'ls - 753 x 294 px.jpg' });
+  el.push({ t: 'imagem', id: 'Image7', x: 700, y: 0, w: 100, h: 60, arq: LOGO });
 
   // --- o quadro que agrupa as cinco linhas ------------------------------------
   el.push(caixa('quadro', 98, 162, 604, 330, { preenche: '#D9D9D9', traco: '#A8A8A8' }));
